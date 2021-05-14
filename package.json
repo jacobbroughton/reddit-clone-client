@@ -1,0 +1,24 @@
+{
+  "name": "reddit-clone",
+  "version": "1.0.0",
+  "description": "Created by Jacob Broughton",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlbroughton88/reddit-clone.git"
+  },
+  "author": "Jacob Broughton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jlbroughton88/reddit-clone/issues"
+  },
+  "homepage": "https://github.com/jlbroughton88/reddit-clone#readme"
+}
