@@ -1,4 +1,6 @@
 const express = require("express")
 const app = express()
 
-app.listen(5000, () => console.log("Server is listening"))
+const port = process.env.PORT || 5000
+
+app.listen(port, () => console.log(`Server is listening at port ${port}`))
