@@ -4,6 +4,8 @@ const app = express();
 
 app.get("/", (req, res) => res.send("Hello world"))
 
+app.get("/data", (req, res) => res.json({ data: "Jacob" }))
+
 
 if (process.env.NODE_ENV === "production") {
   // Exprees will serve up production assets
