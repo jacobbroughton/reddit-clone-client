@@ -4,6 +4,7 @@
   "description": "Created by Jacob Broughton",
   "main": "server.js",
   "dependencies": {
+    "concurrently": "^6.1.0",
     "cors": "^2.8.5",
     "express": "^4.17.1"
   },
