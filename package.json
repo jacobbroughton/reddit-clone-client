@@ -4,14 +4,29 @@
   "description": "Created by Jacob Broughton",
   "main": "server.js",
   "dependencies": {
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
     "concurrently": "^6.1.0",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "express-mysql-session": "^2.1.6",
+    "express-session": "^1.17.1",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"nodemon server\" \"npm run client\"",
+    "start": "node server.js",
+    "find": "pgrep node",
+    "kill": "pkill node"
   },
   "repository": {
     "type": "git",

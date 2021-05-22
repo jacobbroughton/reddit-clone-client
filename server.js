@@ -1,12 +1,42 @@
 const express = require("express");
 const cors = require("cors")
 const app = express();
+const passport = require("passport")
+const cookieParser = require("cookie-parser")
+const session = require("express-session")
+require("./middleware/passportConfig")(passport)
+
+const userRouter = require("./routers/user")
+
 
 app.use(cors());
+app.use(express.json())
 
-app.get("/", (req, res) => res.send("Hello world"))
+let MySQLStore = require("express-mysql-session")(session)
 
-app.get("/data", (req, res) => res.json({ data: "Jacob" }))
+let options = {
+    host: process.env.DB_HOST,
+    user: process.env.DB_USERNAME,
+    password: process.env.PASSWORD,
+    database: process.env.DB_DATABASE,
+    port: process.env.DB_PORT
+}
+
+let sessionStore = new MySQLStore(options)
+
+app.use(session({
+  secret: `${process.env.cookieSecret}`,
+  resave: true,
+  saveUninitialized: true,
+  store: sessionStore,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24
+  }
+}))
+
+app.use(cookieParser(process.env.cookieSecret))
+app.use(passport.initialize())
+app.use(passport.session())
 
 
 if (process.env.NODE_ENV === "production") {
@@ -19,6 +49,8 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
+
+app.use('/users', userRouter)
 
 const port = process.env.PORT || 5000;
 
