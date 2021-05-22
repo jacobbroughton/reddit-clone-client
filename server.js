@@ -50,6 +50,10 @@ app.use(passport.session())
 //   });
 // }
 
+app.get("/", (req, res) => {
+  res.send("Hello from the server")
+})
+
 app.use('/users', userRouter)
 
 const port = process.env.PORT || 5000;
