@@ -1,11 +1,10 @@
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Redirect,
+  Route
 } from "react-router-dom";
 import Register from "./components/auth/Register";
-import { store } from "./store/store"
+import store from "./store/store"
 import { Provider } from "react-redux"
 
 function App() {

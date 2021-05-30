@@ -1,19 +1,12 @@
 const express = require("express");
 const cors = require("cors")
 const app = express();
-const passport = require("passport")
 const cookieParser = require("cookie-parser")
+const bodyParser = require("body-parser")
 const session = require("express-session")
-require("./middleware/passportConfig")(passport)
+require("dotenv").config()
 
-const userRouter = require("./routers/user")
-
-
-app.use(cors());
-app.use(express.json())
-
-let MySQLStore = require("express-mysql-session")(session)
-
+const userRouter = require("./routers/userRouter")
 let options = {
     host: process.env.DB_HOST,
     user: process.env.DB_USERNAME,
@@ -21,9 +14,31 @@ let options = {
     database: process.env.DB_DATABASE,
     port: process.env.DB_PORT
 }
+let MySQLStore = require("express-mysql-session")(session)
 
+let origin;
+if(process.env.NODE_ENV === "production") {
+  console.log("PRODUCTION")
+  origin = "https://reddit-clone-jb.herokuapp.com"
+} else {
+  console.log("DEVELOPMENT")
+  origin = "http://localhost:3000"
+}
+
+// app.use(cors())
+app.use(
+  cors({
+  origin,
+  credentials: true
+}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+
+// Configuring Passport
+const passport = require("passport")
 let sessionStore = new MySQLStore(options)
-
 app.use(session({
   secret: `${process.env.cookieSecret}`,
   resave: true,
@@ -34,6 +49,7 @@ app.use(session({
   }
 }))
 
+require("./middleware/passportConfig")(passport)
 app.use(cookieParser(process.env.cookieSecret))
 app.use(passport.initialize())
 app.use(passport.session())
@@ -58,4 +74,4 @@ app.use('/users', userRouter)
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Server is listening at port ${port}`));
+app.listen(port, () => console.log(`Server is listening at port ${port} \n--------------------------------`));
