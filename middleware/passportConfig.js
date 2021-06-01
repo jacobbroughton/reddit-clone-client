@@ -14,6 +14,8 @@ const connection = mysql.createConnection({
 connection.connect()
 
 module.exports = function(passport) {
+
+    //
     passport.use(
         new localStrategy((username, password, done) => {
             console.log('passportConfig', username, password)
@@ -25,6 +27,7 @@ module.exports = function(passport) {
                     if(err) throw err;
                     let user = rows[0]
                     if(result === true) {
+                        console.log(user)
                         return done(null, user) 
                     } else {
                         return done(null, false, { message: 'Invalid password' })

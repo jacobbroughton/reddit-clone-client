@@ -18,10 +18,8 @@ let MySQLStore = require("express-mysql-session")(session)
 
 let origin;
 if(process.env.NODE_ENV === "production") {
-  console.log("PRODUCTION")
   origin = "https://reddit-clone-jb.herokuapp.com"
 } else {
-  console.log("DEVELOPMENT")
   origin = "http://localhost:3000"
 }
 

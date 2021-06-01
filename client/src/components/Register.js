@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { startRegister } from "../../reducers/userReducer"
+import { startRegister } from "../reducers/userReducer"
 
 const Register = () => {
 
@@ -20,19 +20,9 @@ const Register = () => {
         e.preventDefault()
     }
 
-    useEffect(() => {
-        if(user) {
-         console.log("User found")
-         console.log(user)   
-        } else {
-            console.log("No user found in state")
-        }
-        
-    }, [user])
-
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => handleSubmit(e)}>
                 <input placeholder="Username" onChange={e => setUsername(e.target.value)}/>
                 <input placeholder="Password" onChange={e => setPassword(e.target.value)}/>
                 {/* <input placeholder="Confirm Password" onChange={e => setConfirmPassword(e.target.value)}/> */}
