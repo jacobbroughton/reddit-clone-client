@@ -1,36 +1,99 @@
-nav{
-  .nav-container{
+nav {
+  .nav-container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 20px 30px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
     // Home Link
-    .home-link-parent{
-      a{
+    .home-link-parent {
+      a {
         text-decoration: none;
         color: black;
         font-weight: 600;
         font-size: 1.2rem;
-        span{
+        span {
           font-size: 1rem;
         }
       }
     }
 
-
     // Nav Menu
-    .nav-menu{
-      display: flex;
-      gap: 10px;
-      a{
-        color: black;
-        text-decoration: none;
+    .nav-menu {
+      .logged-out-nav-view {
+        display: flex;
+        gap: 10px;
+        a {
+          color: black;
+          text-decoration: none;
+        }
       }
-      .nav-username{
-        font-size: 1rem;
-        font-weight: 500;
+
+      .logged-in-nav-view {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+        .nav-username-button {
+          border: none;
+          padding: 10px;
+          font-size: 1rem;
+          font-weight: 500;
+          transition: background-color .1s ease;
+
+          &:hover{
+            background-color: lightgrey;
+          }
+        }
+        .user-dropdown {
+          transition: all .15s ease;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          background: #efefef;
+          padding: 10px 0;
+          position: absolute;
+          top: 45px;
+          right: 0;
+          min-width: 220px;
+
+          a {
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            transition: background-color .1s ease;
+            width: calc(100% - 20px);
+            text-align: start;
+
+            &:hover{
+              background-color: lightgrey;
+            }
+          }
+          .logout-button {
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            padding: 10px;
+            width: 100%;
+            text-align: start;
+            transition: background-color .1s ease;
+
+            &:hover{
+              background-color: lightgrey;
+            }
+          }
+        }
+        .open{
+          visibility: visible;
+          opacity: 1;
+        }
+        .closed {
+          visibility: hidden;
+          opacity: 0;
+        }
       }
     }
   }

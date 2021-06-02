@@ -20,7 +20,7 @@ connection.connect();
 // Get User
 router.get("/get-user/:username", (req, res) => {
     let searchForUserStatement = `
-        SELECT * FROM users 
+        SELECT username, created_at, updated_at FROM users 
         WHERE username = '${req.params.username}' 
         LIMIT 1
     `;

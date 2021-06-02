@@ -1,3 +1,9 @@
+html, body, #root, .App{
+  height: 100%;
+  min-height: 100%;
+}
+
+
 body {
   font-size: 16px;
   margin: 0;

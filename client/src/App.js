@@ -3,15 +3,19 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Register from "./components/Register";
-import Login from "./components/Login";
+import Register from "./components/Register/Register";
+import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
+import CreateSubreddit from "./components/CreateSubreddit/CreateSubreddit"
 import store from "./store/store"
-import { Provider } from "react-redux"
+import { Provider, useSelector } from "react-redux"
+
 
 function App() {
+
+  const user = useSelector(state => state)
+
   return (
-    <Provider store={store}>
       <Router>
         <div className="App">
           <Navbar/>
@@ -25,7 +29,6 @@ function App() {
           </Switch>
         </div>
       </Router>
-    </Provider>
   );
 }
 
