@@ -7,6 +7,8 @@ const session = require("express-session")
 require("dotenv").config()
 
 const userRouter = require("./routers/userRouter")
+const subredditsRouter = require("./routers/subredditsRouter")
+
 let options = {
     host: process.env.DB_HOST,
     user: process.env.DB_USERNAME,
@@ -69,6 +71,7 @@ app.get("/", (req, res) => {
 })
 
 app.use('/users', userRouter)
+app.use('/subreddits', subredditsRouter)
 
 const port = process.env.PORT || 5000;
 

@@ -11,7 +11,7 @@ const Register = () => {
   // const [confirmPassword, setConfirmPassword] = useState("")
   // const [doNotMatchError, setDoNotMatchError] = useState("Passwords do not match, please try again")
 
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
     dispatch(startRegister(username, password));

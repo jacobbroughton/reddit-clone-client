@@ -1,0 +1,27 @@
+.create-subreddit{
+  height: 100%;
+  form{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    gap: 10px;
+    margin: 0 auto;
+    margin-top: 100px;
+    input{
+      width: calc(100% - 30px);
+      padding: 15px;
+    }
+    textarea{
+      width: calc(100% - 30px);
+      padding: 15px;
+      resize: vertical;
+      height: 150px;
+    }
+    button{
+      width: 100%;
+      padding: 10px 15px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+}

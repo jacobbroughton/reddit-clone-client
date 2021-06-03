@@ -13,7 +13,7 @@ import { Provider, useSelector } from "react-redux"
 
 function App() {
 
-  const user = useSelector(state => state)
+  // const user = useSelector(state => state)
 
   return (
       <Router>
@@ -25,6 +25,9 @@ function App() {
             </Route>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/subreddits/create">
+              <CreateSubreddit/>
             </Route>
           </Switch>
         </div>

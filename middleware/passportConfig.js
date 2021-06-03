@@ -18,7 +18,6 @@ module.exports = function(passport) {
     //
     passport.use(
         new localStrategy((username, password, done) => {
-            console.log('passportConfig', username, password)
             connection.query(`SELECT * FROM users WHERE username = '${username}'`, (err, rows, fields) => {
                 if(err) throw err;
                 if(!rows[0]) return done(null, false)
@@ -27,7 +26,6 @@ module.exports = function(passport) {
                     if(err) throw err;
                     let user = rows[0]
                     if(result === true) {
-                        console.log(user)
                         return done(null, user) 
                     } else {
                         return done(null, false, { message: 'Invalid password' })
@@ -39,7 +37,6 @@ module.exports = function(passport) {
 
     passport.serializeUser((user, callback) => {
         console.log("Serializing user")
-        console.log(user)
         callback(null, user.id)
     })
 

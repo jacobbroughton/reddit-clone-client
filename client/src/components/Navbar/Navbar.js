@@ -7,7 +7,7 @@ import "./Navbar.scss";
 const Navbar = () => {
 
   const dispatch = useDispatch()
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.auth.user);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
 
 
@@ -15,7 +15,7 @@ const Navbar = () => {
     <nav>
       <div className="nav-container">
         <div className="home-link-parent">
-          <Link className="nav-home-link" to="/subreddits/create"><span className="not-span">(Not)</span> Reddit</Link>
+          <Link className="nav-home-link" to="/"><span className="not-span">(Not)</span> Reddit</Link>
         </div>
         
         <div className="nav-menu">
@@ -24,7 +24,7 @@ const Navbar = () => {
             <div className="logged-in-nav-view">
               <button onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} className="nav-username-button">{user.username}</button>
               <div className={`${isUserDropdownOpen ? 'user-dropdown open' : 'user-dropdown closed' }`}>
-                <Link to="/">Create Subreddit</Link>
+                <Link to="/subreddits/create">Create Subreddit</Link>
                 <button className="logout-button"onClick={() => dispatch(startLogout(user))}>Logout</button>
               </div>
             </div>

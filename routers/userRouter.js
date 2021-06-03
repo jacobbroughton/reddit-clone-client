@@ -20,7 +20,7 @@ connection.connect();
 // Get User
 router.get("/get-user/:username", (req, res) => {
     let searchForUserStatement = `
-        SELECT username, created_at, updated_at FROM users 
+        SELECT id, username, created_at, updated_at FROM users 
         WHERE username = '${req.params.username}' 
         LIMIT 1
     `;
@@ -36,19 +36,14 @@ router.get("/get-user/:username", (req, res) => {
 // Log In
 router.post("/login", (req, res, next) => {
   const { username, password } = req.body;
-  console.log("ayyyo", username, password);
   passport.authenticate("local", (err, user, info) => {
-    console.log(info);
-    console.log("Found user? ", user);
     if (err) throw err;
     if (!user) {
       console.log("No user exists, ", info);
     } else {
       console.log("User found", user);
-      console.log(info);
       req.login(user, (err) => {
         if (err) throw err;
-        console.log(user);
         res.send("Successfully authenticated");
       });
     }
@@ -99,7 +94,6 @@ router.post("/register", (req, res) => {
 
       connection.query(insertUserStatement, (err, result) => {
         if (err) throw err;
-        console.log("here is the user ===>", req.body);
         res.send(req.body);
         console.log("Registered user into database");
       });

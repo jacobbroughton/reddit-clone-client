@@ -1,13 +1,12 @@
 import axios from "../axios-config.js";
 import moment from "moment";
+import { loadState } from "../localStorage"
 // import { LOGIN_REQUEST, LOGIN_SUCCESS } from "../actions/authActions";
 
 // *
 // Initial State
 // **
-const initialState = {
-  user: null,
-};
+const initialState = loadState('authState') || {};
 
 // *
 // User Reducer
@@ -56,7 +55,6 @@ export const getUser = (username) => async (dispatch, getState) => {
       url: `${API_URL}/users/get-user/${username}`,
     })
     .then((res) => {
-      console.log(res)
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data })
     })
 
@@ -110,7 +108,6 @@ export const startRegister = (username, password) => async (dispatch, getState) 
       .then((res) => {
 
         let registeredUser = res.data;
-        console.log("registed user =====> ", registeredUser);
 
         dispatch({ type: "REGISTER_SUCCESS", payload: registeredUser });
 

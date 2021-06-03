@@ -2,6 +2,7 @@ import { createStore, combineReducers, compose, applyMiddleware } from "redux"
 import thunk from "redux-thunk"
 import { loadState, saveState } from "../localStorage"
 import { userReducer } from "../reducers/userReducer"
+import { subredditsReducer } from "../reducers/subredditsReducer"
 import throttle from "lodash.throttle"
 
 
@@ -19,12 +20,17 @@ const enhancers = [
 // Persisted state via localStorage
 const persistedState = loadState()
 
+const rootReducer = combineReducers({
+    auth: userReducer, 
+    subreddits: subredditsReducer
+})
+
 
 // * 
 // Store 
 // **
 const store = createStore(
-    userReducer,
+    rootReducer,
     persistedState,
     compose(...enhancers)
 )
@@ -35,9 +41,8 @@ const store = createStore(
 
 // Subscripe to the store
 store.subscribe(throttle(() => {
-    saveState({ // called every time the storage state changes
-        user: store.getState().user
-    })
+    console.log(store.getState())
+    saveState(store.getState().auth, 'authState')
 }, 1000))
 
 export default store
