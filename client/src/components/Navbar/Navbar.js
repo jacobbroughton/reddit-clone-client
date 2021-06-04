@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom"
 import { startLogout } from "../../reducers/userReducer"
+import SubredditDropdown from "../SubredditsDropdown/SubredditDropdown"
 import "./Navbar.scss";
 
 const Navbar = () => {
@@ -16,8 +17,9 @@ const Navbar = () => {
       <div className="nav-container">
         <div className="home-link-parent">
           <Link className="nav-home-link" to="/"><span className="not-span">(Not)</span> Reddit</Link>
+          
         </div>
-        
+        <SubredditDropdown/>
         <div className="nav-menu">
           {
             user ? 
@@ -34,6 +36,7 @@ const Navbar = () => {
               <Link to="/register">Register</Link>
             </div>
           }
+
 
         </div>
       </div>

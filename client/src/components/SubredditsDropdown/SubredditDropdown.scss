@@ -1,0 +1,28 @@
+.subreddit-dropdown{
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+
+  a{
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+
+    &:hover{
+      background: #282828;
+    }
+  }
+
+  .dropdown-home-link-parent{
+    border-bottom: 1px #fff solid;
+    padding: 10px 0px;
+    
+  }
+  
+  .subreddits-list{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px;
+    gap: 5px;
+  }
+}

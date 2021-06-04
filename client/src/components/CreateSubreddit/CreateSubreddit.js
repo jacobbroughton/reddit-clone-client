@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { createSubreddit } from "../../reducers/subredditsReducer"
+import { createSubreddit, getSubreddits } from "../../reducers/subredditsReducer"
 import "./CreateSubreddit.scss"
 
 const CreateSubreddit = () => {
@@ -13,6 +13,8 @@ const CreateSubreddit = () => {
 
   const handleSubmit = (e) => {
     dispatch(createSubreddit(subredditName, subredditDescription))
+
+    // dispatch(getSubreddits())
 
     e.preventDefault()
   }

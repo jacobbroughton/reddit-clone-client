@@ -5,23 +5,56 @@ import moment from "moment"
 const API_URL = "http://localhost:5000"
 
 
+
 export const subredditsReducer = (state = [], action) => {
   switch(action.type) {
-    case "CREATE_SUBREDDIT_REQUEST" :
-      return {
-        ...state
-      }
     case "CREATE_SUBREDDIT_SUCCESS" :
-      return {
-        ...state,
-        subreddits: [...state, action.payload]
-      }
+       return [...state, action.payload]
+    
+    case "GET_SUBREDDITS_SUCCESS" : 
+      return action.payload;
     default: 
     return state
   }
 }
 
-export const createSubreddit = (name, description) => async (dispatch, useState) => {
+export const getSubreddits = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: "GET_SUBREDDITS_REQUEST" })
+
+    const response = await axios.get(`${API_URL}/subreddits`)
+    console.log(response)
+    dispatch({ type: "GET_SUBREDDITS_SUCCESS", payload: response.data })
+
+  } catch (error) {
+    dispatch({ 
+      type: "GET_SUBREDDITS_FAILURE",
+      message: error.message,
+      response: error.response
+    })
+  }
+}
+
+export const getSingleSubreddit = (name) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: "GET_SINGLE_SUBREDDIT_REQUEST" })
+
+    const subreddit = await axios.get(`${API_URL}/subreddits/${name}`)
+    dispatch({ 
+      type: "GET_SINGLE_SUBREDDIT_SUCCESS", 
+      payload: subreddit 
+    })
+
+  } catch (error) {
+    dispatch({
+      type: "GET_SINGLE_SUBREDDIT_FAILURE",
+      message: error.message,
+      response: error.response
+    })
+  }
+}
+
+export const createSubreddit = (name, description) => async (dispatch, getState) => {
   try {
     dispatch({ type: "CREATE_SUBREDDIT_REQUEST" })
 
@@ -33,13 +66,21 @@ export const createSubreddit = (name, description) => async (dispatch, useState)
       createdAt: dateNow
     }
 
-    axios.post(`${API_URL}/subreddits/create`, newSubreddit)
-    .then(res => {
-      dispatch({ type: "CREATE_SUBREDDITS_SUCCESS", payload: newSubreddit })
-    }) 
+    await axios.post(`${API_URL}/subreddits`, newSubreddit)
 
+    dispatch({ type: "CREATE_SUBREDDIT_SUCCESS", payload: newSubreddit })
+
+    dispatch(getSingleSubreddit(newSubreddit.name))
+
+    // const subreddit = await axios.get(`${API_URL}/subreddits/${name}`)
+    // console.log(subreddit)
+    
+    
   } catch (error) {
-    dispatch({ type: "CREATE_SUBREDDIT_FAILURE" })
-    console.log(error)
+    dispatch({ 
+      type: "CREATE_SUBREDDIT_FAILURE",
+      message: error.message,
+      response: error.response
+    })
   }
 }

@@ -92,7 +92,7 @@ router.post("/register", (req, res) => {
         )
       `;
 
-      connection.query(insertUserStatement, (err, result) => {
+      connection.query(insertUserStatement, (err) => {
         if (err) throw err;
         res.send(req.body);
         console.log("Registered user into database");
