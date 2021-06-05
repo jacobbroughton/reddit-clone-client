@@ -1,0 +1,55 @@
+.new-post{
+  .new-post-container{
+    padding-top: 100px;
+    form{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      max-width: 500px;
+      margin: 0 auto;
+      gap: 15px;
+      .both-radio-inputs{
+        display: flex;
+        gap: 10px;
+        .post-type-buttons{
+          display: flex;
+          align-items: center;
+          .post-type-button{
+            border-radius: 3px;
+            border: none;
+            // height: 17px;
+            // width: 17px;
+            margin-right: 10px;
+            border: 1px lightgrey solid;
+            font-size: 1rem;
+          }
+          .clicked{
+            background-color: #0073d1;
+            color: #fff;
+          }
+        }
+      }
+      .new-post-input{
+        resize: vertical;
+        padding: 5px 10px;
+        font-size: 1rem;
+      }
+      textarea{
+        height: 150px;
+        font-size: 1rem;
+      }
+      select{
+        padding: 5px 10px;
+        font-size: 1rem;
+      }
+      .new-post-submit{
+        align-self: flex-start;
+        background-color: #181818;
+        color: #fff;
+        border: none;
+        padding: 5px;
+        border-radius: 3px;
+      }
+    }
+  }
+}

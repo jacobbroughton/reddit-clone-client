@@ -13,6 +13,7 @@ export const subredditsReducer = (state = [], action) => {
     
     case "GET_SUBREDDITS_SUCCESS" : 
       return action.payload;
+
     default: 
     return state
   }
@@ -40,6 +41,9 @@ export const getSingleSubreddit = (name) => async (dispatch, getState) => {
     dispatch({ type: "GET_SINGLE_SUBREDDIT_REQUEST" })
 
     const subreddit = await axios.get(`${API_URL}/subreddits/${name}`)
+    
+    console.log(subreddit)
+
     dispatch({ 
       type: "GET_SINGLE_SUBREDDIT_SUCCESS", 
       payload: subreddit 

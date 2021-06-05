@@ -9,7 +9,8 @@ nav {
 
     // Home Link
     .home-link-parent {
-      a {
+      position: relative;
+      .nav-home-link {
         text-decoration: none;
         color: black;
         font-weight: 600;
@@ -17,6 +18,21 @@ nav {
         span {
           font-size: 1rem;
         }
+      }
+    }
+
+    .subreddit-dropdown-toggle-button, .new-post-link{
+      border: none;
+      padding: 10px;
+      font-size: 1rem;
+      transition: background-color .1s ease;
+      margin-left: 15px;
+      color: black;
+      background-color: #efefef;
+      text-decoration: none;
+
+      &:hover{
+        background-color: lightgrey;
       }
     }
 

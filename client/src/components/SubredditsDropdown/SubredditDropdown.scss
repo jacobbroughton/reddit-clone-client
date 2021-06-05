@@ -1,28 +1,50 @@
-.subreddit-dropdown{
-  background-color: black;
+.subreddit-dropdown {
+  transition: all .15s ease;
   display: flex;
   flex-direction: column;
+  // align-items: flex-start;
+  background: #efefef;
+  // padding: 10px 0;
+  position: absolute;
+  top: 45px;
+  left: 0;
+  min-width: 220px;
 
-  a{
-    color: #fff;
+  a {
+    padding: 10px;
     text-decoration: none;
-    padding: 10px 15px;
+    color: black;
+    transition: background-color .1s ease;
+    width: calc(100% - 20px);
+    text-align: start;
 
     &:hover{
-      background: #282828;
+      background-color: lightgrey;
     }
   }
 
-  .dropdown-home-link-parent{
+  .dropdown-home-link-parent {
+    display: flex;
+    flex-direction: column;
     border-bottom: 1px #fff solid;
     padding: 10px 0px;
-    
   }
-  
-  .subreddits-list{
+
+  .subreddits-list {
     display: flex;
     flex-direction: column;
     padding: 10px 0px;
     gap: 5px;
   }
+}
+
+// Subreddit Dropdown open / close
+.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.closed {
+  visibility: hidden;
+  opacity: 0;
 }

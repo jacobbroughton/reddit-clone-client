@@ -1,4 +1,3 @@
-const e = require("express");
 const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
@@ -14,6 +13,8 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
+
+// Get single subreddit
 router.get("/:name", (req, res) => {
   try {
 
@@ -31,6 +32,8 @@ router.get("/:name", (req, res) => {
   }
 })
 
+
+// Get all subreddits
 router.get("/", (req, res) => {
   try{
     connection.query('SELECT * FROM subreddits', (err, rows) => {
@@ -42,6 +45,8 @@ router.get("/", (req, res) => {
   }
 })
 
+
+// Create subreddit
 router.post("/", (req, res) => {
   try {
 

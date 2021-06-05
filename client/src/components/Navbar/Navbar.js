@@ -9,7 +9,11 @@ const Navbar = () => {
 
   const dispatch = useDispatch()
   const user = useSelector((state) => state.auth.user);
+
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
+  const [currentSubreddit, setCurrentSubreddit] = useState("Home")
+  const [subredditDropdownToggle, setSubredditDropdownToggle] = useState(false)
+
 
 
   return (
@@ -17,9 +21,12 @@ const Navbar = () => {
       <div className="nav-container">
         <div className="home-link-parent">
           <Link className="nav-home-link" to="/"><span className="not-span">(Not)</span> Reddit</Link>
-          
+          <button className="subreddit-dropdown-toggle-button" onClick={() => setSubredditDropdownToggle(!subredditDropdownToggle)}>{currentSubreddit}</button>
+          <Link className="new-post-link" to="/new-post">New Post</Link>
+          <SubredditDropdown subredditDropdownToggle={subredditDropdownToggle} setCurrentSubreddit={setCurrentSubreddit}/>
         </div>
-        <SubredditDropdown/>
+        
+        
         <div className="nav-menu">
           {
             user ? 

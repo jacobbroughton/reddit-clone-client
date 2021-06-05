@@ -7,6 +7,7 @@ const session = require("express-session")
 require("dotenv").config()
 
 const userRouter = require("./routers/userRouter")
+const postsRouter = require("./routers/postsRouter")
 const subredditsRouter = require("./routers/subredditsRouter")
 
 let options = {
@@ -71,6 +72,7 @@ app.get("/", (req, res) => {
 })
 
 app.use('/users', userRouter)
+app.use('/posts', postsRouter)
 app.use('/subreddits', subredditsRouter)
 
 const port = process.env.PORT || 5000;
