@@ -5,6 +5,7 @@ import { userReducer } from "../reducers/userReducer"
 import { errorReducer } from "../reducers/errorReducer"
 import { subredditsReducer } from "../reducers/subredditsReducer"
 import throttle from "lodash.throttle"
+import { PostsReducer } from "../reducers/postsReducer"
 
 
 
@@ -23,6 +24,7 @@ const persistedState = loadState()
 const rootReducer = combineReducers({
     auth: userReducer, 
     subreddits: subredditsReducer,
+    posts: PostsReducer,
     error: errorReducer
 })
 

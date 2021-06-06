@@ -3,12 +3,34 @@ import moment from "moment"
 
 export const PostsReducer = (state = [], action) => {
   switch (action.type) {
+    case "CREATE_POST_REQUEST": 
+      return [...state, action.payload]
+    case "GET_ALL_POSTS_SUCCESS" :
+      return action.payload
     default:
       return state
   }
 }
 
 const API_URL = "http://localhost:5000"
+
+
+export const getAllPosts = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: "GET_ALL_POSTS_REQUEST" })
+
+    let response = await axios.get(`${API_URL}/posts`)
+
+    dispatch({ type: "GET_ALL_POSTS_SUCCESS", payload: response.data })
+
+  } catch (error) {
+    dispatch({ 
+      type: "GET_ALL_POSTS_FAILURE",
+      message: error.message,
+      response: error.response
+    })
+  }
+} 
 
 
 export const createPost = ({
@@ -35,6 +57,7 @@ export const createPost = ({
     
 
     axios.post(`${API_URL}/posts`, createdPost)
+    // .then(res => axios.)
 
   } catch (error) {
     dispatch({ 
