@@ -1,3 +1,8 @@
+$dmText: #fff;
+$dmPrimaryBackground: #181818;
+$dmSecondaryBackground: #252525;
+$dmSecondaryHover: #333;
+
 .create-subreddit{
   height: 100%;
   form{
@@ -6,22 +11,45 @@
     max-width: 500px;
     gap: 10px;
     margin: 0 auto;
-    margin-top: 100px;
+    // margin-top: 100px;
+    padding-top: 100px;
     input{
       width: calc(100% - 30px);
       padding: 10px 15px;
+      border: none;
+      background-color: #efefef;
     }
     textarea{
       width: calc(100% - 30px);
       padding: 10px 15px;
       resize: vertical;
       height: 150px;
+      border: none;
+      background-color: #efefef;
     }
     button{
-      width: 100%;
+      // width: 100%;
       padding: 10px 15px;
       font-size: 1rem;
       font-weight: 600;
+      border: none;
+      align-self: center;
+      border-radius: 3px;
+    }
+  }
+}
+
+.dark{
+  form{
+    input{
+      background-color: $dmSecondaryBackground;
+    }
+    textarea{
+      background-color: $dmSecondaryBackground;
+    }
+    button{
+      background-color: $dmSecondaryBackground;
+      color: $dmText;
     }
   }
 }

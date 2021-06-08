@@ -5,6 +5,7 @@ import "./Register.scss";
 
 const Register = () => {
   const dispatch = useDispatch();
+  const darkMode = useSelector(state => state.darkMode)
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +21,7 @@ const Register = () => {
   };
 
   return (
-    <div className="register">
+    <div className={`register ${darkMode && 'dark'}`}>
       <div className="register-container">
         <h2>Register</h2>
         <form onSubmit={(e) => handleSubmit(e)}>

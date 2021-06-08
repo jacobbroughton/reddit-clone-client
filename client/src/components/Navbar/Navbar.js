@@ -1,29 +1,38 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom"
 import { startLogout } from "../../reducers/userReducer"
+import { toggleDarkMode } from "../../reducers/darkModeReducer"
+import { ReactComponent as DarkModeIcon } from "../../images/dark-mode-icon.svg"
 import SubredditDropdown from "../SubredditsDropdown/SubredditDropdown"
 import "./Navbar.scss";
 
-const Navbar = () => {
+const Navbar = ({
+  currentSubreddit,
+  setCurrentSubreddit
+}) => {
 
   const dispatch = useDispatch()
   const user = useSelector((state) => state.auth.user);
+  const darkMode = useSelector(state => state.darkMode)
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
-  const [currentSubreddit, setCurrentSubreddit] = useState("Home")
   const [subredditDropdownToggle, setSubredditDropdownToggle] = useState(false)
 
-
-
   return (
-    <nav>
-      <div className="nav-container">
-        <div className="home-link-parent">
-          <Link className="nav-home-link" to="/"><span className="not-span">(Not)</span> Reddit</Link>
-          <button className="subreddit-dropdown-toggle-button" onClick={() => setSubredditDropdownToggle(!subredditDropdownToggle)}>{currentSubreddit}</button>
-          <Link className="new-post-link" to="/new-post">New Post</Link>
-          <SubredditDropdown subredditDropdownToggle={subredditDropdownToggle} setCurrentSubreddit={setCurrentSubreddit}/>
+    <nav className={darkMode && 'dark'}>
+      <div className={`nav-container`}>
+        <div className={`home-link-parent`} >
+          <Link className={`nav-home-link`} to="/"><span className="not-span">(Not)</span> Reddit</Link>
+          <button className={`subreddit-dropdown-toggle-button`} onClick={() => setSubredditDropdownToggle(!subredditDropdownToggle)}>{currentSubreddit ? currentSubreddit.name : "Home"}</button>
+          { user && <Link className={`new-post-link`} to="/new-post">New Post</Link> }
+          <SubredditDropdown 
+            subredditDropdownToggle={subredditDropdownToggle} 
+            setCurrentSubreddit={setCurrentSubreddit}
+          />
+          <div className={`dark-mode-icon-parent`}  >
+            <DarkModeIcon className={`dark-mode-icon`}  onClick={() => dispatch(toggleDarkMode())}/>
+          </div>
         </div>
         
         
@@ -43,8 +52,6 @@ const Navbar = () => {
               <Link to="/register">Register</Link>
             </div>
           }
-
-
         </div>
       </div>
     </nav>

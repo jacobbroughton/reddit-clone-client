@@ -7,6 +7,7 @@ import { getSubreddits } from "../../reducers/subredditsReducer";
 const SubredditDropdown = ({ subredditDropdownToggle, setCurrentSubreddit }) => {
 
   const dispatch = useDispatch();
+  const darkMode = useSelector(state => state.darkMode)
   const subreddits = useSelector((state) => state.subreddits);
 
   useEffect(() => {
@@ -16,11 +17,11 @@ const SubredditDropdown = ({ subredditDropdownToggle, setCurrentSubreddit }) => 
   return (
     <div className={subredditDropdownToggle ? 'subreddit-dropdown open' : 'subreddit-dropdown closed'}>
       <div className="dropdown-home-link-parent">
-        <Link onClick={() => setCurrentSubreddit("Home")} to={"/"}>Home</Link>
+        <Link onClick={() => setCurrentSubreddit(null)} to={"/"}>Home</Link>
       </div>
       <div className="subreddits-list">
         {subreddits.map((subreddit, key) => (
-          <Link onClick={() => setCurrentSubreddit(subreddit.name)} to={`/r/${subreddit.name}`} key={key}>{subreddit.name}</Link>
+          <Link onClick={() => setCurrentSubreddit(subreddit)} to={`/r/${subreddit.name.replace(/\s+/g, '-').toLowerCase()}`} key={key}>{subreddit.name}</Link>
         ))}
       </div>
     </div>

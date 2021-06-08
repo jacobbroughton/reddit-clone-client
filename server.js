@@ -42,8 +42,8 @@ const passport = require("passport")
 let sessionStore = new MySQLStore(options)
 app.use(session({
   secret: `${process.env.cookieSecret}`,
-  resave: true,
-  saveUninitialized: true,
+  resave: false,
+  saveUninitialized: false,
   store: sessionStore,
   cookie: {
     maxAge: 1000 * 60 * 60 * 24

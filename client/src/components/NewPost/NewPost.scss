@@ -1,4 +1,10 @@
+$dmText: #fff;
+$dmPrimaryBackground: #181818;
+$dmSecondaryBackground: #252525;
+$dmSecondaryHover: #333;
+
 .new-post{
+  height: 100%;
   .new-post-container{
     padding-top: 100px;
     form{
@@ -33,6 +39,8 @@
         resize: vertical;
         padding: 5px 10px;
         font-size: 1rem;
+        border: none;
+        background-color: #efefef;
       }
       textarea{
         height: 150px;
@@ -41,6 +49,8 @@
       select{
         padding: 5px 10px;
         font-size: 1rem;
+        border: none;
+        background-color: #efefef;
       }
       .new-post-submit{
         align-self: flex-start;
@@ -49,6 +59,32 @@
         border: none;
         padding: 5px;
         border-radius: 3px;
+      }
+    }
+  }
+}
+
+.dark{
+  .new-post-container{  
+    form{
+      .both-radio-inputs{
+        .post-type-buttons{
+          .post-type-button{
+          }
+          .clicked{
+          }
+        }
+      }
+      .new-post-input{
+        background-color: $dmSecondaryBackground;
+      }
+      textarea{
+      }
+      select{
+        background-color: $dmSecondaryBackground;
+      }
+      .new-post-submit{
+        background-color: $dmSecondaryBackground;
       }
     }
   }

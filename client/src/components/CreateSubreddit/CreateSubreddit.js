@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { createSubreddit, getSubreddits } from "../../reducers/subredditsReducer"
 import "./CreateSubreddit.scss"
 
@@ -9,6 +9,7 @@ const CreateSubreddit = () => {
   const [subredditDescription, setSubredditDescription] = useState("")
 
   const dispatch = useDispatch()
+  const darkMode = useSelector(state => state.darkMode)
 
 
   const handleSubmit = (e) => {
@@ -21,7 +22,7 @@ const CreateSubreddit = () => {
 
 
   return (
-    <div className="create-subreddit">
+    <div className={`create-subreddit ${darkMode && 'dark'}`}>
       <form onSubmit={(e) => handleSubmit(e)}>
         <input onChange={e => setSubredditName(e.target.value)} placeholder="Subreddit name"/>
         <textarea onChange={e => setSubredditDescription(e.target.value)} placeholder="Description (optional)"/>

@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { createPost } from "../../reducers/postsReducer"
+import { createPost } from "../../reducers/postListReducer"
 import "./NewPost.scss"
 
-const NewPost = () => {
+const NewPost = ({
+  currentSubreddit
+}) => {
     // Make list of recent posts to all the subreddits
     // Individual subreddit views will filter this list (I think)
   const dispatch = useDispatch()
   const auth = useSelector(state => state.auth)
   const subreddits = useSelector(state => state.subreddits)
+  const darkMode = useSelector(state => state.darkMode)
   
   
   const [postType, setPostType] = useState("text")
@@ -23,8 +26,6 @@ const NewPost = () => {
 
   const handleSubmit = (e) => {
 
-    console.log(auth.user.id)
-
     const post = {
       postType,
       title,
@@ -34,6 +35,7 @@ const NewPost = () => {
     }
 
     dispatch(createPost(post))
+
 
     e.preventDefault()
   }
@@ -48,7 +50,7 @@ const NewPost = () => {
 
   useEffect(() => {
     if(subreddits.length > 0) {
-      setSubreddit(subreddits[0])
+      setSubreddit(currentSubreddit ? currentSubreddit.name : subreddits[0])
     }
   }, [subreddits])
 
@@ -61,7 +63,7 @@ const NewPost = () => {
   }
 
   return (
-      <div className="new-post">
+      <div className={`new-post ${darkMode && 'dark'}`}>
           <div className="new-post-container">
               <form onSubmit={(e) => handleSubmit(e)}>
                   <div className="both-radio-inputs">
@@ -82,7 +84,7 @@ const NewPost = () => {
                   {/* <select onChange={(e) => setSubreddit(e.target.value)}> */}
                   <select onChange={(e) => handleSubredditChange(e.target.value)}>
                     { subreddits.map((subreddit, key) => 
-                      <option key={key}>{subreddit.name}</option>
+                      <option selected={currentSubreddit === subreddit}key={key}>{subreddit.name}</option>
                     )}
                   </select>
                   { subreddits.length > 0 && <input className="new-post-submit" type="submit"/> }

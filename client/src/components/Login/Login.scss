@@ -1,6 +1,11 @@
-.login{
-  height: calc(100% - 90px);
-  .login-container{
+$dmText: #fff;
+$dmPrimaryBackground: #181818;
+$dmSecondaryBackground: #252525;
+$dmSecondaryHover: #333;
+
+.login {
+  height: 100%;
+  .login-container {
     max-width: 1100px;
     height: 100%;
     margin: 0 auto;
@@ -9,16 +14,18 @@
     align-items: center;
     flex-direction: column;
 
-    form{
+    form {
       display: flex;
       flex-direction: column;
       max-width: 500px;
       width: 100%;
       gap: 10px;
-      .login-input{
+      .login-input {
         padding: 5px 10px;
+        border: none;
+        background-color: #efefef;
       }
-      .login-submit{
+      .login-submit {
         width: initial;
         align-self: flex-start;
         background-color: #181818;
@@ -26,6 +33,19 @@
         border: none;
         padding: 5px;
         border-radius: 3px;
+      }
+    }
+  }
+}
+
+.dark {
+  .login-container {
+    form {
+      .login-input {
+        background-color: $dmSecondaryBackground;
+      }
+      .login-submit {
+        background-color: $dmSecondaryBackground;
       }
     }
   }

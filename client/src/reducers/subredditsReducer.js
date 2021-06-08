@@ -74,13 +74,7 @@ export const createSubreddit = (name, description) => async (dispatch, getState)
 
     let idForNewSubreddit = response.data.idForNewSubreddit
 
-    newSubreddit.id = idForNewSubreddit
-
-    // console.log(yeet)
-    console.log(response)
-    console.log(newSubreddit)
-    
-
+    newSubreddit.id = idForNewSubreddit    
 
     dispatch({ type: "CREATE_SUBREDDIT_SUCCESS", payload: newSubreddit})
 

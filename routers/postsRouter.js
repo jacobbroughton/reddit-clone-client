@@ -16,11 +16,22 @@ connection.connect();
 
 router.get('/', (req, res) => {
   const getAllPostsStatement = `
-    SELECT * FROM posts
+    SELECT * FROM posts 
   `
 
   connection.query(getAllPostsStatement, (err, rows) => {
     if(err) throw err;
+    res.send(rows)
+  })
+})
+
+router.get('/:subredditId', (req, res) => {
+  const getSubredditPostsStatement = `
+  SELECT * FROM posts 
+  WHERE id = ${req.params.subredditId}
+`
+  connection.query(getSubredditPostsStatement, (err, rows) => {
+    if(err) throw err
     res.send(rows)
   })
 })

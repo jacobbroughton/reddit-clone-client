@@ -1,5 +1,6 @@
 import axios from "../axios-config.js";
 import moment from "moment";
+import history from "../history"
 import { loadState } from "../localStorage"
 // import { LOGIN_REQUEST, LOGIN_SUCCESS } from "../actions/authActions";
 
@@ -56,6 +57,7 @@ export const getUser = (username) => async (dispatch, getState) => {
     })
     .then((res) => {
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data })
+      // history.push("/")
     })
 
 
@@ -72,7 +74,10 @@ export const startLogin = (user) => async (dispatch, getState) => {
 
 
     axios.post(`${API_URL}/users/login`, user)
-    .then(() => dispatch(getUser(user.username)))
+    .then(() => { 
+      dispatch(getUser(user.username))
+      history.push("/")
+    })
     .catch(err => console.log(err))
 
     

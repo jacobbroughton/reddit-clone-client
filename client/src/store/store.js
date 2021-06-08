@@ -4,8 +4,11 @@ import { loadState, saveState } from "../localStorage"
 import { userReducer } from "../reducers/userReducer"
 import { errorReducer } from "../reducers/errorReducer"
 import { subredditsReducer } from "../reducers/subredditsReducer"
+import { darkModeReducer } from "../reducers/darkModeReducer"
+import { postListReducer } from "../reducers/postListReducer"
+import { postReducer } from "../reducers/postReducer"
 import throttle from "lodash.throttle"
-import { PostsReducer } from "../reducers/postsReducer"
+
 
 
 
@@ -24,8 +27,10 @@ const persistedState = loadState()
 const rootReducer = combineReducers({
     auth: userReducer, 
     subreddits: subredditsReducer,
-    posts: PostsReducer,
-    error: errorReducer
+    postList: postListReducer,
+    post: postReducer,
+    error: errorReducer,
+    darkMode: darkModeReducer
 })
 
 

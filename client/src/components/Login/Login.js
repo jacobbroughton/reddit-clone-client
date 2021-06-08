@@ -5,6 +5,8 @@ import "./Login.scss"
 
 const Login = () => {
 
+    const darkMode = useSelector(state => state.darkMode)
+
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
@@ -19,7 +21,7 @@ const Login = () => {
 
 
     return (
-        <div className="login">
+        <div className={`login ${darkMode && 'dark'}`}>
             <div className="login-container">
                 <h2>Login</h2>
                 <form onSubmit={(e) => handleSubmit(e)}>
