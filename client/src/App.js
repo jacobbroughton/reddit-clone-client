@@ -55,7 +55,7 @@ function App() {
                 currentSubreddit={currentSubreddit}
               />
             </Route>     
-            <Route path="/r/:name/:post">
+            <Route path="/r/:name/:postId">
               <Post currentSubreddit={currentSubreddit}/>
             </Route>       
             <Route path="/r/:name">

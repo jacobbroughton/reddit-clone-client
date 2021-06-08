@@ -13,7 +13,7 @@ const Navbar = ({
 }) => {
 
   const dispatch = useDispatch()
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state) => state.auth.user)
   const darkMode = useSelector(state => state.darkMode)
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)

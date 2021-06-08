@@ -20,8 +20,9 @@ const API_URL = "http://localhost:5000"
 export const getSubredditPosts = (subredditId) => async (dispatch, getState) => {
   try {
     dispatch({ type: "GET_SUBREDDIT_POSTS_REQUEST" })
-    console.log(subredditId)
     let response = await axios.get(`${API_URL}/posts/${subredditId}`)
+
+    console.log(response)
 
     dispatch({ type: "GET_SUBREDDIT_POSTS_SUCCESS", payload: response.data })
 

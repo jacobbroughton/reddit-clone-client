@@ -9,7 +9,6 @@ const PostList = ({ currentSubreddit }) => {
   const dispatch = useDispatch()
   const darkMode = useSelector(state => state.darkMode)
   const posts = useSelector(state => state.postList)
-  const [filteredPosts, setFilteredPosts] = useState([])
 
   useEffect(() => {
     dispatch(getAllPosts())

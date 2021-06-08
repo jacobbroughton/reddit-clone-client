@@ -14,7 +14,9 @@ const connection = mysql.createConnection({
 connection.connect();
 
 
+// Get all posts
 router.get('/', (req, res) => {
+
   const getAllPostsStatement = `
     SELECT * FROM posts 
   `
@@ -25,18 +27,40 @@ router.get('/', (req, res) => {
   })
 })
 
+
+// Get all posts in subreddit
 router.get('/:subredditId', (req, res) => {
+
   const getSubredditPostsStatement = `
   SELECT * FROM posts 
-  WHERE id = ${req.params.subredditId}
+  WHERE subreddit_id = ${req.params.subredditId}
 `
   connection.query(getSubredditPostsStatement, (err, rows) => {
     if(err) throw err
+    console.log(rows)
     res.send(rows)
   })
 })
 
 
+// Get single post
+router.get('/single/:postId', (req, res) => {
+
+  const getSinglePostStatement = `
+  SELECT * FROM posts 
+  WHERE id = ${req.params.postId}
+  LIMIT 1
+`
+
+connection.query(getSinglePostStatement, (err, rows) => {
+  if(err) throw err
+  res.send(rows[0])
+})
+})
+
+
+
+// Add new post
 router.post('/', (req, res) => {
 
   const createPostStatement = `
