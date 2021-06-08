@@ -56,7 +56,7 @@ function App() {
               />
             </Route>     
             <Route path="/r/:name/:postId">
-              <Post currentSubreddit={currentSubreddit}/>
+              <Post/>
             </Route>       
             <Route path="/r/:name">
               <PostList currentSubreddit={currentSubreddit}/>

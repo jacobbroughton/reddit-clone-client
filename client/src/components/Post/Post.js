@@ -1,15 +1,30 @@
-import { useParams } from "react-router-dom"
-import "./Post.scss"
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getPost } from "../../reducers/postReducer";
+import "./Post.scss";
 
 const Post = () => {
+  const dispatch = useDispatch();
+  const post = useSelector((state) => state.post);
 
-  const { postId } = useParams()
+  let { postId } = useParams();
 
-  console.log(postId)
+  useEffect(() => {
+    if (!post) {
+      dispatch(getPost(postId));
+    }
+  }, [post]);
 
   return (
-    <div>Post</div>
-  )
-}
+    post && (
+      <div>
+        <h1>{post.title}</h1>
+        <p>Posted on r/{post.subreddit_name}</p>
+        <p>{post.created_at}</p>{" "}
+      </div>
+    )
+  );
+};
 
-export default Post
+export default Post;

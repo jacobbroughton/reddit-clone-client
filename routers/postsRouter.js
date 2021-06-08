@@ -37,7 +37,6 @@ router.get('/:subredditId', (req, res) => {
 `
   connection.query(getSubredditPostsStatement, (err, rows) => {
     if(err) throw err
-    console.log(rows)
     res.send(rows)
   })
 })

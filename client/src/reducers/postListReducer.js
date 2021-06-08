@@ -21,8 +21,7 @@ export const getSubredditPosts = (subredditId) => async (dispatch, getState) => 
   try {
     dispatch({ type: "GET_SUBREDDIT_POSTS_REQUEST" })
     let response = await axios.get(`${API_URL}/posts/${subredditId}`)
-
-    console.log(response)
+    
 
     dispatch({ type: "GET_SUBREDDIT_POSTS_SUCCESS", payload: response.data })
 
