@@ -58,19 +58,45 @@ connection.query(getSinglePostStatement, (err, rows) => {
 })
 
 
+router.put('/single/:postId', (req, res) => {
+
+  const updatePostBodyStatement = `
+    UPDATE posts 
+    SET body = '${req.body.body}'
+    WHERE id = ${req.params.postId}
+    LIMIT 1
+  ` 
+
+  const getSinglePostStatement = `
+  SELECT * FROM posts 
+  WHERE id = ${req.params.postId}
+  LIMIT 1
+`
+
+  connection.query(updatePostBodyStatement, (err, rows) => {
+    if(err) throw err
+    connection.query(getSinglePostStatement, (err, rows) => {
+      if(err) throw err;
+      res.send(rows[0])
+    })
+  })
+})
+
 
 // Add new post
 router.post('/', (req, res) => {
 
+  console.log(req.body)
+
   const createPostStatement = `
   INSERT INTO posts
-  (post_type, title, body, author_id, subreddit_id, created_at, updated_at) 
-  VALUES ('${req.body.postType}', '${req.body.title}', '${req.body.body}', '${req.body.authorId}', '${req.body.subredditId}', '${req.body.createdAt}', '${req.body.updatedAt}')
+  (post_type, title, body, author_id, subreddit_id, subreddit_name, created_at, updated_at) 
+  VALUES ('${req.body.postType}', '${req.body.title}', '${req.body.body}', '${req.body.authorId}', '${req.body.subredditId}', '${req.body.subredditName}', '${req.body.createdAt}', '${req.body.updatedAt}')
   `
 
-  connection.query(createPostStatement, (err, rows) => {
+  connection.query(createPostStatement, (err, result) => {
     if(err) throw err;
-    res.send("Created post")
+    res.send(result)
   })
 })
 

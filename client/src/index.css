@@ -2,7 +2,13 @@
 html, body, #root, .App{
   height: 100%;
   min-height: 100%;
+}
+
+body{
   background-color: #cbd5df;
+}
+body .dark{
+  background-color: #181818;
 }
 
 

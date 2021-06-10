@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { startLogin, startLogout } from "../../reducers/userReducer"
+import { startLogin, startLogout } from "../../actions/authActions"
 import "./Login.scss"
 
 const Login = () => {

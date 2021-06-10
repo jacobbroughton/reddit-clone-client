@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { createSubreddit, getSubreddits } from "../../reducers/subredditsReducer"
+import { createSubreddit, getSubreddits } from "../../actions/subredditsActions"
 import "./CreateSubreddit.scss"
 
 const CreateSubreddit = () => {

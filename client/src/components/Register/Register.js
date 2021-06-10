@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { startRegister } from "../../reducers/userReducer";
+import { startRegister } from "../../actions/authActions";
 import "./Register.scss";
 
 const Register = () => {

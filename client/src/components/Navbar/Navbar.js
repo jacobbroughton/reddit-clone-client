@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom"
-import { startLogout } from "../../reducers/userReducer"
+import { startLogout } from "../../actions/authActions"
 import { toggleDarkMode } from "../../reducers/darkModeReducer"
 import { ReactComponent as DarkModeIcon } from "../../images/dark-mode-icon.svg"
 import SubredditDropdown from "../SubredditsDropdown/SubredditDropdown"
@@ -28,6 +28,7 @@ const Navbar = ({
           { user && <Link className={`new-post-link`} to="/new-post">New Post</Link> }
           <SubredditDropdown 
             subredditDropdownToggle={subredditDropdownToggle} 
+            setSubredditDropdownToggle={setSubredditDropdownToggle}
             setCurrentSubreddit={setCurrentSubreddit}
           />
           <div className={`dark-mode-icon-parent`}  >
@@ -42,8 +43,8 @@ const Navbar = ({
             <div className="logged-in-nav-view">
               <button onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} className="nav-username-button">{user.username}</button>
               <div className={`${isUserDropdownOpen ? 'user-dropdown open' : 'user-dropdown closed' }`}>
-                <Link to="/subreddits/create">Create Subreddit</Link>
-                <button className="logout-button"onClick={() => dispatch(startLogout(user))}>Logout</button>
+                <Link onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} to="/subreddits/create">Create Subreddit</Link>
+                <button onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} className="logout-button"onClick={() => dispatch(startLogout(user))}>Logout</button>
               </div>
             </div>
             :

@@ -1,0 +1,41 @@
+$lmText: #181818;
+$lmPrimaryBackground: #cbd5df;
+$lmSecondaryBackground: #f8fafc;
+
+$dmText: #fff;
+$dmPrimaryBackground: #181818;
+$dmSecondaryBackground: #252525;
+$dmSecondaryHover: #333;
+
+.post {
+  border-radius: 5px;
+  background-color: $lmSecondaryBackground;
+  text-decoration: none;
+  color: $lmText initial;
+  padding: 30px;
+  .post-title {
+    appearance: none;
+    color: black;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .post-body {
+  }
+  .post-created-at {
+  }
+}
+
+
+.dark .post {
+  background-color: $dmSecondaryBackground;
+  .post-title {
+    color: $dmText;
+  }
+  .post-body {
+    color: $dmText;
+  }
+  .post-created-at {
+    color: $dmText;
+  }
+}

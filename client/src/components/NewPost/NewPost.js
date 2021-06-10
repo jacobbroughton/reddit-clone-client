@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { createPost } from "../../reducers/postListReducer"
+import { createPost } from "../../actions/postListActions"
 import "./NewPost.scss"
 
 const NewPost = ({
@@ -18,7 +18,7 @@ const NewPost = ({
   const [title, setTitle] = useState("")
   const [body, setBody] = useState("")
   const [url, setUrl] = useState("")
-  const [subreddit, setSubreddit] = useState("")
+  const [subreddit, setSubreddit] = useState(null)
  
 
 
@@ -31,12 +31,11 @@ const NewPost = ({
       title,
       body: (postType === 'text' ? body : url),
       authorId: auth.user.id,
-      subredditId: subreddit.id
+      subredditId: subreddit.id,
+      subredditName: subreddit.name
     }
 
     dispatch(createPost(post))
-
-
     e.preventDefault()
   }
 
@@ -49,17 +48,31 @@ const NewPost = ({
   }, [postType])
 
   useEffect(() => {
+    console.log(subreddits)
+    console.log(currentSubreddit)
     if(subreddits.length > 0) {
-      setSubreddit(currentSubreddit ? currentSubreddit.name : subreddits[0])
+      setSubreddit(currentSubreddit ? currentSubreddit : subreddits[0])
     }
   }, [subreddits])
 
+  const filterSubreddit = () => {
+    let filteredSubreddit = subreddits.filter(subreddit => subreddit === currentSubreddit)
+    return filteredSubreddit
+  }
 
-  const handleSubredditChange = (selectedSub) => {
+
+  const handleSubredditChange = (selectValue) => {
+    console.log("Subreddits: ", subreddits)
+    console.log("Select value: ", selectValue)
+
     const filterSubreddit = (sub) => {
-      return sub.name === selectedSub
+      console.log("sub ==> ", sub)
+      console.log(sub === selectValue)
+      
+      return sub === selectValue
     }
-    setSubreddit(subreddits.filter(filterSubreddit)[0])
+    // setSubreddit(subreddits.filter(filterSubreddit(selectValue))[0])
+    setSubreddit(subreddits.filter(sub => sub.name === selectValue)[0])
   }
 
   return (
@@ -81,10 +94,11 @@ const NewPost = ({
                      <input className="new-post-input" placeholder="url *" onChange={e => setUrl(e.target.value)}/>
                   </>
                 }
-                  {/* <select onChange={(e) => setSubreddit(e.target.value)}> */}
-                  <select onChange={(e) => handleSubredditChange(e.target.value)}>
+                  <select 
+                    defaultValue={currentSubreddit ? currentSubreddit.name : subreddits.filter(subreddit => subreddit === currentSubreddit)} 
+                    onChange={(e) => handleSubredditChange(e.target.value)}>
                     { subreddits.map((subreddit, key) => 
-                      <option selected={currentSubreddit === subreddit}key={key}>{subreddit.name}</option>
+                      <option key={key}>{subreddit.name}</option>
                     )}
                   </select>
                   { subreddits.length > 0 && <input className="new-post-submit" type="submit"/> }

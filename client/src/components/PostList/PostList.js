@@ -1,21 +1,29 @@
 import "./PostList.scss"
 import { useSelector, useDispatch } from "react-redux"
-import { withRouter, Link } from "react-router-dom"
+import { withRouter, Link, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { getAllPosts, getSubredditPosts } from "../../reducers/postListReducer"
-import { setPost } from "../../reducers/postReducer"
+import { getAllPosts, getSubredditPosts } from "../../actions/postListActions"
+// import { setPost } from "../../reducers/postReducer"
+import Post from "../Post/Post"
 
 const PostList = ({ currentSubreddit }) => {
 
   const dispatch = useDispatch()
+
   const darkMode = useSelector(state => state.darkMode)
   const posts = useSelector(state => state.postList)
+  const user = useSelector(state => state.auth.user)
+  const { name } = useParams()
+
+
+  // useEffect(() => {
+  //   dispatch(getAllPosts())
+  // }, [])
 
   useEffect(() => {
-    dispatch(getAllPosts())
-  }, [])
+    console.log(currentSubreddit)
+    console.log(name)
 
-  useEffect(() => {
     if (currentSubreddit) {
       dispatch(getSubredditPosts(currentSubreddit.id))
     } else {
@@ -34,22 +42,11 @@ const PostList = ({ currentSubreddit }) => {
           
           { 
             posts.map((post, key) => 
-            <Link 
-              to={`/r/${post.subreddit_name.replace(/\s+/g, '-').toLowerCase()}/${post.id}`} 
-              key={key} 
-              className="post-link"
-              // onClick={() => dispatch(setPost(post))}
-              >
-                <div className="post"
-                onClick={() => dispatch(setPost(post))}
-                >
-                  
-                  <h2 className="post-title">{post.title}</h2>
-                  <p className="post-body">{post.body}</p>
-                  <p>r/{post.subreddit_name}</p>
-                  <p className="post-created-at">{post.created_at}</p>
-                </div>
-              </Link>  
+              <Post 
+                post={post} 
+                // onClick={() => dispatch(setPost(post))}
+                key={key}
+              />
             )      
           }
 

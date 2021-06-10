@@ -57,6 +57,7 @@ router.post("/", (req, res) => {
 
     // let idForNewSubreddit
     connection.query(insertSubredditStatement, (err, results) => {
+      if(err) throw err
 
       // let idForNewSubreddit = results.insertId
       res.send({ idForNewSubreddit: results.insertId })
