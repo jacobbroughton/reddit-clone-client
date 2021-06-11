@@ -82,6 +82,7 @@ export const createPost = ({
       updated_at: dateNow
     }))
 
+    // history.push(`/r/${createdPost.subredditName.replace(/\s+/g, '-')}/${postId}`)
     history.push(`/r/${createdPost.subredditName.replace(/\s+/g, '-')}/${postId}`)
 
 

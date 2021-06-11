@@ -1,35 +1,34 @@
 import "./PostList.scss"
 import { useSelector, useDispatch } from "react-redux"
-import { withRouter, Link, useParams } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { withRouter, useParams } from "react-router-dom"
+import { useEffect } from "react"
 import { getAllPosts, getSubredditPosts } from "../../actions/postListActions"
+import { setCurrentSubreddit } from "../../actions/subredditActions"
 // import { setPost } from "../../reducers/postReducer"
 import Post from "../Post/Post"
 
-const PostList = ({ currentSubreddit }) => {
+const PostList = () => {
 
   const dispatch = useDispatch()
 
   const darkMode = useSelector(state => state.darkMode)
   const posts = useSelector(state => state.postList)
-  const user = useSelector(state => state.auth.user)
+  const currentSubreddit = useSelector(state => state.currentSubreddit)
   const { name } = useParams()
 
 
-  // useEffect(() => {
-  //   dispatch(getAllPosts())
-  // }, [])
+  useEffect(() => {
+    dispatch(setCurrentSubreddit(name))
+  }, [])
 
   useEffect(() => {
-    console.log(currentSubreddit)
-    console.log(name)
 
     if (currentSubreddit) {
       dispatch(getSubredditPosts(currentSubreddit.id))
     } else {
       dispatch(getAllPosts())
     }
-  }, [currentSubreddit])
+  }, [currentSubreddit, dispatch, name])
 
 
 

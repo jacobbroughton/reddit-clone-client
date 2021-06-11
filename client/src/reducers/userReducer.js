@@ -1,6 +1,3 @@
-import axios from "../axios-config.js";
-import moment from "moment";
-import history from "../history"
 import { loadState } from "../localStorage"
 
 // *

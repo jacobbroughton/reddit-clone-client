@@ -1,6 +1,3 @@
-import axios from "../axios-config"
-
-const API_URL = "http://localhost:5000"
 
 export const postReducer = (state = null, action) => {
   switch (action.type) {
@@ -11,7 +8,7 @@ export const postReducer = (state = null, action) => {
       return action.payload
 
     case "EDIT_POST":
-      const { id, updates } = action
+      // const { id, updates } = action
       console.log(state)
       
       return {

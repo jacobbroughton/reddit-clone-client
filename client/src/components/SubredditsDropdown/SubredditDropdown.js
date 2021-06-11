@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { getSubreddits } from "../../actions/subredditsActions";
+import { setCurrentSubreddit } from "../../actions/subredditActions"
 
-const SubredditDropdown = ({ setSubredditDropdownToggle, subredditDropdownToggle, setCurrentSubreddit }) => {
+const SubredditDropdown = ({ setSubredditDropdownToggle, subredditDropdownToggle }) => {
 
   const dispatch = useDispatch();
-  const darkMode = useSelector(state => state.darkMode)
   const subreddits = useSelector((state) => state.subreddits);
 
   useEffect(() => {
@@ -15,7 +15,11 @@ const SubredditDropdown = ({ setSubredditDropdownToggle, subredditDropdownToggle
   }, []);
 
   const handleSubredditClick = (subreddit) => {
-    setCurrentSubreddit(subreddit)
+    if(!subreddit) {
+      dispatch(setCurrentSubreddit(null))
+      return 
+    }
+    dispatch(setCurrentSubreddit(subreddit.name))
     setSubredditDropdownToggle(!subredditDropdownToggle)
   }
 
@@ -26,7 +30,8 @@ const SubredditDropdown = ({ setSubredditDropdownToggle, subredditDropdownToggle
       </div>
       <div className="subreddits-list">
         {subreddits.map((subreddit, key) => (
-          <Link onClick={() => handleSubredditClick(subreddit)} to={`/r/${subreddit.name.replace(/\s+/g, '-').toLowerCase()}`} key={key}>{subreddit.name}</Link>
+          // <Link onClick={() => handleSubredditClick(subreddit)} to={`/r/${subreddit.name.replace(/\s+/g, '-').toLowerCase()}`} key={key}>{subreddit.name}</Link>
+          <Link onClick={() => handleSubredditClick(subreddit)} to={`/r/${subreddit.name}`} key={key}>{subreddit.name}</Link>
         ))}
       </div>
     </div>

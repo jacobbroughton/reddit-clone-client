@@ -1,8 +1,10 @@
 import { bindActionCreators } from "redux";
 
 export const subredditReducer = (state = null, action) => {
-  switch (action.payload) {
+  switch (action.type) {
     case "SET_CURRENT_SUBREDDIT_SUCCESS" :
-    return state
+      return action.payload
+    default :
+      return state
   }
 }

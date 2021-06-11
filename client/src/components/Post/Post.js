@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getPost, setPost, startEditPost } from "../../actions/postActions";
+import { setPost, startEditPost } from "../../actions/postActions";
 import "./Post.scss";
 
 const Post = ({ post }) => {
@@ -10,7 +10,7 @@ const Post = ({ post }) => {
   // const post = useSelector((state) => state.post);
   const user = useSelector((state) => state.auth.user);
 
-  let { postId } = useParams();
+  // let { postId } = useParams();
 
   const [isEditing, setIsEditing] = useState(false);
   const [editPostBody, setEditPostBody] = useState("")

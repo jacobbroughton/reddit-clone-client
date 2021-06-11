@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom"
 import { startLogout } from "../../actions/authActions"
@@ -7,17 +7,17 @@ import { ReactComponent as DarkModeIcon } from "../../images/dark-mode-icon.svg"
 import SubredditDropdown from "../SubredditsDropdown/SubredditDropdown"
 import "./Navbar.scss";
 
-const Navbar = ({
-  currentSubreddit,
-  setCurrentSubreddit
-}) => {
+const Navbar = () => {
 
   const dispatch = useDispatch()
   const user = useSelector((state) => state.auth.user)
   const darkMode = useSelector(state => state.darkMode)
+  const currentSubreddit = useSelector(state => state.currentSubreddit)
+
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
   const [subredditDropdownToggle, setSubredditDropdownToggle] = useState(false)
+
 
   return (
     <nav className={darkMode && 'dark'}>
@@ -29,7 +29,6 @@ const Navbar = ({
           <SubredditDropdown 
             subredditDropdownToggle={subredditDropdownToggle} 
             setSubredditDropdownToggle={setSubredditDropdownToggle}
-            setCurrentSubreddit={setCurrentSubreddit}
           />
           <div className={`dark-mode-icon-parent`}  >
             <DarkModeIcon className={`dark-mode-icon`}  onClick={() => dispatch(toggleDarkMode())}/>

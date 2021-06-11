@@ -1,5 +1,4 @@
 import axios from "../axios-config"
-import { useParams } from "react-router-dom"
 
 const API_URL = "http://localhost:5000"
 
@@ -10,9 +9,11 @@ export const setCurrentSubreddit = (name) => async (dispatch, action) => {
 
     // let { name } = action.payload
 
-    let subreddit = await axios.get(`${API_URL}/subreddits/${name}`)
+    let response = await axios.get(`${API_URL}/subreddits/${name}`)
 
-    console.log(subreddit)
+    let subreddit = response.data
+
+    dispatch({ type: "SET_CURRENT_SUBREDDIT_SUCCESS", payload: subreddit })
 
   } catch (error) {
     dispatch({

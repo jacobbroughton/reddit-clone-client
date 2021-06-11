@@ -4,6 +4,7 @@ import { loadState, saveState } from "../localStorage"
 import { userReducer } from "../reducers/userReducer"
 import { errorReducer } from "../reducers/errorReducer"
 import { subredditsReducer } from "../reducers/subredditsReducer"
+import { subredditReducer } from "../reducers/subredditReducer"
 import { darkModeReducer } from "../reducers/darkModeReducer"
 import { postListReducer } from "../reducers/postListReducer"
 import { postReducer } from "../reducers/postReducer"
@@ -27,6 +28,7 @@ const persistedState = loadState()
 const rootReducer = combineReducers({
     auth: userReducer, 
     subreddits: subredditsReducer,
+    currentSubreddit: subredditReducer,
     postList: postListReducer,
     post: postReducer,
     error: errorReducer,

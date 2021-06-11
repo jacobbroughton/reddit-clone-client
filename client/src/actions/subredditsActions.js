@@ -58,22 +58,17 @@ export const createSubreddit = (name, description) => async (dispatch, getState)
     }
 
     const response = await axios.post(`${API_URL}/subreddits`, newSubreddit)
-    console.log(response)
 
-    let idForNewSubreddit = response.data.idForNewSubreddit
+    newSubreddit.id = response.data.idForNewSubreddit
 
-    newSubreddit.id = idForNewSubreddit    
-
-    ({ type: "CREATE_SUBREDDIT_SUCCESS", payload: newSubreddit})
+    dispatch({ type: "CREATE_SUBREDDIT_SUCCESS", payload: newSubreddit})
 
     dispatch(getSingleSubreddit(newSubreddit.name))
 
-    history.push(`/r/${newSubreddit.name.replace(/\s+/g, '-')}`)
-
+    history.push(`/r/${newSubreddit.name}`)
 
 
     // const subreddit = await axios.get(`${API_URL}/subreddits/${name}`)
-    // console.log(subreddit)
     
     
   } catch (error) {

@@ -48,29 +48,18 @@ const NewPost = ({
   }, [postType])
 
   useEffect(() => {
-    console.log(subreddits)
-    console.log(currentSubreddit)
     if(subreddits.length > 0) {
       setSubreddit(currentSubreddit ? currentSubreddit : subreddits[0])
     }
-  }, [subreddits])
+  }, [subreddits, currentSubreddit])
 
-  const filterSubreddit = () => {
-    let filteredSubreddit = subreddits.filter(subreddit => subreddit === currentSubreddit)
-    return filteredSubreddit
-  }
+  // const filterSubreddit = () => {
+  //   let filteredSubreddit = subreddits.filter(subreddit => subreddit === currentSubreddit)
+  //   return filteredSubreddit
+  // }
 
 
   const handleSubredditChange = (selectValue) => {
-    console.log("Subreddits: ", subreddits)
-    console.log("Select value: ", selectValue)
-
-    const filterSubreddit = (sub) => {
-      console.log("sub ==> ", sub)
-      console.log(sub === selectValue)
-      
-      return sub === selectValue
-    }
     // setSubreddit(subreddits.filter(filterSubreddit(selectValue))[0])
     setSubreddit(subreddits.filter(sub => sub.name === selectValue)[0])
   }
