@@ -34,7 +34,7 @@ const PostList = () => {
     <div className={`post-list-main ${darkMode && "dark"}`}>
       <div className="post-list-container">
         <div className="post-list">
-          {name ? <h1>{name}</h1> : <h1>Home</h1>}
+          {name ? <h1><span className="rSpan">r/</span>{name}</h1> : <h1>Home</h1>}
           {loading ? (
             <p>Loading</p>
           ) : (

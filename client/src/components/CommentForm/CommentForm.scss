@@ -1,0 +1,51 @@
+$lmText: #181818;
+$lmPrimaryBackground: #cbd5df;
+$lmSecondaryBackground: #f8fafc;
+$lmThirdBackground: #edf2f7;
+
+$dmText: rgba(255, 255, 255, 0.87);
+$dmPrimaryBackground: #181818;
+$dmSecondaryBackground: #252525;
+$dmSecondaryHover: #333;
+
+.user-comment{
+  width: 100%;
+  margin-top: 40px;
+  p{ 
+    color: $lmText;
+    span{
+      
+      font-weight: 600;
+    }
+  }
+
+  form{
+    textarea{
+      width: calc(100% - 60px);
+      height: 100px;
+      resize: vertical;
+      bordeR: none;
+      padding: 30px;
+      border-radius: 5px;
+      font-family: inherit;
+      background-color: $lmThirdBackground;
+    }
+    button{
+      border: none;
+      margin-top: 10px;
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-weight: 600;
+      background-color: $lmThirdBackground;
+      
+    }
+  }
+
+  &.dark{
+    form{
+      textarea{
+        color: $dmText;
+      }
+    }
+  }
+}

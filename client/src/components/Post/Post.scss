@@ -2,7 +2,7 @@ $lmText: #181818;
 $lmPrimaryBackground: #cbd5df;
 $lmSecondaryBackground: #f8fafc;
 
-$dmText: #fff;
+$dmText: rgba(255, 255, 255, 0.87);
 $dmPrimaryBackground: #181818;
 $dmSecondaryBackground: #252525;
 $dmSecondaryHover: #333;
@@ -21,6 +21,9 @@ $dmSecondaryHover: #333;
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: 600;
+  }
+  a{
+    color: #0079d3;
   }
   .post-body {
     margin: 0;

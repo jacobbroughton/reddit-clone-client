@@ -1,8 +1,35 @@
+$lmText: #181818;
+$lmPrimaryBackground: #cbd5df;
+$lmSecondaryBackground: #f8fafc;
+
+$dmText: rgba(255, 255, 255, 0.87);
+$dmPrimaryBackground: #181818;
+$dmSecondaryBackground: #252525;
+$dmSecondaryHover: #333;
+
 .single-post-page{
+  padding-top: 78px;
   .single-post-page-container{
     padding-top: 50px;
     margin: 0 auto;
     max-width: 620px;
     padding: 30px;
+    .comments{
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+  } 
+
+  &.dark{
+    .single-post-page-container{
+      padding-top: 50px;
+      margin: 0 auto;
+      max-width: 620px;
+      padding: 30px;
+      
+    } 
   }
+  
 }

@@ -1,0 +1,19 @@
+$lmText: #181818;
+$lmPrimaryBackground: #cbd5df;
+$lmSecondaryBackground: #f8fafc;
+$lmThirdBackground: #edf2f7;
+
+$dmText: rgba(255, 255, 255, 0.87);
+$dmPrimaryBackground: #181818;
+$dmSecondaryBackground: #252525;
+$dmSecondaryHover: #333;
+
+.comment{
+  background-color: $lmSecondaryBackground;
+  color: $lmText;
+  padding: 30px;
+  border-radius: 5px;
+  p{
+    margin: 0;
+  }
+}

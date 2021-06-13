@@ -2,13 +2,14 @@ $lmText: #181818;
 $lmPrimaryBackground: #cbd5df;
 $lmSecondaryBackground: #f8fafc;
 
-$dmText: #fff;
+$dmText: rgba(255, 255, 255, 0.87);
 $dmPrimaryBackground: #181818;
 $dmSecondaryBackground: #252525;
 $dmSecondaryHover: #333;
 
 .post-list-main {
   min-height: 100%;
+  padding-top: 78px;
   .post-list-container {
     max-width: 1100px;
     padding: 30px;
@@ -20,6 +21,10 @@ $dmSecondaryHover: #333;
       max-width: 620px;
       h1 {
         margin: 0;
+        .rSpan{
+          font-size: 1.7rem;
+          margin-right: 7px;
+        }
       }
       // .post {
       //   border-radius: 5px;

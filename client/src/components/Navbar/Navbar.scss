@@ -1,9 +1,17 @@
-$dmText: #fff;
+$lmText: #181818;
+$lmPrimaryBackground: #cbd5df;
+$lmSecondaryBackground: #f8fafc;
+
+$dmText: rgba(255, 255, 255, 0.87);
 $dmPrimaryBackground: #181818;
 $dmSecondaryBackground: #252525;
 $dmSecondaryHover: #333;
 
 nav {
+  width: 100%;
+  position: fixed;
+  background-color: $lmPrimaryBackground;
+
   .nav-container {
     max-width: 1100px;
     margin: 0 auto;
@@ -144,8 +152,8 @@ nav {
 }
 
 .dark {
-  background-color: #181818;
-  color: $dmText !important;
+  background-color: $dmPrimaryBackground;
+  color: $dmText ;
   .nav-container {
     // Home Link
     .home-link-parent {

@@ -24,14 +24,15 @@ const SubredditDropdown = ({ setSubredditDropdownToggle, subredditDropdownToggle
     setSubredditDropdownToggle(!subredditDropdownToggle)
   }
 
+
   return (
-    <div className={subredditDropdownToggle ? 'subreddit-dropdown open' : 'subreddit-dropdown closed'}>
+    <div     
+      className={subredditDropdownToggle ? 'subreddit-dropdown open' : 'subreddit-dropdown closed'}>
       <div className="dropdown-home-link-parent">
         <Link onClick={() => handleSubredditClick(null)} to={"/"}>Home</Link>
       </div>
       <div className="subreddits-list">
         {subreddits.map((subreddit, key) => (
-          // <Link onClick={() => handleSubredditClick(subreddit)} to={`/r/${subreddit.name.replace(/\s+/g, '-').toLowerCase()}`} key={key}>{subreddit.name}</Link>
           <Link onClick={() => handleSubredditClick(subreddit)} to={`/r/${subreddit.name}`} key={key}>{subreddit.name}</Link>
         ))}
       </div>

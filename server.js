@@ -9,6 +9,7 @@ require("dotenv").config()
 const userRouter = require("./routers/userRouter")
 const postsRouter = require("./routers/postsRouter")
 const subredditsRouter = require("./routers/subredditsRouter")
+const commentsRouter = require("./routers/commentsRouter")
 
 let options = {
     host: process.env.DB_HOST,
@@ -74,6 +75,7 @@ app.get("/", (req, res) => {
 app.use('/users', userRouter)
 app.use('/posts', postsRouter)
 app.use('/subreddits', subredditsRouter)
+app.use('/comments', commentsRouter)
 
 const port = process.env.PORT || 5000;
 

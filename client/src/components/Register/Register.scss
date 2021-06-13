@@ -1,4 +1,4 @@
-$dmText: #fff;
+$dmText: rgba(255, 255, 255, 0.87);
 $dmPrimaryBackground: #181818;
 $dmSecondaryBackground: #252525;
 $dmSecondaryHover: #333;
@@ -33,6 +33,7 @@ $dmSecondaryHover: #333;
         border: none;
         padding: 5px;
         border-radius: 3px;
+        font-weight: 600;
       }
     }
   }
@@ -42,8 +43,11 @@ $dmSecondaryHover: #333;
   .register-container {
     form {
       .register-input {
+        color: $dmText;
+        background-color: $dmSecondaryBackground;
       }
       .register-submit {
+        color: $dmText;
         background-color: $dmSecondaryBackground;
       }
     }

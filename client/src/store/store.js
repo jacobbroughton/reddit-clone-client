@@ -9,6 +9,7 @@ import { darkModeReducer } from "../reducers/darkModeReducer"
 import { postListReducer } from "../reducers/postListReducer"
 import { postReducer } from "../reducers/postReducer"
 import { loadingReducer } from "../reducers/loadingReducer"
+import { commentsReducer } from "../reducers/commentsReducer"
 import throttle from "lodash.throttle"
 
 
@@ -34,7 +35,8 @@ const rootReducer = combineReducers({
     post: postReducer,
     error: errorReducer,
     loading: loadingReducer,
-    darkMode: darkModeReducer
+    darkMode: darkModeReducer,
+    comments: commentsReducer,
 })
 
 
