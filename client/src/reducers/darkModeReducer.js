@@ -1,4 +1,11 @@
-export const darkModeReducer = (state = false, action) => {
+import { loadState } from "../localStorage"
+
+// *
+// Initial State
+// **
+// const initialState = loadState('darkModeState') || false;
+
+export const darkModeReducer = (state = loadState('darkModeState') || false, action) => {
   switch(action.type) {
     case "TOGGLE_DARK_MODE": 
       return !state

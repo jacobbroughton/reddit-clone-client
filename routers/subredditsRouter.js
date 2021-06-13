@@ -25,6 +25,7 @@ router.get("/:name", (req, res) => {
 
     connection.query(getSingleSubredditStatement, (err, rows) => {
       if(err) throw err
+      
       res.send(rows[0])
     })
   } catch (error) {

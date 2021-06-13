@@ -8,6 +8,7 @@ import { subredditReducer } from "../reducers/subredditReducer"
 import { darkModeReducer } from "../reducers/darkModeReducer"
 import { postListReducer } from "../reducers/postListReducer"
 import { postReducer } from "../reducers/postReducer"
+import { loadingReducer } from "../reducers/loadingReducer"
 import throttle from "lodash.throttle"
 
 
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
     postList: postListReducer,
     post: postReducer,
     error: errorReducer,
+    loading: loadingReducer,
     darkMode: darkModeReducer
 })
 
@@ -52,6 +54,7 @@ const store = createStore(
 // Subscripe to the store
 store.subscribe(throttle(() => {
     saveState(store.getState().auth, 'authState')
+    saveState(store.getState().darkMode, 'darkModeState')
 }, 1000))
 
 export default store

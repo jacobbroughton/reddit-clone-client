@@ -1,60 +1,56 @@
-import "./PostList.scss"
-import { useSelector, useDispatch } from "react-redux"
-import { withRouter, useParams } from "react-router-dom"
-import { useEffect } from "react"
-import { getAllPosts, getSubredditPosts } from "../../actions/postListActions"
-import { setCurrentSubreddit } from "../../actions/subredditActions"
+import "./PostList.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { withRouter, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { getPosts } from "../../actions/postListActions";
+import { setCurrentSubreddit } from "../../actions/subredditActions";
 // import { setPost } from "../../reducers/postReducer"
-import Post from "../Post/Post"
+import Post from "../Post/Post";
 
 const PostList = () => {
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
+  const darkMode = useSelector((state) => state.darkMode);
+  const posts = useSelector((state) => state.postList);
+  const currentSubreddit = useSelector((state) => state.currentSubreddit);
+  const loading = useSelector((state) => state.loading);
+  const { name } = useParams();
 
-  const darkMode = useSelector(state => state.darkMode)
-  const posts = useSelector(state => state.postList)
-  const currentSubreddit = useSelector(state => state.currentSubreddit)
-  const { name } = useParams()
 
-
+  // When { name } changes
   useEffect(() => {
-    dispatch(setCurrentSubreddit(name))
-  }, [])
+    dispatch(getPosts(name));
+  }, [name]);
 
+
+  // Every render
   useEffect(() => {
-
-    if (currentSubreddit) {
-      dispatch(getSubredditPosts(currentSubreddit.id))
-    } else {
-      dispatch(getAllPosts())
-    }
-  }, [currentSubreddit, dispatch, name])
-
+      dispatch(setCurrentSubreddit(name));
+      dispatch(getPosts(name));
+  }, []);
 
 
   return (
-    <div className={`post-list-main ${darkMode && 'dark'}`}>
+    <div className={`post-list-main ${darkMode && "dark"}`}>
       <div className="post-list-container">
         <div className="post-list">
-          { currentSubreddit ? <h1>{currentSubreddit.name}</h1> : <h1>Home</h1>}
-          <p>Showing {posts.length} posts</p>
-          
-          { 
-            posts.map((post, key) => 
-              <Post 
-                post={post} 
-                // onClick={() => dispatch(setPost(post))}
-                key={key}
-              />
-            )      
-          }
-
+          {name ? <h1>{name}</h1> : <h1>Home</h1>}
+          {loading ? (
+            <p>Loading</p>
+          ) : (
+            <>
+              {posts.map((post, key) => (
+                <Post
+                  post={post}
+                  key={key}
+                />
+              ))}
+            </>
+          )}
         </div>
-
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default withRouter(PostList)
+export default withRouter(PostList);

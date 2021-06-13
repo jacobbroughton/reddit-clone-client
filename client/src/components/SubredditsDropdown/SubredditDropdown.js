@@ -17,6 +17,7 @@ const SubredditDropdown = ({ setSubredditDropdownToggle, subredditDropdownToggle
   const handleSubredditClick = (subreddit) => {
     if(!subreddit) {
       dispatch(setCurrentSubreddit(null))
+      setSubredditDropdownToggle(!subredditDropdownToggle)
       return 
     }
     dispatch(setCurrentSubreddit(subreddit.name))

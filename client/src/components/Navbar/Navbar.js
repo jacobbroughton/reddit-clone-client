@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { startLogout } from "../../actions/authActions"
 import { toggleDarkMode } from "../../reducers/darkModeReducer"
+import { setCurrentSubreddit } from "../../actions/subredditActions"
 import { ReactComponent as DarkModeIcon } from "../../images/dark-mode-icon.svg"
 import SubredditDropdown from "../SubredditsDropdown/SubredditDropdown"
 import "./Navbar.scss";
@@ -12,7 +13,10 @@ const Navbar = () => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.auth.user)
   const darkMode = useSelector(state => state.darkMode)
-  const currentSubreddit = useSelector(state => state.currentSubreddit)
+  // const currentSubreddit = useSelector(state => state.currentSubreddit)
+
+  const location = useLocation()
+  const subredditName = location.pathname.match(/r\/[^\/]+/)
 
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
@@ -23,8 +27,8 @@ const Navbar = () => {
     <nav className={darkMode && 'dark'}>
       <div className={`nav-container`}>
         <div className={`home-link-parent`} >
-          <Link className={`nav-home-link`} to="/"><span className="not-span">(Not)</span> Reddit</Link>
-          <button className={`subreddit-dropdown-toggle-button`} onClick={() => setSubredditDropdownToggle(!subredditDropdownToggle)}>{currentSubreddit ? currentSubreddit.name : "Home"}</button>
+          <Link className={`nav-home-link`} to="/"><span className="not-span" onClick={() => dispatch(setCurrentSubreddit(null))} >(Not)</span> Reddit</Link>
+          <button className={`subreddit-dropdown-toggle-button`} onClick={() => setSubredditDropdownToggle(!subredditDropdownToggle)}>{subredditName ? subredditName : "Home"}</button>
           { user && <Link className={`new-post-link`} to="/new-post">New Post</Link> }
           <SubredditDropdown 
             subredditDropdownToggle={subredditDropdownToggle} 

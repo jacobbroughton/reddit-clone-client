@@ -13,6 +13,8 @@ $dmSecondaryHover: #333;
   text-decoration: none;
   color: $lmText initial;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
   .post-title {
     appearance: none;
     color: black;
@@ -21,8 +23,11 @@ $dmSecondaryHover: #333;
     font-weight: 600;
   }
   .post-body {
+    margin: 0;
+    margin: 0;
   }
   .post-created-at {
+    margin: 0;
   }
 }
 

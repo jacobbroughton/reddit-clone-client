@@ -80,7 +80,7 @@ const NewPost = ({
                   </> 
                   :
                   <>
-                     <input className="new-post-input" placeholder="url *" onChange={e => setUrl(e.target.value)}/>
+                     <input type="url" className="new-post-input" placeholder="url *" onChange={e => setUrl(e.target.value)}/>
                   </>
                 }
                   <select 

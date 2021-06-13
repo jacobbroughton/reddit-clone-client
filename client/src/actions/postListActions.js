@@ -2,36 +2,23 @@ import axios from "../axios-config"
 import moment from "moment"
 import history from "../history"
 import { setPost } from "../actions/postActions"
+
 const API_URL = "http://localhost:5000"
 
-export const getSubredditPosts = (subredditId) => async (dispatch, getState) => {
-  try {
-    dispatch({ type: "GET_SUBREDDIT_POSTS_REQUEST" })
-    let response = await axios.get(`${API_URL}/posts/${subredditId}`)
-    
 
-    dispatch({ type: "GET_SUBREDDIT_POSTS_SUCCESS", payload: response.data })
+
+export const getPosts = (filters) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: "GET_POSTS_REQUEST" })
+
+    let response = await axios.get(`${API_URL}/posts`, { params: { filters }})
+    console.log(response)
+
+    dispatch({ type: "GET_POSTS_SUCCESS", payload: response.data })
 
   } catch (error) {
     dispatch({ 
-      type: "GET_SUBREDDIT_POSTS_FAILURE",
-      message: error.message,
-      response: error.response
-     })
-  }
-}
-
-export const getAllPosts = () => async (dispatch, getState) => {
-  try {
-    dispatch({ type: "GET_ALL_POSTS_REQUEST" })
-
-    let response = await axios.get(`${API_URL}/posts`)
-
-    dispatch({ type: "GET_ALL_POSTS_SUCCESS", payload: response.data })
-
-  } catch (error) {
-    dispatch({ 
-      type: "GET_ALL_POSTS_FAILURE",
+      type: "GET_POSTS_FAILURE",
       message: error.message,
       response: error.response
     })
@@ -68,7 +55,7 @@ export const createPost = ({
 
     let postId = response.data.insertId
 
-    dispatch(getAllPosts())
+    // dispatch(getPosts())
     
     dispatch(setPost({
       id: postId,
@@ -82,7 +69,6 @@ export const createPost = ({
       updated_at: dateNow
     }))
 
-    // history.push(`/r/${createdPost.subredditName.replace(/\s+/g, '-')}/${postId}`)
     history.push(`/r/${createdPost.subredditName.replace(/\s+/g, '-')}/${postId}`)
 
 

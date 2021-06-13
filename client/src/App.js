@@ -18,8 +18,6 @@ function App() {
 
   const darkMode = useSelector(state => state.darkMode)
   // const { name } = useParams()
-  
-  const [currentSubreddit, setCurrentSubreddit] = useState(null)
 
   useEffect(() => {
     if(darkMode) {
@@ -34,8 +32,7 @@ function App() {
       // <Router history={history}>
         <div className={`App ${darkMode && 'dark'}`}>
           <Navbar
-            currentSubreddit={currentSubreddit}
-            setCurrentSubreddit={setCurrentSubreddit}
+            // currentSubreddit={currentSubreddit}
           />
           <Switch>
             <Route path="/register">
@@ -49,17 +46,21 @@ function App() {
             </Route>
             <Route path="/new-post">
               <NewPost
-                currentSubreddit={currentSubreddit}
+                // currentSubreddit={currentSubreddit}
               />
             </Route>     
             <Route path="/r/:name/:postId">
               <SinglePostPage/>
             </Route>       
             <Route path="/r/:name">
-              <PostList currentSubreddit={currentSubreddit}/>
+              <PostList 
+              // currentSubreddit={currentSubreddit}
+              />
             </Route>
             <Route exact path="/">
-              <PostList currentSubreddit={currentSubreddit}/>
+              <PostList 
+              // currentSubreddit={currentSubreddit}
+              />
             </Route>
 
           </Switch>

@@ -3,7 +3,7 @@ export const postListReducer = (state = [], action) => {
     case "CREATE_POST_SUCCESS": 
       return [...state, action.payload]
 
-    case "GET_ALL_POSTS_SUCCESS" :
+    case "GET_POSTS_SUCCESS" :
       return action.payload
 
     case "GET_SUBREDDIT_POSTS_SUCCESS" :

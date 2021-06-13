@@ -17,11 +17,18 @@ connection.connect();
 // Get all posts
 router.get('/', (req, res) => {
 
-  const getAllPostsStatement = `
-    SELECT * FROM posts 
+  let subredditName = req.query.filters
+
+  const getPostsStatement = `
+    SELECT * FROM posts ${subredditName && `WHERE subreddit_name = '${subredditName}'`}
   `
 
-  connection.query(getAllPostsStatement, (err, rows) => {
+  // connection.query(getAllPostsStatement, (err, rows) => {
+  //   if(err) throw err;
+  //   res.send(rows)
+  // })
+
+  connection.query(getPostsStatement, (err, rows) => {
     if(err) throw err;
     res.send(rows)
   })
@@ -29,17 +36,17 @@ router.get('/', (req, res) => {
 
 
 // Get all posts in subreddit
-router.get('/:subredditId', (req, res) => {
+// router.get('/:subredditId', (req, res) => {
 
-  const getSubredditPostsStatement = `
-  SELECT * FROM posts 
-  WHERE subreddit_id = ${req.params.subredditId}
-`
-  connection.query(getSubredditPostsStatement, (err, rows) => {
-    if(err) throw err
-    res.send(rows)
-  })
-})
+//   const getSubredditPostsStatement = `
+//   SELECT * FROM posts 
+//   WHERE subreddit_id = ${req.params.subredditId}
+// `
+//   connection.query(getSubredditPostsStatement, (err, rows) => {
+//     if(err) throw err
+//     res.send(rows)
+//   })
+// })
 
 
 // Get single post

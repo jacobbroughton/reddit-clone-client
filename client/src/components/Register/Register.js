@@ -32,6 +32,7 @@ const Register = () => {
           />
           <input
             className="register-input"
+            type="password"
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
