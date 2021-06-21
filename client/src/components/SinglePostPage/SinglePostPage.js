@@ -32,6 +32,7 @@ const SinglePostPage = () => {
         <Post post={post}></Post>
         { user &&
           <CommentForm
+            parentComment={null}
             post={post}
           />
         }

@@ -7,6 +7,7 @@ export const addComment = ({
   authorId,
   postId,
   parentComment,
+  username,
   createdAt,
   updatedAt
  }) => async (dispatch, action) => {
@@ -18,6 +19,7 @@ export const addComment = ({
       authorId,
       postId,
       parentComment,
+      username,
       createdAt,
       updatedAt
     }

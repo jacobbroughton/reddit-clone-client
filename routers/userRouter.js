@@ -82,13 +82,11 @@ router.post("/register", (req, res) => {
 
       let insertUserStatement = `
         INSERT INTO users 
-        (username, password, created_at, updated_at) 
+        (username, password) 
         VALUES 
         (
             '${req.body.username}', 
-            '${hashedPassword}', 
-            '${req.body.createdAt}', 
-            '${req.body.updatedAt}'
+            '${hashedPassword}'
         )
       `;
 

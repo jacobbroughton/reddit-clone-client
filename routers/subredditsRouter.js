@@ -53,8 +53,8 @@ router.post("/", (req, res) => {
 
     const insertSubredditStatement = `
     INSERT INTO subreddits 
-    (name, description, created_at) 
-    VALUES ('${req.body.name}', '${req.body.description}', '${req.body.createdAt}')`
+    (name, description) 
+    VALUES ('${req.body.name}', '${req.body.description}'`
 
     // let idForNewSubreddit
     connection.query(insertSubredditStatement, (err, results) => {

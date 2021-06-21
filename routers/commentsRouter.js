@@ -19,8 +19,8 @@ router.post('/', (req, res) => {
   
   let addCommentStatement = `
     INSERT INTO comments 
-    (body, author_id, post_id, parent_comment, created_at, updated_at)
-    VALUES ('${comment.body}', ${comment.authorId}, ${comment.postId}, ${comment.parentComment}, '${comment.createdAt}', '${comment.updatedAt}' )
+    (body, author_id, post_id, parent_comment)
+    VALUES ('${comment.body}', ${comment.authorId}, ${comment.postId}, ${comment.parentComment})
   `
 
   connection.query(addCommentStatement, (err, result) => {
@@ -32,12 +32,16 @@ router.post('/', (req, res) => {
 // Get all comments for a post
 router.get('/:postId', (req, res) => {
   let getCommentsStatement = `
-    SELECT * FROM comments
+    SELECT c.id, c.body, c.author_id, c.post_id, c.parent_comment, u.username, c.created_at, c.updated_at
+    FROM comments AS c
+    INNER JOIN users AS u ON c.author_id = u.id
     WHERE post_id = ${req.params.postId}
+    ORDER BY c.id DESC
   `
 
   connection.query(getCommentsStatement, (err, rows) => {
     if(err) throw err
+    console.log(rows)
     res.send(rows)
   })
 })

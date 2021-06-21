@@ -45,9 +45,9 @@ export const createPost = ({
       body,
       authorId,
       subredditId,
-      subredditName,
-      createdAt: dateNow,
-      updatedAt: dateNow
+      subredditName
+      // createdAt: dateNow,
+      // updatedAt: dateNow
     }
     
 
@@ -64,9 +64,9 @@ export const createPost = ({
       body,
       author_id: authorId,
       subreddit_id: subredditId,
-      subreddit_name: subredditName,
-      created_at: dateNow,
-      updated_at: dateNow
+      subreddit_name: subredditName
+      // created_at: dateNow,
+      // updated_at: dateNow
     }))
 
     history.push(`/r/${createdPost.subredditName.replace(/\s+/g, '-')}/${postId}`)

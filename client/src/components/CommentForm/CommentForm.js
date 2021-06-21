@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { addComment } from "../../actions/commentsActions"
 import moment from "moment"
 import "./CommentForm.scss"
 
-const CommentForm = ({ post }) => {
+const CommentForm = ({ post, parentComment }) => {
 
   const dispatch = useDispatch()
 
@@ -20,7 +20,8 @@ const CommentForm = ({ post }) => {
       body,
       authorId: user.id,
       postId: post.id,
-      parentComment: null,
+      parentComment: parentComment,
+      username: user.username,
       createdAt: dateNow,
       updatedAt: dateNow
     }
@@ -29,6 +30,12 @@ const CommentForm = ({ post }) => {
 
     e.preventDefault()
   }
+
+  useEffect(() => {
+    console.log(moment('2021-05-19 10:50:37').fromNow())
+  }, [])
+
+
 
   return (
     <div className={`user-comment ${darkMode && 'dark'}`}>

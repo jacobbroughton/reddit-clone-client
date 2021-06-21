@@ -10,14 +10,16 @@ import NewPost from "./components/NewPost/NewPost"
 import SinglePostPage from "./components/SinglePostPage/SinglePostPage"
 import CreateSubreddit from "./components/CreateSubreddit/CreateSubreddit"
 import { useSelector } from "react-redux"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { formatDistanceStrict } from "date-fns"
+
 
 
 
 function App() {
 
   const darkMode = useSelector(state => state.darkMode)
-  // const { name } = useParams()
+  
 
   useEffect(() => {
     if(darkMode) {
