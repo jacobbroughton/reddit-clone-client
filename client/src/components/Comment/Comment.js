@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { getElapsedTime } from "../GetElapsedTime"
 import CommentForm from "../CommentForm/CommentForm"
 import "./Comment.scss"
 
@@ -11,10 +12,14 @@ const Comment = ({ comment }) => {
   const [toggleCommentReply, setToggleCommentReply] = useState(false)
 
 
+  let createdAt = getElapsedTime(comment.created_at)
+
+
   return (
     <div className="comment">
       <p>{comment.body}</p>
       <p>{comment.username}</p>
+      <p>{createdAt}</p>
       { user &&
         <>
           <button onClick={() => setToggleCommentReply(!toggleCommentReply)}>Reply</button>

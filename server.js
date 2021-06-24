@@ -27,7 +27,6 @@ if(process.env.NODE_ENV === "production") {
   origin = "http://localhost:3000"
 }
 
-// app.use(cors())
 app.use(
   cors({
   origin,

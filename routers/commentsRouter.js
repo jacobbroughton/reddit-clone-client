@@ -9,6 +9,8 @@ const connection = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   port: process.env.DB_PORT,
+  dateStrings: true,
+  timezone: 'UTC'
 });
 
 connection.connect();
@@ -41,7 +43,7 @@ router.get('/:postId', (req, res) => {
 
   connection.query(getCommentsStatement, (err, rows) => {
     if(err) throw err
-    console.log(rows)
+    console.log('COMMENTS', rows)
     res.send(rows)
   })
 })

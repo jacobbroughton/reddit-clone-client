@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
 require("dotenv").config();
+const { formatISO } = require('date-fns')
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -9,6 +10,8 @@ const connection = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   port: process.env.DB_PORT,
+  dateStrings: true,
+  timezone: 'UTC'
 });
 
 connection.connect();
@@ -41,7 +44,7 @@ router.get('/single/:postId', (req, res) => {
 
 connection.query(getSinglePostStatement, (err, rows) => {
   if(err) throw err
-  console.log(rows[0])
+  console.log('POST', rows[0])
   res.send(rows[0])
 })
 })

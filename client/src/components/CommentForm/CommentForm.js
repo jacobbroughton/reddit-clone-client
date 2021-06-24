@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { addComment } from "../../actions/commentsActions"
-import moment from "moment"
+// import { getElapsedTime } from "../GetElapsedTime"
+import { formatISO9075 } from "date-fns"
+// import moment from "moment"
 import "./CommentForm.scss"
 
 const CommentForm = ({ post, parentComment }) => {
@@ -14,26 +16,19 @@ const CommentForm = ({ post, parentComment }) => {
   const [body, setBody] = useState("")
 
   const handleSubmit = (e) => {
-    let dateNow = moment().format("MMMM Do YYYY");
 
     let comment = {
       body,
       authorId: user.id,
       postId: post.id,
       parentComment: parentComment,
-      username: user.username,
-      createdAt: dateNow,
-      updatedAt: dateNow
+      username: user.username
     }
 
     dispatch(addComment(comment))
 
     e.preventDefault()
   }
-
-  useEffect(() => {
-    console.log(moment('2021-05-19 10:50:37').fromNow())
-  }, [])
 
 
 

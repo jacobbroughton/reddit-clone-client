@@ -2,12 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost, startEditPost } from "../../actions/postActions";
-import { timeDifference } from "../TimeCalculator"
-import moment from "moment"
-// import { formatDistanceStrict } from "date-fns"
-import { utcToZonedTime, formatToTimeZone, toDate } from "date-fns-tz"
-// import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict'
-import { DateTime } from "luxon"
+import { getElapsedTime } from "../GetElapsedTime"
 import "./Post.scss";
 
 const Post = ({ post }) => {
@@ -18,24 +13,10 @@ const Post = ({ post }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editPostBody, setEditPostBody] = useState("")
 
-  
-  
-  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
-  console.log(timeZone)
 
 
-  console.log(post.created_at)
-  const dateThen = post.created_at
-  console.log(DateTime.fromISO(dateThen))
+  const dateCreated = getElapsedTime(post.created_at)
 
-
-  // const createdAt = formatDistanceStrict(
-  //   zonedDateThen,
-  //   zonedDateNow,
-  //   { 
-  //     addSuffix: true
-  //   }
-  // )
 
 
   const handleEditPostFormSubmit = (e, id) => {
@@ -64,7 +45,7 @@ const Post = ({ post }) => {
         }
       
       <p>r/{post.subreddit_name}</p>
-      <p className="post-created-at">Posted {'placeholder'}</p>
+      <p className="post-created-at">Posted {dateCreated}</p>
       {user && user.id === post.author_id && (
         <div>
           <button onClick={() => setIsEditing(!isEditing)}>Edit</button>

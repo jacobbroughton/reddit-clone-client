@@ -12,7 +12,7 @@ const SubredditDropdown = ({ setSubredditDropdownToggle, subredditDropdownToggle
 
   useEffect(() => {
     dispatch(getSubreddits());
-  }, []);
+  }, [dispatch]);
 
   const handleSubredditClick = (subreddit) => {
     if(!subreddit) {

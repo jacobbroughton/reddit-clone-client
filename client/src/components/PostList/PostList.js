@@ -12,7 +12,7 @@ const PostList = () => {
 
   const darkMode = useSelector((state) => state.darkMode);
   const posts = useSelector((state) => state.postList);
-  const currentSubreddit = useSelector((state) => state.currentSubreddit);
+  // const currentSubreddit = useSelector((state) => state.currentSubreddit);
   const loading = useSelector((state) => state.loading);
   const { name } = useParams();
 
@@ -20,14 +20,16 @@ const PostList = () => {
   // When { name } changes
   useEffect(() => {
     dispatch(getPosts(name));
-  }, [name]);
+    dispatch(setCurrentSubreddit(name));
+    dispatch(getPosts(name));
+  }, [name, dispatch]);
 
 
-  // Every render
-  useEffect(() => {
-      dispatch(setCurrentSubreddit(name));
-      dispatch(getPosts(name));
-  }, []);
+  // // Every render
+  // useEffect(() => {
+  //     dispatch(setCurrentSubreddit(name));
+  //     dispatch(getPosts(name));
+  // }, []);
 
 
   return (

@@ -1,7 +1,8 @@
 import axios from "../axios-config"
-import moment from "moment"
+// import moment from "moment"
 import history from "../history"
 import { setPost } from "../actions/postActions"
+import { formatISO9075 } from "date-fns"
 
 const API_URL = "http://localhost:5000"
 
@@ -37,7 +38,8 @@ export const createPost = ({
   try {
     dispatch({ type: "CREATE_POST_REQUEST" })
 
-    let dateNow = moment().format("MMMM Do YYYY");
+    let dateNow = formatISO9075(new Date()) 
+    console.log("POST DATE NOW", dateNow)
 
     const createdPost = {
       postType,
@@ -46,8 +48,6 @@ export const createPost = ({
       authorId,
       subredditId,
       subredditName
-      // createdAt: dateNow,
-      // updatedAt: dateNow
     }
     
 
@@ -64,9 +64,9 @@ export const createPost = ({
       body,
       author_id: authorId,
       subreddit_id: subredditId,
-      subreddit_name: subredditName
-      // created_at: dateNow,
-      // updated_at: dateNow
+      subreddit_name: subredditName,
+      created_at: dateNow,
+      updated_at: dateNow
     }))
 
     history.push(`/r/${createdPost.subredditName.replace(/\s+/g, '-')}/${postId}`)
