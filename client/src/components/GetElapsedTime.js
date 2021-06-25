@@ -19,8 +19,14 @@ export const getElapsedTime = (date) => {
   );
 
 
+  let elapsedTime = formatDistanceToNowStrict(utcDate, { addSuffix: true })
+  let matchStr = elapsedTime.match(/\d+/g);
+  let matchNum = parseInt(matchStr)
 
-  const elapsedTime = formatDistanceToNowStrict(utcDate, { addSuffix: true })
+  if(matchNum <= 10 && elapsedTime.includes("seconds")) {
+    elapsedTime = "Just now"
+  }
+
 
   return elapsedTime
 }

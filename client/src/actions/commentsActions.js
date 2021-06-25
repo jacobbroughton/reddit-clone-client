@@ -30,7 +30,6 @@ export const addComment = ({
     const response = await axios.post(`${API_URL}/comments`, comment)
 
 
-
     comment = {
       ...comment,
       id: response.data.insertId,

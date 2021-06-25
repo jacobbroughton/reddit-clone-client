@@ -9,8 +9,8 @@ export const postListReducer = (state = [], action) => {
     case "GET_SUBREDDIT_POSTS_SUCCESS" :
         return action.payload
 
-    case "EDIT_POST" : 
-    console.log(action.id)
+    // case "EDIT_POST" : 
+    // console.log(action.id)
       // return state.map((post) => post.id === action.id ? )
       return state
     default:

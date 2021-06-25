@@ -8,12 +8,14 @@ export const postReducer = (state = null, action) => {
       return action.payload
 
     case "EDIT_POST":
-      // const { id, updates } = action
+      const { id, updates } = action
+      console.log(id)
+      console.log(updates)
       console.log(state)
       
       return {
         ...state,
-        // posts: state.posts.map(post => post.id === )
+        body: updates.body
       }
 
     default :

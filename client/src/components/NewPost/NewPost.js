@@ -42,9 +42,10 @@ const NewPost = ({
   useEffect(() => {
     if (postType === 'text') {
       setUrl('')
-    } else if (postType === 'link') {
-      setTitle('')
-    }
+    } 
+    // else if (postType === 'link') {
+    //   setTitle('')
+    // }
   }, [postType])
 
   useEffect(() => {

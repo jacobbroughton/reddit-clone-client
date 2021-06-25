@@ -5,7 +5,7 @@ $lmSecondaryBackground: #f8fafc;
 $dmText: rgba(255, 255, 255, 0.87);
 $dmPrimaryBackground: #181818;
 $dmSecondaryBackground: #252525;
-$dmSecondaryHover: #333;
+$dmHover: #ffffff29;
 
 .new-post{
   height: 100%;
@@ -83,7 +83,8 @@ $dmSecondaryHover: #333;
       .new-post-input{
         background-color: $dmSecondaryBackground;
       }
-      textarea{
+      input, textarea, select{
+        color: $dmText;
       }
       select{
         background-color: $dmSecondaryBackground;

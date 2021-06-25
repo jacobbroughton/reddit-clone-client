@@ -51,7 +51,7 @@ export const startEditPost = ({ id, body }) => async (dispatch, getState) => {
   
     dispatch(editPost(id, { body }))
 
-    dispatch({ type: "EDIT_POST_SUCCESS", payload: { id, body } })
+    dispatch({ type: "EDIT_POST_SUCCESS" })
 
   } catch (error) {
     dispatch({
