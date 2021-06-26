@@ -6,7 +6,7 @@ import { formatISO9075 } from "date-fns"
 // import moment from "moment"
 import "./CommentForm.scss"
 
-const CommentForm = ({ post, parentComment }) => {
+const CommentForm = ({ post, parentComment, setToggleCommentReply, alwaysOpen }) => {
 
   const dispatch = useDispatch()
 
@@ -19,13 +19,15 @@ const CommentForm = ({ post, parentComment }) => {
 
     let comment = {
       body,
-      authorId: user.id,
+      author_id: user.id,
       postId: post.id,
       parentComment: parentComment,
       username: user.username
     }
 
     dispatch(addComment(comment))
+
+    setBody("")
 
     e.preventDefault()
   }
@@ -34,10 +36,11 @@ const CommentForm = ({ post, parentComment }) => {
 
   return (
     <div className={`user-comment ${darkMode && 'dark'}`}>
-      <p>Comment as <span>{ user.username }</span> </p>
+      <p>{alwaysOpen ? 'Comment as ' : 'Reply as '}<span>{ user.username }</span> </p>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <textarea onChange={(e) => setBody(e.target.value)} placeholder="What are your thoughts?"/>
-        <button type="submit">Comment</button>
+        <textarea value={body} onChange={(e) => setBody(e.target.value)} placeholder="What are your thoughts?"/>
+        <button className="comment-button" type="submit">Comment</button>
+        { !alwaysOpen && <button onClick={() => setToggleCommentReply()}>Cancel</button>}
       </form>
     </div>
   )

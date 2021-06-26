@@ -1,7 +1,17 @@
+$lmText: #1a202c;
+$lmSecondaryText: #73777c;
+$lmPrimaryBackground: #cbd5df;
+$lmSecondaryBackground: #f8fafc;
+$lmBorderInitial: #cbd5e0;
+$lmBorderHover: #a0a9b3;
+
 $dmText: rgba(255, 255, 255, 0.87);
+$dmSecondaryText: #aab3be;
 $dmPrimaryBackground: #181818;
 $dmSecondaryBackground: #252525;
 $dmHover: #ffffff29;
+$dmBorderInitial: #61676d;
+$dmBorderHover: #b3bdc9;
 
 .create-subreddit{
   height: 100%;
@@ -44,9 +54,11 @@ $dmHover: #ffffff29;
   form{
     input{
       background-color: $dmSecondaryBackground;
+      color: $dmText;
     }
     textarea{
       background-color: $dmSecondaryBackground;
+      color: $dmText;
     }
     button{
       background-color: $dmSecondaryBackground;

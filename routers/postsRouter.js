@@ -22,12 +22,17 @@ router.get('/', (req, res) => {
 
   let subredditName = req.query.filters
 
+
+  // -------- The join line is messing things up -------
   const getPostsStatement = `
-    SELECT * FROM posts ${subredditName && `WHERE subreddit_name = '${subredditName}'`}
+    SELECT p.id, p.post_type, p.title, p.body, p.author_id, p.subreddit_id, p.subreddit_name, p.created_at, p.updated_at, u.username FROM posts AS p
+    INNER JOIN users AS u ON p.author_id = u.id
+    ${subredditName ? `WHERE p.subreddit_name = '${subredditName}'` : ''}
   `
 
   connection.query(getPostsStatement, (err, rows) => {
     if(err) throw err;
+    console.log(rows)
     res.send(rows)
   })
 })
@@ -37,8 +42,9 @@ router.get('/', (req, res) => {
 router.get('/single/:postId', (req, res) => {
 
   const getSinglePostStatement = `
-  SELECT * FROM posts 
-  WHERE id = ${req.params.postId}
+  SELECT p.id, p.post_type, p.title, p.body, p.author_id, p.subreddit_id, p.subreddit_name, p.created_at, p.updated_at, u.username FROM posts AS p
+  INNER JOIN users AS u ON p.author_id = u.id
+  WHERE p.id = ${req.params.postId}
   LIMIT 1
 `
 

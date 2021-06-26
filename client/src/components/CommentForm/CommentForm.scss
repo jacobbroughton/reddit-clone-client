@@ -1,12 +1,20 @@
-$lmText: #181818;
+$lmText: #1a202c;
+$lmSecondaryText: #73777c;
 $lmPrimaryBackground: #cbd5df;
 $lmSecondaryBackground: #f8fafc;
-$lmThirdBackground: #edf2f7;
+$lmBorderInitial: #cbd5e0;
+$lmBorderHover: #a0a9b3;
+$lmHover: #cbd5df;
 
 $dmText: rgba(255, 255, 255, 0.87);
+$dmSecondaryText: #aab3be;
 $dmPrimaryBackground: #181818;
 $dmSecondaryBackground: #252525;
 $dmHover: #ffffff29;
+$dmBorderInitial: #61676d;
+$dmBorderHover: #b3bdc9;
+
+
 
 .user-comment{
   width: 100%;
@@ -28,23 +36,52 @@ $dmHover: #ffffff29;
       padding: 30px;
       border-radius: 5px;
       font-family: inherit;
-      background-color: $lmThirdBackground;
+      background-color: $lmSecondaryBackground;
+      border: 1px solid $lmBorderInitial;
+    }
+    .comment-button{
+      margin-right: 10px;
     }
     button{
       border: none;
       margin-top: 10px;
-      padding: 8px 15px;
+      padding: 8px;
       border-radius: 5px;
       font-weight: 600;
-      background-color: $lmThirdBackground;
-      
+      font-size: 1rem;
+      background-color: transparent;
+      transition: background-color .1s ease;
+      cursor: pointer;
+
+      &:hover{
+        background-color: $lmHover;
+      }
     }
   }
 
   &.dark{
+    background-color: transparent;
+    p{ 
+      color: $dmText;
+      span{
+      }
+    }
+  
     form{
       textarea{
+        border: 1px $dmBorderInitial solid;
         color: $dmText;
+        // background-color: $dmThirdBackground;
+      }
+      .comment-button{
+      }
+      button{
+        background-color: transparent;
+        transition: background-color .1s ease;
+  
+        &:hover{
+          background-color: $dmHover;
+        }
       }
     }
   }

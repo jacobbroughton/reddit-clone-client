@@ -6,6 +6,7 @@ import { getPosts } from "../../actions/postListActions";
 import { setCurrentSubreddit } from "../../actions/subredditActions";
 // import { setPost } from "../../reducers/postReducer"
 import Post from "../Post/Post";
+// import { post } from "../../../../routers/postsRouter";
 
 const PostList = () => {
   const dispatch = useDispatch();
@@ -25,18 +26,16 @@ const PostList = () => {
   }, [name, dispatch]);
 
 
-  // // Every render
-  // useEffect(() => {
-  //     dispatch(setCurrentSubreddit(name));
-  //     dispatch(getPosts(name));
-  // }, []);
-
-
   return (
     <div className={`post-list-main ${darkMode && "dark"}`}>
       <div className="post-list-container">
         <div className="post-list">
-          {name ? <h1><span className="rSpan">r/</span>{name}</h1> : <h1>Home</h1>}
+          {name ? 
+            <h1>
+              <span className="rSpan">r/</span>{name}
+            </h1> 
+            : 
+            <h1>Home</h1>}
           {loading ? (
             <p>Loading</p>
           ) : (

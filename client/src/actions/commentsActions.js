@@ -7,7 +7,7 @@ const API_URL = "http://localhost:5000"
 
 export const addComment = ({ 
   body,
-  authorId,
+  author_id,
   postId,
   parentComment,
   username
@@ -18,7 +18,7 @@ export const addComment = ({
 
     let comment = {
       body,
-      authorId,
+      author_id,
       postId,
       parentComment,
       username
@@ -48,6 +48,35 @@ export const addComment = ({
   }
 }
 
+
+export const editComment = (id, updates) => ({
+  type: "EDIT_COMMENT",
+  id,
+  updates
+})
+
+
+export const startEditComment = ({ id, body }) => async (dispatch, action) => {
+  try {
+    dispatch({ type: "EDIT_COMMENT_REQUEST" })
+
+    // API request
+    await axios.put(`${API_URL}/comments/${id}`, { body })
+
+    dispatch(editComment(id, { body }))
+
+    dispatch({ type: "EDIT_COMMENT_SUCCESS" })
+  } catch (error) {
+    dispatch({
+      type: "EDIT_COMMENT_FAILURE",
+      response: error.response,
+      message: error.message
+    })
+  }
+}
+
+
+
 export const getComments = ( postId ) => async (dispatch, action) => {
   try {
     dispatch({ type: "GET_COMMENTS_REQUEST" })
@@ -64,6 +93,8 @@ export const getComments = ( postId ) => async (dispatch, action) => {
     })
   }
 }
+
+
 
 export const resetComments = () => async (dispatch, action) => {
   dispatch({ type: "RESET_COMMENTS" })

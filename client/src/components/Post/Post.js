@@ -14,7 +14,7 @@ const Post = ({ post }) => {
   const postFromState = useSelector((state) => state.post)
 
   const [isEditing, setIsEditing] = useState(false);
-  const [editPostBody, setEditPostBody] = useState(postFromState.body ? postFromState.body : "");
+  const [editPostBody, setEditPostBody] = useState(postFromState ? postFromState.body : "");
 
   const dateCreated = getElapsedTime(post.created_at);
 
@@ -28,8 +28,8 @@ const Post = ({ post }) => {
   };
 
   useEffect(() => {
-    console.log(postFromState.body)
-  }, [postFromState])
+    console.log(post.username)
+  }, [])
 
   return (
     <div className="post">
@@ -40,7 +40,7 @@ const Post = ({ post }) => {
           <p className="post-metadata">
             <span className="subreddit">r/{post.subreddit_name}</span>
             <span className="posted-by-span">
-              Posted by <span className="user">u/{"bill"}</span>
+              Posted by <span className="user">u/{post.username && post.username}</span>
             </span>
 
             {dateCreated}
@@ -48,7 +48,7 @@ const Post = ({ post }) => {
 
         
         { post.post_type === "link" ?
-          <a href={post.body}>{post.title}</a>
+          <a className="link-title" href={post.body}>{post.title}</a>
           :
           <div className="title-and-body">
             <Link

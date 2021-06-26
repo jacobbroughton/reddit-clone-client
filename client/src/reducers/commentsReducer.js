@@ -8,6 +8,11 @@ export const commentsReducer = (state = [], action) => {
 
     case "RESET_COMMENTS" :
       return state = []
+
+    case "EDIT_COMMENT": 
+      const { id, updates } = action
+      
+      return state.map((comment) => comment.id === id ? {...comment, ...updates} : comment)
       
     default:
       return state

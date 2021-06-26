@@ -27,7 +27,7 @@ $dmBorderHover: #b3bdc9;
   .post-main-section {
     width: calc(100% - 70px);
     .post-metadata {
-      margin: 0;
+      // margin: 0;
       display: flex;
       color: $lmSecondaryText;
 
@@ -46,6 +46,15 @@ $dmBorderHover: #b3bdc9;
       }
     }
 
+    .link-title {
+      margin-top: 10px;
+      color: #0079d3;
+      appearance: none;
+      color: $lmText;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
     .title-and-body {
       margin-top: 10px;
       .post-title {
@@ -57,9 +66,6 @@ $dmBorderHover: #b3bdc9;
       }
     }
 
-    a {
-      color: #0079d3;
-    }
 
     .post-body {
       margin-top: 15px;
@@ -140,18 +146,6 @@ $dmBorderHover: #b3bdc9;
 
 .dark .post {
   background-color: $dmSecondaryBackground;
-  .post-metadata {
-    color: $lmSecondaryText;
-
-    .subreddit {
-    }
-    .posted-by-span {
-      .user {
-        color: $dmText;
-      }
-    }
-  }
-
   .post-main-section {
     .post-metadata {
       color: $dmSecondaryText;
@@ -162,15 +156,17 @@ $dmBorderHover: #b3bdc9;
       }
     }
 
+    .link-title {
+      color: #0079d3;
+    }
+
     .title-and-body {
       .post-title {
         color: $dmText;
       }
     }
 
-    a {
-      color: #0079d3;
-    }
+
 
     .post-body {
       .edit-post-form {

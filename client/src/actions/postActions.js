@@ -24,7 +24,7 @@ export const setPost = (post) => async (dispatch, getState) => {
     dispatch({ type: "SET_POST_REQUEST" })
 
     // const response = await axios.get(`${API_URL}/posts/single/${postId}`)
-
+    console.log(post)
     dispatch({ type: "SET_POST_SUCCESS", payload: post })
 
   } catch (error) {

@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
   let addCommentStatement = `
     INSERT INTO comments 
     (body, author_id, post_id, parent_comment)
-    VALUES ('${comment.body}', ${comment.authorId}, ${comment.postId}, ${comment.parentComment})
+    VALUES ('${comment.body}', ${comment.author_id}, ${comment.postId}, ${comment.parentComment})
   `
 
   connection.query(addCommentStatement, (err, result) => {
@@ -30,6 +30,24 @@ router.post('/', (req, res) => {
     res.send(result)
   })
 })
+
+
+router.put('/:commentId', (req, res) => {
+  let { commentId } = req.params
+  let { body } = req.body
+
+  let editCommentStatement = `
+    UPDATE comments 
+    SET body = '${body}'
+    WHERE comments.id = ${commentId}
+  `
+
+  connection.query(editCommentStatement, (err, result) => {
+    if(err) throw err
+    res.send(result)
+  })
+})
+
 
 // Get all comments for a post
 router.get('/:postId', (req, res) => {

@@ -1,16 +1,23 @@
-$lmText: #181818;
+$lmText: #1a202c;
+$lmSecondaryText: #73777c;
 $lmPrimaryBackground: #cbd5df;
 $lmSecondaryBackground: #f8fafc;
+$lmBorderInitial: #cbd5e0;
+$lmBorderHover: #a0a9b3;
 
 $dmText: rgba(255, 255, 255, 0.87);
+$dmSecondaryText: #aab3be;
 $dmPrimaryBackground: #181818;
 $dmSecondaryBackground: #252525;
 $dmHover: #ffffff29;
+$dmBorderInitial: #61676d;
+$dmBorderHover: #b3bdc9;
 
 nav {
   width: 100%;
   position: fixed;
   background-color: $lmPrimaryBackground;
+  z-index: 2;
 
   .nav-container {
     max-width: 1100px;

@@ -30,11 +30,12 @@ const SinglePostPage = () => {
   return (
     <div className={`single-post-page ${darkMode && 'dark'}`}>
       <div className="single-post-page-container">
-        <Post post={post}></Post>
+        <Post post={post}/>
         { user &&
           <CommentForm
             parentComment={null}
             post={post}
+            alwaysOpen={true}
           />
         }
         { comments && 

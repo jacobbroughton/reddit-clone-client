@@ -1,13 +1,16 @@
-import { useSelector } from "react-redux"
-import { useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { useEffect, useState } from "react"
 import { getElapsedTime } from "../GetElapsedTime"
+import { startEditComment } from "../../actions/commentsActions"
 import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
 import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";
-import CommentForm from "../CommentForm/CommentForm"
 import { ReactComponent as CommentIcon } from "../../images/comment-icon.svg"
+import CommentForm from "../CommentForm/CommentForm"
 import "./Comment.scss"
 
 const Comment = ({ comment }) => {
+
+  const dispatch = useDispatch()
 
   const user = useSelector((state) => state.auth.user);
   const post = useSelector((state) => state.post)
@@ -15,7 +18,7 @@ const Comment = ({ comment }) => {
 
   const [toggleCommentReply, setToggleCommentReply] = useState(false)
   const [isEditing, setIsEditing] = useState(false);
-  const [editCommentBody, setEditCommentBody] = useState(comment.body ? comment.body : "");
+  const [editCommentBody, setEditCommentBody] = useState();
 
 
   let createdAt = getElapsedTime(comment.created_at)
@@ -24,18 +27,22 @@ const Comment = ({ comment }) => {
   const handleEditCommentFormSubmit = (e, id) => {
     const body = editCommentBody;
 
-    // dispatch(startEditComment({ id, body }));
+    dispatch(startEditComment({ id, body }));
     setIsEditing(!isEditing)
 
     e.preventDefault();
   };
+
+  useEffect(() => {
+    setEditCommentBody(comment.body)
+  }, [isEditing])
 
 
   return (
     <div className={`comment ${darkMode && 'dark'}`}>
       <div className="comment-main-section">
   <p className="comment-metadata">
-          <span className="user">{"bill"}</span>
+          <span className="user">{comment.username}</span>
           {createdAt}
         </p>
 
@@ -62,11 +69,16 @@ const Comment = ({ comment }) => {
 
         { user &&
           <>
+          { !toggleCommentReply &&
             <button className="reply-button" onClick={() => setToggleCommentReply(!toggleCommentReply)}><CommentIcon className="comment-icon"/> Reply</button>
+          }
+            
             { toggleCommentReply &&
                 <CommentForm
                   post={post}
                   parentComment={comment.id}
+                  setToggleCommentReply={setToggleCommentReply}
+                  alwaysOpen={false}
                 />
             }
           </>
@@ -75,7 +87,7 @@ const Comment = ({ comment }) => {
       
 
 
-      {user && user.id === post.author_id && (
+      {user && user.id === comment.author_id  && (
         <div className="commented-user-accessable-options">
           { !isEditing &&
             <button>
