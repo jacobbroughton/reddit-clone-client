@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { startRegister } from "../../actions/authActions";
+import { Link } from "react-router-dom"
 import "./Register.scss";
 
 const Register = () => {
@@ -40,6 +41,7 @@ const Register = () => {
           <input className="register-submit" type="submit" value="Register" />
         </form>
         {/* { doNotMatchError !== '' && <p>{ doNotMatchError }</p> } */}
+        <p className="already-registered-question">Already registered? <Link className="sign-in-link" to="/login">Sign In</Link></p>
       </div>
     </div>
   );

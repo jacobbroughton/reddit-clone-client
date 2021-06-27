@@ -2,8 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react"
 import { addComment } from "../../actions/commentsActions"
 // import { getElapsedTime } from "../GetElapsedTime"
-import { formatISO9075 } from "date-fns"
-// import moment from "moment"
 import "./CommentForm.scss"
 
 const CommentForm = ({ post, parentComment, setToggleCommentReply, alwaysOpen }) => {

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { startLogin } from "../../actions/authActions"
+import { Link } from "react-router-dom"
 import "./Login.scss"
 
 const Login = () => {
@@ -29,6 +30,7 @@ const Login = () => {
                     <input className="login-input" placeholder="Password" onChange={e => setPassword(e.target.value)}/>
                     <input className="login-submit" type="submit" value="Login"/>
                 </form>
+                <p className="need-to-register-question">Not registered? <Link className="create-account-link" to="/login">Create an account</Link></p>
             </div>
         </div>
     )

@@ -1,4 +1,6 @@
 $lmText: #1a202c;
+$lmNavButtonText: #ecf2f6;
+$lmNavButtonBackground: #ecf2f6;
 $lmSecondaryText: #73777c;
 $lmPrimaryBackground: #cbd5df;
 $lmSecondaryBackground: #f8fafc;
@@ -6,23 +8,24 @@ $lmBorderInitial: #cbd5e0;
 $lmBorderHover: #a0a9b3;
 
 $dmText: rgba(255, 255, 255, 0.87);
+$dmNavBackground: #728095;
 $dmSecondaryText: #aab3be;
-$dmPrimaryBackground: #181818;
-$dmSecondaryBackground: #252525;
-$dmHover: #ffffff29;
+$dmPrimaryBackground: #1b1f2b;
+$dmSecondaryBackground: #2e3748;
+$dmButtonBackground: #ffffff29;
 $dmBorderInitial: #61676d;
 $dmBorderHover: #b3bdc9;
 
-nav {
+.nav {
   width: 100%;
   position: fixed;
-  background-color: $lmPrimaryBackground;
+  background-color: #fff;
   z-index: 2;
 
   .nav-container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 20px 30px;
+    padding: 10px 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -36,9 +39,9 @@ nav {
         text-decoration: none;
         color: black;
         font-weight: 600;
-        font-size: 1.2rem;
+        font-size: 2rem;
         span {
-          font-size: 1rem;
+          font-size: 1.3rem;
         }
       }
 
@@ -69,11 +72,22 @@ nav {
       transition: background-color 0.1s ease;
       margin-left: 15px;
       color: black;
-      background-color: #efefef;
+      background-color: $lmNavButtonBackground;
       text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
 
       &:hover {
-        background-color: lightgrey;
+        background-color: $lmPrimaryBackground;
+      }
+    }
+
+    .subreddit-dropdown-toggle-button{
+      display: flex;
+
+      .down-arrow{
+        width: 20px;
+        margin-left: 10px;
       }
     }
 
@@ -102,6 +116,8 @@ nav {
           font-size: 1rem;
           font-weight: 500;
           transition: background-color 0.1s ease;
+          border-radius: 5px;
+          background-color: $lmNavButtonText;
 
           &:hover {
             background-color: lightgrey;
@@ -156,10 +172,10 @@ nav {
       }
     }
   }
-}
 
-.dark {
-  background-color: $dmPrimaryBackground;
+
+&.dark {
+  background-color: $dmNavBackground;
   color: $dmText ;
   .nav-container {
     // Home Link
@@ -177,12 +193,12 @@ nav {
         }
       }
       .subreddit-dropdown {
-        background-color: $dmSecondaryBackground;
+        background-color: $dmButtonBackground;
         a {
           color: $dmText;
 
           &:hover {
-            background-color: $dmHover;
+            // background-color: $dmHover;
           }
         }
       }
@@ -191,9 +207,9 @@ nav {
     .subreddit-dropdown-toggle-button,
     .new-post-link {
       color: $dmText;
-      background-color: $dmSecondaryBackground;
+      background-color: $dmButtonBackground;
       &:hover {
-        background-color: $dmHover;
+        // background-color: $dmHover;
       }
     }
 
@@ -207,10 +223,10 @@ nav {
 
       .logged-in-nav-view {
         .nav-username-button {
-          background-color: $dmSecondaryBackground;
+          background-color: $dmButtonBackground;
           color: $dmText;
           &:hover {
-            background-color: $dmHover;
+            // background-color: $dmHover;
           }
         }
         .user-dropdown {
@@ -218,17 +234,18 @@ nav {
           a {
             color: $dmText;
             &:hover {
-              background-color: $dmHover;
+              // background-color: $dmHover;
             }
           }
           .logout-button {
             color: $dmText;
             &:hover {
-              background-color: $dmHover;
+              // background-color: $dmHover;
             }
           }
         }
       }
     }
   }
+}
 }

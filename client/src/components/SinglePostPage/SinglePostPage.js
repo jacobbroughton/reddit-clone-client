@@ -7,7 +7,7 @@ import { getComments, resetComments } from "../../actions/commentsActions"
 import CommentForm from "../CommentForm/CommentForm"
 import Comment from "../Comment/Comment"
 import Post from "../Post/Post"
-import { getElapsedTime } from "../GetElapsedTime";
+// import { getElapsedTime } from "../GetElapsedTime";
 
 const SinglePostPage = () => {
 

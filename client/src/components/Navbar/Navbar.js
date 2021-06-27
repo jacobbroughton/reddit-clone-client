@@ -5,7 +5,7 @@ import { startLogout } from "../../actions/authActions"
 import { toggleDarkMode } from "../../reducers/darkModeReducer"
 import { setCurrentSubreddit } from "../../actions/subredditActions"
 import { ReactComponent as DarkModeIcon } from "../../images/dark-mode-icon.svg"
-import { formatISO9075 } from "date-fns"
+import { ReactComponent as DownArrow } from "../../images/down-arrow.svg"
 import SubredditDropdown from "../SubredditsDropdown/SubredditDropdown"
 import "./Navbar.scss";
 
@@ -23,18 +23,14 @@ const Navbar = () => {
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
   const [subredditDropdownToggle, setSubredditDropdownToggle] = useState(false)
 
-  useEffect(() => {
-    let dateNow = formatISO9075(new Date())
-    console.log('NAVBAR DATE NOW -->', dateNow)
-  }, [])
 
 
   return (
-    <nav className={`${darkMode && 'dark'}`}>
+    <nav className={`nav ${darkMode && 'dark'}`}>
       <div className={`nav-container`}>
         <div className={`home-link-parent`} >
           <Link className={`nav-home-link`} to="/"><span className="not-span" onClick={() => dispatch(setCurrentSubreddit(null))} >(Not)</span> Reddit</Link>
-          <button className={`subreddit-dropdown-toggle-button`} onClick={() => setSubredditDropdownToggle(!subredditDropdownToggle)}>{subredditName ? subredditName : "Home"}</button>
+          <button className={`subreddit-dropdown-toggle-button`} onClick={() => setSubredditDropdownToggle(!subredditDropdownToggle)}>{subredditName ? subredditName : "Home "} <DownArrow className="down-arrow"/></button>
           { user && <Link className={`new-post-link`} to="/new-post">New Post</Link> }
           <SubredditDropdown 
             subredditDropdownToggle={subredditDropdownToggle} 
