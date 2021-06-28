@@ -32,7 +32,6 @@ router.get('/', (req, res) => {
 
   connection.query(getPostsStatement, (err, rows) => {
     if(err) throw err;
-    console.log(rows)
     res.send(rows)
   })
 })
@@ -50,7 +49,6 @@ router.get('/single/:postId', (req, res) => {
 
 connection.query(getSinglePostStatement, (err, rows) => {
   if(err) throw err
-  console.log('POST', rows[0])
   res.send(rows[0])
 })
 })
@@ -94,6 +92,27 @@ router.post('/', (req, res) => {
     if(err) throw err;
     res.send(result)
   })
+})
+
+
+router.delete('/', (req, res) => {
+  
+  const id = req.body.id
+
+  console.log(id)
+
+  const deletePostStatement = `
+    DELETE p, c
+    FROM posts as p
+    LEFT JOIN comments AS c ON p.id = c.post_id
+    WHERE p.id = ${id}
+  `
+
+  connection.query(deletePostStatement, (err, result) => {
+    if(err) throw err
+    res.send(result)
+  })
+
 })
 
 module.exports = router

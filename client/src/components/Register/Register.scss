@@ -47,10 +47,7 @@ $dmBorderHover: #b3bdc9;
         border-radius: 3px;
         font-weight: 600;
         font-size: 0.9rem;
-
-        &:hover{
-          background-color: $lmHover;
-        }
+        cursor: pointer;
       }
     }
 
@@ -68,6 +65,9 @@ $dmBorderHover: #b3bdc9;
 
 .dark {
   .register-container {
+    h2{
+      color: $dmText;
+    }
     form {
       .register-input {
         color: $dmText;
@@ -75,12 +75,11 @@ $dmBorderHover: #b3bdc9;
       }
       .register-submit {
         color: $dmText;
-        background-color: $dmSecondaryBackground;
-
-        &:hover{
-          background-color: $dmHover;
-        }
+        // background-color: $dmSecondaryBackground;
       }
+    }
+    .already-registered-question{
+      color: $dmText;
     }
   }
 }

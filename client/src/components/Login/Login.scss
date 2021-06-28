@@ -48,10 +48,6 @@ $dmBorderHover: #b3bdc9;
         border-radius: 3px;
         font-weight: 600;
         font-size: 0.9rem;
-
-        &:hover{
-          background-color: $lmSecondaryBackground;
-        }
       }
     }
 
@@ -69,6 +65,9 @@ $dmBorderHover: #b3bdc9;
 
 .dark {
   .login-container {
+    h2{
+      color: $dmText;
+    }
     form {
       .login-input {
         color: $dmText;
@@ -77,11 +76,10 @@ $dmBorderHover: #b3bdc9;
       .login-submit {
         color: $dmText;
         background-color: $dmSecondaryBackground;
-        
-        &:hover{
-          background-color: $dmHover;
-        }
       }
+    }
+    .need-to-register-question{
+      color: $dmText;
     }
   }
 }

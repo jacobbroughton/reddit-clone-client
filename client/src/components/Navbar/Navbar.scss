@@ -38,7 +38,7 @@ $dmBorderHover: #b3bdc9;
       .nav-home-link {
         text-decoration: none;
         color: black;
-        font-weight: 600;
+        font-weight: 700;
         font-size: 2rem;
         span {
           font-size: 1.3rem;
@@ -111,6 +111,7 @@ $dmBorderHover: #b3bdc9;
         gap: 10px;
         position: relative;
         .nav-username-button {
+          display: flex;
           border: none;
           padding: 10px;
           font-size: 1rem;
@@ -118,6 +119,12 @@ $dmBorderHover: #b3bdc9;
           transition: background-color 0.1s ease;
           border-radius: 5px;
           background-color: $lmNavButtonText;
+          cursor: pointer;
+
+          .down-arrow{
+            width: 20px;
+            margin-left: 10px;
+          }
 
           &:hover {
             background-color: lightgrey;
@@ -193,7 +200,7 @@ $dmBorderHover: #b3bdc9;
         }
       }
       .subreddit-dropdown {
-        background-color: $dmButtonBackground;
+        background-color: $dmSecondaryBackground;
         a {
           color: $dmText;
 

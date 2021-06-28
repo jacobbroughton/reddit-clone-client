@@ -20,7 +20,7 @@ $dmBorderHover: #b3bdc9;
   border-radius: 5px;
   background-color: $lmSecondaryBackground;
   text-decoration: none;
-  color: $lmText initial;
+  // color: $lmText;
   padding: 30px;
   display: flex;
   flex-direction: row;
@@ -192,6 +192,7 @@ $dmBorderHover: #b3bdc9;
       }
 
       .post-body-text {
+        color: $dmText;
       }
     }
   }

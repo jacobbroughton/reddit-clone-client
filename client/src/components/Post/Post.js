@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost, startEditPost } from "../../actions/postActions";
+import { deletePost } from "../../actions/postActions";
 import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
 import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";
 import { getElapsedTime } from "../GetElapsedTime";
@@ -27,9 +28,11 @@ const Post = ({ post }) => {
     e.preventDefault();
   };
 
-  useEffect(() => {
-    console.log(post.username)
-  }, [])
+
+  const handlePostDelete = () => {
+    console.log("delete post ", post.id)
+    dispatch(deletePost(post, post.id))
+  }
 
   return (
     <div className="post">
@@ -74,7 +77,7 @@ const Post = ({ post }) => {
                   </div>
                 </form>
                 :
-                <p className="post-body-text">{post.body}</p>
+                <p className="post-body-text">{ post.body }</p>
               }
             </div>
 
@@ -89,18 +92,20 @@ const Post = ({ post }) => {
       {user && user.id === post.author_id && (
         <div className="posted-user-accessable-options">
           { !isEditing &&
-            <button>
-            <EditIcon
-              className="edit-icon"
-              onClick={() => setIsEditing(!isEditing)}
-            />
+            <button
+              onClick={() => setIsEditing(!isEditing)}>
+              <EditIcon
+                className="edit-icon"
+              
+              />
           </button>
           }
 
-          <button>
-            <DeleteIcon
-              className="delete-icon"
-            /> 
+          <button
+            onClick={() => handlePostDelete()}>
+              <DeleteIcon
+                className="delete-icon"
+              /> 
           </button>
         </div>
       )}

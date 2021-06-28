@@ -9,9 +9,6 @@ export const postReducer = (state = null, action) => {
 
     case "EDIT_POST":
       const { id, updates } = action
-      console.log(id)
-      console.log(updates)
-      console.log(state)
       
       return {
         ...state,

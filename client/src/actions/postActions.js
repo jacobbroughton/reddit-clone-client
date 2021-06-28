@@ -42,6 +42,7 @@ export const editPost = (id, updates) => ({
   updates
 })
 
+
 export const startEditPost = ({ id, body }) => async (dispatch, getState) => {
   try {
     dispatch({ type: "EDIT_POST_REQUEST" })
@@ -56,6 +57,24 @@ export const startEditPost = ({ id, body }) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: "EDIT_POST_FAILURE",
+      message: error.message,
+      response: error.response
+    })
+  }
+}
+
+
+export const deletePost = (post, id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: "DELETE_POST_REQUEST" })
+
+    await axios.delete(`${API_URL}/posts`, { data: { id } })
+
+    dispatch({ type: "DELETE_POST_SUCCESS" , payload: { id }})
+
+  } catch (error) {
+    dispatch({
+      type: "DELETE_POST_FAILURE",
       message: error.message,
       response: error.response
     })
