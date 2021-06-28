@@ -72,7 +72,7 @@ const Post = ({ post }) => {
                 }>
                   <textarea value={editPostBody} onChange={(e) => setEditPostBody(e.target.value)} />
                   <div className="save-and-cancel">
-                    <button type="submit">Save</button>
+                    <button disabled={post.body === editPostBody} type="submit">Save</button>
                     <button onClick={() => setIsEditing(!isEditing)}>Cancel</button>
                   </div>
                 </form>

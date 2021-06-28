@@ -23,6 +23,7 @@ const CreateSubreddit = () => {
 
   return (
     <div className={`create-subreddit ${darkMode && 'dark'}`}>
+      
       <form onSubmit={(e) => handleSubmit(e)}>
         <input onChange={e => setSubredditName(e.target.value)} placeholder="Subreddit name"/>
         <textarea onChange={e => setSubredditDescription(e.target.value)} placeholder="Description (optional)"/>

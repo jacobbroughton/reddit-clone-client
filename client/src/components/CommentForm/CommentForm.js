@@ -37,7 +37,7 @@ const CommentForm = ({ post, parentComment, setToggleCommentReply, alwaysOpen })
       <p>{alwaysOpen ? 'Comment as ' : 'Reply as '}<span>{ user.username }</span> </p>
       <form onSubmit={(e) => handleSubmit(e)}>
         <textarea value={body} onChange={(e) => setBody(e.target.value)} placeholder="What are your thoughts?"/>
-        <button className="comment-button" type="submit">Comment</button>
+        <button disabled={body === ""} className='comment-button' type="submit">Comment</button>
         { !alwaysOpen && <button onClick={() => setToggleCommentReply()}>Cancel</button>}
       </form>
     </div>

@@ -40,13 +40,13 @@ const SinglePostPage = () => {
         }
         { comments && 
         <div className="comments">
-          { comments.map((comment, key) => 
+          { comments.map((comment, key) => {
+            return !comment.parent_comment &&
               <Comment
                 comment={comment}
                 key={key}
               />
-            )
-          }
+          })}
         </div>
         }
 

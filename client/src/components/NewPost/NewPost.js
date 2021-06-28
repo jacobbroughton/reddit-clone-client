@@ -75,7 +75,7 @@ const NewPost = ({
                       <button className={`post-type-button  ${postType === 'link' ? 'clicked' : ''}`} value={'link'} onClick={() => setPostType('link')} type="button">Link</button>
                     </div>
                   </div>
-                  <input className="new-post-input" placeholder="Title *" onChange={e => setTitle(e.target.value)}/>
+                  <input className="new-post-input" placeholder="Title (required)" onChange={e => setTitle(e.target.value)}/>
                   { postType === 'text' ? <>
                     <textarea className="new-post-input" placeholder="Text (optional)" onChange={e => setBody(e.target.value)}/>
                   </> 
@@ -87,11 +87,12 @@ const NewPost = ({
                   <select 
                     defaultValue={currentSubreddit ? currentSubreddit.name : subreddits.filter(subreddit => subreddit === currentSubreddit)} 
                     onChange={(e) => handleSubredditChange(e.target.value)}>
+                      <option disabled selected value> Select a subreddit </option>
                     { subreddits.map((subreddit, key) => 
                       <option key={key}>{subreddit.name}</option>
                     )}
                   </select>
-                  { subreddits.length > 0 && <input className="new-post-submit" type="submit"/> }
+                  <button disabled={title === "" && subreddit} className="new-post-submit" type="submit">Submit</button> 
                   
               </form>
           </div>

@@ -41,10 +41,11 @@ $dmHover: #ffffff29;
       }
       .new-post-input{
         resize: vertical;
-        padding: 5px 10px;
         font-size: 1rem;
         border: none;
         background-color: #efefef;
+        padding: 8px 10px;
+        border-radius: 5px;
       }
       textarea{
         height: 150px;
@@ -52,18 +53,26 @@ $dmHover: #ffffff29;
         font-family: inherit;
       }
       select{
-        padding: 5px 10px;
         font-size: 1rem;
         border: none;
         background-color: #efefef;
+        padding: 8px 10px;
+        border-radius: 5px;
       }
       .new-post-submit{
         align-self: flex-start;
-        background-color: #1b1f2b;
-        color: #fff;
+        background-color: transparent;
+        font-weight: 600;
+        color: $lmText;
+        font-size: 1rem;
         border: none;
         padding: 5px;
         border-radius: 3px;
+        cursor: pointer;
+
+        &:disabled{
+          opacity: 0.5;
+        }
       }
     }
   }

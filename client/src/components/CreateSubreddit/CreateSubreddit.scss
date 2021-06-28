@@ -28,6 +28,7 @@ $dmBorderHover: #b3bdc9;
       padding: 10px 15px;
       border: none;
       background-color: #efefef;
+      border-radius: 5px;
     }
     textarea{
       width: calc(100% - 30px);
@@ -37,6 +38,7 @@ $dmBorderHover: #b3bdc9;
       border: none;
       background-color: #efefef;
       font-family: inherit;
+      border-radius: 5px;
     }
     button{
       // width: 100%;
