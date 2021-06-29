@@ -37,6 +37,14 @@
     padding: 10px 0px;
     gap: 5px;
   }
+
+  &.dark{
+    a{
+      &:hover{
+        background-color: #ffffff29;;
+      }
+    }
+  }
 }
 
 // Subreddit Dropdown open / close

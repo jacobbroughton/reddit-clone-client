@@ -28,6 +28,10 @@ const Post = ({ post }) => {
     e.preventDefault();
   };
 
+  useEffect(() => {
+    console.log(post)
+  }, [])
+
 
   const handlePostDelete = () => {
     console.log("delete post ", post.id)

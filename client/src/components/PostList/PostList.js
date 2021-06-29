@@ -37,7 +37,7 @@ const PostList = () => {
             : 
             <h1>Home</h1>}
           {loading ? (
-            <p>Loading</p>
+            <p className="loading">Loading</p>
           ) : (
             <>
               {posts.map((post, key) => (

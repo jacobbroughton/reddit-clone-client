@@ -24,7 +24,7 @@ export const getElapsedTime = (date) => {
   let matchNum = parseInt(matchStr)
 
   if(matchNum <= 10 && elapsedTime.includes("seconds")) {
-    elapsedTime = "Just now"
+    elapsedTime = "a few seconds ago"
   }
 
 

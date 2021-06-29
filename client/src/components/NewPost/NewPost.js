@@ -1,16 +1,16 @@
+import { sub } from "date-fns"
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { createPost } from "../../actions/postListActions"
 import "./NewPost.scss"
 
-const NewPost = ({
-  currentSubreddit
-}) => {
+const NewPost = () => {
     // Make list of recent posts to all the subreddits
     // Individual subreddit views will filter this list (I think)
   const dispatch = useDispatch()
   const auth = useSelector(state => state.auth)
   const subreddits = useSelector(state => state.subreddits)
+  const currentSubreddit = useSelector(state => state.currentSubreddit)
   const darkMode = useSelector(state => state.darkMode)
   
   
@@ -42,17 +42,18 @@ const NewPost = ({
   useEffect(() => {
     if (postType === 'text') {
       setUrl('')
-    } 
-    // else if (postType === 'link') {
-    //   setTitle('')
-    // }
+    }
   }, [postType])
 
   useEffect(() => {
     if(subreddits.length > 0) {
-      setSubreddit(currentSubreddit ? currentSubreddit : subreddits[0])
+      setSubreddit(currentSubreddit && currentSubreddit)
     }
   }, [subreddits, currentSubreddit])
+
+  useEffect(() => {
+    console.log(subreddit)
+  }, [subreddit])
 
   // const filterSubreddit = () => {
   //   let filteredSubreddit = subreddits.filter(subreddit => subreddit === currentSubreddit)
@@ -85,14 +86,15 @@ const NewPost = ({
                   </>
                 }
                   <select 
-                    defaultValue={currentSubreddit ? currentSubreddit.name : subreddits.filter(subreddit => subreddit === currentSubreddit)} 
+                    // defaultValue={currentSubreddit ? currentSubreddit.name : subreddits.filter(subreddit => subreddit === currentSubreddit)} 
+                    defaultValue={currentSubreddit && currentSubreddit.name} 
                     onChange={(e) => handleSubredditChange(e.target.value)}>
                       <option disabled selected value> Select a subreddit </option>
                     { subreddits.map((subreddit, key) => 
                       <option key={key}>{subreddit.name}</option>
                     )}
                   </select>
-                  <button disabled={title === "" && subreddit} className="new-post-submit" type="submit">Submit</button> 
+                  <button disabled={title === "" || !subreddit} className="new-post-submit" type="submit">Submit</button> 
                   
               </form>
           </div>

@@ -9,6 +9,7 @@ const SubredditDropdown = ({ setSubredditDropdownToggle, subredditDropdownToggle
 
   const dispatch = useDispatch();
   const subreddits = useSelector((state) => state.subreddits);
+  const darkMode = useSelector((state) => state.darkMode);
 
   useEffect(() => {
     dispatch(getSubreddits());
@@ -27,7 +28,7 @@ const SubredditDropdown = ({ setSubredditDropdownToggle, subredditDropdownToggle
 
   return (
     <div     
-      className={subredditDropdownToggle ? 'subreddit-dropdown open' : 'subreddit-dropdown closed'}>
+      className={`${darkMode && 'dark'} ${subredditDropdownToggle ? 'subreddit-dropdown open' : 'subreddit-dropdown closed'}`}>
       <div className="dropdown-home-link-parent">
         <Link onClick={() => handleSubredditClick(null)} to={"/"}>Home</Link>
       </div>

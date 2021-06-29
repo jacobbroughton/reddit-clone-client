@@ -1,7 +1,7 @@
 import "./SinglePostPage.scss"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link, useLocation } from "react-router-dom"
 import { getPost } from "../../actions/postActions"
 import { getComments, resetComments } from "../../actions/commentsActions"
 import CommentForm from "../CommentForm/CommentForm"
@@ -18,6 +18,11 @@ const SinglePostPage = () => {
   const darkMode = useSelector((state) => state.darkMode);
   const comments = useSelector((state) => state.comments);
   const user = useSelector((state) => state.auth.user);
+  const currentSubreddit = useSelector((state) => state.auth.currentSubreddit);
+
+  const location = useLocation()
+  const subredditName = location.pathname.match(/r\/[^\/]+/)
+  console.log(subredditName)
 
   useEffect(() => {
     dispatch(getPost(postId))
@@ -26,12 +31,18 @@ const SinglePostPage = () => {
   }, [dispatch, postId])
   
   
-  if(!post) return <h1>Loading</h1>
   return (
     <div className={`single-post-page ${darkMode && 'dark'}`}>
       <div className="single-post-page-container">
-        <Post post={post}/>
-        { user &&
+        {post ? 
+        <Post post={post}/> 
+        : 
+        <p className="post-not-found-p">
+          Post not found, return to
+          <Link currentPath={subredditName} className="post-not-found-link" to={subredditName ? `/${subredditName[0]}` : '/'}>{subredditName ? `${subredditName}` : 'Home'}</Link>
+        </p>
+        }
+        { user && post &&
           <CommentForm
             parentComment={null}
             post={post}

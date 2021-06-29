@@ -17,6 +17,9 @@ body .dark{
   background-color: #1b1f2b;
 }
 
+.loading{
+  margin: 0;
+}
 
 body {
   font-size: 16px;

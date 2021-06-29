@@ -13,6 +13,7 @@ $dmSecondaryText: #aab3be;
 $dmPrimaryBackground: #1b1f2b;
 $dmSecondaryBackground: #2e3748;
 $dmButtonBackground: #ffffff29;
+$dmHover: #ffffff29;
 $dmBorderInitial: #61676d;
 $dmBorderHover: #b3bdc9;
 
@@ -162,6 +163,7 @@ $dmBorderHover: #b3bdc9;
             width: 100%;
             text-align: start;
             transition: background-color 0.1s ease;
+            cursor: pointer;
 
             &:hover {
               background-color: lightgrey;
@@ -241,13 +243,13 @@ $dmBorderHover: #b3bdc9;
           a {
             color: $dmText;
             &:hover {
-              // background-color: $dmHover;
+              background-color: $dmHover;
             }
           }
           .logout-button {
             color: $dmText;
             &:hover {
-              // background-color: $dmHover;
+              background-color: $dmHover;
             }
           }
         }

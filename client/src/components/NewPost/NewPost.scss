@@ -72,6 +72,7 @@ $dmHover: #ffffff29;
 
         &:disabled{
           opacity: 0.5;
+          cursor: initial;
         }
       }
     }
@@ -99,7 +100,13 @@ $dmHover: #ffffff29;
         background-color: $dmSecondaryBackground;
       }
       .new-post-submit{
-        background-color: $dmSecondaryBackground;
+        // background-color: $dmSecondaryBackground;
+        color: $dmText;
+
+        &:disabled{
+          opacity: 0.5;
+          cursor: initial;
+        }
       }
     }
   }
