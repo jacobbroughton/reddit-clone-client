@@ -92,6 +92,26 @@ export const getComments = ( postId ) => async (dispatch, action) => {
 }
 
 
+export const deleteComment = (idForDelete) => async (dispatch, action) => {
+  try{
+    dispatch({ type: "DELETE_COMMENT_REQUEST" })
+
+    const response = await axios.delete(`${API_URL}/comments`, { data: { idForDelete } })
+
+    console.log(response)
+
+    dispatch({ type: "DELETE_COMMENT_SUCCESS" , payload: { idForDelete }})
+  } catch (error) {
+    dispatch({
+      type: "DELETE_COMMENT_FAILURE",
+      response: error.response,
+      message: error.message
+    })
+  }
+
+}
+
+
 
 export const resetComments = () => async (dispatch, action) => {
   dispatch({ type: "RESET_COMMENTS" })

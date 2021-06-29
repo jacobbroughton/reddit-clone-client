@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
+// const { deleteComment } = require("../client/src/actions/commentsActions");
 require("dotenv").config();
 
 const connection = mysql.createConnection({
@@ -64,6 +65,24 @@ router.get('/:postId', (req, res) => {
     console.log('COMMENTS', rows)
     res.send(rows)
   })
+})
+
+
+router.delete('/', (req, res) => {
+  console.log(req.body)
+  const { idForDelete } = req.body
+
+  const deleteCommentStatement = `
+    DELETE
+    FROM comments
+    WHERE id = ${idForDelete}
+  `
+
+  connection.query(deleteCommentStatement, (err, result) => {
+    if(err) throw err
+    res.send(result)
+  })
+  
 })
 
 module.exports = router

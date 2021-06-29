@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
 import { getElapsedTime } from "../GetElapsedTime"
-import { startEditComment } from "../../actions/commentsActions"
+import { startEditComment, deleteComment } from "../../actions/commentsActions"
 import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
 import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";
 import { ReactComponent as CommentIcon } from "../../images/comment-icon.svg"
@@ -90,15 +90,18 @@ const Comment = ({ comment }) => {
       {user && user.id === comment.author_id  && (
         <div className="commented-user-accessable-options">
           { !isEditing &&
-            <button>
+            <button
+              onClick={() => setIsEditing(!isEditing)}
+            >
             <EditIcon
               className="edit-icon"
-              onClick={() => setIsEditing(!isEditing)}
             />
           </button>
           }
 
-          <button>
+          <button
+            onClick={() => dispatch(deleteComment(comment.id))}
+          >
             <DeleteIcon
               className="delete-icon"
             /> 
