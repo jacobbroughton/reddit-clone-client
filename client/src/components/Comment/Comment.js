@@ -8,9 +8,10 @@ import { ReactComponent as CommentIcon } from "../../images/comment-icon.svg"
 import CommentForm from "../CommentForm/CommentForm"
 import "./Comment.scss"
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, childComments }) => {
 
   const dispatch = useDispatch()
+  
 
   const user = useSelector((state) => state.auth.user);
   const post = useSelector((state) => state.post)
@@ -41,7 +42,7 @@ const Comment = ({ comment }) => {
   return (
     <div className={`comment ${darkMode && 'dark'}`}>
       <div className="comment-main-section">
-  <p className="comment-metadata">
+          <p className="comment-metadata">
           <span className="user">{comment.username}</span>
           {createdAt}
         </p>
@@ -108,6 +109,12 @@ const Comment = ({ comment }) => {
           </button>
         </div>
       )}
+
+
+      {/*  */}
+      { childComments &&
+        childComments.map((childComment, key) => <p key={key}>{childComment.body}</p>)
+      }
     </div>
   )
 }

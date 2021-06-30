@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
   let addCommentStatement = `
     INSERT INTO comments 
     (body, author_id, post_id, parent_comment)
-    VALUES ('${comment.body}', ${comment.author_id}, ${comment.postId}, ${comment.parentComment})
+    VALUES ('${comment.body}', ${comment.author_id}, ${comment.post_id}, ${comment.parent_comment})
   `
 
   connection.query(addCommentStatement, (err, result) => {

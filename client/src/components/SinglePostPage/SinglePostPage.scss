@@ -9,11 +9,11 @@ $dmHover: #ffffff29;
 
 .single-post-page{
   padding-top: 78px;
+  padding-bottom: 100px;
   .single-post-page-container{
     padding-top: 50px;
     margin: 0 auto;
     max-width: 620px;
-    padding: 30px;
     display: flex;
     flex-direction: column;
 
@@ -24,13 +24,6 @@ $dmHover: #ffffff29;
       margin: 0 auto;
       margin-left: 5px;
     }
-    }
-
-    .comments{
-      margin-top: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
     }
   } 
 

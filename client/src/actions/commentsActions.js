@@ -5,8 +5,8 @@ const API_URL = "http://localhost:5000"
 export const addComment = ({ 
   body,
   author_id,
-  postId,
-  parentComment,
+  post_id,
+  parent_comment,
   username
  }) => async (dispatch, action) => {
   try {
@@ -16,8 +16,8 @@ export const addComment = ({
     let comment = {
       body,
       author_id,
-      postId,
-      parentComment,
+      post_id,
+      parent_comment,
       username
     }    
     

@@ -18,8 +18,8 @@ const CommentForm = ({ post, parentComment, setToggleCommentReply, alwaysOpen })
     let comment = {
       body,
       author_id: user.id,
-      postId: post.id,
-      parentComment: parentComment,
+      post_id: post.id,
+      parent_comment: parentComment,
       username: user.username
     }
 

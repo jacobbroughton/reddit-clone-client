@@ -38,19 +38,19 @@ export const setPost = (post) => async (dispatch, getState) => {
 
 export const editPost = (id, updates) => ({
   type: "EDIT_POST",
-  id,
+  idForEdit: id,
   updates
 })
 
 
-export const startEditPost = ({ id, body }) => async (dispatch, getState) => {
+export const startEditPost = ({ idForEdit, body }) => async (dispatch, getState) => {
   try {
     dispatch({ type: "EDIT_POST_REQUEST" })
 
-    await axios.put(`${API_URL}/posts/single/${id}`, { body })
+    await axios.put(`${API_URL}/posts/single/${idForEdit}`, { body })
 
   
-    dispatch(editPost(id, { body }))
+    dispatch(editPost(idForEdit, { body }))
 
     dispatch({ type: "EDIT_POST_SUCCESS" })
 

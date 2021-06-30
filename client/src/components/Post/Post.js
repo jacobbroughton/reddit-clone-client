@@ -15,34 +15,33 @@ const Post = ({ post }) => {
   const postFromState = useSelector((state) => state.post)
 
   const [isEditing, setIsEditing] = useState(false);
-  const [editPostBody, setEditPostBody] = useState(postFromState ? postFromState.body : "");
+  const [editPostBody, setEditPostBody] = useState(post ? post.body : "");
 
   const dateCreated = getElapsedTime(post.created_at);
 
   const handleEditPostFormSubmit = (e, id) => {
     const body = editPostBody;
+    const idForEdit = id
 
-    dispatch(startEditPost({ id, body }));
+    dispatch(startEditPost({ idForEdit, body }));
     setIsEditing(!isEditing)
 
     e.preventDefault();
   };
 
   useEffect(() => {
+    console.log(postFromState)
     console.log(post)
   }, [])
 
 
   const handlePostDelete = () => {
-    console.log("delete post ", post.id)
     dispatch(deletePost(post, post.id))
   }
 
+
   return (
     <div className="post">
-
-
-
       <div className="post-main-section">      
           <p className="post-metadata">
             <span className="subreddit">r/{post.subreddit_name}</span>

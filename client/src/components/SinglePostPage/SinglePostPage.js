@@ -6,6 +6,7 @@ import { getPost } from "../../actions/postActions"
 import { getComments, resetComments } from "../../actions/commentsActions"
 import CommentForm from "../CommentForm/CommentForm"
 import Comment from "../Comment/Comment"
+import CommentsList from "../CommentsList/CommentsList"
 import Post from "../Post/Post"
 // import { getElapsedTime } from "../GetElapsedTime";
 
@@ -22,7 +23,7 @@ const SinglePostPage = () => {
 
   const location = useLocation()
   const subredditName = location.pathname.match(/r\/[^\/]+/)
-  console.log(subredditName)
+
 
   useEffect(() => {
     dispatch(getPost(postId))
@@ -39,7 +40,7 @@ const SinglePostPage = () => {
         : 
         <p className="post-not-found-p">
           Post not found, return to
-          <Link currentPath={subredditName} className="post-not-found-link" to={subredditName ? `/${subredditName[0]}` : '/'}>{subredditName ? `${subredditName}` : 'Home'}</Link>
+          <Link className="post-not-found-link" to={subredditName ? `/${subredditName[0]}` : '/'}>{subredditName ? `${subredditName}` : 'Home'}</Link>
         </p>
         }
         { user && post &&
@@ -50,15 +51,7 @@ const SinglePostPage = () => {
           />
         }
         { comments && 
-        <div className="comments">
-          { comments.map((comment, key) => {
-            return !comment.parent_comment &&
-              <Comment
-                comment={comment}
-                key={key}
-              />
-          })}
-        </div>
+          <CommentsList/>
         }
 
       </div>

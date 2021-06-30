@@ -20,6 +20,19 @@ export const postListReducer = (state = [], action) => {
         body: '[DELETED]',
         username: '[DELETED]'
       } : post  )
+    
+    case "EDIT_POST": 
+      const { idForEdit, updates } = action
+
+      if(state) {
+        console.log(state)
+        console.log(idForEdit)
+
+        return state.map(post => post.id === idForEdit ? {
+          ...post, 
+          body: updates.body
+        }: post)
+      }
         
     default:
       return state
