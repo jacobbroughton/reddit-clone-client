@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Comment from "../Comment/Comment"
 import "./CommentsThread.scss"
 
-const CommentsThread = ({ comments }) => {
+const CommentsThread = ({ comment }) => {
   
   // const comments = useSelector((state) => state.comments);
   const [childComments, setChildComments] = useState([])
@@ -34,7 +34,7 @@ const CommentsThread = ({ comments }) => {
 
   return (
     <div className="comments-thread">
-      
+      <Comment comment={comment}/>
     </div>
   )
 }

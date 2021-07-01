@@ -19,12 +19,15 @@ const CommentsList = () => {
   
   return (
     <div className="comments-list">
-      {/* { comments.map((comment, key) =>  */}
-        {/* !comment.parent_comment &&  */}
-        <CommentsThread
-          comment={comments}
+      { comments.map((comment, key) => 
+        !comment.parent_comment && 
+        // <CommentsThread
+        //   comment={comment}
+        // />
+        <Comment
+          comment={comment}
         />
-      {/* )} */}
+      )}
     </div>
   )
 }
