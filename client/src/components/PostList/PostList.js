@@ -27,7 +27,7 @@ const PostList = () => {
 
 
   return (
-    <div className={`post-list-main ${darkMode && "dark"}`}>
+    <div className={`post-list-main ${darkMode ? 'dark' : ''}`}>
       <div className="post-list-container">
         <div className="post-list">
           {name ? 

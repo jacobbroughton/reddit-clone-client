@@ -1,8 +1,11 @@
 import axios from "../axios-config"
 import moment from "moment"
 import history from "../history"
+import { getApiUrl } from "../actions/nodeEnvActions"
 
-const API_URL = "http://localhost:5000"
+const API_URL = getApiUrl()
+
+console.log(API_URL)
 
 export const LOGIN_REQUEST = (user) => ({
     type: 'LOGIN_START'

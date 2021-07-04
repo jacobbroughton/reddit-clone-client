@@ -33,7 +33,7 @@ const SinglePostPage = () => {
   
   
   return (
-    <div className={`single-post-page ${darkMode && 'dark'}`}>
+    <div className={`single-post-page ${darkMode ? 'dark' : ''}`}>
       <div className="single-post-page-container">
         {post ? 
         <Post post={post}/> 

@@ -33,7 +33,7 @@ const CommentForm = ({ post, parentComment, setToggleCommentReply, alwaysOpen })
 
 
   return (
-    <div className={`user-comment ${darkMode && 'dark'}`}>
+    <div className={`user-comment ${darkMode ? 'dark' : ''}`}>
       <p>{alwaysOpen ? 'Comment as ' : 'Reply as '}<span>{ user.username }</span> </p>
       <form onSubmit={(e) => handleSubmit(e)}>
         <textarea value={body} onChange={(e) => setBody(e.target.value)} placeholder="What are your thoughts?"/>

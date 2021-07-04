@@ -1,9 +1,10 @@
 import axios from "../axios-config.js"
 import moment from "moment"
 import history from "../history"
+import { getApiUrl } from "../actions/nodeEnvActions"
 
 
-const API_URL = "http://localhost:5000"
+const API_URL = getApiUrl()
 
 
 export const getSubreddits = () => async (dispatch, getState) => {

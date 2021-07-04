@@ -3,8 +3,9 @@ import axios from "../axios-config"
 import history from "../history"
 import { setPost } from "../actions/postActions"
 import { formatISO9075 } from "date-fns"
+import { getApiUrl } from "../actions/nodeEnvActions"
 
-const API_URL = "http://localhost:5000"
+const API_URL = getApiUrl()
 
 
 

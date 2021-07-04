@@ -18,6 +18,8 @@ import { useEffect } from "react"
 
 function App() {
 
+  console.log(process.env.NODE_ENV)
+
   const darkMode = useSelector(state => state.darkMode)
   
 
@@ -32,7 +34,7 @@ function App() {
 
   return (
       // <Router history={history}>
-        <div className={`App ${darkMode && 'dark'}`}>
+        <div className={`App ${darkMode ? 'dark' : ''}`}>
           <Navbar
             // currentSubreddit={currentSubreddit}
           />

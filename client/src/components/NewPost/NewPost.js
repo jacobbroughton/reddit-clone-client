@@ -67,7 +67,7 @@ const NewPost = () => {
   }
 
   return (
-      <div className={`new-post ${darkMode && 'dark'}`}>
+      <div className={`new-post ${darkMode ? 'dark' : ''}`}>
           <div className="new-post-container">
               <form onSubmit={(e) => handleSubmit(e)}>
                   <div className="both-radio-inputs">

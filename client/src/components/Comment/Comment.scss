@@ -14,26 +14,12 @@ $dmHover: #ffffff29;
 $dmBorderInitial: #61676d;
 $dmBorderHover: #b3bdc9;
 
-.comment-thread{
+.comment-thread {
   display: flex;
   flex-direction: column;
-  gap: 15px;
   width: 100%;
-  height: auto;
-  // border-left: 2px #fff solid;
-  // margin-bottom: 15px;
 
-  .bar{
-    align-self: stretch;
-    // height: 100%;
-    min-height: 100%;
-    width: 1px;
-    background-color: #fff;
-    border: 2px #fff solid;
-    margin-right: 30px;
-  }
-
-    .comment{
+  .comment {
     background-color: $lmSecondaryBackground;
     color: $lmText;
     padding: 30px;
@@ -43,19 +29,19 @@ $dmBorderHover: #b3bdc9;
     flex-direction: column;
     width: 100%;
 
-    .comment-main-section{
+    .comment-main-section {
       width: calc(100% - 70px);
-      .comment-metadata{
+      .comment-metadata {
         margin: 0;
         color: $lmLightText;
-        .user{
+        .user {
           color: $lmText;
           font-weight: 600;
           margin-right: 10px;
         }
       }
 
-      .reply-button{
+      .reply-button {
         color: $lmLightText;
         border: none;
         font-size: 0.95rem;
@@ -69,7 +55,7 @@ $dmBorderHover: #b3bdc9;
         flex-direction: row;
         margin-top: 15px;
 
-        .comment-icon{
+        .comment-icon {
           width: 18px;
           margin-right: 8px;
         }
@@ -78,7 +64,6 @@ $dmBorderHover: #b3bdc9;
           background-color: $dmHover;
         }
       }
-
 
       .comment-body {
         margin-top: 15px;
@@ -125,10 +110,7 @@ $dmBorderHover: #b3bdc9;
           white-space: pre-wrap;
         }
       }
-
     }
-
-    
 
     .commented-user-accessable-options {
       position: absolute;
@@ -158,20 +140,66 @@ $dmBorderHover: #b3bdc9;
         }
       }
     }
+  }
 
+  .nested-comment {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
 
+    .bar-and-comment {
+      display: flex;
 
-    &.dark{
+      .bar-parent {
+        min-height: calc(100% - 15px);
+        width: auto;
+        padding-right: 30px;
+        .bar {
+          cursor: pointer;
+          min-height: 100%;
+          max-height: calc(100% - 15px);
+          background-color: #fff;
+          border-right: 2px #fff solid;
+          border-left: 2px #fff solid;
+
+          &:hover {
+            background-color: orange;
+            border-right: 2px orange solid;
+            border-left: 2px orange solid;
+          }
+        }
+      }
+
+      .comment {
+        width: 100%;
+      }
+    }
+
+    .replies-toggle {
+      margin: 0;
+      font-weight: 500;
+      margin-top: 15px;
+      padding-bottom: 10px;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &.dark {
+    .comment {
       background-color: $dmSecondaryBackground;
       color: $dmText;
 
-      .comment-main-section{
-
+      .comment-main-section {
         .comment-metadata {
           color: $dmSecondaryText;
-            .user {
-              color: $dmText;
-            }
+          .user {
+            color: $dmText;
+          }
         }
 
         .comment-body {
@@ -179,7 +207,7 @@ $dmBorderHover: #b3bdc9;
             textarea {
               color: $dmText;
               border: 1px solid $dmBorderInitial;
-    
+
               &:hover {
                 border: 1px solid $dmBorderHover;
               }
@@ -193,66 +221,60 @@ $dmBorderHover: #b3bdc9;
               }
             }
           }
-    
+
           .comment-body-text {
             color: $dmText;
           }
-
-
-
         }
-      }        
+      }
       .commented-user-accessable-options {
-            button {
-              transition: background-color 0.1s ease;
-              cursor: pointer;
-              background-color: inherit;
-              .edit-icon,
-              .delete-icon {
-                fill: $dmText;
-                stroke: $dmText;
-              }
-        
-              &:hover {
-                background-color: $dmHover;
-              }
+        button {
+          transition: background-color 0.1s ease;
+          cursor: pointer;
+          background-color: inherit;
+          .edit-icon,
+          .delete-icon {
+            fill: $dmText;
+            stroke: $dmText;
+          }
+
+          &:hover {
+            background-color: $dmHover;
+          }
+        }
+      }
+    }
+
+    .nested-comment {
+
+  
+      .bar-and-comment {
+  
+        .bar-parent {
+          .bar {
+            background-color: $dmSecondaryText;
+            border-right: 2px $dmSecondaryText solid;
+            border-left: 2px $dmSecondaryText solid;
+  
+            &:hover {
+              background-color: orange;
+              border-right: 2px orange solid;
+              border-left: 2px orange solid;
             }
           }
+        }
+  
+        .comment {
+
+        }
+      }
+  
+      .replies-toggle {
+        color: $dmText;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
-  }    
-  .nested-comment{
-      // border-left: 2px #fff solid;;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      width: 100%;
-      // margin-bottom: 10px;
-
-      .bar-and-comment{
-        display: flex;
-        margin-top: 15px;
-        .bar{
-          align-self: stretch;
-          // height: 100%;
-          min-height: 100%;
-          // width: 1px;
-          background-color: #fff;
-          border: 2px #fff solid;
-          margin-right: 30px;
-
-          &:hover{
-            background-color: orange;
-            border: 2px orange solid;
-          }
-        }
-        .comment{
-          width: 100%;
-        }
-      }
-
-      .replies-toggle{
-        margin: 0;
-      }
-
   }
 }

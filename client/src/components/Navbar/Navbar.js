@@ -26,7 +26,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className={`nav ${darkMode && 'dark'}`}>
+    <nav className={`nav ${darkMode ? 'dark' : ''}`}>
       <div className={`nav-container`}>
         <div className={`home-link-parent`} >
           <Link className={`nav-home-link`} to="/"><span className="not-span" onClick={() => dispatch(setCurrentSubreddit(null))} >(Not)</span> Reddit</Link>

@@ -1,6 +1,7 @@
 import axios from "../axios-config"
+import { getApiUrl } from "../actions/nodeEnvActions"
 
-const API_URL = "http://localhost:5000"
+const API_URL = getApiUrl()
 
 export const setCurrentSubreddit = (name) => async (dispatch, action) => {
   try {

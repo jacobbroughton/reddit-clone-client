@@ -24,16 +24,6 @@ const Comment = ({ comment }) => {
 
   let createdAt = getElapsedTime(comment.created_at);
 
-  const getChildComments = (comment) => {
-    return comments.filter(
-      (filteredComment) => filteredComment.parent_comment === comment.id
-    );
-  };
-
-  useEffect(() => {
-    setChildComments(getChildComments(comment));
-  }, []);
-
   const handleEditCommentFormSubmit = (e, id) => {
     const body = editCommentBody;
 
@@ -41,15 +31,59 @@ const Comment = ({ comment }) => {
     setIsEditing(!isEditing);
 
     e.preventDefault();
+  };  
+  
+  
+  const handleThreadToggle = (comment) => {
+    console.log(comment);
+
+    setThreadToggle(!threadToggle);
   };
+
+
+  
+
+  const getChildComments = (comments) => {
+
+    return (
+      comments.map(
+        (eachComment, key) =>
+          eachComment.parent_comment === comment.id && (
+            <div className='nested-comment'>
+              {/* <p>{eachComment.parent_comment}</p> */}
+              <p
+                onClick={() => setThreadToggle(!threadToggle)}
+                className="replies-toggle"
+              >
+                {`${threadToggle ? "Hide " : "Show "}`}replies
+              </p>
+              {threadToggle && (
+                <div className={`${key} bar-and-comment`}>
+                  <div className="bar-parent">
+                    <div
+                      onClick={() => setThreadToggle(!threadToggle)}
+                      className="bar"
+                    ></div>
+                  </div>
+
+                  <Comment key={key} comment={eachComment} />
+                </div>
+              )}
+            </div>
+          )
+      )
+    );
+  };
+
+
 
   useEffect(() => {
     setEditCommentBody(comment.body);
   }, [isEditing]);
 
   return (
-    <div className="comment-thread">
-      <div className={`comment ${darkMode && "dark"}`}>
+    <div className={`comment-thread ${darkMode ? 'dark' : ''}`}>
+      <div className='comment'>
         <div className="comment-main-section">
           <p className="comment-metadata">
             <span className="user">{comment.username}</span>
@@ -118,31 +152,33 @@ const Comment = ({ comment }) => {
         )}
       </div>
 
-      {comments && (
-        <>
-          <div className="nested-comment">
-            <p
-              onClick={() => setThreadToggle(!threadToggle)}
-              className="replies-toggle"
-            >
-              {`${threadToggle ? "Hide " : "Show "}`}replies
-            </p>
-            {comments.map(
-              (eachComment, key) =>
-                eachComment.parent_comment === comment.id &&
-                threadToggle && (
+      {/* {comments &&
+        comments.map(
+          (eachComment, key) =>
+            eachComment.parent_comment === comment.id && (
+              <div className="nested-comment">
+                <p
+                  onClick={() => handleThreadToggle(eachComment)}
+                  className="replies-toggle"
+                >
+                  {`${threadToggle ? "Hide " : "Show "}`}replies
+                </p>
+                {threadToggle && (
                   <div className="bar-and-comment">
-                    <div
-                      onClick={() => setThreadToggle(!threadToggle)}
-                      className="bar"
-                    ></div>
+                    <div className="bar-parent">
+                      <div
+                        onClick={() => handleThreadToggle(eachComment)}
+                        className="bar"
+                      ></div>
+                    </div>
+
                     <Comment key={key} comment={eachComment} />
                   </div>
-                )
-            )}
-          </div>
-        </>
-      )}
+                )}
+              </div>
+            )
+        )} */}
+        { getChildComments(comments) }
     </div>
   );
 };

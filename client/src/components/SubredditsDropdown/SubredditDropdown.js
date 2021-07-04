@@ -28,7 +28,7 @@ const SubredditDropdown = ({ setSubredditDropdownToggle, subredditDropdownToggle
 
   return (
     <div     
-      className={`${darkMode && 'dark'} ${subredditDropdownToggle ? 'subreddit-dropdown open' : 'subreddit-dropdown closed'}`}>
+      className={`${darkMode ? 'dark' : ''} ${subredditDropdownToggle ? 'subreddit-dropdown open' : 'subreddit-dropdown closed'}`}>
       <div className="dropdown-home-link-parent">
         <Link onClick={() => handleSubredditClick(null)} to={"/"}>Home</Link>
       </div>
