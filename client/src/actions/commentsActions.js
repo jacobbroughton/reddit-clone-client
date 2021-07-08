@@ -31,6 +31,7 @@ export const addComment = ({
     comment = {
       ...comment,
       id: response.data.insertId,
+      threadToggle: true,
       created_at: dateNow,
       updated_at: dateNow 
     }
@@ -44,6 +45,16 @@ export const addComment = ({
       response: error.response
     })
   }
+}
+
+
+export const commentThreadToggle = (id, threadToggle) => async (dispatch) => {
+  console.log(id)
+  console.log(threadToggle)
+  dispatch({
+    type: "TOGGLE_COMMENT_THREAD",
+    payload: { idForThreadToggle: id, threadToggle }
+  })
 }
 
 
@@ -80,8 +91,16 @@ export const getComments = ( postId ) => async (dispatch, action) => {
     dispatch({ type: "GET_COMMENTS_REQUEST" })
 
     const response = await axios.get(`${API_URL}/comments/${postId}`)
+    console.log(response.data[0])
+
+    let commentsArr = response.data.map(comment => {
+      return {...comment, threadToggle: true}}
+    )
+
+    console.log(commentsArr[0])
     
-    dispatch({ type: "GET_COMMENTS_SUCCESS", payload: response.data })
+    
+    dispatch({ type: "GET_COMMENTS_SUCCESS", payload: commentsArr })
 
   } catch (error) {
     dispatch({ 

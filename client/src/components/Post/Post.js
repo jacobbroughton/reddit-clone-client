@@ -12,7 +12,7 @@ const Post = ({ post }) => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.auth.user);
-  const postFromState = useSelector((state) => state.post)
+  // const postFromState = useSelector((state) => state.post)
 
   const [isEditing, setIsEditing] = useState(false);
   const [editPostBody, setEditPostBody] = useState(post ? post.body : "");
@@ -28,11 +28,6 @@ const Post = ({ post }) => {
 
     e.preventDefault();
   };
-
-  useEffect(() => {
-    console.log(postFromState)
-    console.log(post)
-  }, [])
 
 
   const handlePostDelete = () => {

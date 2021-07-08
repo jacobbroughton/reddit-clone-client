@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getElapsedTime } from "../GetElapsedTime";
-import { startEditComment, deleteComment } from "../../actions/commentsActions";
+import { startEditComment, deleteComment, commentThreadToggle } from "../../actions/commentsActions";
 import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
 import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";
 import { ReactComponent as CommentIcon } from "../../images/comment-icon.svg";
@@ -34,34 +34,33 @@ const Comment = ({ comment }) => {
   };  
   
   
-  const handleThreadToggle = (comment) => {
-    console.log(comment);
+  const handleThreadToggle = (eachComment) => {
+    dispatch(commentThreadToggle(eachComment.id, !eachComment.threadToggle))
 
-    setThreadToggle(!threadToggle);
+    // setThreadToggle(!threadToggle);
   };
 
 
   
 
   const getChildComments = (comments) => {
-
     return (
       comments.map(
         (eachComment, key) =>
-          eachComment.parent_comment === comment.id && (
+          eachComment.parent_comment === comment.id && ( 
             <div className='nested-comment'>
-              {/* <p>{eachComment.parent_comment}</p> */}
               <p
-                onClick={() => setThreadToggle(!threadToggle)}
+                onClick={() => handleThreadToggle(eachComment)}
                 className="replies-toggle"
               >
-                {`${threadToggle ? "Hide " : "Show "}`}replies
+                {`${eachComment.threadToggle ? "Hide " : "Show "}`} replies
               </p>
-              {threadToggle && (
+              {console.log(eachComment.threadToggle)}
+              {eachComment.threadToggle && ( // toggle for hiding / showing reply thread
                 <div className={`${key} bar-and-comment`}>
                   <div className="bar-parent">
                     <div
-                      onClick={() => setThreadToggle(!threadToggle)}
+                      onClick={() => handleThreadToggle(eachComment)}
                       className="bar"
                     ></div>
                   </div>
@@ -152,33 +151,7 @@ const Comment = ({ comment }) => {
         )}
       </div>
 
-      {/* {comments &&
-        comments.map(
-          (eachComment, key) =>
-            eachComment.parent_comment === comment.id && (
-              <div className="nested-comment">
-                <p
-                  onClick={() => handleThreadToggle(eachComment)}
-                  className="replies-toggle"
-                >
-                  {`${threadToggle ? "Hide " : "Show "}`}replies
-                </p>
-                {threadToggle && (
-                  <div className="bar-and-comment">
-                    <div className="bar-parent">
-                      <div
-                        onClick={() => handleThreadToggle(eachComment)}
-                        className="bar"
-                      ></div>
-                    </div>
-
-                    <Comment key={key} comment={eachComment} />
-                  </div>
-                )}
-              </div>
-            )
-        )} */}
-        { getChildComments(comments) }
+      { getChildComments(comments) }
     </div>
   );
 };

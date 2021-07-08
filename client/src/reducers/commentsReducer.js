@@ -19,6 +19,14 @@ export const commentsReducer = (state = [], action) => {
       console.log(state.filter(comment => comment.id !== idForDelete))
       return state.filter(comment => comment.id !== idForDelete)
 
+
+    case "TOGGLE_COMMENT_THREAD":
+      const { idForThreadToggle, threadToggle } = action.payload
+      console.log(idForThreadToggle, threadToggle)
+
+      console.log(state.map(comment => comment.id === idForThreadToggle ? {...comment, threadToggle} : comment))
+      return state.map(comment => comment.id === idForThreadToggle ? {...comment, threadToggle} : comment)
+
     default:
       return state
   }
