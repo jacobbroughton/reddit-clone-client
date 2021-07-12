@@ -34,16 +34,15 @@ const Comment = ({ comment }) => {
   };  
   
   
-  const handleThreadToggle = (eachComment) => {
-    dispatch(commentThreadToggle(eachComment.id, !eachComment.threadToggle))
-
-    // setThreadToggle(!threadToggle);
+  const handleThreadToggle = (comment) => {
+    
+    dispatch(commentThreadToggle(comment.id, !comment.threadToggle))
   };
-
 
   
 
   const getChildComments = (comments) => {
+
     return (
       comments.map(
         (eachComment, key) =>
@@ -55,7 +54,6 @@ const Comment = ({ comment }) => {
               >
                 {`${eachComment.threadToggle ? "Hide " : "Show "}`} replies
               </p>
-              {console.log(eachComment.threadToggle)}
               {eachComment.threadToggle && ( // toggle for hiding / showing reply thread
                 <div className={`${key} bar-and-comment`}>
                   <div className="bar-parent">

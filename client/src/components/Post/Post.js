@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setPost, startEditPost } from "../../actions/postActions";
-import { deletePost } from "../../actions/postActions";
+import { setPost, startEditPost, deletePost } from "../../actions/postActions";
+import { handleVote } from "../../actions/postListActions"
+// import { deletePost } from "../../actions/postActions";
 import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
 import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";
 import { getElapsedTime } from "../GetElapsedTime";
@@ -37,11 +38,15 @@ const Post = ({ post }) => {
 
   return (
     <div className="post">
+      <div className="votes-section">
+        <button onClick={() => dispatch(handleVote(user.id, post.id, 1))} className="up-vote">⬆</button>
+        <button onClick={() => dispatch(handleVote(user.id, post.id, -1))} className="down-vote">⬇</button>
+      </div>
       <div className="post-main-section">      
           <p className="post-metadata">
             <span className="subreddit">r/{post.subreddit_name}</span>
             <span className="posted-by-span">
-              Posted by <span className="user">u/{post.username && post.username}</span>
+  {post.id} Posted by <span className="user">u/{post.username && post.username}</span>
             </span>
 
             {dateCreated}
@@ -83,8 +88,6 @@ const Post = ({ post }) => {
           </div>
         }
       </div>
-
-
 
 
       {user && user.id === post.author_id && (

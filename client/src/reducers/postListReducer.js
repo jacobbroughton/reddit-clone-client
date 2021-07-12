@@ -33,6 +33,10 @@ export const postListReducer = (state = [], action) => {
           body: updates.body
         }: post)
       }
+
+    case "POST_VOTE_SUCCESS":
+      const { postId, value } = action.payload
+      console.log(postId, value)
         
     default:
       return state

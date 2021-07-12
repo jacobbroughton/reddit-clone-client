@@ -37,7 +37,7 @@ const rootReducer = combineReducers({
     error: errorReducer,
     loading: loadingReducer,
     darkMode: darkModeReducer,
-    comments: commentsReducer,
+    comments: commentsReducer
 })
 
 

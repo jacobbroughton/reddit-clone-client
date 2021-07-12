@@ -27,10 +27,39 @@ $dmBorderHover: #b3bdc9;
   position: relative;
   z-index: 1;
 
+  .votes-section{
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100%;
+    padding-right: 35px;
+    gap: 20px;
+
+    button{
+      font-size: 1.5rem;
+      background-color: transparent;
+      border: none;
+      color: $lmText;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &.up-vote{}
+
+      &.down-vote{}
+
+      &:hover{
+        background-color: $lmHover;
+      }
+    }
+  }
+
   .post-main-section {
     width: calc(100% - 70px);
     .post-metadata {
-      // margin: 0;
+      margin: 0;
+      margin-bottom: 15px;
       display: flex;
       color: $lmSecondaryText;
 
@@ -149,7 +178,26 @@ $dmBorderHover: #b3bdc9;
 
 .dark .post {
   background-color: $dmSecondaryBackground;
-  .post-main-section {
+      .votes-section{
+      button{
+        background-color: transparent;
+        border: none;
+        color: $dmText;
+        cursor: pointer;
+  
+        &.up-vote{}
+  
+        &.down-vote{}
+  
+        &:hover{
+          background-color: $dmHover;
+        }
+      }
+    }
+    .post-main-section {
+
+
+
     .post-metadata {
       color: $dmSecondaryText;
       .posted-by-span {

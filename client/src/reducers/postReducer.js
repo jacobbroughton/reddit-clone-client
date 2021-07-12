@@ -16,10 +16,6 @@ export const postReducer = (state = null, action) => {
       }
 
     case "DELETE_POST_SUCCESS": 
-      const { idForDelete } = action.payload
-
-      // Need to figure out how keep the stuff there on refresh after deletion, but with
-      // [deleted] in the spots
 
       return {
         ...state,

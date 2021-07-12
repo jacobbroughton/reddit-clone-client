@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
 require("dotenv").config();
-const { formatISO } = require('date-fns')
+// const { formatISO } = require('date-fns')
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -22,16 +22,19 @@ router.get('/', (req, res) => {
 
   let subredditName = req.query.filters
 
-
-  // -------- The join line is messing things up -------
   const getPostsStatement = `
     SELECT p.id, p.post_type, p.title, p.body, p.author_id, p.subreddit_id, p.subreddit_name, p.created_at, p.updated_at, u.username FROM posts AS p
     INNER JOIN users AS u ON p.author_id = u.id
     ${subredditName ? `WHERE p.subreddit_name = '${subredditName}'` : ''}
+
   `
+
+  // (SELECT SUM(v.post_value) FROM votes AS v 
+  // WHERE p.id = v.post_id
 
   connection.query(getPostsStatement, (err, rows) => {
     if(err) throw err;
+    console.log(rows)
     res.send(rows)
   })
 })
