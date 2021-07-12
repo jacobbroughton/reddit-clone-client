@@ -23,10 +23,11 @@ router.get('/', (req, res) => {
   let subredditName = req.query.filters
 
   const getPostsStatement = `
-    SELECT p.id, p.post_type, p.title, p.body, p.author_id, p.subreddit_id, p.subreddit_name, p.created_at, p.updated_at, u.username FROM posts AS p
-    INNER JOIN users AS u ON p.author_id = u.id
+    SELECT p.id, p.post_type, p.title, p.body, p.author_id, p.subreddit_id, p.subreddit_name, p.created_at, p.updated_at, u.username, SUM(v.vote_value) AS votes FROM posts AS p
+    INNER JOIN users u ON p.author_id = u.id 
     ${subredditName ? `WHERE p.subreddit_name = '${subredditName}'` : ''}
-
+    INNER JOIN votes v ON p.id = v.post_id GROUP BY post_id
+    
   `
 
   // (SELECT SUM(v.post_value) FROM votes AS v 

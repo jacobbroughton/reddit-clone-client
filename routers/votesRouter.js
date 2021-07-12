@@ -52,7 +52,7 @@ router.post("/", (req, res) => {
   //   END
   // `
 
-  console.log(req.body.data)
+  console.log(req.body.data.voteObj)
 
   let insertVoteStatement = `
     INSERT INTO votes (user_id, post_id, vote_value) 

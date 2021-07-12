@@ -29,6 +29,7 @@ const Post = ({ post }) => {
 
     e.preventDefault();
   };
+  
 
 
   const handlePostDelete = () => {
@@ -39,7 +40,8 @@ const Post = ({ post }) => {
   return (
     <div className="post">
       <div className="votes-section">
-        <button onClick={() => dispatch(handleVote(user.id, post.id, 1))} className="up-vote">⬆</button>
+  <button onClick={() => dispatch(handleVote(user.id, post.id, 1))} className="up-vote">⬆</button>
+  {post.votes && post.votes}
         <button onClick={() => dispatch(handleVote(user.id, post.id, -1))} className="down-vote">⬇</button>
       </div>
       <div className="post-main-section">      

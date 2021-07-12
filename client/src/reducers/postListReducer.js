@@ -35,8 +35,10 @@ export const postListReducer = (state = [], action) => {
       }
 
     case "POST_VOTE_SUCCESS":
-      const { postId, value } = action.payload
-      console.log(postId, value)
+      const { userId, postId, value } = action.payload
+      console.log(userId, postId, value)
+
+      return state
         
     default:
       return state
