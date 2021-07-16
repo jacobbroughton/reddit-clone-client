@@ -27,33 +27,6 @@ router.post("/", (req, res) => {
   } = req.body.data
 
 
-
-  // let insertVoteStatement = `
-  // IF EXISTS (
-  //   SELECT * FROM votes 
-  //     WHERE user_id = ${userId}
-  //     AND post_id = ${postId}
-  //   )
-  //   BEGIN
-  //     UPDATE votes 
-  //     SET value = ${value}
-  //     WHERE user_id = ${userId} 
-  //     AND post_id = ${postId}
-  //   END
-  // ELSE
-  // IF NOT EXISTS (
-  //   SELECT * FROM votes 
-  //     WHERE user_id = ${userId} 
-  //     AND post_id = ${postId}
-  //   )
-  //   BEGIN
-  //     INSERT INTO votes (user_id, post_id, value) 
-  //     VALUES (${userId}, ${postId}, ${value})
-  //   END
-  // `
-
-  console.log(req.body.data.voteObj)
-
   let insertVoteStatement = `
     INSERT INTO votes (user_id, post_id, vote_value) 
     VALUES (${userId}, ${postId}, ${value})

@@ -86,6 +86,7 @@ const Comment = ({ comment }) => {
             <span className="user">{comment.username}</span>
             {createdAt}
           </p>
+  <span>{comment.emoji}</span>
 
           <div className="comment-body">
             {user && user.id === comment.author_id && isEditing ? (

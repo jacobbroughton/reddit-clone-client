@@ -10,8 +10,8 @@ $linkColor: #0079d3;
 
 $dmText: rgba(255, 255, 255, 0.87);
 $dmSecondaryText: #aab3be;
-$dmPrimaryBackground:#1b1f2b;
-$dmSecondaryBackground:#2e3748 ;
+$dmPrimaryBackground: #1b1f2b;
+$dmSecondaryBackground: #2e3748;
 $dmHover: #ffffff29;
 $dmBorderInitial: #61676d;
 $dmBorderHover: #b3bdc9;
@@ -27,16 +27,23 @@ $dmBorderHover: #b3bdc9;
   position: relative;
   z-index: 1;
 
-  .votes-section{
+  .votes-section {
     display: flex;
     align-self: flex-start;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     min-height: 100%;
     padding-right: 35px;
     gap: 20px;
+    color: $lmText;
 
-    button{
+    .votes-count {
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+
+    button {
       font-size: 1.5rem;
       background-color: transparent;
       border: none;
@@ -45,12 +52,22 @@ $dmBorderHover: #b3bdc9;
       border-radius: 5px;
       cursor: pointer;
 
-      &.up-vote{}
-
-      &.down-vote{}
-
-      &:hover{
+      &:hover {
         background-color: $lmHover;
+      }
+    }
+
+    .up-vote {
+
+      &.selected{
+        color: orange;
+      }
+    }
+
+    .down-vote {
+
+      &.selected{
+        color: blue;
       }
     }
   }
@@ -97,7 +114,6 @@ $dmBorderHover: #b3bdc9;
         font-weight: 600;
       }
     }
-
 
     .post-body {
       margin-top: 15px;
@@ -178,26 +194,25 @@ $dmBorderHover: #b3bdc9;
 
 .dark .post {
   background-color: $dmSecondaryBackground;
-      .votes-section{
-      button{
-        background-color: transparent;
-        border: none;
-        color: $dmText;
-        cursor: pointer;
-  
-        &.up-vote{}
-  
-        &.down-vote{}
-  
-        &:hover{
-          background-color: $dmHover;
-        }
+  .votes-section {
+    button {
+      background-color: transparent;
+      border: none;
+      color: $dmText;
+      cursor: pointer;
+
+      &.up-vote {
+      }
+
+      &.down-vote {
+      }
+
+      &:hover {
+        background-color: $dmHover;
       }
     }
-    .post-main-section {
-
-
-
+  }
+  .post-main-section {
     .post-metadata {
       color: $dmSecondaryText;
       .posted-by-span {
@@ -216,8 +231,6 @@ $dmBorderHover: #b3bdc9;
         color: $dmText;
       }
     }
-
-
 
     .post-body {
       .edit-post-form {

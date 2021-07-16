@@ -5,6 +5,7 @@ const API_URL = getApiUrl()
 
 export const addComment = ({ 
   body,
+  emoji,
   author_id,
   post_id,
   parent_comment,
@@ -16,6 +17,7 @@ export const addComment = ({
 
     let comment = {
       body,
+      emoji,
       author_id,
       post_id,
       parent_comment,
@@ -26,7 +28,6 @@ export const addComment = ({
     let dateNow = `${dateISOString.substr(0, 10)} ${dateISOString.substr(11, 8)}`
 
     const response = await axios.post(`${API_URL}/comments`, comment)
-
 
     comment = {
       ...comment,

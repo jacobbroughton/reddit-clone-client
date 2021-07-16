@@ -31,24 +31,32 @@ const Post = ({ post }) => {
   };
   
 
+  useEffect(() => {
+    console.log(post)
+  }, [])
+
 
   const handlePostDelete = () => {
     dispatch(deletePost(post, post.id))
+  }
+
+  const handleVoteClick = (vote_value) => {
+    dispatch(handleVote(user.id, post.id, vote_value))
   }
 
 
   return (
     <div className="post">
       <div className="votes-section">
-  <button onClick={() => dispatch(handleVote(user.id, post.id, 1))} className="up-vote">⬆</button>
-  {post.votes && post.votes}
-        <button onClick={() => dispatch(handleVote(user.id, post.id, -1))} className="down-vote">⬇</button>
+        <button onClick={() => handleVoteClick(1)} className={`${post.has_voted === 1 ? 'selected' : ''} up-vote`}>⬆</button>
+        <span className="votes-count">{post.votes && post.votes}</span>
+        <button onClick={() => handleVoteClick(-1)} className={`${post.has_voted === -1 ? `selected` : ''} down-vote`}>⬇</button>
       </div>
       <div className="post-main-section">      
           <p className="post-metadata">
             <span className="subreddit">r/{post.subreddit_name}</span>
             <span className="posted-by-span">
-  {post.id} Posted by <span className="user">u/{post.username && post.username}</span>
+            {post.id} Posted by <span className="user">u/{post.username && post.username}</span>
             </span>
 
             {dateCreated}

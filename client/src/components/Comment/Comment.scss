@@ -27,7 +27,7 @@ $dmBorderHover: #b3bdc9;
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: calc(100% - 60px);
 
     .comment-main-section {
       width: calc(100% - 70px);
