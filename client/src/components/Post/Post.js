@@ -29,11 +29,6 @@ const Post = ({ post }) => {
 
     e.preventDefault();
   };
-  
-
-  useEffect(() => {
-    console.log(post)
-  }, [])
 
 
   const handlePostDelete = () => {
@@ -54,7 +49,7 @@ const Post = ({ post }) => {
       </div>
       <div className="post-main-section">      
           <p className="post-metadata">
-            <span className="subreddit">r/{post.subreddit_name}</span>
+            <Link to={`/r/${post.subreddit_name}`} className="post-subreddit-link">r/{post.subreddit_name}</Link>
             <span className="posted-by-span">
             {post.id} Posted by <span className="user">u/{post.username && post.username}</span>
             </span>
