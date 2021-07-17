@@ -67,7 +67,7 @@ $dmBorderHover: #b3bdc9;
     .down-vote {
 
       &.selected{
-        color: blue;
+        color: teal;
       }
     }
   }
@@ -207,6 +207,10 @@ $dmBorderHover: #b3bdc9;
 .dark .post {
   background-color: $dmSecondaryBackground;
   .votes-section {
+    .votes-count{
+      color: $dmText;
+    }
+
     button {
       background-color: transparent;
       border: none;
@@ -223,6 +227,7 @@ $dmBorderHover: #b3bdc9;
         background-color: $dmHover;
       }
     }
+    
   }
   .post-main-section {
     .post-metadata {

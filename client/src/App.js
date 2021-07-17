@@ -2,6 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 import PostList from "./components/PostList/PostList";
 import NewPost from "./components/NewPost/NewPost";
 import SinglePostPage from "./components/SinglePostPage/SinglePostPage";
@@ -48,6 +49,7 @@ function App() {
           <PostList />
         </Route>
       </Switch>
+      <Footer/>
     </div>
   );
 }
