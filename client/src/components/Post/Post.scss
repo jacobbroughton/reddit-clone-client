@@ -35,7 +35,7 @@ $dmBorderHover: #b3bdc9;
     align-items: center;
     min-height: 100%;
     padding-right: 35px;
-    gap: 20px;
+    gap: 10px;
     color: $lmText;
 
     .votes-count {
@@ -74,6 +74,13 @@ $dmBorderHover: #b3bdc9;
 
   .post-main-section {
     width: calc(100% - 70px);
+
+    .vote-error{
+      margin: 0;
+      margin-bottom: 10px;
+      color: #f58180;
+    }
+
     .post-metadata {
       margin: 0;
       margin-bottom: 15px;
@@ -207,6 +214,7 @@ $dmBorderHover: #b3bdc9;
 .dark .post {
   background-color: $dmSecondaryBackground;
   .votes-section {
+    
     .votes-count{
       color: $dmText;
     }
@@ -230,6 +238,10 @@ $dmBorderHover: #b3bdc9;
     
   }
   .post-main-section {
+    .vote-error{
+      color: #f58180;
+    }
+
     .post-metadata {
       color: $dmSecondaryText;
       .posted-by-span {

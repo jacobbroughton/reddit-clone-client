@@ -11,19 +11,19 @@ import Post from "../Post/Post";
 const PostList = () => {
   const dispatch = useDispatch();
 
+  const user = useSelector((state) => state.auth.user);
   const darkMode = useSelector((state) => state.darkMode);
   const posts = useSelector((state) => state.postList);
-  // const currentSubreddit = useSelector((state) => state.currentSubreddit);
   const loading = useSelector((state) => state.loading);
   const { name } = useParams();
 
 
   // When { name } changes
   useEffect(() => {
-    dispatch(getPosts(name));
+    // dispatch(getPosts(user ? user.id : null, name));
     dispatch(setCurrentSubreddit(name));
-    dispatch(getPosts(name));
-  }, [name, dispatch]);
+    dispatch(getPosts(user ? user.id : null, name));
+  }, [name, user]);
 
 
   return (

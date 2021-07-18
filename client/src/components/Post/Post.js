@@ -17,6 +17,7 @@ const Post = ({ post }) => {
 
   const [isEditing, setIsEditing] = useState(false);
   const [editPostBody, setEditPostBody] = useState(post ? post.body : "");
+  const [error, setError] = useState(null)
 
   const dateCreated = getElapsedTime(post.created_at);
 
@@ -36,6 +37,12 @@ const Post = ({ post }) => {
   }
 
   const handleVoteClick = (vote_value) => {
+    if(!user) { 
+      setError("You must log in to vote")
+      setTimeout(() => setError(null), 4000)
+      return
+    }
+
     dispatch(handleVote(user.id, post.id, vote_value))
   }
 
@@ -47,7 +54,8 @@ const Post = ({ post }) => {
         <span className="votes-count">{post.votes && post.votes}</span>
         <button onClick={() => handleVoteClick(-1)} className={`${post.has_voted === -1 ? `selected` : ''} down-vote`}>⬇</button>
       </div>
-      <div className="post-main-section">      
+      <div className="post-main-section">   
+      { error && <p className="vote-error">{error}</p> }   
           <p className="post-metadata">
             <Link to={`/r/${post.subreddit_name}`} className="post-subreddit-link">r/{post.subreddit_name}</Link>
             <span className="posted-by-span">

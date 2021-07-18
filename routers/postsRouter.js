@@ -21,15 +21,22 @@ connection.connect();
 router.get('/', (req, res) => {
 
   let subredditName = req.query.filters
-  console.log(subredditName)
+  let { userId } = req.query
+
 
   const getPostsStatement = `
-    SELECT p.id, p.post_type, p.title, p.body, p.author_id, p.subreddit_id, p.subreddit_name, p.created_at, p.updated_at, u.username, COALESCE(SUM(v.vote_value), 0) AS votes FROM posts AS p
-    INNER JOIN users u ON p.author_id = u.id 
-    LEFT JOIN votes v ON p.id = v.post_id 
-    ${subredditName ? `WHERE p.subreddit_name = '${subredditName}'` : ''} 
-    GROUP BY id
-  `
+  SELECT p.id, p.post_type, p.title, p.body, p.author_id, p.subreddit_id, p.subreddit_name, p.created_at, p.updated_at, u.username, 
+    CASE
+      WHEN v.user_id = ${userId ? userId : null} AND v.post_id = p.id
+        THEN v.vote_value
+        ELSE null
+        END as has_voted, 
+    COALESCE(SUM(v.vote_value), 0) AS votes FROM posts AS p
+  INNER JOIN users u ON p.author_id = u.id 
+  LEFT JOIN votes v ON p.id = v.post_id 
+  ${subredditName ? `WHERE p.subreddit_name = '${subredditName}'` : ''} 
+  GROUP BY id
+`
 
   connection.query(getPostsStatement, (err, rows) => {
     if(err) throw err;
