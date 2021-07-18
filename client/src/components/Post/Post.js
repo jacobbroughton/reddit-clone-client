@@ -23,9 +23,8 @@ const Post = ({ post }) => {
 
   const handleEditPostFormSubmit = (e, id) => {
     const body = editPostBody;
-    const idForEdit = id
 
-    dispatch(startEditPost({ idForEdit, body }));
+    dispatch(startEditPost({ id, body }));
     setIsEditing(!isEditing)
 
     e.preventDefault();

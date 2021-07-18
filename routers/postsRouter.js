@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
   INNER JOIN users u ON p.author_id = u.id 
   LEFT JOIN votes v ON p.id = v.post_id 
   ${subredditName ? `WHERE p.subreddit_name = '${subredditName}'` : ''} 
-  GROUP BY id
+  GROUP BY p.created_at
 `
 
   connection.query(getPostsStatement, (err, rows) => {

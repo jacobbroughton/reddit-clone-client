@@ -72,12 +72,12 @@ router.get('/:postId', (req, res) => {
 
 router.delete('/', (req, res) => {
   console.log(req.body)
-  const { idForDelete } = req.body
+  const { id } = req.body
 
   const deleteCommentStatement = `
     DELETE
     FROM comments
-    WHERE id = ${idForDelete}
+    WHERE id = ${id}
   `
 
   connection.query(deleteCommentStatement, (err, result) => {
