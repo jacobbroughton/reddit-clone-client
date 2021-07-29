@@ -20,7 +20,7 @@ const PostList = () => {
 
   // When { name } changes
   useEffect(() => {
-    // dispatch(getPosts(user ? user.id : null, name));
+    dispatch(getPosts(user ? user.id : null, name));
     dispatch(setCurrentSubreddit(name));
     dispatch(getPosts(user ? user.id : null, name));
   }, [name, user]);

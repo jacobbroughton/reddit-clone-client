@@ -45,29 +45,29 @@ export const postListReducer = (state = [], action) => {
 
     case "POST_VOTE_SUCCESS": {
       const { userId, postId, value } = action.payload
-      console.log(action.payload)
-
 
       const voteCalc = (post) => {
         switch(value) {
           case 1 : {
-            if(post.has_voted === 1) return post.votes - 1
-            return post.votes + 1
+            if(post.has_voted === 1) return post.vote_count - 1
+            if(post.has_voted === -1) return post.vote_count + 2
+            return post.vote_count + 1
           }
           case -1 : {
-            if(post.has_voted === -1) return post.votes + 1
-            return post.votes - 1
+            if(post.has_voted === -1) return post.vote_count + 1
+            if(post.has_voted === 1) return post.vote_count - 2
+            return post.vote_count - 1
           }
           default : {
-            return post.votes;
+            return post.vote_count;
           }
         }
       }
 
       return state.map(post => post.id === postId ? { 
         ...post,  
-        votes: voteCalc(post),
-        has_voted: post.has_voted === value ? 0 : value,
+        vote_count: voteCalc(post),
+        has_voted: post.has_voted === value ? null : value,
         vote_value: post.has_voted
       } : post)
     }

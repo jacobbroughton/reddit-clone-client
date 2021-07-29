@@ -50,7 +50,7 @@ const Post = ({ post }) => {
     <div className="post">
       <div className="votes-section">
         <button onClick={() => handleVoteClick(1)} className={`${post.has_voted === 1 ? 'selected' : ''} up-vote`}>⬆</button>
-        <span className="votes-count">{post.votes && post.votes}</span>
+        <span className="votes-count">{post.vote_count && post.vote_count}</span>
         <button onClick={() => handleVoteClick(-1)} className={`${post.has_voted === -1 ? `selected` : ''} down-vote`}>⬇</button>
       </div>
       <div className="post-main-section">   

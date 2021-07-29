@@ -25,22 +25,21 @@ router.get('/', (req, res) => {
 
 
   const getPostsStatement = `
-  SELECT p.id, p.post_type, p.title, p.body, p.author_id, p.subreddit_id, p.subreddit_name, p.created_at, p.updated_at, u.username, 
-    CASE
-      WHEN v.user_id = ${userId ? userId : null} AND v.post_id = p.id
-        THEN v.vote_value
-        ELSE null
-        END as has_voted, 
-    COALESCE(SUM(v.vote_value), 0) AS votes FROM posts AS p
-  INNER JOIN users u ON p.author_id = u.id 
-  LEFT JOIN votes v ON p.id = v.post_id 
-  ${subredditName ? `WHERE p.subreddit_name = '${subredditName}'` : ''} 
-  GROUP BY p.created_at
+  SELECT p.id, p.post_type, p.title, p.body, p.author_id, p.subreddit_id, p.subreddit_name, p.created_at, p.updated_at, u.username, v.post_id, v.user_id,
+    ${userId ? `CASE 
+      WHEN v.user_id = ${userId} AND v.post_id = p.id THEN v.vote_value
+      ELSE NULL
+    END AS has_voted,` : ''} 
+    COALESCE(SUM(v.vote_value), 0) AS vote_count
+    FROM posts AS p
+    INNER JOIN users AS u ON p.author_id = u.id 
+    INNER JOIN votes AS v ON v.post_id = p.id
+    ${subredditName ? `WHERE p.subreddit_name = '${subredditName}'` : ''} 
+    GROUP BY p.id
 `
 
   connection.query(getPostsStatement, (err, rows) => {
     if(err) throw err;
-    console.log(rows)
     res.send(rows)
   })
 })
