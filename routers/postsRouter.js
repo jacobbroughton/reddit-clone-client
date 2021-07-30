@@ -33,7 +33,7 @@ router.get('/', (req, res) => {
     COALESCE(SUM(v.vote_value), 0) AS vote_count
     FROM posts AS p
     INNER JOIN users AS u ON p.author_id = u.id 
-    INNER JOIN votes AS v ON v.post_id = p.id
+    RIGHT JOIN votes AS v ON v.post_id = p.id
     ${subredditName ? `WHERE p.subreddit_name = '${subredditName}'` : ''} 
     GROUP BY p.id
 `
@@ -111,9 +111,10 @@ router.delete('/', (req, res) => {
   console.log(id)
 
   const deletePostStatement = `
-    DELETE p, c
+    DELETE p, c, v
     FROM posts as p
     LEFT JOIN comments AS c ON p.id = c.post_id
+    LEFT JOIN votes AS v ON p.id = v.post_id
     WHERE p.id = ${id}
   `
 
