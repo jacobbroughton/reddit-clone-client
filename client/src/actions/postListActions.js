@@ -42,9 +42,8 @@ export const handleVote = (userId, postId, value) => async (dispatch, getState) 
       value
     }
 
-    const response = await axios.post(`${API_URL}/votes`, { data: voteObj })
+    await axios.post(`${API_URL}/votes`, { data: voteObj })
 
-    
     dispatch({ type: "POST_VOTE_SUCCESS" , payload: voteObj})
   } catch (error) {
     console.log(error)

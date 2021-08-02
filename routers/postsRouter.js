@@ -24,18 +24,31 @@ router.get('/', (req, res) => {
   let { userId } = req.query
 
 
-  const getPostsStatement = `
-  SELECT p.id, p.post_type, p.title, p.body, p.author_id, p.subreddit_id, p.subreddit_name, p.created_at, p.updated_at, u.username, v.post_id, v.user_id,
-    ${userId ? `CASE 
-      WHEN v.user_id = ${userId} AND v.post_id = p.id THEN v.vote_value
-      ELSE NULL
-    END AS has_voted,` : ''} 
-    COALESCE(SUM(v.vote_value), 0) AS vote_count
-    FROM posts AS p
-    INNER JOIN users AS u ON p.author_id = u.id 
-    RIGHT JOIN votes AS v ON v.post_id = p.id
-    ${subredditName ? `WHERE p.subreddit_name = '${subredditName}'` : ''} 
-    GROUP BY p.id
+//   const getPostsStatement = `
+//   SELECT p.*, u.username, v.*,
+//     ${userId ? `CASE 
+//       WHEN v.user_id = ${userId} AND v.post_id = p.id THEN v.vote_value
+//       ELSE NULL
+//     END AS has_voted,` : ''} 
+//     COALESCE(SUM(v.vote_value), 0) AS vote_count
+//     FROM posts AS p
+//     INNER JOIN users AS u ON p.author_id = u.id 
+//     LEFT JOIN votes AS v ON v.post_id = p.id
+//     ${subredditName ? `WHERE p.subreddit_name = '${subredditName}'` : ''} 
+//     GROUP BY p.id
+// `
+
+const getPostsStatement = `
+SELECT p.*, u.username, v.user_id, v.post_id, v.vote_value,
+  ${userId ? `(
+    SELECT vote_value FROM votes WHERE votes.post_id = p.id AND votes.user_id = ${userId} LIMIT 1
+  ) AS has_voted,` : ''} 
+  COALESCE(SUM(v.vote_value), 0) AS vote_count
+  FROM posts AS p
+  INNER JOIN users AS u ON p.author_id = u.id 
+  LEFT JOIN votes AS v ON v.post_id = p.id
+  ${subredditName ? `WHERE p.subreddit_name = '${subredditName}'` : ''} 
+  GROUP BY p.id
 `
 
   connection.query(getPostsStatement, (err, rows) => {
