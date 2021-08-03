@@ -21,7 +21,6 @@ const CommentForm = ({ post, parentComment, setToggleCommentReply, alwaysOpen })
 
     let comment = {
       body,
-      emoji: commentEmoji,
       author_id: user.id,
       post_id: post.id,
       parent_comment: parentComment,
@@ -43,49 +42,11 @@ const CommentForm = ({ post, parentComment, setToggleCommentReply, alwaysOpen })
   }
 
 
-  useEffect(() => {
-    console.log(commentEmoji)
-  }, [commentEmoji])
-
-
-  let emojis = [
-    {
-      symbol: '😂',
-      name: "Laugh"
-    },
-    {
-      symbol: '😢',
-      name: "Sad"
-    },
-    {
-      symbol: '😮',
-      name: "Wow"
-    },
-    {
-      symbol: '👀',
-      name: "Interesting"
-    },
-    {
-      symbol: '🫀',
-      name: "Love"
-    },
-    {
-      symbol: '👍',
-      name: "Like"
-    }
-  ]
-
 
   return (
     <div className={`user-comment ${darkMode ? 'dark' : ''}`}>
       <p>{alwaysOpen ? 'Comment as ' : 'Reply as '}<span>{ user.username }</span> </p>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <div className="emoji-picker">
-          {emojis.map((emoji, key) =>
-            <button key={key} className={`${commentEmoji ? commentEmoji === emoji.symbol && 'selected' : ''} emoji-button`} onClick={(e) => handleCommentEmojiPick(e, emoji)}>{emoji.symbol}</button>
-          )}
-          {/* { commentEmoji && <span className="picked-emoji">{commentEmoji}</span> } */}
-        </div>
         <textarea value={body} onChange={(e) => setBody(e.target.value)} placeholder="What are your thoughts?"/>
         <button disabled={body === ""} className='comment-button' type="submit">Comment</button>
         { !alwaysOpen && <button onClick={() => setToggleCommentReply()}>Cancel</button>}

@@ -60,45 +60,6 @@ $dmBorderHover: #b3bdc9;
         background-color: $lmHover;
       }
     }    
-
-    
-    .emoji-picker{
-      display: flex;
-      align-items: flex-end;
-      margin-bottom: 5px;
-      gap: 5px;
-
-      .picked-emoji{
-        display: flex;
-        justify-content: center;;
-        align-items: center;
-        z-index: 2;
-        font-size: 1.5rem;
-        background-color: $lmSecondaryBackground;
-        padding: 5px 10px;
-        padding-right: 12px;
-        border-radius: 5px;
-        height: 35px;
-        // position: absolute;
-
-      }
-      
-      .emoji-button{
-        // background-color: $lmSecondaryBackground;
-        text-align: center;
-        font-size: 1.1rem;
-        padding-right: 12px;
-        &:hover{
-          background-color: $lmSecondaryBackground;
-          
-        }
-
-        &.selected{
-          background-color: $lmSecondaryBackground;
-        }
-      }
-
-    }
   }
 
   &.dark{

@@ -5,7 +5,6 @@ const API_URL = getApiUrl();
 
 export const addComment = ({
   body,
-  emoji,
   author_id,
   post_id,
   parent_comment,
@@ -16,7 +15,6 @@ export const addComment = ({
 
     let comment = {
       body,
-      emoji,
       author_id,
       post_id,
       parent_comment,
