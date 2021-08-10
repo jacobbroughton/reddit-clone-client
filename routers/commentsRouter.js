@@ -64,7 +64,6 @@ router.get('/:postId', (req, res) => {
 
   connection.query(getCommentsStatement, (err, rows) => {
     if(err) throw err
-    console.log('COMMENTS', rows)
     res.send(rows)
   })
 })

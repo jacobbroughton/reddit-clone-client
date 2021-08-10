@@ -7,10 +7,6 @@ const CommentsList = () => {
 
   const comments = useSelector((state) => state.comments);
 
-  useEffect(() => {
-    console.log(comments)
-  }, [comments])
-
   
   return (
     <div className="comments-list">

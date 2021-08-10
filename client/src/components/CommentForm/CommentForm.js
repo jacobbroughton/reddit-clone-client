@@ -4,7 +4,6 @@ import { addComment } from "../../actions/commentsActions"
 // import { getElapsedTime } from "../GetElapsedTime"
 import "./CommentForm.scss"
 import { useEffect } from "react";
-import Picker, { SKIN_TONE_MEDIUM_DARK } from "emoji-picker-react";
 
 const CommentForm = ({ post, parentComment, setToggleCommentReply, alwaysOpen }) => {
 
@@ -14,7 +13,6 @@ const CommentForm = ({ post, parentComment, setToggleCommentReply, alwaysOpen })
   const darkMode = useSelector((state) => state.darkMode);
 
   const [body, setBody] = useState("")
-  const [commentEmoji, setCommentEmoji] = useState(null)
 
   const handleSubmit = (e) => {
     
@@ -32,13 +30,6 @@ const CommentForm = ({ post, parentComment, setToggleCommentReply, alwaysOpen })
     setBody("")
 
     e.preventDefault()
-  }
-
-  const handleCommentEmojiPick = (e, emoji) => {
-    e.preventDefault()
-    console.log(emoji)
-
-    setCommentEmoji(emoji.symbol)
   }
 
 

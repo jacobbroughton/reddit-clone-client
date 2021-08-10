@@ -49,8 +49,6 @@ export const handleVote = (userId, postId, value) => async (dispatch, getState) 
     console.log(error)
     dispatch({ type: "POST_VOTE_FAILURE" })
   }
-  
-
 }
 
 

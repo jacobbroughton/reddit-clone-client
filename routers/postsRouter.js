@@ -59,18 +59,29 @@ SELECT p.*, u.username, v.user_id, v.post_id, v.vote_value,
 
 
 // Get single post
-router.get('/single/:postId', (req, res) => {
+router.get('/single/:postId/:userId', (req, res) => {
+
+  let { postId, userId } = req.params
+
+  console.log("Hello")
+  console.log(typeof(userId), userId)
 
   const getSinglePostStatement = `
-  SELECT p.id, p.post_type, p.title, p.body, p.author_id, p.subreddit_id, p.subreddit_name, p.created_at, p.updated_at, u.username, COALESCE(SUM(v.vote_value), 0) AS votes FROM posts AS p
+  SELECT p.*, u.username, v.vote_value,
+  ${userId !== '' ? `(
+    SELECT vote_value FROM votes WHERE votes.post_id = p.id AND votes.user_id = ${userId} LIMIT 1
+  ) AS has_voted,` : ''} 
+  COALESCE(SUM(v.vote_value), 0) AS vote_count
+  FROM posts AS p
   INNER JOIN users AS u ON p.author_id = u.id
   LEFT JOIN votes v ON p.id = v.post_id 
-  WHERE p.id = ${req.params.postId}
+  WHERE p.id = ${postId}
   LIMIT 1
 `
 
 connection.query(getSinglePostStatement, (err, rows) => {
   if(err) throw err
+  console.log(rows[0])
   res.send(rows[0])
 })
 })

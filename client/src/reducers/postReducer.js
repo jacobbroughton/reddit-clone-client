@@ -17,6 +17,35 @@ export const postReducer = (state = null, action) => {
       };
     }
 
+    case "POST_VOTE_SUCCESS": {
+      const { userId, postId, value } = action.payload
+
+      const voteCalc = (post) => {
+        switch(value) {
+          case 1 : {
+            if(post.has_voted === 1) return post.vote_count - 1
+            if(post.has_voted === -1) return post.vote_count + 2
+            return post.vote_count + 1
+          }
+          case -1 : {
+            if(post.has_voted === -1) return post.vote_count + 1
+            if(post.has_voted === 1) return post.vote_count - 2
+            return post.vote_count - 1
+          }
+          default : {
+            return post.vote_count;
+          }
+        }
+      }
+
+      return { 
+        ...state,  
+        vote_count: voteCalc(state),
+        has_voted: state.has_voted === value ? null : value,
+        vote_value: state.has_voted
+      }
+    }
+
     case "DELETE_POST_SUCCESS": {
       return {
         ...state,

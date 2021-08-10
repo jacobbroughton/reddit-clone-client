@@ -3,11 +3,11 @@ import { getApiUrl } from "../actions/nodeEnvActions";
 
 const API_URL = getApiUrl();
 
-export const getPost = (postId) => async (dispatch, getState) => {
+export const getPost = (postId, userId) => async (dispatch, getState) => {
   try {
     dispatch({ type: "GET_POST_REQUEST" });
 
-    const response = await axios.get(`${API_URL}/posts/single/${postId}`);
+    const response = await axios.get(`${API_URL}/posts/single/${postId}/${userId ? userId : ''}`);
 
     dispatch({ type: "GET_POST_SUCCESS", payload: response.data });
   } catch (error) {
@@ -34,6 +34,25 @@ export const setPost = (post) => async (dispatch, getState) => {
     });
   }
 };
+
+export const handleVote = (userId, postId, value) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: "POST_VOTE_REQUEST" })
+
+    let voteObj = {
+      userId,
+      postId,
+      value
+    }
+
+    await axios.post(`${API_URL}/votes`, { data: voteObj })
+
+    dispatch({ type: "POST_VOTE_SUCCESS" , payload: voteObj})
+  } catch (error) {
+    console.log(error)
+    dispatch({ type: "POST_VOTE_FAILURE" })
+  }
+}
 
 export const editPost = (id, updates) => ({
   type: "EDIT_POST",

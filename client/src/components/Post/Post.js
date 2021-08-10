@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setPost, startEditPost, deletePost } from "../../actions/postActions";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector, } from "react-redux";
+import { getPost, setPost, startEditPost, deletePost } from "../../actions/postActions";
 import { handleVote } from "../../actions/postListActions"
 // import { deletePost } from "../../actions/postActions";
 import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
@@ -10,6 +10,10 @@ import { getElapsedTime } from "../GetElapsedTime";
 import "./Post.scss";
 
 const Post = ({ post }) => {
+
+  const { postId } = useParams()
+  console.log(postId)
+
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.auth.user);
@@ -45,6 +49,11 @@ const Post = ({ post }) => {
     dispatch(handleVote(user.id, post.id, vote_value))
   }
 
+  // useEffect(() => {
+  //   if(postId) {
+  //     getPost(postId, user.id)
+  //   }
+  // }, [])
 
   return (
     <div className="post">
