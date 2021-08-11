@@ -95,6 +95,7 @@ const Comment = ({ comment }) => {
       <div className='comment'>
       <VoteButtons item={comment} handleVoteClick={handleVoteClick}/>
         <div className="comment-main-section">
+        { error && <p className="vote-error">{error}</p> } 
           <p className="comment-metadata">
             <span className="user">{comment.username}</span>
             {createdAt}

@@ -8,11 +8,11 @@ $dmHover: #ffffff29;
   display: flex;
   align-self: flex-start;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   min-height: 100%;
   padding-right: 35px;
-  gap: 10px;
+  gap: 5px;
 
   .votes-count {
     font-size: 1.3rem;
@@ -20,11 +20,11 @@ $dmHover: #ffffff29;
   }
 
   button {
-    font-size: 1.5rem;
     background-color: transparent;
+    display: flex;
+    align-items: center;
     border: none;
     color: $lmText;
-    font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
 
@@ -35,15 +35,27 @@ $dmHover: #ffffff29;
 
   .up-vote {
 
-    &.selected{
-      color: orange;
+    .up-arrow{
+      max-width: 20px;
+      height: auto;
+      fill: $lmText;
+
+      &.selected{
+        fill: orange;
+      }
     }
   }
 
   .down-vote {
 
-    &.selected{
-      color: teal;
+    .down-arrow{
+      max-width: 20px;
+      height: auto;
+      fill: $lmText;
+
+      &.selected{
+        fill: teal;
+      }
     }
   }
 
@@ -64,15 +76,26 @@ $dmHover: #ffffff29;
         &.up-vote {
           color: $dmText;
 
-          &.selected{
-            color: orange;
+          .up-arrow{
+            fill: $dmText;          
+            
+            &.selected{
+              fill: orange;
+            }
           }
+
+
         }
   
         &.down-vote {
           color: $dmText;
-          &.selected{
-            color: teal;
+
+          .down-arrow{
+            fill: $dmText;
+
+            &.selected{
+              fill: teal;
+            }
           }
         }
   
