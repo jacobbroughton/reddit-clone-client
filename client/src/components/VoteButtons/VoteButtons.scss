@@ -13,7 +13,6 @@ $dmHover: #ffffff29;
   min-height: 100%;
   padding-right: 35px;
   gap: 10px;
-  color: $lmText;
 
   .votes-count {
     font-size: 1.3rem;
@@ -49,29 +48,38 @@ $dmHover: #ffffff29;
   }
 
   &.dark {
-    background-color: transparent;
-    .votes-section {
+    background-color: #2e3748;
     
       .votes-count{
         color: $dmText;
       }
   
       button {
-        background-color: transparent;
+        // background-color: transparent;
         border: none;
-        color: $dmText;
+        // color: $dmText;
         cursor: pointer;
+        // color: $dmText;
   
         &.up-vote {
+          color: $dmText;
+
+          &.selected{
+            color: orange;
+          }
         }
   
         &.down-vote {
+          color: $dmText;
+          &.selected{
+            color: teal;
+          }
         }
   
         &:hover {
           background-color: $dmHover;
         }
       }
-    }
+    
   }
 }

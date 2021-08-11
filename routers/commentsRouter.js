@@ -56,18 +56,18 @@ router.put('/:commentId', (req, res) => {
 router.get('/:postId', (req, res) => {
 
   const { userId } = req.query
-  console.log("USER ID", userId)
 
   let getCommentsStatement = `
-    SELECT c.*, u.username, v.vote_value,
+    SELECT c.*, u.username, v.comment_id, v.vote_value,
     ${userId ? `(
-      SELECT vote_value FROM comment_votes WHERE comment_votes.comment_id = c.id AND comment_votes.user_id = ${userId} LIMIT 1
+      SELECT vote_value FROM comment_votes v WHERE v.comment_id = c.id AND v.user_id = ${userId} LIMIT 1
     ) AS has_voted,` : ''} 
     COALESCE(SUM(v.vote_value), 0) AS vote_count
     FROM comments AS c
     INNER JOIN users AS u ON c.author_id = u.id
     LEFT JOIN comment_votes AS v ON v.comment_id = c.id
-    WHERE post_id = ${req.params.postId}
+    WHERE c.post_id = ${req.params.postId}
+    GROUP BY c.id
     ORDER BY c.id DESC
   `
 

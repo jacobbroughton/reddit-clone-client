@@ -104,8 +104,9 @@ export const getComments = (postId, userId) => async (dispatch, action) => {
   try {
     dispatch({ type: "GET_COMMENTS_REQUEST" });
 
-    const response = await axios.get(`${API_URL}/comments/${postId}?userId=${userId ? userId : ''}`);
+    const response = await axios.get(`${API_URL}/comments/${postId}${userId ? `?userId=${userId}` : ''}`);
 
+    console.log(response)
     let commentsArr = response.data.map((comment) => {
       return { ...comment, threadToggle: true };
     });
