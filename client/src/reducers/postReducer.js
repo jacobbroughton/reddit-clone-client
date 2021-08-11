@@ -21,6 +21,8 @@ export const postReducer = (state = null, action) => {
       const { userId, postId, value } = action.payload
 
       const voteCalc = (post) => {
+        console.log(post)
+        console.log(state)
         switch(value) {
           case 1 : {
             if(post.has_voted === 1) return post.vote_count - 1

@@ -26,9 +26,9 @@ const SinglePostPage = () => {
 
 
   useEffect(() => {
-    dispatch(getPost(postId, user.id ? user.id : null))
+    dispatch(getPost(postId, user ? user.id : null))
     dispatch(resetComments())
-    dispatch(getComments(postId))
+    dispatch(getComments(postId, user ? user.id : null))
   }, [dispatch, postId])
   
   

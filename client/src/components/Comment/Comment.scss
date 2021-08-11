@@ -26,7 +26,7 @@ $dmBorderHover: #b3bdc9;
     border-radius: 5px;
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: calc(100% - 60px);
 
     .comment-main-section {

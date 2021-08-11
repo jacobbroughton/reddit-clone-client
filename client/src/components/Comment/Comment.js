@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getElapsedTime } from "../GetElapsedTime";
-import { startEditComment, deleteComment, commentThreadToggle } from "../../actions/commentsActions";
+import { startEditComment, deleteComment, commentThreadToggle, handleVote } from "../../actions/commentsActions";
 import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
 import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";
 import { ReactComponent as CommentIcon } from "../../images/comment-icon.svg";
 import CommentForm from "../CommentForm/CommentForm";
+import VoteButtons from "../VoteButtons/VoteButtons";
 import "./Comment.scss";
 
 const Comment = ({ comment }) => {
@@ -21,6 +22,8 @@ const Comment = ({ comment }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editCommentBody, setEditCommentBody] = useState();
   const [threadToggle, setThreadToggle] = useState(true);
+  const [error, setError] = useState(null)
+
 
   let createdAt = getElapsedTime(comment.created_at);
 
@@ -72,7 +75,16 @@ const Comment = ({ comment }) => {
     );
   };
 
+  const handleVoteClick = (vote_value) => {
 
+    if(!user) { 
+      setError("You must log in to vote")
+      setTimeout(() => setError(null), 4000)
+      return
+    }
+
+    dispatch(handleVote(user.id, comment.id, vote_value))
+  }
 
   useEffect(() => {
     setEditCommentBody(comment.body);
@@ -81,6 +93,7 @@ const Comment = ({ comment }) => {
   return (
     <div className={`comment-thread ${darkMode ? 'dark' : ''}`}>
       <div className='comment'>
+      <VoteButtons item={comment} handleVoteClick={handleVoteClick}/>
         <div className="comment-main-section">
           <p className="comment-metadata">
             <span className="user">{comment.username}</span>

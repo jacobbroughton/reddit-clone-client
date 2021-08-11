@@ -1,23 +1,20 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useDispatch, useSelector, } from "react-redux";
-import { getPost, setPost, startEditPost, deletePost } from "../../actions/postActions";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setPost, startEditPost, deletePost } from "../../actions/postActions";
 import { handleVote } from "../../actions/postListActions"
 // import { deletePost } from "../../actions/postActions";
 import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
 import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";
 import { getElapsedTime } from "../GetElapsedTime";
 import "./Post.scss";
+import VoteButtons from "../VoteButtons/VoteButtons";
 
 const Post = ({ post }) => {
-
-  const { postId } = useParams()
-  console.log(postId)
 
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.auth.user);
-  // const postFromState = useSelector((state) => state.post)
 
   const [isEditing, setIsEditing] = useState(false);
   const [editPostBody, setEditPostBody] = useState(post ? post.body : "");
@@ -49,25 +46,20 @@ const Post = ({ post }) => {
     dispatch(handleVote(user.id, post.id, vote_value))
   }
 
-  // useEffect(() => {
-  //   if(postId) {
-  //     getPost(postId, user.id)
-  //   }
-  // }, [])
-
   return (
     <div className="post">
-      <div className="votes-section">
+      {/* <div className="votes-section">
         <button onClick={() => handleVoteClick(1)} className={`${post.has_voted === 1 ? 'selected' : ''} up-vote`}>⬆</button>
         <span className="votes-count">{post.vote_count && post.vote_count}</span>
         <button onClick={() => handleVoteClick(-1)} className={`${post.has_voted === -1 ? `selected` : ''} down-vote`}>⬇</button>
-      </div>
+      </div> */}
+      <VoteButtons item={post} handleVoteClick={handleVoteClick}/>
       <div className="post-main-section">   
       { error && <p className="vote-error">{error}</p> }   
           <p className="post-metadata">
             <Link to={`/r/${post.subreddit_name}`} className="post-subreddit-link">r/{post.subreddit_name}</Link>
             <span className="posted-by-span">
-            {post.id} Posted by <span className="user">u/{post.username && post.username}</span>
+            Posted by <span className="user">u/{post.username && post.username}</span>
             </span>
 
             {dateCreated}

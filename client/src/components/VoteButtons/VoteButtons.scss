@@ -1,0 +1,77 @@
+$lmHover: #cbd5df;
+$lmText: #1a202c;
+$dmText: rgba(255, 255, 255, 0.87);
+$dmHover: #ffffff29;
+
+
+.votes-section {
+  display: flex;
+  align-self: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  padding-right: 35px;
+  gap: 10px;
+  color: $lmText;
+
+  .votes-count {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+
+  button {
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: none;
+    color: $lmText;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $lmHover;
+    }
+  }
+
+  .up-vote {
+
+    &.selected{
+      color: orange;
+    }
+  }
+
+  .down-vote {
+
+    &.selected{
+      color: teal;
+    }
+  }
+
+  &.dark {
+    background-color: transparent;
+    .votes-section {
+    
+      .votes-count{
+        color: $dmText;
+      }
+  
+      button {
+        background-color: transparent;
+        border: none;
+        color: $dmText;
+        cursor: pointer;
+  
+        &.up-vote {
+        }
+  
+        &.down-vote {
+        }
+  
+        &:hover {
+          background-color: $dmHover;
+        }
+      }
+    }
+  }
+}
