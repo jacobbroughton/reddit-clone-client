@@ -48,11 +48,6 @@ const Post = ({ post }) => {
 
   return (
     <div className="post">
-      {/* <div className="votes-section">
-        <button onClick={() => handleVoteClick(1)} className={`${post.has_voted === 1 ? 'selected' : ''} up-vote`}>⬆</button>
-        <span className="votes-count">{post.vote_count && post.vote_count}</span>
-        <button onClick={() => handleVoteClick(-1)} className={`${post.has_voted === -1 ? `selected` : ''} down-vote`}>⬇</button>
-      </div> */}
       <VoteButtons item={post} handleVoteClick={handleVoteClick}/>
       <div className="post-main-section">   
       { error && <p className="vote-error">{error}</p> }   
@@ -99,19 +94,17 @@ const Post = ({ post }) => {
 
             
           </div>
-        }
-      </div>
-
-
-      {user && user.id === post.author_id && (
+        }      
+        
+        {user && user.id === post.author_id && (
         <div className="posted-user-accessable-options">
           { !isEditing &&
             <button
               onClick={() => setIsEditing(!isEditing)}>
               <EditIcon
                 className="edit-icon"
-              
               />
+              Edit
           </button>
           }
 
@@ -120,9 +113,14 @@ const Post = ({ post }) => {
               <DeleteIcon
                 className="delete-icon"
               /> 
+              Delete
           </button>
         </div>
       )}
+      </div>
+
+
+
 
 
 

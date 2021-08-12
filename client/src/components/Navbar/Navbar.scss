@@ -128,7 +128,7 @@ $dmBorderHover: #b3bdc9;
           }
 
           &:hover {
-            background-color: lightgrey;
+            background-color: $lmPrimaryBackground;
           }
         }
         .user-dropdown {

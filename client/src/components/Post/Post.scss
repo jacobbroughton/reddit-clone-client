@@ -1,5 +1,5 @@
 $lmText: #1a202c;
-$lmSecondaryText: #73777c;
+$lmSecondaryText: #718096;
 $lmPrimaryBackground: #cbd5df;
 $lmSecondaryBackground: #f8fafc;
 $lmBorderInitial: #cbd5e0;
@@ -17,7 +17,7 @@ $dmBorderInitial: #61676d;
 $dmBorderHover: #b3bdc9;
 
 .post {
-  border-radius: 5px;
+  border-radius: 4px;
   background-color: $lmSecondaryBackground;
   text-decoration: none;
   // color: $lmText;
@@ -34,42 +34,15 @@ $dmBorderHover: #b3bdc9;
     justify-content: center;
     align-items: center;
     min-height: 100%;
-    padding-right: 35px;
-    gap: 10px;
+    padding-right: 25px;
+    gap: 7px;
     color: $lmText;
 
     .votes-count {
-      font-size: 1.3rem;
-      font-weight: 500;
-    }
-
-    button {
-      font-size: 1.5rem;
-      background-color: transparent;
-      border: none;
-      color: $lmText;
+      font-size: 1rem;
       font-weight: 600;
-      border-radius: 5px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: $lmHover;
-      }
     }
 
-    .up-vote {
-
-      &.selected{
-        color: orange;
-      }
-    }
-
-    .down-vote {
-
-      &.selected{
-        color: teal;
-      }
-    }
   }
 
   .post-main-section {
@@ -108,8 +81,8 @@ $dmBorderHover: #b3bdc9;
       .posted-by-span {
         margin-right: 10px;
         .user {
-          font-weight: 500;
-          color: $lmText;
+          // font-weight: 500;
+          // color: $lmText;
         }
       }
     }
@@ -129,8 +102,8 @@ $dmBorderHover: #b3bdc9;
         appearance: none;
         color: $lmText;
         text-decoration: none;
-        font-size: 1.5rem;
-        font-weight: 600;
+        font-size: 1.3rem;
+        font-weight: 500;
       }
     }
 
@@ -177,31 +150,40 @@ $dmBorderHover: #b3bdc9;
 
       .post-body-text {
         white-space: pre-wrap;
+        margin-bottom: 0;
       }
     }
   }
 
   .posted-user-accessable-options {
-    position: absolute;
+    // position: absolute;
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 15px;
     // width: 100px;
-    right: 30px;
-    top: 30px;
+    // right: 30px;
+    // top: 30px;
+    margin-top: 15px;
     button {
       padding: 0;
-      width: 30px;
-      padding: 5px;
+      // width: 30px;
+      padding: 4px;
       border: none;
       border-radius: 5px;
       transition: background-color 0.1s ease;
       background-color: transparent;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: $lmSecondaryText;
+      font-weight: 600;
       .edit-icon,
       .delete-icon {
-        max-width: 20px;
-        stroke: $lmText;
+        width: 100%;
+        max-width: 14px;
+        stroke: $lmSecondaryText;
+        fill: $lmSecondaryText;
       }
 
       &:hover {
@@ -289,12 +271,13 @@ $dmBorderHover: #b3bdc9;
   .posted-user-accessable-options {
     button {
       transition: background-color 0.1s ease;
+      color: $dmSecondaryText;
       cursor: pointer;
       background-color: inherit;
       .edit-icon,
       .delete-icon {
-        fill: $dmText;
-        stroke: $dmText;
+        fill: $dmSecondaryText;
+        stroke: $dmSecondaryText;
       }
 
       &:hover {

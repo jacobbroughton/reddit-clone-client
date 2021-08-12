@@ -10,13 +10,17 @@ $dmHover: #ffffff29;
 .single-post-page{
   padding-top: 78px;
   padding-bottom: 100px;
+  min-height: 100vh;
   .single-post-page-container{
-    padding-top: 50px;
-    margin: 0 auto;
+    // padding-top: 50px;
+    margin: 20px auto 0 auto;
     width: 100%;
     max-width: 700px;
     display: flex;
     flex-direction: column;
+    background-color: $lmSecondaryBackground;
+    padding: 0px 25px 30px 25px;
+    border-radius: 4px;
 
     .post-not-found-p{
       color: $lmText;    
@@ -30,7 +34,8 @@ $dmHover: #ffffff29;
 
   &.dark{
     .single-post-page-container{
-      padding-top: 50px;
+      background-color: $dmSecondaryBackground;
+      // padding-top: 50px;
       margin: 0 auto;
       
       .post-not-found-p{

@@ -46,7 +46,7 @@ const Navbar = () => {
           {
             user ? 
             <div className="logged-in-nav-view">
-              <button onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} className="nav-username-button">{user.id} {user.username} <DownArrow className="down-arrow"/></button>
+              <button onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} className="nav-username-button">{user.username} <DownArrow className="down-arrow"/></button>
               <div className={`${isUserDropdownOpen ? 'user-dropdown open' : 'user-dropdown closed' }`}>
                 <Link onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} to="/subreddits/create">Create Subreddit</Link>
                 <button  className="logout-button" onClick={() => {

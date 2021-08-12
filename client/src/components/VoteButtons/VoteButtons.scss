@@ -7,16 +7,17 @@ $dmHover: #ffffff29;
 .votes-section {
   display: flex;
   align-self: flex-start;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  min-height: 100%;
-  padding-right: 35px;
-  gap: 5px;
+  // min-height: 100%;
+  padding-right: 0;
+  gap: 7px;
 
   .votes-count {
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 500;
+    color: #718096;
   }
 
   button {
@@ -24,9 +25,10 @@ $dmHover: #ffffff29;
     display: flex;
     align-items: center;
     border: none;
-    color: $lmText;
+    color: #718096;
     border-radius: 5px;
     cursor: pointer;
+    padding: 3px;
 
     &:hover {
       background-color: $lmHover;
@@ -34,11 +36,10 @@ $dmHover: #ffffff29;
   }
 
   .up-vote {
-
     .up-arrow{
-      max-width: 20px;
+      max-width: 15px;
       height: auto;
-      fill: $lmText;
+      fill: #718096;
 
       &.selected{
         fill: orange;
@@ -47,11 +48,10 @@ $dmHover: #ffffff29;
   }
 
   .down-vote {
-
     .down-arrow{
-      max-width: 20px;
+      max-width: 15px;
       height: auto;
-      fill: $lmText;
+      fill: #718096;
 
       &.selected{
         fill: teal;
@@ -60,7 +60,8 @@ $dmHover: #ffffff29;
   }
 
   &.dark {
-    background-color: #2e3748;
+    // background-color: #2e3748;
+    background-color: transparent;
     
       .votes-count{
         color: $dmText;

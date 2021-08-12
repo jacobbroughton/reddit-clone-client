@@ -5,6 +5,8 @@ import { startEditComment, deleteComment, commentThreadToggle, handleVote } from
 import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
 import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";
 import { ReactComponent as CommentIcon } from "../../images/comment-icon.svg";
+import { ReactComponent as ExpandThreadIcon } from "../../images/expand.svg";
+
 import CommentForm from "../CommentForm/CommentForm";
 import VoteButtons from "../VoteButtons/VoteButtons";
 import "./Comment.scss";
@@ -51,12 +53,15 @@ const Comment = ({ comment }) => {
         (eachComment, key) =>
           eachComment.parent_comment === comment.id && ( 
             <div className='nested-comment'>
-              <p
+              {!eachComment.threadToggle && 
+              <button
                 onClick={() => handleThreadToggle(eachComment)}
                 className="replies-toggle"
               >
-                {`${eachComment.threadToggle ? "Hide " : "Show "}`} replies
-              </p>
+                  <ExpandThreadIcon className="expand-thread-icon"/>
+                  Expand Thread
+              </button>                
+              }
               {eachComment.threadToggle && ( // toggle for hiding / showing reply thread
                 <div className={`${key} bar-and-comment`}>
                   <div className="bar-parent">
@@ -93,12 +98,13 @@ const Comment = ({ comment }) => {
   return (
     <div className={`comment-thread ${darkMode ? 'dark' : ''}`}>
       <div className='comment'>
-      <VoteButtons item={comment} handleVoteClick={handleVoteClick}/>
+      {/* <VoteButtons item={comment} handleVoteClick={handleVoteClick}/> */}
+        {/* <div className="profile-picture"></div> */}
         <div className="comment-main-section">
         { error && <p className="vote-error">{error}</p> } 
           <p className="comment-metadata">
             <span className="user">{comment.username}</span>
-            {createdAt}
+            <span className="time-ago">{createdAt}</span>
           </p>
 
           <div className="comment-body">
@@ -124,43 +130,47 @@ const Comment = ({ comment }) => {
               <p className="comment-body-text">{comment.body}</p>
             )}
           </div>
-
-          {user && (
-            <>
-              {!toggleCommentReply && (
-                <button
-                  className="reply-button"
-                  onClick={() => setToggleCommentReply(!toggleCommentReply)}
-                >
-                  <CommentIcon className="comment-icon" /> Reply
-                </button>
-              )}
-
-              {toggleCommentReply && (
-                <CommentForm
-                  post={post}
-                  parentComment={comment.id}
-                  setToggleCommentReply={setToggleCommentReply}
-                  alwaysOpen={false}
-                />
-              )}
-            </>
-          )}
-        </div>
-
-        {user && user.id === comment.author_id && (
-          <div className="commented-user-accessable-options">
-            {!isEditing && (
-              <button onClick={() => setIsEditing(!isEditing)}>
-                <EditIcon className="edit-icon" />
+          
+          <div className="comment-buttons">
+            <VoteButtons item={comment} handleVoteClick={handleVoteClick}/>          
+            
+            {/* {!toggleCommentReply && ( */}
+              <button
+                className="reply-button"
+                onClick={() => setToggleCommentReply(!toggleCommentReply)}
+              >
+                <CommentIcon className="comment-icon" /> Reply
               </button>
-            )}
+            {/* )} */}
 
-            <button onClick={() => dispatch(deleteComment(comment.id))}>
-              <DeleteIcon className="delete-icon" />
-            </button>
+            {user && user.id === comment.author_id && (
+              // <div className="commented-user-accessable-options">
+              <>
+                {!isEditing && (
+                  <button className="edit-button" onClick={() => setIsEditing(!isEditing)}>
+                    <EditIcon className="edit-icon" /> Edit
+                  </button>
+                )}
+
+                <button className="delete-button" onClick={() => dispatch(deleteComment(comment.id))}>
+                  <DeleteIcon className="delete-icon" /> Delete
+                </button>
+              {/* // </div> */}
+              </>
+            )}
           </div>
-        )}
+          {toggleCommentReply && (
+              <CommentForm
+                post={post}
+                parentComment={comment.id}
+                setToggleCommentReply={setToggleCommentReply}
+                alwaysOpen={false}
+              />
+            )}
+          
+          
+
+        </div>
       </div>
 
       { getChildComments(comments) }
