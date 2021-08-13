@@ -10,13 +10,13 @@ const CreateSubreddit = () => {
 
   const dispatch = useDispatch()
   const darkMode = useSelector(state => state.darkMode)
+  const user = useSelector(state => state.auth.user)
+
 
 
   const handleSubmit = (e) => {
-    dispatch(createSubreddit(subredditName, subredditDescription))
-
+    dispatch(createSubreddit(user.id, subredditName, subredditDescription))
     // dispatch(getSubreddits())
-
     e.preventDefault()
   }
 

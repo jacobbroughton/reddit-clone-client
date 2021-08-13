@@ -36,9 +36,9 @@ const Navbar = () => {
             subredditDropdownToggle={subredditDropdownToggle} 
             setSubredditDropdownToggle={setSubredditDropdownToggle}
           />
-          <div className={`dark-mode-icon-parent`}  >
+          <button className={`dark-mode-icon-parent`}  >
             <DarkModeIcon className={`dark-mode-icon`}  onClick={() => dispatch(toggleDarkMode())}/>
-          </div>
+          </button>
         </div>
         
         

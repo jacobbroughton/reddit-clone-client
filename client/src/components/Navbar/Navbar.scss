@@ -47,18 +47,25 @@ $dmBorderHover: #b3bdc9;
       }
 
       .dark-mode-icon-parent {
-        max-width: 35px;
+        appearance: none;
+        border: none;
+        background-color: transparent;
+        max-width: 45px;
         display: flex;
         justify-content: center;
         align-items: center;
         // max-height: 40px;
         // background-color: blue;
         margin-left: 15px;
+        padding-top: 5px;
         cursor: pointer;
         .dark-mode-icon {
           width: 100%;
           height: auto;
           // border-radius: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           fill: black;
           // stroke: blue;
         }

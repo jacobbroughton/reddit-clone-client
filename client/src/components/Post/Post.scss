@@ -56,14 +56,14 @@ $dmBorderHover: #b3bdc9;
 
     .post-metadata {
       margin: 0;
-      margin-bottom: 15px;
       display: flex;
       color: $lmSecondaryText;
+      font-size: 0.75rem;
 
       .subreddit {
         margin: 0;
         font-weight: 700;
-        margin-right: 10px;
+        // margin-right: 10px;
       }
 
       .post-subreddit-link{
@@ -79,11 +79,15 @@ $dmBorderHover: #b3bdc9;
       }
 
       .posted-by-span {
-        margin-right: 10px;
+        margin-right: 3px;
         .user {
           // font-weight: 500;
           // color: $lmText;
         }
+      }
+
+      .time-ago-span{
+        
       }
     }
 
@@ -92,23 +96,26 @@ $dmBorderHover: #b3bdc9;
       color: #0079d3;
       appearance: none;
       color: $lmText;
-      font-size: 1.5rem;
+      font-size: 1.125rem;
       font-weight: 600;
     }
 
     .title-and-body {
-      margin-top: 10px;
+      margin-top: 8px;
       .post-title {
         appearance: none;
         color: $lmText;
         text-decoration: none;
-        font-size: 1.3rem;
+        font-size: 1.125rem;
         font-weight: 500;
       }
     }
 
     .post-body {
-      margin-top: 15px;
+      margin-top: 8px;
+      display: flex;
+      gap: 5px;
+      font-size: 0.875rem;
       .edit-post-form {
         textarea {
           width: 100%;
@@ -150,7 +157,7 @@ $dmBorderHover: #b3bdc9;
 
       .post-body-text {
         white-space: pre-wrap;
-        margin-bottom: 0;
+        margin: 0;
       }
     }
   }

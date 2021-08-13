@@ -31,7 +31,7 @@ const Comment = ({ comment }) => {
 
   const handleEditCommentFormSubmit = (e, id) => {
     const body = editCommentBody;
-
+    
     dispatch(startEditComment({ id, body }));
     setIsEditing(!isEditing);
 

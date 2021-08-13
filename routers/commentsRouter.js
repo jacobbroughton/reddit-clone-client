@@ -83,9 +83,10 @@ router.delete('/', (req, res) => {
   const { id } = req.body
 
   const deleteCommentStatement = `
-    DELETE
-    FROM comments
-    WHERE id = ${id}
+    DELETE c, v
+    FROM comments AS c
+    LEFT JOIN comment_votes AS v ON c.id = v.comment_id
+    WHERE c.id = ${id}
   `
 
   connection.query(deleteCommentStatement, (err, result) => {

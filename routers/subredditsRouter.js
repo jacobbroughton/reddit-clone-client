@@ -18,13 +18,19 @@ connection.connect();
 router.get("/:name", (req, res) => {
   try {
 
+    console.log(req.params.name)
+
     const getSingleSubredditStatement = `
       SELECT * FROM subreddits
       WHERE name = '${req.params.name}'
     `
 
+    console.log(getSingleSubredditStatement)
+
     connection.query(getSingleSubredditStatement, (err, rows) => {
       if(err) throw err
+
+      console.log(rows)
       
       res.send(rows[0])
     })
@@ -53,21 +59,44 @@ router.post("/", (req, res) => {
 
     const insertSubredditStatement = `
     INSERT INTO subreddits 
-    (name, description) 
-    VALUES ('${req.body.name}', '${req.body.description}')`
+    (user_id, name, description) 
+    VALUES (${req.body.userId}, '${req.body.name}', '${req.body.description}')`
 
     connection.query(insertSubredditStatement, (err, results) => {
       if(err) throw err
 
       res.send({ idForNewSubreddit: results.insertId })
-
     })
 
-
-    
-
   } catch (e) {
-    res.status(409).send({ error: 'A subreddit with this name already exists' })
+    res.status(400).send({ error: 'A subreddit with this name already exists' })
+  }
+})
+
+// Delete subreddit
+router.delete('/:subredditId/:userId', (req, res) => {
+
+  const { subredditId, userId } = req.params
+
+  try {
+
+    const deleteSubredditStatement = `
+      DELETE s.*, p, c, pv, cv
+      FROM subreddits AS s
+      LEFT JOIN posts p ON p.subreddit_id = s.id
+      LEFT JOIN comments c ON c.post_id = p.id
+      LEFT JOIN post_votes pv ON pv.post_id = p.id
+      LEFT JOIN comment_votes cv ON cv.comment_id = c.id
+      WHERE s.user_id = ${userId} AND s.id = ${subredditId}
+    `
+
+    connection.query(deleteSubredditStatement, (err, results) => {
+      if(err) throw err
+      res.send(results)
+    })
+    
+  } catch (error) {
+    res.status(400).send(error)
   }
 })
 

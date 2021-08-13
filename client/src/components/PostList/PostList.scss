@@ -21,18 +21,6 @@ $dmHover: #ffffff29;
       flex-direction: column;
       gap: 15px;
       max-width: 750px;
-      h1 {
-        margin: 0;
-        .rSpan{
-          font-size: 1.7rem;
-          margin-right: 7px;
-        }
-
-        .posts-count{
-          font-weight: 600;
-          font-size: 1.4rem;
-        }
-      }
     }
   }
 }
@@ -41,7 +29,6 @@ $dmHover: #ffffff29;
   .post-list-container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 30px;
     .post-list {
       h1 {
         color: $dmText;

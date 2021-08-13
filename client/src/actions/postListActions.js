@@ -18,8 +18,6 @@ export const getPosts = (userId, filters) => async (dispatch, getState) => {
 
     let response = await axios.get(`${API_URL}/posts`, { params: { userId, filters }})
 
-    console.log(response.data)
-
     dispatch({ type: "GET_POSTS_SUCCESS", payload: response.data })
 
   } catch (error) {

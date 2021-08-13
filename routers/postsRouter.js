@@ -140,7 +140,7 @@ router.delete('/', (req, res) => {
     DELETE p, c, v
     FROM posts as p
     LEFT JOIN comments AS c ON p.id = c.post_id
-    LEFT JOIN votes AS v ON p.id = v.post_id
+    LEFT JOIN post_votes AS v ON p.id = v.post_id
     WHERE p.id = ${id}
   `
 

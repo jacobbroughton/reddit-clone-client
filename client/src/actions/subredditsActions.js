@@ -45,7 +45,7 @@ export const getSingleSubreddit = (name) => async (dispatch, getState) => {
   }
 }
 
-export const createSubreddit = (name, description) => async (dispatch, getState) => {
+export const createSubreddit = (userId, name, description) => async (dispatch, getState) => {
   try {
     dispatch({ type: "CREATE_SUBREDDIT_REQUEST" })
 
@@ -53,6 +53,7 @@ export const createSubreddit = (name, description) => async (dispatch, getState)
 
     let newSubreddit = {
       id: 0,
+      userId,
       name, 
       description,
       createdAt: dateNow
@@ -77,6 +78,27 @@ export const createSubreddit = (name, description) => async (dispatch, getState)
       type: "CREATE_SUBREDDIT_FAILURE",
       message: error.message,
       response: error.response
+    })
+  }
+}
+
+export const deleteSubreddit = (userId, subredditId) => async (dispatch, action) => {
+  try {
+    dispatch({ type: "DELETE_SUBREDDIT_REQUEST" })
+
+    let response = await axios.delete(`${API_URL}/subreddits/${subredditId}/${userId}`)
+    history.push("/")
+
+    dispatch({ 
+      type: "DELETE_SUBREDDIT_SUCCESS",
+      payload: subredditId
+   })
+
+  } catch (error) {
+    dispatch({
+      type: "DELETE_SUBREDDIT_FAILURE",
+      response: error.response,
+      message: error.message
     })
   }
 }

@@ -57,7 +57,7 @@ const Post = ({ post }) => {
             Posted by <span className="user">u/{post.username && post.username}</span>
             </span>
 
-            {dateCreated}
+            <span className="time-ago-span">{dateCreated}</span>
           </p>
 
         
