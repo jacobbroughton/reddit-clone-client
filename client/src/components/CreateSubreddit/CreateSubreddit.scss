@@ -15,10 +15,14 @@ $dmBorderHover: #b3bdc9;
 
 .create-subreddit{
   height: 100%;
+  width: 100%;
+  max-width: 750px;
   form{
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    align-items: flex-start;
+    // max-width: 500px;
+    
     gap: 10px;
     margin: 0 auto;
     // margin-top: 100px;
@@ -29,6 +33,7 @@ $dmBorderHover: #b3bdc9;
       border: none;
       background-color: #efefef;
       border-radius: 5px;
+      font-size: 0.875rem;
     }
     textarea{
       width: calc(100% - 30px);
@@ -39,6 +44,8 @@ $dmBorderHover: #b3bdc9;
       background-color: #efefef;
       font-family: inherit;
       border-radius: 5px;
+      font-size: 0.875rem;
+
     }
     button{
       // width: 100%;
@@ -46,7 +53,7 @@ $dmBorderHover: #b3bdc9;
       font-size: 1rem;
       font-weight: 600;
       border: none;
-      align-self: center;
+      // align-self: center;
       border-radius: 3px;
     }
   }

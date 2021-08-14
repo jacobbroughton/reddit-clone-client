@@ -19,7 +19,7 @@ $dmBorderHover: #b3bdc9;
 .register {
   height: calc(100% - 100px);
   .register-container {
-    max-width: 1100px;
+    max-width: 750px;
     height: 100%;
     margin: 0 auto;
     display: flex;
@@ -30,7 +30,6 @@ $dmBorderHover: #b3bdc9;
     form {
       display: flex;
       flex-direction: column;
-      max-width: 400px;
       width: 100%;
       gap: 10px;
       .register-input {

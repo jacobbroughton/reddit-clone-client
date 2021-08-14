@@ -45,7 +45,7 @@ $dmBorderHover: #b3bdc9;
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
 
       .vote-error{
         margin: 0;
@@ -147,6 +147,7 @@ $dmBorderHover: #b3bdc9;
         .comment-body-text {
           white-space: pre-wrap;
           margin: 0;
+          font-size: 0.875rem;
         }
       }
 

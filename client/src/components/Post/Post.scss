@@ -47,6 +47,8 @@ $dmBorderHover: #b3bdc9;
 
   .post-main-section {
     width: calc(100% - 70px);
+    display: flex;
+    flex-direction: column;
 
     .vote-error{
       margin: 0;
@@ -91,11 +93,11 @@ $dmBorderHover: #b3bdc9;
       }
     }
 
+
     .link-title {
-      margin-top: 10px;
+      margin-top: 8px;
       color: #0079d3;
       appearance: none;
-      color: $lmText;
       font-size: 1.125rem;
       font-weight: 600;
     }
@@ -170,7 +172,7 @@ $dmBorderHover: #b3bdc9;
     // width: 100px;
     // right: 30px;
     // top: 30px;
-    margin-top: 15px;
+    margin-top: 8px;
     button {
       padding: 0;
       // width: 30px;

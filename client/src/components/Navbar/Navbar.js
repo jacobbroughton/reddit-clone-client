@@ -30,12 +30,12 @@ const Navbar = () => {
       <div className={`nav-container`}>
         <div className={`home-link-parent`} >
           <Link className={`nav-home-link`} to="/"><span className="not-span" onClick={() => dispatch(setCurrentSubreddit(null))} >(Not)</span> Reddit</Link>
-          <button className={`subreddit-dropdown-toggle-button`} onClick={() => setSubredditDropdownToggle(!subredditDropdownToggle)}>{subredditName ? subredditName : "Home "} <DownArrow className="down-arrow"/></button>
-          { user && <Link className={`new-post-link`} to="/new-post">New Post</Link> }
-          <SubredditDropdown 
+          {/* <button className={`subreddit-dropdown-toggle-button`} onClick={() => setSubredditDropdownToggle(!subredditDropdownToggle)}>{subredditName ? subredditName : "Home "} <DownArrow className="down-arrow"/></button> */}
+          {/* { user && <Link className={`new-post-link`} to="/new-post">New Post</Link> } */}
+          {/* <SubredditDropdown 
             subredditDropdownToggle={subredditDropdownToggle} 
             setSubredditDropdownToggle={setSubredditDropdownToggle}
-          />
+          /> */}
           <button className={`dark-mode-icon-parent`}  >
             <DarkModeIcon className={`dark-mode-icon`}  onClick={() => dispatch(toggleDarkMode())}/>
           </button>

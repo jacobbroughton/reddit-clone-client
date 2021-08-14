@@ -9,15 +9,17 @@ $dmHover: #ffffff29;
 
 .new-post{
   height: 100%;
+  width: 100%;
   .new-post-container{
     padding-top: 100px;
+    width: 100%;
+    max-width: 750px;
     form{
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      max-width: 500px;
       margin: 0 auto;
-      gap: 15px;
+      gap: 10px;
       .both-radio-inputs{
         display: flex;
         gap: 10px;
@@ -41,7 +43,7 @@ $dmHover: #ffffff29;
       }
       .new-post-input{
         resize: vertical;
-        font-size: 1rem;
+        font-size: 0.875rem;
         border: none;
         background-color: #efefef;
         padding: 8px 10px;
@@ -51,6 +53,8 @@ $dmHover: #ffffff29;
         height: 150px;
         font-size: 1rem;
         font-family: inherit;
+        font-size: 0.875rem;
+
       }
       select{
         font-size: 1rem;
@@ -58,6 +62,8 @@ $dmHover: #ffffff29;
         background-color: #efefef;
         padding: 8px 10px;
         border-radius: 5px;
+        font-size: 0.875rem;
+
       }
       .new-post-submit{
         align-self: flex-start;

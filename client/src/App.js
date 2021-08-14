@@ -7,6 +7,7 @@ import PostList from "./components/PostList/PostList";
 import NewPost from "./components/NewPost/NewPost";
 import SinglePostPage from "./components/SinglePostPage/SinglePostPage";
 import CreateSubreddit from "./components/CreateSubreddit/CreateSubreddit";
+import Sidebar from "./components/Sidebar/Sidebar";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 // import { formatDistanceStrict } from "date-fns"
@@ -26,29 +27,32 @@ function App() {
   return (
     <div className={`App ${darkMode ? "dark" : ""}`}>
       <Navbar />
-      <Switch>
-        <Route path="/register">
-          <Register />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/subreddits/create">
-          <CreateSubreddit />
-        </Route>
-        <Route path="/new-post">
-          <NewPost />
-        </Route>
-        <Route path="/r/:name/:postId">
-          <SinglePostPage />
-        </Route>
-        <Route path="/r/:name">
-          <PostList />
-        </Route>
-        <Route exact path="/">
-          <PostList />
-        </Route>
-      </Switch>
+      <main>
+        <Sidebar/>
+        <Switch>
+          <Route path="/register">
+            <Register />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/subreddits/create">
+            <CreateSubreddit />
+          </Route>
+          <Route path="/new-post">
+            <NewPost />
+          </Route>
+          <Route path="/r/:name/:postId">
+            <SinglePostPage />
+          </Route>
+          <Route path="/r/:name">
+            <PostList />
+          </Route>
+          <Route exact path="/">
+            <PostList />
+          </Route>
+        </Switch>
+      </main>
       <Footer/>
     </div>
   );
