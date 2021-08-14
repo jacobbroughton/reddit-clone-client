@@ -11,6 +11,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 // import { formatDistanceStrict } from "date-fns"
+import "./App.scss"
 
 function App() {
   const darkMode = useSelector((state) => state.darkMode);
@@ -28,7 +29,6 @@ function App() {
     <div className={`App ${darkMode ? "dark" : ""}`}>
       <Navbar />
       <main>
-        <Sidebar/>
         <Switch>
           <Route path="/register">
             <Register />
@@ -52,6 +52,7 @@ function App() {
             <PostList />
           </Route>
         </Switch>
+        <Sidebar/>
       </main>
       <Footer/>
     </div>

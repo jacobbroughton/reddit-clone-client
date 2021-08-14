@@ -1,3 +1,23 @@
+$lmText: #1a202c;
+$lmNavButtonText: #ecf2f6;
+$lmNavButtonBackground: #ecf2f6;
+$lmSecondaryText: #73777c;
+$lmPrimaryBackground: #cbd5df;
+$lmSecondaryBackground: #f8fafc;
+$lmBorderInitial: #cbd5e0;
+$lmBorderHover: #a0a9b3;
+
+$dmText: rgba(255, 255, 255, 0.87);
+$dmNavBackground: #728095;
+$dmSecondaryText: #aab3be;
+$dmPrimaryBackground: #1b1f2b;
+$dmSecondaryBackground: #2e3748;
+$dmButtonBackground: #ffffff29;
+$dmHover: #ffffff29;
+$dmBorderInitial: #61676d;
+$dmBorderHover: #b3bdc9;
+
+
 .sidebar{
   // padding-top: 65px;
   margin-top: 78px;
@@ -27,6 +47,10 @@
         text-decoration: none;
         border-radius: 3px;
         text-align: center;
+
+        &:hover{
+          text-decoration: underline;
+        }
       }
 
       .new-post-sidebar{
@@ -46,6 +70,9 @@
       border-radius: 3px;
       text-align: center;
 
+      &:hover{
+        text-decoration: underline;
+      }
     }
   }
 
@@ -64,10 +91,40 @@
     .subreddit-link{
       text-decoration: none;
       color: inherit;
-      
+      color: $lmText;
 
       &:hover{
         text-decoration: underline;
+      }
+    }
+  }
+
+  &.dark{
+    .sidebar-buttons{
+      .post-and-link-buttons{
+        .new-post-sidebar, .new-link-sidebar{
+          color: #fff;
+        }
+        .new-post-sidebar{
+          background-color: #017bfe;
+        }
+        .new-link-sidebar{
+          background-color: #017bfe;
+        }
+      }
+      .create-subreddit{
+        color: black;
+        background-color: #fff;
+      }
+    }
+  
+    .subreddit-list{
+      .subreddit-list-label{
+        color: $dmText;
+      }
+      .subreddit-link{
+        color: $dmText;
+        &:hover{}
       }
     }
   }

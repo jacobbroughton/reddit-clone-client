@@ -8,17 +8,19 @@ const Sidebar = () => {
 
   const dispatch = useDispatch()
   const subreddits = useSelector(state => state.subreddits)
+  const darkMode = useSelector(state => state.darkMode)
+
 
   useEffect(() => {
     dispatch(getSubreddits());
   }, [dispatch]);
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${darkMode ? 'dark' : ''}`}>
       <div className="sidebar-buttons">
         <div className="post-and-link-buttons">
-          <Link to={"/"} className="new-post-sidebar">New Post</Link>
-          <Link to={"/"} className="new-link-sidebar">New Link</Link>
+          <Link to={"/new-post?type=text"} className="new-post-sidebar">New Post</Link>
+          <Link to={"/new-post?type=link"} className="new-link-sidebar">New Link</Link>
         </div>
         <Link to={"/subreddits/create"} className="create-subreddit">Create Subreddit</Link>
       </div>

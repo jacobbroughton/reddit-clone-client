@@ -10,15 +10,17 @@ $dmHover: #ffffff29;
 .new-post{
   height: 100%;
   width: 100%;
+  padding: 100px 20px 0 20px;
+  max-width: 750px;
+
   .new-post-container{
-    padding-top: 100px;
     width: 100%;
-    max-width: 750px;
+    margin: 0;
     form{
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      margin: 0 auto;
+      // margin: 0 auto;
       gap: 10px;
       .both-radio-inputs{
         display: flex;
@@ -27,12 +29,15 @@ $dmHover: #ffffff29;
           display: flex;
           align-items: center;
           .post-type-button{
+            text-decoration: none;
+            color: #181818;
+            padding: 3px 8px;
             border-radius: 3px;
             border: none;
             // height: 17px;
             // width: 17px;
             margin-right: 10px;
-            border: 1px lightgrey solid;
+            // border: 1px lightgrey solid;
             font-size: 1rem;
           }
           .clicked{
@@ -45,7 +50,7 @@ $dmHover: #ffffff29;
         resize: vertical;
         font-size: 0.875rem;
         border: none;
-        background-color: #efefef;
+        background-color: $lmSecondaryBackground;
         padding: 8px 10px;
         border-radius: 5px;
       }
@@ -59,7 +64,7 @@ $dmHover: #ffffff29;
       select{
         font-size: 1rem;
         border: none;
-        background-color: #efefef;
+        background-color: $lmSecondaryBackground;
         padding: 8px 10px;
         border-radius: 5px;
         font-size: 0.875rem;
@@ -91,6 +96,7 @@ $dmHover: #ffffff29;
       .both-radio-inputs{
         .post-type-buttons{
           .post-type-button{
+            color: $dmText;
           }
           .clicked{
           }

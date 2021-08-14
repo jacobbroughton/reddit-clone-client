@@ -1,6 +1,8 @@
 import { sub } from "date-fns"
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { useLocation, Link } from "react-router-dom";
+import { setPost } from "../../actions/postActions";
 import { createPost } from "../../actions/postListActions"
 import "./NewPost.scss"
 
@@ -8,19 +10,22 @@ const NewPost = () => {
     // Make list of recent posts to all the subreddits
     // Individual subreddit views will filter this list (I think)
   const dispatch = useDispatch()
+  const search = useLocation().search;
   const auth = useSelector(state => state.auth)
   const subreddits = useSelector(state => state.subreddits)
   const currentSubreddit = useSelector(state => state.currentSubreddit)
   const darkMode = useSelector(state => state.darkMode)
   
   
-  const [postType, setPostType] = useState("text")
+  const [postType, setPostType] = useState(new URLSearchParams(search).get('type'))
   const [title, setTitle] = useState("")
   const [body, setBody] = useState("")
   const [url, setUrl] = useState("")
   const [subreddit, setSubreddit] = useState(null)
  
-
+useEffect(() => {
+  console.log(new URLSearchParams(search).get('type'))
+}, [])
 
 
 
@@ -38,6 +43,10 @@ const NewPost = () => {
     dispatch(createPost(post))
     e.preventDefault()
   }
+
+  useEffect(() => {
+    setPostType(new URLSearchParams(search).get('type'))
+  }, [search])
 
   useEffect(() => {
     if (postType === 'text') {
@@ -72,8 +81,8 @@ const NewPost = () => {
               <form onSubmit={(e) => handleSubmit(e)}>
                   <div className="both-radio-inputs">
                     <div className="post-type-buttons">
-                      <button className={`post-type-button ${postType === 'text' ? 'clicked' : ''}`} value={'text'} onClick={() => setPostType('text')} type="button">Text</button>
-                      <button className={`post-type-button  ${postType === 'link' ? 'clicked' : ''}`} value={'link'} onClick={() => setPostType('link')} type="button">Link</button>
+                      <Link to={"/new-post?type=text"} className={`post-type-button ${postType === 'text' ? 'clicked' : ''}`} value={'text'} type="button">Text</Link>
+                      <Link to={"/new-post?type=link"} className={`post-type-button  ${postType === 'link' ? 'clicked' : ''}`} value={'link'} type="button">Link</Link>
                     </div>
                   </div>
                   <input className="new-post-input" placeholder="Title (required)" onChange={e => setTitle(e.target.value)}/>

@@ -8,19 +8,27 @@ $dmSecondaryBackground: #2e3748;
 $dmHover: #ffffff29;
 
 .single-post-page{
-  padding-top: 78px;
-  padding-bottom: 100px;
-  min-height: 100vh;
+  width: calc(100% - 40px);
+  padding: 20px;
+  max-width: 750px;
+  margin-top: 98px;
+  // padding-top: 98px;
+  // min-height: 100vh;
+  border-radius: 4px;
+  background-color: $lmSecondaryBackground;
   .single-post-page-container{
     // padding-top: 50px;
-    margin: 20px auto 0 auto;
-    padding: 0px 25px 30px 25px;
-    width: 100%;
-    max-width: 700px;
+    // margin: 20px auto 0 auto;
+    // padding: 20px;
+    // width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: $lmSecondaryBackground;
-    border-radius: 4px;
+    // background-color: $dmHover;
+
+    .post{
+      padding: 0;
+      margin-bottom: 15px;
+    }
 
     .post-not-found-p{
       color: $lmText;    
@@ -33,10 +41,10 @@ $dmHover: #ffffff29;
   } 
 
   &.dark{
+    background-color: $dmSecondaryBackground;
+
     .single-post-page-container{
-      background-color: $dmSecondaryBackground;
       // padding-top: 50px;
-      margin: 20px auto 0 auto;
       
       .post-not-found-p{
         color: $dmText;    
