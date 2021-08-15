@@ -1,20 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const mysql = require("mysql");
-require("dotenv").config();
-// const { formatISO } = require('date-fns')
-
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  port: process.env.DB_PORT,
-  dateStrings: true,
-  timezone: 'UTC'
-});
-
-connection.connect();
+const db = require("../db")
 
 
 // Get all posts
@@ -53,7 +39,7 @@ SELECT p.*, u.username, v.user_id, v.post_id, v.vote_value,
   GROUP BY p.id
 `
 
-  connection.query(getPostsStatement, (err, rows) => {
+  db.query(getPostsStatement, (err, rows) => {
     if(err) throw err;
     res.send(rows)
   })
@@ -81,7 +67,7 @@ router.get('/single/:postId/:userId', (req, res) => {
   LIMIT 1
 `
 
-connection.query(getSinglePostStatement, (err, rows) => {
+db.query(getSinglePostStatement, (err, rows) => {
   if(err) throw err
   console.log(rows[0])
   res.send(rows[0])
@@ -104,9 +90,9 @@ router.put('/single/:postId', (req, res) => {
   LIMIT 1
 `
 
-  connection.query(updatePostBodyStatement, (err, rows) => {
+  db.query(updatePostBodyStatement, (err, rows) => {
     if(err) throw err
-    connection.query(getSinglePostStatement, (err, rows) => {
+    db.query(getSinglePostStatement, (err, rows) => {
       if(err) throw err;
       res.send(rows[0])
     })
@@ -123,7 +109,7 @@ router.post('/', (req, res) => {
   VALUES ('${req.body.postType}', '${req.body.title}', '${req.body.body}', '${req.body.authorId}', '${req.body.subredditId}', '${req.body.subredditName}')
   `
 
-  connection.query(createPostStatement, (err, result) => {
+  db.query(createPostStatement, (err, result) => {
     if(err) throw err;
     res.send(result)
   })
@@ -144,7 +130,7 @@ router.delete('/', (req, res) => {
     WHERE p.id = ${id}
   `
 
-  connection.query(deletePostStatement, (err, result) => {
+  db.query(deletePostStatement, (err, result) => {
     if(err) throw err
     res.send(result)
   })

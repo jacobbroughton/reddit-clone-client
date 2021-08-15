@@ -1,20 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const mysql = require("mysql");
-// const { deleteComment } = require("../client/src/actions/commentsActions");
-require("dotenv").config();
-
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  port: process.env.DB_PORT,
-  dateStrings: true,
-  timezone: 'UTC'
-});
-
-connection.connect();
+const db = require("../db")
 
 // Add comment
 router.post('/', (req, res) => {
@@ -28,7 +14,7 @@ router.post('/', (req, res) => {
     VALUES ('${comment.body}', ${comment.author_id}, ${comment.post_id}, ${comment.parent_comment})
   `
 
-  connection.query(addCommentStatement, (err, result) => {
+  db.query(addCommentStatement, (err, result) => {
     if(err) throw err
     res.send(result)
   })
@@ -45,7 +31,7 @@ router.put('/:commentId', (req, res) => {
     WHERE comments.id = ${commentId}
   `
 
-  connection.query(editCommentStatement, (err, result) => {
+  db.query(editCommentStatement, (err, result) => {
     if(err) throw err
     res.send(result)
   })
@@ -71,7 +57,7 @@ router.get('/:postId', (req, res) => {
     ORDER BY c.id DESC
   `
 
-  connection.query(getCommentsStatement, (err, rows) => {
+  db.query(getCommentsStatement, (err, rows) => {
     if(err) throw err
     res.send(rows)
   })
@@ -89,7 +75,7 @@ router.delete('/', (req, res) => {
     WHERE c.id = ${id}
   `
 
-  connection.query(deleteCommentStatement, (err, result) => {
+  db.query(deleteCommentStatement, (err, result) => {
     if(err) throw err
     res.send(result)
   })

@@ -46,6 +46,43 @@ $dmBorderHover: #b3bdc9;
         }
       }
 
+      .search-bar{
+        border: 1px solid $lmBorderHover;
+        border-radius: 4px;
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 10px;
+        height: 30px;
+        .search-icon{
+          height: auto;
+          width: 100%;
+          max-width: 17px;
+          fill: $lmText;
+        }
+        .search-label{
+          font-size: 0.875rem;
+          margin: 0;
+          background-color: #181818;
+          color: #fff;
+          padding: 3px 10px;
+          border-radius: 10px;
+        }
+        .search-form{
+          height: 100%;
+          display: flex;
+          align-items: center;
+          .search-input{
+            padding: 0;
+            height: 100%;
+            border: none;
+            outline: none;
+          }
+        }
+      }
+
+
       .dark-mode-icon-parent {
         appearance: none;
         border: none;
@@ -193,7 +230,7 @@ $dmBorderHover: #b3bdc9;
 
 
 &.dark {
-  background-color: $dmNavBackground;
+  background-color: $dmSecondaryBackground;
   color: $dmText ;
   .nav-container {
     // Home Link

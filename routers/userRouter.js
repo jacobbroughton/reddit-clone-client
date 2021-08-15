@@ -1,20 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const mysql = require("mysql");
+const db = require("../db")
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 require("../middleware/passportConfig")(passport);
 require("dotenv").config();
-
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  port: process.env.DB_PORT,
-});
-
-connection.connect();
 
 
 // Get User
@@ -25,7 +15,7 @@ router.get("/get-user/:username", (req, res) => {
         LIMIT 1
     `;
 
-    connection.query(searchForUserStatement, (err, rows) => {
+    db.query(searchForUserStatement, (err, rows) => {
         if (err) throw err;
         res.send(rows[0])
     })
@@ -71,7 +61,7 @@ router.post("/register", (req, res) => {
         LIMIT 1
     `;
 
-  connection.query(searchForUserStatement, async (err, rows, fields) => {
+  db.query(searchForUserStatement, async (err, rows, fields) => {
     if (err) throw err;
     if (rows[0]) {
       console.log("User Exists");
@@ -90,7 +80,7 @@ router.post("/register", (req, res) => {
         )
       `;
 
-      connection.query(insertUserStatement, (err) => {
+      db.query(insertUserStatement, (err) => {
         if (err) throw err;
         res.send(req.body);
         console.log("Registered user into database");

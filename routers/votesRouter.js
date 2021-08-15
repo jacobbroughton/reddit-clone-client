@@ -1,20 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const mysql = require("mysql");
-require("dotenv").config();
-// const { formatISO } = require('date-fns')
-
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  port: process.env.DB_PORT,
-  dateStrings: true,
-  timezone: 'UTC'
-});
-
-connection.connect();
+const db = require("../db")
 
 router.post("/:type", (req, res) => {
 
@@ -52,7 +38,7 @@ router.post("/:type", (req, res) => {
     `
   }
 
-  connection.query(insertVoteStatement, (err, result) => {
+  db.query(insertVoteStatement, (err, result) => {
     if(err) throw err
     console.log(result)
     res.send(result)

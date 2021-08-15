@@ -1,18 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const mysql = require("mysql");
-require("dotenv").config();
-
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  port: process.env.DB_PORT,
-});
-
-connection.connect();
-
+const db = require("../db")
 
 // Get single subreddit
 router.get("/:name", (req, res) => {
@@ -27,7 +15,7 @@ router.get("/:name", (req, res) => {
 
     console.log(getSingleSubredditStatement)
 
-    connection.query(getSingleSubredditStatement, (err, rows) => {
+    db.query(getSingleSubredditStatement, (err, rows) => {
       if(err) throw err
 
       console.log(rows)
@@ -43,7 +31,7 @@ router.get("/:name", (req, res) => {
 // Get all subreddits
 router.get("/", (req, res) => {
   try{
-    connection.query('SELECT * FROM subreddits', (err, rows) => {
+    db.query('SELECT * FROM subreddits', (err, rows) => {
       res.send(rows)
     })
   } catch (e) {
@@ -62,7 +50,7 @@ router.post("/", (req, res) => {
     (user_id, name, description) 
     VALUES (${req.body.userId}, '${req.body.name}', '${req.body.description}')`
 
-    connection.query(insertSubredditStatement, (err, results) => {
+    db.query(insertSubredditStatement, (err, results) => {
       if(err) throw err
 
       res.send({ idForNewSubreddit: results.insertId })
@@ -90,7 +78,7 @@ router.delete('/:subredditId/:userId', (req, res) => {
       WHERE s.user_id = ${userId} AND s.id = ${subredditId}
     `
 
-    connection.query(deleteSubredditStatement, (err, results) => {
+    db.query(deleteSubredditStatement, (err, results) => {
       if(err) throw err
       res.send(results)
     })

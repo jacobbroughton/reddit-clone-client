@@ -26,6 +26,7 @@ const Sidebar = () => {
       </div>
       <div className="subreddit-list"> 
       <p className="subreddit-list-label">Subreddits</p>
+      <Link className="subreddit-link" to="/">Home</Link>
         {subreddits.map(subreddit => 
           <Link className="subreddit-link" to={`/r/${subreddit.name}`}>r/{subreddit.name}</Link>  
         )}

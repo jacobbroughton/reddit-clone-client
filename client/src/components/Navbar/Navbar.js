@@ -6,6 +6,7 @@ import { toggleDarkMode } from "../../reducers/darkModeReducer"
 import { setCurrentSubreddit } from "../../actions/subredditActions"
 import { ReactComponent as DarkModeIcon } from "../../images/dark-mode-icon.svg"
 import { ReactComponent as DownArrow } from "../../images/down-arrow.svg"
+import { ReactComponent as SearchIcon } from "../../images/search.svg"
 import SubredditDropdown from "../SubredditsDropdown/SubredditDropdown"
 import "./Navbar.scss";
 
@@ -14,7 +15,7 @@ const Navbar = () => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.auth.user)
   const darkMode = useSelector(state => state.darkMode)
-  // const currentSubreddit = useSelector(state => state.currentSubreddit)
+  const currentSubreddit = useSelector(state => state.currentSubreddit)
 
   const location = useLocation()
   const subredditName = location.pathname.match(/r\/[^\/]+/)
@@ -36,6 +37,14 @@ const Navbar = () => {
             subredditDropdownToggle={subredditDropdownToggle} 
             setSubredditDropdownToggle={setSubredditDropdownToggle}
           /> */}
+          <div className="search-bar">
+            <SearchIcon className="search-icon"/>
+            { currentSubreddit && <label className="search-label">r/{currentSubreddit.name}</label> }
+            <form className="search-form">
+              <input className="search-input" placeholder="Search"/>
+            </form>
+          </div>
+
           <button className={`dark-mode-icon-parent`}  >
             <DarkModeIcon className={`dark-mode-icon`}  onClick={() => dispatch(toggleDarkMode())}/>
           </button>

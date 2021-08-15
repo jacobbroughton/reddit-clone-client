@@ -8,6 +8,8 @@ const CurrentSubredditBanner = ({ name, user }) => {
 
   const dispatch = useDispatch()
   const currentSubreddit = useSelector(state => state.currentSubreddit)
+  const darkMode = useSelector(state => state.darkMode)
+
 
   const [deleteToggle, setDeleteToggle] = useState(false)
   const [deleteConfirmation, setDeleteConfirmation] = useState(false)
@@ -19,11 +21,11 @@ const CurrentSubredditBanner = ({ name, user }) => {
 
 
   return (
-    <div className="current-subreddit-banner">
+    <div className={`current-subreddit-banner ${darkMode ? 'dark' : ''}`}>
       {
         name ? 
         <>
-            <h1><span className="rSpan">r/</span>{name} </h1> 
+            <h1>{currentSubreddit ? <><span className="rSpan">r/</span>{currentSubreddit.name}</>  : 'Home'} </h1> 
             {currentSubreddit?.user_id === user.id && 
               <>
                 {deleteToggle ?
