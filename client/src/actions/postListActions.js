@@ -11,8 +11,6 @@ const API_URL = getApiUrl()
 
 export const getPosts = (userId, filters) => async (dispatch, getState) => {
 
-  console.log(userId)
-
   try {
     dispatch({ type: "GET_POSTS_REQUEST" })
 
@@ -47,7 +45,7 @@ export const handleVote = (userId, postId, value) => async (dispatch, getState) 
     dispatch({ type: "POST_VOTE_SUCCESS" , payload: voteObj})
   } catch (error) {
     console.log(error)
-    dispatch({ type: "POST_VOTE_FAILURE" })
+    dispatch({ type: "POST_VOTE_FAILURE", message: error.message, response: error.response })
   }
 }
 

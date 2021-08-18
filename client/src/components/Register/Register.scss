@@ -17,20 +17,27 @@ $dmBorderInitial: #61676d;
 $dmBorderHover: #b3bdc9;
 
 .register {
-  height: calc(100% - 100px);
+  height: 100%;
+  width: 100%;
   .register-container {
     max-width: 750px;
     height: 100%;
     margin: 0 auto;
+    margin-top: 98px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
+    h2{
+      margin-top: 0;
+    }
+
     form {
       display: flex;
       flex-direction: column;
       width: 100%;
+      max-width: 400px;
       gap: 10px;
       .register-input {
         padding: 8px 10px;
@@ -38,6 +45,7 @@ $dmBorderHover: #b3bdc9;
         background-color: #efefef;
         padding: 8px 10px;
         border-radius: 5px;
+        font-size: 1rem;
       }
       .register-submit {
         width: initial;
@@ -47,7 +55,7 @@ $dmBorderHover: #b3bdc9;
         border: none;
         border-radius: 3px;
         font-weight: 600;
-        font-size: 0.9rem;
+        font-size: 1rem;
         cursor: pointer;
       }
     }

@@ -42,7 +42,7 @@ $dmBorderHover: #b3bdc9;
 
       .new-post-sidebar, .new-link-sidebar{
         padding: 5px;
-        color: #fff;
+        color: $lmText;
         font-weight: 500;
         text-decoration: none;
         border-radius: 3px;
@@ -54,10 +54,10 @@ $dmBorderHover: #b3bdc9;
       }
 
       .new-post-sidebar{
-        background-color: #017bfe;
+        background-color: #fff;
       }
       .new-link-sidebar{
-        background-color: #017bfe;
+        background-color: #fff;
       }
     }
     .create-subreddit{
@@ -102,20 +102,11 @@ $dmBorderHover: #b3bdc9;
   &.dark{
     .sidebar-buttons{
       .post-and-link-buttons{
-        .new-post-sidebar, .new-link-sidebar{
-          color: #fff;
-        }
-        .new-post-sidebar{
-          background-color: #017bfe;
-        }
-        .new-link-sidebar{
-          background-color: #017bfe;
-        }
+        .new-post-sidebar, .new-link-sidebar{}
+        .new-post-sidebar{}
+        .new-link-sidebar{}
       }
-      .create-subreddit{
-        color: black;
-        background-color: #fff;
-      }
+      .create-subreddit{}
     }
   
     .subreddit-list{

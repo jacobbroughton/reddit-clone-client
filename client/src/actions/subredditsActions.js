@@ -51,6 +51,8 @@ export const createSubreddit = (userId, name, description) => async (dispatch, g
 
     let dateNow = moment().format("MMMM Do YYYY");
 
+    name = name.trim();
+
     let newSubreddit = {
       id: 0,
       userId,

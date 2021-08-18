@@ -8,7 +8,6 @@ export const setCurrentSubreddit = (name) => async (dispatch, action) => {
     dispatch({ type: "SET_CURRENT_SUBREDDIT_REQUEST" })
 
     let response = await axios.get(`${API_URL}/subreddits/${name}`)
-    console.log(response)
 
     let subreddit = response.data === '' ? null  : response.data
 

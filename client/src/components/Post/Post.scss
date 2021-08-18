@@ -119,6 +119,7 @@ $dmBorderHover: #b3bdc9;
       gap: 5px;
       font-size: 0.875rem;
       .edit-post-form {
+        width: calc(100% - 20px);
         textarea {
           width: 100%;
           height: 100px;

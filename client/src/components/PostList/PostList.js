@@ -33,7 +33,7 @@ const PostList = () => {
     <div className={`post-list-main ${darkMode ? 'dark' : ''}`}>
       <div className="post-list-container">
         <div className="post-list">
-            <CurrentSubredditBanner name={name} user={user}/>
+          <CurrentSubredditBanner name={name} user={user}/>
           {loading ? (
             <p className="loading">Loading</p>
           ) : (

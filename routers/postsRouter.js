@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
 // `
 
 const getPostsStatement = `
-SELECT p.*, u.username, v.user_id, v.post_id, v.vote_value,
+  SELECT p.*, u.username, v.user_id, v.post_id, v.vote_value,
   ${userId ? `(
     SELECT vote_value FROM post_votes WHERE post_votes.post_id = p.id AND post_votes.user_id = ${userId} LIMIT 1
   ) AS has_voted,` : ''} 

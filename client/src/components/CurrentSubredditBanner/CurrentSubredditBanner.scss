@@ -28,8 +28,25 @@ $dmBorderHover: #b3bdc9;
   box-shadow: 2px 2px 5px #1818181f;
   width: calc(100% - 40px);
 
+  .current-subreddit-banner-stack{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .search-value{
+      font-size: 1rem;
+      margin: 0;
+      border-left: cornflowerblue solid 3px;
+      padding-left: 5px;
+      span{
+        font-weight: 600;
+      }
+    }
+  }
+
   h1 {
     margin: 0;
+    font-size: 1.5rem;
     
     .rSpan{
       font-size: 1.7rem;
@@ -39,7 +56,7 @@ $dmBorderHover: #b3bdc9;
 
   .delete-btn{
     appearance: none;
-    padding: 4px;
+    padding: 0px;
     border: none;
     border-radius: 5px;
     transition: background-color 0.1s ease;
@@ -92,5 +109,13 @@ $dmBorderHover: #b3bdc9;
   }
   &.dark{
     background-color: $dmSecondaryBackground;
+
+    .current-subreddit-banner-stack{  
+      .search-value{
+        color: $dmText;
+        border-left: cornflowerblue solid 3px;
+        span{}
+      }
+    }
   }
 }

@@ -11,6 +11,8 @@ const postsRouter = require("./routers/postsRouter")
 const subredditsRouter = require("./routers/subredditsRouter")
 const commentsRouter = require("./routers/commentsRouter")
 const votesRouter = require("./routers/votesRouter")
+const searchRouter = require("./routers/searchRouter")
+
 
 let options = {
     host: process.env.DB_HOST,
@@ -78,6 +80,7 @@ app.use('/posts', postsRouter)
 app.use('/subreddits', subredditsRouter)
 app.use('/comments', commentsRouter)
 app.use('/votes', votesRouter)
+app.use('/search', searchRouter)
 
 const port = process.env.PORT || 5000;
 

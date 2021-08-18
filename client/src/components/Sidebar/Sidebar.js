@@ -15,6 +15,10 @@ const Sidebar = () => {
     dispatch(getSubreddits());
   }, [dispatch]);
 
+  useEffect(() => {
+    console.log(subreddits)
+  }, [subreddits])
+
   return (
     <aside className={`sidebar ${darkMode ? 'dark' : ''}`}>
       <div className="sidebar-buttons">
