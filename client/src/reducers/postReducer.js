@@ -17,7 +17,7 @@ export const postReducer = (state = null, action) => {
       };
     }
 
-    case "POST_VOTE_SUCCESS": {
+    case "SINGLEPOST_VOTE_SUCCESS": {
       const { userId, postId, value } = action.payload
 
       const voteCalc = (post) => {

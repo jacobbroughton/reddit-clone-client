@@ -1,5 +1,3 @@
-import { map } from "lodash"
-
 export const postListReducer = (state = [], action) => {
   switch (action.type) {
     case "GET_POSTS_SUCCESS" : {
@@ -47,6 +45,7 @@ export const postListReducer = (state = [], action) => {
       const { userId, postId, value } = action.payload
 
       const voteCalc = (post) => {
+        console.log(post)
         switch(value) {
           case 1 : {
             if(post.has_voted === 1) return post.vote_count - 1

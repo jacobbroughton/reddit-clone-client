@@ -2,6 +2,7 @@ import "./CurrentSubredditBanner.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useQuery } from "../useQuery"
 import { deleteSubreddit } from "../../actions/subredditsActions";
 
 const CurrentSubredditBanner = ({ name, user }) => {
@@ -22,14 +23,9 @@ const CurrentSubredditBanner = ({ name, user }) => {
     setDeleteToggle(false);
   }, [currentSubreddit]);
 
-  const useQuery = () => {
-    return new URLSearchParams(location.search);
-  };
-
   const query = useQuery();
 
   useEffect(() => {
-    console.log(query.get("q"));
     let searchQueryFromURL = query.get("q");
     setSearchQuery(searchQueryFromURL);
   }, [location]);
@@ -67,7 +63,8 @@ const CurrentSubredditBanner = ({ name, user }) => {
       ) : (
         <div className="current-subreddit-banner-stack">
           <h1>Home</h1>
-          {searchQuery && <span>Search: {searchQuery}</span>}
+          {searchQuery && <p className="search-value"><span>Search: </span>{searchQuery}</p>}
+
         </div>
       )}
     </section>

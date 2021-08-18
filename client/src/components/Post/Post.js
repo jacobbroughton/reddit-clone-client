@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost, startEditPost, deletePost } from "../../actions/postActions";
 import { handleVote } from "../../actions/postListActions"
+import { handleSinglePostVote } from "../../actions/postActions"
 // import { deletePost } from "../../actions/postActions";
 import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
 import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";
@@ -10,7 +11,7 @@ import { getElapsedTime } from "../GetElapsedTime";
 import "./Post.scss";
 import VoteButtons from "../VoteButtons/VoteButtons";
 
-const Post = ({ post }) => {
+const Post = ({ post, single }) => {
 
   const dispatch = useDispatch();
 
@@ -43,7 +44,11 @@ const Post = ({ post }) => {
       return
     }
 
-    dispatch(handleVote(user.id, post.id, vote_value))
+    if(single) {
+      dispatch(handleSinglePostVote(user.id, post.id, vote_value))
+    } else {
+      dispatch(handleVote(user.id, post.id, vote_value))
+    }
   }
 
   return (

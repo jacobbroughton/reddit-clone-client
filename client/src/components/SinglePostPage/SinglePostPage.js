@@ -36,7 +36,7 @@ const SinglePostPage = () => {
     <div className={`single-post-page ${darkMode ? 'dark' : ''}`}>
       <div className="single-post-page-container">
         {post ? 
-        <Post post={post}/> 
+        <Post post={post} single={true}/> 
         : 
         <p className="post-not-found-p">
           Post not found, return to

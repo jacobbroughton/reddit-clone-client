@@ -25,9 +25,9 @@ const Search = () => {
   const handleSearchSubmit = async (e) => {
     e.preventDefault()
 
-    if(searchValue === "") { return }
+    if(searchValue === "") return
+
     dispatch(search(user?.id, currentSubreddit?.name, searchValue))
-    console.log(history.location.pathname)
     history.push(`${history.location.pathname}?q=${searchValue}`)
   }
 

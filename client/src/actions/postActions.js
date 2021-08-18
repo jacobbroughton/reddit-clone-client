@@ -35,9 +35,9 @@ export const setPost = (post) => async (dispatch, getState) => {
   }
 };
 
-export const handleVote = (userId, postId, value) => async (dispatch, getState) => {
+export const handleSinglePostVote = (userId, postId, value) => async (dispatch, getState) => {
   try {
-    dispatch({ type: "POST_VOTE_REQUEST" })
+    dispatch({ type: "SINGLE_POST_VOTE_REQUEST" })
 
     let voteObj = {
       userId,
@@ -49,10 +49,10 @@ export const handleVote = (userId, postId, value) => async (dispatch, getState) 
 
     await axios.post(`${API_URL}/votes/post`, { data: voteObj })
 
-    dispatch({ type: "POST_VOTE_SUCCESS" , payload: voteObj})
+    dispatch({ type: "SINGLEPOST_VOTE_SUCCESS" , payload: voteObj})
   } catch (error) {
     console.log(error)
-    dispatch({ type: "POST_VOTE_FAILURE" })
+    dispatch({ type: "SINGLE_POST_VOTE_FAILURE" })
   }
 }
 
