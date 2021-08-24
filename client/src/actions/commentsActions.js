@@ -54,7 +54,7 @@ export const commentThreadToggle = (id, threadToggle) => async (dispatch) => {
   });
 };
 
-export const handleVote = (userId, commentId, value) => async (dispatch, getState) => {
+export const handleVote = (userId, commentId, value) => async (dispatch) => {
   try {
     dispatch({ type: "COMMENT_VOTE_REQUEST" })
 
@@ -64,14 +64,14 @@ export const handleVote = (userId, commentId, value) => async (dispatch, getStat
       value
     }
 
-    console.log(voteObj.value)
-
     await axios.post(`${API_URL}/votes/comment`, { data: voteObj })
 
     dispatch({ type: "COMMENT_VOTE_SUCCESS" , payload: voteObj})
   } catch (error) {
-    console.log(error)
-    dispatch({ type: "COMMENT_VOTE_FAILURE" })
+    dispatch({ 
+      type: "COMMENT_VOTE_FAILURE", 
+      message: error.message 
+    })
   }
 }
 
@@ -106,7 +106,6 @@ export const getComments = (postId, userId) => async (dispatch, action) => {
 
     const response = await axios.get(`${API_URL}/comments/${postId}${userId ? `?userId=${userId}` : ''}`);
 
-    console.log(response)
     let commentsArr = response.data.map((comment) => {
       return { ...comment, threadToggle: true };
     });

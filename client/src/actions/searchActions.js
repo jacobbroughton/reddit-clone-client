@@ -4,7 +4,11 @@ export const search = (userId, subredditName, searchValue) => async (dispatch, g
   try {
     dispatch({ type: "SEARCH_REQUEST" })
 
-    const response = await axios.get(`/search?userId=${userId}&subredditName=${subredditName}&q=${searchValue}`)
+    console.log(getState())
+
+    console.log(userId, subredditName, searchValue)
+
+    const response = await axios.get(`/search${userId ? `?userId=${userId}` : ''}${subredditName ? `${!userId ? '?' : '&'}subredditName=${subredditName}` : ''}${!userId && !subredditName ? '?' : '&'}q=${searchValue}`)
     
     // dispatch({ type:  "SEARCH_SUCCESS", payload: response.data })
     dispatch({ type: "GET_POSTS_SUCCESS", payload: response.data })

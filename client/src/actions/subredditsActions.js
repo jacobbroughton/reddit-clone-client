@@ -69,7 +69,7 @@ export const createSubreddit = (userId, name, description) => async (dispatch, g
 
     dispatch(getSingleSubreddit(newSubreddit.name))
 
-    history.push(`/r/${newSubreddit.name}`)
+    history.push(`/r/${newSubreddit.name}/`)
 
 
     // const subreddit = await axios.get(`${API_URL}/subreddits/${name}`)

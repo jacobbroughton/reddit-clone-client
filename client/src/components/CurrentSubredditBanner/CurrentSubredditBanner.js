@@ -12,7 +12,7 @@ const CurrentSubredditBanner = ({ name, user }) => {
   const darkMode = useSelector((state) => state.darkMode);
 
   const [deleteToggle, setDeleteToggle] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("shit");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleSubredditDelete = () => {
     dispatch(deleteSubreddit(user.id, currentSubreddit.id));

@@ -39,7 +39,7 @@ const Sidebar = () => {
       <p className="subreddit-list-label">Subreddits</p>
       <Link className="subreddit-link" to="/">Home</Link>
         {subreddits.map(subreddit => 
-          <Link className="subreddit-link" to={`/r/${subreddit.name}${searchQueryFromURL ? `?q=${searchQueryFromURL}` : ''}`}>r/{subreddit.name}</Link>  
+          <Link className="subreddit-link" to={`/r/${subreddit.name}/${searchQueryFromURL ? `?q=${searchQueryFromURL}` : ''}`}>r/{subreddit.name}</Link>  
         )}
       </div>
     </aside>

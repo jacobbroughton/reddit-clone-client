@@ -1,4 +1,4 @@
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route, useLocation, useParams } from "react-router-dom";
 import ScrollToTop from './components/ScrollToTop'
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
@@ -10,15 +10,27 @@ import SinglePostPage from "./components/SinglePostPage/SinglePostPage";
 import CreateSubreddit from "./components/CreateSubreddit/CreateSubreddit";
 import Sidebar from "./components/Sidebar/Sidebar";
 import SearchPage from "./components/SearchPage/SearchPage";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 // import { formatDistanceStrict } from "date-fns"
 import "./App.scss"
+import { setCurrentSubreddit } from "./actions/subredditActions";
 
 function App() {
+
+  const dispatch = useDispatch()
   const darkMode = useSelector((state) => state.darkMode);
+  // const currentSubreddit = useSelector((state) => state.currentSubreddit);
+
+  const { name } = useParams()
 
   const location = useLocation()
+
+  useEffect(() => {
+    if(name) {
+      dispatch(setCurrentSubreddit(name))
+    }
+  }, [name])
 
   useEffect(() => {
     if (darkMode) {
@@ -51,14 +63,17 @@ function App() {
             <Route path="/new-post">
               <NewPost />
             </Route>
-            {/* <Route path="/r/:name/search">
+            <Route exact path="/r/:name/search">
               <SearchPage />
-            </Route> */}
+            </Route>
             <Route path="/r/:name/:postId">
               <SinglePostPage />
             </Route>
             <Route path="/r/:name">
               <PostList />
+            </Route>
+            <Route path="/search">
+              <SearchPage />
             </Route>
             <Route exact path="/">
               <PostList />
