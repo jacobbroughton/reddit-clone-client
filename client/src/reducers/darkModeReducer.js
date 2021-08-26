@@ -15,6 +15,6 @@ export const darkModeReducer = (state = loadState('darkModeState') || false, act
   }
 }
 
-export const toggleDarkMode = () => async (dispatch, action) => {
+export const toggleDarkMode = () => async (dispatch) => {
   dispatch({ type: "TOGGLE_DARK_MODE" })
 }

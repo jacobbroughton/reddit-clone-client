@@ -2,11 +2,9 @@ import "./Search.scss"
 import { ReactComponent as SearchIcon } from "../../images/search.svg"
 import { useSelector, useDispatch } from "react-redux"
 import { useState } from "react"
-import { useHistory, useParams } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { search } from "../../actions/searchActions"
-import { useEffect } from "react"
-import { useQuery } from "../useQuery"
-// import axios from "axios"
+import React from "react"
 
 
 const Search = () => {

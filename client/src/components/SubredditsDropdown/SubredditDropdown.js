@@ -1,7 +1,8 @@
 import "./SubredditDropdown.scss";
 import { useSelector, useDispatch } from "react-redux";
+import PropTypes from "prop-types"
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { getSubreddits } from "../../actions/subredditsActions";
 import { setCurrentSubreddit } from "../../actions/subredditActions"
 
@@ -40,5 +41,10 @@ const SubredditDropdown = ({ setSubredditDropdownToggle, subredditDropdownToggle
     </div>
   );
 };
+
+SubredditDropdown.propTypes = {
+  setSubredditDropdownToggle: PropTypes.func,
+  subredditDropdownToggle: PropTypes.bool
+}
 
 export default SubredditDropdown;

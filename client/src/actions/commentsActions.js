@@ -9,7 +9,7 @@ export const addComment = ({
   post_id,
   parent_comment,
   username,
-}) => async (dispatch, action) => {
+}) => async (dispatch) => {
   try {
     dispatch({ type: "ADD_COMMENT_REQUEST" });
 
@@ -81,7 +81,7 @@ export const editComment = (id, updates) => ({
   updates,
 });
 
-export const startEditComment = ({ id, body }) => async (dispatch, action) => {
+export const startEditComment = ({ id, body }) => async (dispatch) => {
   try {
     dispatch({ type: "EDIT_COMMENT_REQUEST" });
 
@@ -100,7 +100,7 @@ export const startEditComment = ({ id, body }) => async (dispatch, action) => {
   }
 };
 
-export const getComments = (postId, userId) => async (dispatch, action) => {
+export const getComments = (postId, userId) => async (dispatch) => {
   try {
     dispatch({ type: "GET_COMMENTS_REQUEST" });
 
@@ -120,7 +120,7 @@ export const getComments = (postId, userId) => async (dispatch, action) => {
   }
 };
 
-export const deleteComment = (id) => async (dispatch, action) => {
+export const deleteComment = (id) => async (dispatch) => {
   try {
     dispatch({ type: "DELETE_COMMENT_REQUEST" });
 
@@ -140,6 +140,6 @@ export const deleteComment = (id) => async (dispatch, action) => {
   }
 };
 
-export const resetComments = () => async (dispatch, action) => {
+export const resetComments = () => async (dispatch) => {
   dispatch({ type: "RESET_COMMENTS" });
 };

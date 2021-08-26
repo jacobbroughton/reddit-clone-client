@@ -1,7 +1,7 @@
 import "./SearchPage.scss"
 import PostList from "../PostList/PostList"
 import { useParams } from "react-router-dom"
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { setCurrentSubreddit } from "../../actions/subredditActions"
 import { search } from "../../actions/searchActions"

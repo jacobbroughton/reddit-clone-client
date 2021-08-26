@@ -8,23 +8,15 @@ $dmSecondaryBackground: #2e3748;
 $dmHover: #ffffff29;
 
 .single-post-page{
-  width: calc(100% - 40px);
+  width: 100%;
   padding: 20px;
-  max-width: 750px;
   margin-top: 98px;
-  // margin-right: 270px;
-  // padding-top: 98px;
-  // min-height: 100vh;
   border-radius: 4px;
   background-color: $lmSecondaryBackground;
+  height: fit-content;
   .single-post-page-container{
-    // padding-top: 50px;
-    // margin: 20px auto 0 auto;
-    // padding: 20px;
-    // width: 100%;
     display: flex;
     flex-direction: column;
-    // background-color: $dmHover;
 
     .post{
       padding: 0;
@@ -45,7 +37,6 @@ $dmHover: #ffffff29;
     background-color: $dmSecondaryBackground;
 
     .single-post-page-container{
-      // padding-top: 50px;
       
       .post-not-found-p{
         color: $dmText;    

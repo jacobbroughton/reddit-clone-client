@@ -5,8 +5,6 @@ const db = require("../db")
 // Add comment
 router.post('/', (req, res) => {
   let comment = req.body
-
-  console.log(comment)
   
   let addCommentStatement = `
     INSERT INTO comments 
@@ -65,7 +63,6 @@ router.get('/:postId', (req, res) => {
 
 
 router.delete('/', (req, res) => {
-  console.log(req.body)
   const { id } = req.body
 
   const deleteCommentStatement = `

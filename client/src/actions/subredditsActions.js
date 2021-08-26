@@ -7,7 +7,7 @@ import { getApiUrl } from "../actions/nodeEnvActions"
 const API_URL = getApiUrl()
 
 
-export const getSubreddits = () => async (dispatch, getState) => {
+export const getSubreddits = () => async (dispatch) => {
   try {
     dispatch({ type: "GET_SUBREDDITS_REQUEST" })
 
@@ -24,7 +24,7 @@ export const getSubreddits = () => async (dispatch, getState) => {
   }
 }
 
-export const getSingleSubreddit = (name) => async (dispatch, getState) => {
+export const getSingleSubreddit = (name) => async (dispatch) => {
   try {
     dispatch({ type: "GET_SINGLE_SUBREDDIT_REQUEST" })
 
@@ -45,7 +45,7 @@ export const getSingleSubreddit = (name) => async (dispatch, getState) => {
   }
 }
 
-export const createSubreddit = (userId, name, description) => async (dispatch, getState) => {
+export const createSubreddit = (userId, name, description) => async (dispatch) => {
   try {
     dispatch({ type: "CREATE_SUBREDDIT_REQUEST" })
 
@@ -84,11 +84,11 @@ export const createSubreddit = (userId, name, description) => async (dispatch, g
   }
 }
 
-export const deleteSubreddit = (userId, subredditId) => async (dispatch, action) => {
+export const deleteSubreddit = (userId, subredditId) => async (dispatch) => {
   try {
     dispatch({ type: "DELETE_SUBREDDIT_REQUEST" })
 
-    let response = await axios.delete(`${API_URL}/subreddits/${subredditId}/${userId}`)
+    await axios.delete(`${API_URL}/subreddits/${subredditId}/${userId}`)
     history.push("/")
 
     dispatch({ 

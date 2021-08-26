@@ -15,8 +15,6 @@ router.post("/:type", (req, res) => {
       value
     } = req.body.data
 
-    console.log(value)
-
     insertVoteStatement = `
       INSERT INTO post_votes (user_id, post_id, vote_value) 
       VALUES (${userId}, ${postId}, ${value})
@@ -28,8 +26,6 @@ router.post("/:type", (req, res) => {
       commentId,
       value
     } = req.body.data
-
-    console.log(value)
 
     insertVoteStatement = `
       INSERT INTO comment_votes (user_id, comment_id, vote_value) 

@@ -1,11 +1,10 @@
 import "./SinglePostPage.scss"
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import { useParams, Link, useLocation } from "react-router-dom"
 import { getPost } from "../../actions/postActions"
 import { getComments, resetComments } from "../../actions/commentsActions"
 import CommentForm from "../CommentForm/CommentForm"
-import Comment from "../Comment/Comment"
 import CommentsList from "../CommentsList/CommentsList"
 import Post from "../Post/Post"
 // import { getElapsedTime } from "../GetElapsedTime";
@@ -19,10 +18,10 @@ const SinglePostPage = () => {
   const darkMode = useSelector((state) => state.darkMode);
   const comments = useSelector((state) => state.comments);
   const user = useSelector((state) => state.auth.user);
-  const currentSubreddit = useSelector((state) => state.auth.currentSubreddit);
 
   const location = useLocation()
-  const subredditName = location.pathname.match(/r\/[^\/]+/)
+  // const subredditName = location.pathname.match(/r\/[^\/]+/) ------- Gave 'useless escape character lint error'
+  const subredditName = location.pathname.match(/r\/[^/]+/)
 
 
   useEffect(() => {
@@ -50,7 +49,7 @@ const SinglePostPage = () => {
             alwaysOpen={true}
           />
         }
-        { comments && 
+        { comments.length > 0  && 
           <CommentsList/>
         }
 

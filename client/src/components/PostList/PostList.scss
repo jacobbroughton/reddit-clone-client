@@ -9,21 +9,18 @@ $dmHover: #ffffff29;
 
 .post-list-main {
   width: 100%;
-  max-width: 790px;
+  // max-width: 790px;
   min-height: 100%;
   padding-top: 98px;
   padding-bottom: 100px;
   // margin-right: 270px;
   .post-list-container {
     width: 100%;
-    // margin: 0 auto;
     .post-list {
-      // margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: 15px;
       width: 100%;
-      // max-width: 750px;
     }
   }
 }

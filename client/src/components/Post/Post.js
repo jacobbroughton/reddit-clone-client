@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types"
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost, startEditPost, deletePost } from "../../actions/postActions";
@@ -123,15 +124,15 @@ const Post = ({ post, single }) => {
         </div>
       )}
       </div>
-
-
-
-
-
-
-
     </div>
   );
 };
+
+Post.propTypes = {
+  post: PropTypes.object,
+  single: PropTypes.bool
+}
+
+
 
 export default Post;

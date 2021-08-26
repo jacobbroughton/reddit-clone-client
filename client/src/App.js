@@ -1,3 +1,4 @@
+import React from "react"
 import { Switch, Route, useLocation, useParams } from "react-router-dom";
 import ScrollToTop from './components/ScrollToTop'
 import Register from "./components/Register/Register";
@@ -12,7 +13,6 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import SearchPage from "./components/SearchPage/SearchPage";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-// import { formatDistanceStrict } from "date-fns"
 import "./App.scss"
 import { setCurrentSubreddit } from "./actions/subredditActions";
 
@@ -20,7 +20,6 @@ function App() {
 
   const dispatch = useDispatch()
   const darkMode = useSelector((state) => state.darkMode);
-  // const currentSubreddit = useSelector((state) => state.currentSubreddit);
 
   const { name } = useParams()
 

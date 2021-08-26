@@ -9,22 +9,8 @@ router.get('/', (req, res) => {
   let subredditName = req.query.filters
   let { userId } = req.query
 
-  console.log(userId)
+  console.log('user after posts loaded: ', userId)
 
-
-//   const getPostsStatement = `
-//   SELECT p.*, u.username, v.*,
-//     ${userId ? `CASE 
-//       WHEN v.user_id = ${userId} AND v.post_id = p.id THEN v.vote_value
-//       ELSE NULL
-//     END AS has_voted,` : ''} 
-//     COALESCE(SUM(v.vote_value), 0) AS vote_count
-//     FROM posts AS p
-//     INNER JOIN users AS u ON p.author_id = u.id 
-//     LEFT JOIN votes AS v ON v.post_id = p.id
-//     ${subredditName ? `WHERE p.subreddit_name = '${subredditName}'` : ''} 
-//     GROUP BY p.id
-// `
 
 const getPostsStatement = `
   SELECT p.*, u.username, v.user_id, v.post_id, v.vote_value,
@@ -50,9 +36,6 @@ const getPostsStatement = `
 router.get('/single/:postId/:userId', (req, res) => {
 
   let { postId, userId } = req.params
-
-  console.log("Hello")
-  console.log(typeof(userId), userId)
 
   const getSinglePostStatement = `
   SELECT p.*, u.username, v.vote_value,

@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types"
 import { getElapsedTime } from "../GetElapsedTime";
 import { startEditComment, deleteComment, commentThreadToggle, handleVote } from "../../actions/commentsActions";
 import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
@@ -18,12 +19,9 @@ const Comment = ({ comment }) => {
   const post = useSelector((state) => state.post);
   const darkMode = useSelector((state) => state.darkMode);
   const comments = useSelector((state) => state.comments);
-
-  const [childComments, setChildComments] = useState([]);
   const [toggleCommentReply, setToggleCommentReply] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editCommentBody, setEditCommentBody] = useState();
-  const [threadToggle, setThreadToggle] = useState(true);
   const [error, setError] = useState(null)
 
 
@@ -40,7 +38,6 @@ const Comment = ({ comment }) => {
   
   
   const handleThreadToggle = (comment) => {
-    
     dispatch(commentThreadToggle(comment.id, !comment.threadToggle))
   };
 
@@ -177,5 +174,9 @@ const Comment = ({ comment }) => {
     </div>
   );
 };
+
+Comment.propTypes = {
+  comment: PropTypes.object
+}
 
 export default Comment;

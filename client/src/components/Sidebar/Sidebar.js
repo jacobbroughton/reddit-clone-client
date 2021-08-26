@@ -1,9 +1,8 @@
 import "./Sidebar.scss"
-import { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getSubreddits } from "../../actions/subredditsActions";
-import { Link, useLocation } from "react-router-dom"
-import { useQuery } from "../useQuery"
+import { Link } from "react-router-dom"
 
 const Sidebar = () => {
 
@@ -12,14 +11,12 @@ const Sidebar = () => {
   const subreddits = useSelector(state => state.subreddits)
   const darkMode = useSelector(state => state.darkMode)
 
-  const [searchQueryFromURL, setSearchQueryFromURL] = useState('')
+  // const [searchQueryFromURL, setSearchQueryFromURL] = useState('')
 
 
   useEffect(() => {
     dispatch(getSubreddits());
   }, [dispatch]);
-
-  // const query = useQuery();
 
   // useEffect(() => {
   //   let searchQueryFromURL = query.get("q");
@@ -38,8 +35,8 @@ const Sidebar = () => {
       <div className="subreddit-list"> 
       <p className="subreddit-list-label">Subreddits</p>
       <Link className="subreddit-link" to="/">Home</Link>
-        {subreddits.map(subreddit => 
-          <Link className="subreddit-link" to={`/r/${subreddit.name}/${searchQueryFromURL ? `?q=${searchQueryFromURL}` : ''}`}>r/{subreddit.name}</Link>  
+        {subreddits.map((subreddit, key) => 
+          <Link className="subreddit-link" to={`/r/${subreddit.name}`} key={key}>r/{subreddit.name}</Link>  
         )}
       </div>
     </aside>

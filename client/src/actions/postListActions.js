@@ -1,6 +1,4 @@
 import axios from "../axios-config"
-// import moment from "moment"
-import { useSelector } from "react-redux"
 import history from "../history"
 import { setPost } from "../actions/postActions"
 import { formatISO9075 } from "date-fns"
@@ -9,7 +7,7 @@ import { getApiUrl } from "../actions/nodeEnvActions"
 const API_URL = getApiUrl()
 
 
-export const getPosts = (userId, filters) => async (dispatch, getState) => {
+export const getPosts = (userId, filters) => async (dispatch) => {
 
   try {
     dispatch({ type: "GET_POSTS_REQUEST" })
@@ -28,7 +26,7 @@ export const getPosts = (userId, filters) => async (dispatch, getState) => {
 } 
 
 
-export const handleVote = (userId, postId, value) => async (dispatch, getState) => {
+export const handleVote = (userId, postId, value) => async (dispatch) => {
   try {
     dispatch({ type: "POST_VOTE_REQUEST" })
 
@@ -57,7 +55,7 @@ export const createPost = ({
   authorId,
   subredditId,
   subredditName
-}) => async (dispatch, getState) => {
+}) => async (dispatch) => {
   try {
     dispatch({ type: "CREATE_POST_REQUEST" })
 

@@ -3,7 +3,7 @@ import { getApiUrl } from "../actions/nodeEnvActions"
 
 const API_URL = getApiUrl()
 
-export const setCurrentSubreddit = (name) => async (dispatch, action) => {
+export const setCurrentSubreddit = (name) => async (dispatch) => {
   try {
     dispatch({ type: "SET_CURRENT_SUBREDDIT_REQUEST" })
 

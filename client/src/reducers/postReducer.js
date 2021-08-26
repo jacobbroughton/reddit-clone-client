@@ -9,7 +9,7 @@ export const postReducer = (state = null, action) => {
     }
 
     case "EDIT_POST": {
-      const { id, updates } = action;
+      const { updates } = action;
 
       return {
         ...state,
@@ -18,7 +18,7 @@ export const postReducer = (state = null, action) => {
     }
 
     case "SINGLEPOST_VOTE_SUCCESS": {
-      const { userId, postId, value } = action.payload
+      const { value } = action.payload
 
       const voteCalc = (post) => {
         console.log(post)

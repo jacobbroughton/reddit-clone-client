@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react"
+import React, { useState } from "react"
+import PropTypes from "prop-types"
 import { addComment } from "../../actions/commentsActions"
-// import { getElapsedTime } from "../GetElapsedTime"
 import "./CommentForm.scss"
-import { useEffect } from "react";
 
 const CommentForm = ({ post, parentComment, setToggleCommentReply, alwaysOpen }) => {
 
@@ -44,6 +43,13 @@ const CommentForm = ({ post, parentComment, setToggleCommentReply, alwaysOpen })
       </form>
     </div>
   )
+}
+
+CommentForm.propTypes = {
+  post: PropTypes.object,
+  parentComment: PropTypes.number,
+  setToggleCommentReply: PropTypes.func,
+  alwaysOpen: PropTypes.bool
 }
 
 export default CommentForm

@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useLocation } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { startLogout } from "../../actions/authActions"
 import { toggleDarkMode } from "../../reducers/darkModeReducer"
 import { setCurrentSubreddit } from "../../actions/subredditActions"
 import { ReactComponent as DarkModeIcon } from "../../images/dark-mode-icon.svg"
 import { ReactComponent as DownArrow } from "../../images/down-arrow.svg"
 // import { ReactComponent as SearchIcon } from "../../images/search.svg"
-import SubredditDropdown from "../SubredditsDropdown/SubredditDropdown"
+// import SubredditDropdown from "../SubredditsDropdown/SubredditDropdown"
 import Search from "../Search/Search"
 import "./Navbar.scss";
 
@@ -23,7 +23,7 @@ const Navbar = () => {
 
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
-  const [subredditDropdownToggle, setSubredditDropdownToggle] = useState(false)
+  // const [subredditDropdownToggle, setSubredditDropdownToggle] = useState(false)
 
 
 

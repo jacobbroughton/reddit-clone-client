@@ -7,7 +7,7 @@ const API_URL = getApiUrl()
 
 console.log(API_URL)
 
-export const LOGIN_REQUEST = (user) => ({
+export const LOGIN_REQUEST = () => ({
     type: 'LOGIN_START'
 })
 
@@ -17,7 +17,7 @@ export const LOGIN_SUCCESS = (user) => ({
 })
 
 
-export const getUser = (username) => async (dispatch, getState) => {
+export const getUser = (username) => async (dispatch) => {
   try {
     dispatch({ type: "GETTING_USER" });
 
@@ -38,7 +38,7 @@ export const getUser = (username) => async (dispatch, getState) => {
 
 
 
-export const startLogin = (user) => async (dispatch, getState) => {
+export const startLogin = (user) => async (dispatch) => {
   try {
     dispatch({ type: "LOGIN_START" });
 
@@ -64,7 +64,7 @@ export const startLogin = (user) => async (dispatch, getState) => {
 
 
 
-export const startRegister = (username, password) => async (dispatch, getState) => {
+export const startRegister = (username, password) => async (dispatch) => {
   try {
     let dateNow = moment().format("MMMM Do YYYY");
     dispatch({ type: "REGISTER_START" });
@@ -106,7 +106,7 @@ export const startRegister = (username, password) => async (dispatch, getState) 
   }
 };
 
-export const startLogout = (user) => async (dispatch, getState) => {
+export const startLogout = (user) => async (dispatch) => {
   console.log("trying to logout")
   dispatch({ type: "LOGOUT", payload: user.username })
 }

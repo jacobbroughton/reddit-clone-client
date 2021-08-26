@@ -1,5 +1,7 @@
 import "./VoteButtons.scss"
 import { useSelector } from "react-redux"
+import React from "react"
+import PropTypes from "prop-types"
 import { ReactComponent as UpArrow } from "../../images/up-vote-arrow.svg"
 import { ReactComponent as DownArrow } from "../../images/down-vote-arrow.svg"
 
@@ -18,6 +20,11 @@ const VoteButtons = ({ item, handleVoteClick }) => {
       </button>
     </div>
   )
+}
+
+VoteButtons.propTypes = {
+  item: PropTypes.object,
+  handleVoteClick: PropTypes.func
 }
 
 export default VoteButtons

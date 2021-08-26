@@ -3,7 +3,7 @@ import { getApiUrl } from "../actions/nodeEnvActions";
 
 const API_URL = getApiUrl();
 
-export const getPost = (postId, userId) => async (dispatch, getState) => {
+export const getPost = (postId, userId) => async (dispatch) => {
   try {
     dispatch({ type: "GET_POST_REQUEST" });
 
@@ -19,7 +19,7 @@ export const getPost = (postId, userId) => async (dispatch, getState) => {
   }
 };
 
-export const setPost = (post) => async (dispatch, getState) => {
+export const setPost = (post) => async (dispatch) => {
   try {
     dispatch({ type: "SET_POST_REQUEST" });
 
@@ -35,7 +35,7 @@ export const setPost = (post) => async (dispatch, getState) => {
   }
 };
 
-export const handleSinglePostVote = (userId, postId, value) => async (dispatch, getState) => {
+export const handleSinglePostVote = (userId, postId, value) => async (dispatch) => {
   try {
     dispatch({ type: "SINGLE_POST_VOTE_REQUEST" })
 
@@ -62,7 +62,7 @@ export const editPost = (id, updates) => ({
   updates,
 });
 
-export const startEditPost = ({ id, body }) => async (dispatch, getState) => {
+export const startEditPost = ({ id, body }) => async (dispatch) => {
   try {
     dispatch({ type: "EDIT_POST_REQUEST" });
 
@@ -80,7 +80,7 @@ export const startEditPost = ({ id, body }) => async (dispatch, getState) => {
   }
 };
 
-export const deletePost = (post, id) => async (dispatch, getState) => {
+export const deletePost = (post, id) => async (dispatch) => {
   try {
     dispatch({ type: "DELETE_POST_REQUEST" });
 

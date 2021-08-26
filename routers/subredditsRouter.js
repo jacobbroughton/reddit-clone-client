@@ -6,19 +6,14 @@ const db = require("../db")
 router.get("/:name", (req, res) => {
   try {
 
-    console.log(req.params.name)
-
     const getSingleSubredditStatement = `
       SELECT * FROM subreddits
       WHERE name = '${req.params.name}'
     `
 
-    console.log(getSingleSubredditStatement)
-
     db.query(getSingleSubredditStatement, (err, rows) => {
       if(err) throw err
 
-      console.log(rows)
       
       res.send(rows[0])
     })

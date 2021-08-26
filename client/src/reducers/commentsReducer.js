@@ -46,7 +46,7 @@ export const commentsReducer = (state = [], action) => {
 
 
     case "COMMENT_VOTE_SUCCESS": {
-      const { userId, commentId, value } = action.payload
+      const { commentId, value } = action.payload
 
       const voteCalc = (comment) => {
         switch(value) {

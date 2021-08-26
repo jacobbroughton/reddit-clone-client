@@ -1,14 +1,11 @@
-import { sub } from "date-fns"
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useLocation, Link } from "react-router-dom";
-import { setPost } from "../../actions/postActions";
+// import { setPost } from "../../actions/postActions";
 import { createPost } from "../../actions/postListActions"
 import "./NewPost.scss"
 
 const NewPost = () => {
-    // Make list of recent posts to all the subreddits
-    // Individual subreddit views will filter this list (I think)
   const dispatch = useDispatch()
   const search = useLocation().search;
   const auth = useSelector(state => state.auth)
