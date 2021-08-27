@@ -10,7 +10,7 @@ require("dotenv").config();
 // Get User
 router.get("/get-user/:username", (req, res) => {
     let searchForUserStatement = `
-        SELECT id, username, created_at, updated_at FROM users 
+        SELECT id, username, gender, profile_picture, created_at, updated_at FROM users 
         WHERE username = '${req.params.username}' 
         LIMIT 1
     `;
@@ -25,7 +25,7 @@ router.get("/get-user/:username", (req, res) => {
 
 // Log In
 router.post("/login", (req, res, next) => {
-  const { username, password } = req.body;
+  // const { username, password } = req.body;
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
     if (!user) {
@@ -61,7 +61,7 @@ router.post("/register", (req, res) => {
         LIMIT 1
     `;
 
-  db.query(searchForUserStatement, async (err, rows, fields) => {
+  db.query(searchForUserStatement, async (err, rows) => {
     if (err) throw err;
     if (rows[0]) {
       console.log("User Exists");
@@ -72,15 +72,21 @@ router.post("/register", (req, res) => {
 
       let insertUserStatement = `
         INSERT INTO users 
-        (username, password) 
+        (username, password, gender, profile_picture, updated_at) 
         VALUES 
         (
-            '${req.body.username}', 
-            '${hashedPassword}'
+            '${req.body.username}',
+            '${hashedPassword}',
+            '${req.body.gender}',
+            '${req.body.profilePicture}',
+            '${req.body.updatedAt}'
         )
       `;
 
+      console.log(insertUserStatement)
+
       db.query(insertUserStatement, (err) => {
+        if(err) console.log(err)
         if (err) throw err;
         res.send(req.body);
         console.log("Registered user into database");

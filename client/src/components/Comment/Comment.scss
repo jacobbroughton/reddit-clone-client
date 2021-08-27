@@ -33,14 +33,6 @@ $dmBorderHover: #b3bdc9;
     // width: calc(100% - 60px);
     // border-left: #fff solid 4px;
 
-    .profile-picture{
-      height: 30px; 
-      width: 30px;
-      background: grey;
-      margin-right: 20px;
-      border-radius: 99px;
-    }
-
     .comment-main-section {
       width: 100%;
       display: flex;
@@ -55,6 +47,8 @@ $dmBorderHover: #b3bdc9;
       .comment-metadata {
         margin: 0;
         color: $lmLightText;
+        display: flex;
+        align-items: center;
         .user {
           color: $lmText;
           font-weight: 600;

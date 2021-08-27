@@ -9,6 +9,7 @@ export const addComment = ({
   post_id,
   parent_comment,
   username,
+  profile_picture
 }) => async (dispatch) => {
   try {
     dispatch({ type: "ADD_COMMENT_REQUEST" });
@@ -19,6 +20,7 @@ export const addComment = ({
       post_id,
       parent_comment,
       username,
+      profile_picture
     };
 
     let dateISOString = new Date().toISOString();

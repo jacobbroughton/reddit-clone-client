@@ -157,8 +157,9 @@ $dmBorderHover: #b3bdc9;
         position: relative;
         .nav-username-button {
           display: flex;
+          align-items: center;
           border: none;
-          padding: 10px;
+          padding: 5px 10px;
           font-size: 1rem;
           font-weight: 500;
           transition: background-color 0.1s ease;

@@ -6,6 +6,7 @@ import { toggleDarkMode } from "../../reducers/darkModeReducer"
 import { setCurrentSubreddit } from "../../actions/subredditActions"
 import { ReactComponent as DarkModeIcon } from "../../images/dark-mode-icon.svg"
 import { ReactComponent as DownArrow } from "../../images/down-arrow.svg"
+import ProfilePicture from "../ProfilePicture/ProfilePicture"
 // import { ReactComponent as SearchIcon } from "../../images/search.svg"
 // import SubredditDropdown from "../SubredditsDropdown/SubredditDropdown"
 import Search from "../Search/Search"
@@ -61,7 +62,10 @@ const Navbar = () => {
           {
             user ? 
             <div className="logged-in-nav-view">
-              <button onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} className="nav-username-button">{user.username} <DownArrow className="down-arrow"/></button>
+              <button onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} className="nav-username-button">
+                <ProfilePicture source={user.profile_picture} />
+                {user.username} 
+                <DownArrow className="down-arrow"/></button>
               <div className={`${isUserDropdownOpen ? 'user-dropdown open' : 'user-dropdown closed' }`}>
                 <Link onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} to="/subreddits/create">Create Subreddit</Link>
                 <button  className="logout-button" onClick={() => {

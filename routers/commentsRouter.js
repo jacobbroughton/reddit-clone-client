@@ -42,7 +42,7 @@ router.get('/:postId', (req, res) => {
   const { userId } = req.query
 
   let getCommentsStatement = `
-    SELECT c.*, u.username, v.comment_id, v.vote_value,
+    SELECT c.*, u.username, u.profile_picture, v.comment_id, v.vote_value,
     ${userId ? `(
       SELECT vote_value FROM comment_votes v WHERE v.comment_id = c.id AND v.user_id = ${userId} LIMIT 1
     ) AS has_voted,` : ''} 

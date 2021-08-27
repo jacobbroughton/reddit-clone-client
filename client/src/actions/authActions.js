@@ -2,6 +2,9 @@ import axios from "../axios-config"
 import moment from "moment"
 import history from "../history"
 import { getApiUrl } from "../actions/nodeEnvActions"
+import { createAvatar } from '@dicebear/avatars';
+import * as maleStyle from '@dicebear/avatars-male-sprites';
+import * as femaleStyle from '@dicebear/avatars-female-sprites';
 
 const API_URL = getApiUrl()
 
@@ -64,10 +67,16 @@ export const startLogin = (user) => async (dispatch) => {
 
 
 
-export const startRegister = (username, password) => async (dispatch) => {
+export const startRegister = (username, password, gender) => async (dispatch) => {
   try {
     let dateNow = moment().format("MMMM Do YYYY");
     dispatch({ type: "REGISTER_START" });
+
+    await createAvatar(gender === 'Male' ? maleStyle : femaleStyle, {
+      seed: username,
+    });
+
+    let profilePicture = `https://avatars.dicebear.com/api/${gender.toLowerCase()}/${username}.svg`
 
     axios({
       method: "POST",
@@ -75,7 +84,8 @@ export const startRegister = (username, password) => async (dispatch) => {
       data: {
         username,
         password,
-        createdAt: dateNow,
+        gender,
+        profilePicture,
         updatedAt: dateNow,
       },
       withCredentials: true
@@ -91,7 +101,7 @@ export const startRegister = (username, password) => async (dispatch) => {
       })
       .catch((error) => {
 
-        dispatch({ type: "REGISTER_ERROR", payload: error });
+        dispatch({ type: "REGISTER_ERROR", message: error.message });
 
       });
 

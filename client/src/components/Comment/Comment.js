@@ -11,6 +11,7 @@ import { ReactComponent as ExpandThreadIcon } from "../../images/expand.svg";
 import CommentForm from "../CommentForm/CommentForm";
 import VoteButtons from "../VoteButtons/VoteButtons";
 import "./Comment.scss";
+import ProfilePicture from "../ProfilePicture/ProfilePicture";
 
 const Comment = ({ comment }) => {
   const dispatch = useDispatch();
@@ -100,6 +101,7 @@ const Comment = ({ comment }) => {
         <div className="comment-main-section">
         { error && <p className="vote-error">{error}</p> } 
           <p className="comment-metadata">
+            <ProfilePicture source={comment.profile_picture}/>
             <span className="user">{comment.username}</span>
             <span className="time-ago">{createdAt}</span>
           </p>

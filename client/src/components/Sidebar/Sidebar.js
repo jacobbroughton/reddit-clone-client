@@ -10,6 +10,8 @@ const Sidebar = () => {
   // const location = useLocation()
   const subreddits = useSelector(state => state.subreddits)
   const darkMode = useSelector(state => state.darkMode)
+  // const user = useSelector(state => state.auth.user)
+
 
   // const [searchQueryFromURL, setSearchQueryFromURL] = useState('')
 
@@ -26,6 +28,7 @@ const Sidebar = () => {
   return (
     <aside className={`sidebar ${darkMode ? 'dark' : ''}`}>
       <div className="sidebar-buttons">
+        {/* <img src={user?.profile_picture}/> */}
         <div className="post-and-link-buttons">
           <Link to={"/new-post?type=text"} className="new-post-sidebar">New Post</Link>
           <Link to={"/new-post?type=link"} className="new-link-sidebar">New Link</Link>

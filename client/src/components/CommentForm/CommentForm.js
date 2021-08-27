@@ -21,7 +21,8 @@ const CommentForm = ({ post, parentComment, setToggleCommentReply, alwaysOpen })
       author_id: user.id,
       post_id: post.id,
       parent_comment: parentComment,
-      username: user.username
+      username: user.username,
+      profile_picture: user.profile_picture
     }
 
     dispatch(addComment(comment))

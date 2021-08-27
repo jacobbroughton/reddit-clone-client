@@ -10,13 +10,14 @@ const Register = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [gender, setGender] = useState("Male");
   // const [confirmPassword, setConfirmPassword] = useState("")
   // const [doNotMatchError, setDoNotMatchError] = useState("Passwords do not match, please try again")
 
   // const user = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
-    dispatch(startRegister(username, password));
+    dispatch(startRegister(username, password, gender));
 
     e.preventDefault();
   };
@@ -37,6 +38,15 @@ const Register = () => {
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
+          <select
+            className="register-input"
+            type="text"
+            placeholder="Male / Female"
+            onChange={(e) => setGender(e.target.value)}
+          >
+            <option>Male</option>
+            <option>Female</option>
+          </select>
           {/* <input placeholder="Confirm Password" onChange={e => setConfirmPassword(e.target.value)}/> */}
           <input className="register-submit" type="submit" value="Register" />
         </form>
