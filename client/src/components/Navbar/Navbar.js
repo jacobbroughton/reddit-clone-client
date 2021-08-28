@@ -63,7 +63,7 @@ const Navbar = () => {
             user ? 
             <div className="logged-in-nav-view">
               <button onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} className="nav-username-button">
-                <ProfilePicture source={user.profile_picture} />
+                <ProfilePicture size="small" source={user.profile_picture} />
                 {user.username} 
                 <DownArrow className="down-arrow"/></button>
               <div className={`${isUserDropdownOpen ? 'user-dropdown open' : 'user-dropdown closed' }`}>

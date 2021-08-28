@@ -1,5 +1,15 @@
-.profile-picture{
-  max-height: 25px;
-  width: 25px;
-  margin-right: 10px;
+.profile-picture {
+  &.small {
+    max-height: 25px;
+    width: 25px;
+    margin-right: 10px;
+  }
+}
+
+.profile-picture {
+  &.large {
+    max-height: 55px;
+    max-width: 55px;
+    margin-right: 10px;
+  }
 }

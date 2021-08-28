@@ -25,8 +25,8 @@ let MySQLStore = require("express-mysql-session")(session)
 
 let origin;
 if(process.env.NODE_ENV === "production") {
-  origin = "https://reddit-clone-jb.herokuapp.com"
-  // origin = "https://reddit-clone-jb.netlify.app"
+  // origin = "https://reddit-clone-jb.herokuapp.com"
+  origin = "https://reddit-clone-jb.netlify.app"
 } else {
   origin = "http://localhost:3000"
 }

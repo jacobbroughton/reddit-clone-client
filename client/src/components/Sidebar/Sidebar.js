@@ -3,6 +3,7 @@ import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getSubreddits } from "../../actions/subredditsActions";
 import { Link } from "react-router-dom"
+// import ProfilePicture from "../ProfilePicture/ProfilePicture"
 
 const Sidebar = () => {
 
@@ -29,6 +30,7 @@ const Sidebar = () => {
     <aside className={`sidebar ${darkMode ? 'dark' : ''}`}>
       <div className="sidebar-buttons">
         {/* <img className="profile" src={user?.profile_picture}/> */}
+        {/* <ProfilePicture size="large" source={user.profile_picture}/> */}
         <div className="post-and-link-buttons">
           <Link to={"/new-post?type=text"} className="new-post-sidebar">New Post</Link>
           <Link to={"/new-post?type=link"} className="new-link-sidebar">New Link</Link>

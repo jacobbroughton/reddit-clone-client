@@ -101,7 +101,7 @@ const Comment = ({ comment }) => {
         <div className="comment-main-section">
         { error && <p className="vote-error">{error}</p> } 
           <p className="comment-metadata">
-            <ProfilePicture source={comment.profile_picture}/>
+            <ProfilePicture size="small" source={comment.profile_picture}/>
             <span className="user">{comment.username}</span>
             <span className="time-ago">{createdAt}</span>
           </p>
