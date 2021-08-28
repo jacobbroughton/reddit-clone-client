@@ -1,20 +1,4 @@
-$lmText: #1a202c;
-$lmSecondaryText: #73777c;
-$lmPrimaryBackground: #cbd5df;
-$lmSecondaryBackground: #f8fafc;
-$lmBorderInitial: #cbd5e0;
-$lmBorderHover: #a0a9b3;
-$lmHover: #cbd5df;
-
-$linkColor: #0079d3;
-
-$dmText: rgba(255, 255, 255, 0.87);
-$dmSecondaryText: #aab3be;
-$dmPrimaryBackground: #1b1f2b;
-$dmSecondaryBackground: #2e3748;
-$dmHover: #ffffff29;
-$dmBorderInitial: #61676d;
-$dmBorderHover: #b3bdc9;
+@import '../../utilities/variables';
 
 .register {
   height: 100%;
@@ -51,7 +35,7 @@ $dmBorderHover: #b3bdc9;
         width: initial;
         align-self: flex-start;
         background-color: transparent;
-        color: $lmText;
+        color: $dark-text;
         border: none;
         border-radius: 3px;
         font-weight: 600;
@@ -65,7 +49,7 @@ $dmBorderHover: #b3bdc9;
       .sign-in-link{
         text-decoration: none;
         margin-left: 5px;
-        color: $linkColor;
+        color: $link-color;
         font-weight: 500;
       }
     }
@@ -75,20 +59,20 @@ $dmBorderHover: #b3bdc9;
 .dark {
   .register-container {
     h2{
-      color: $dmText;
+      color: $light-text;
     }
     form {
       .register-input {
-        color: $dmText;
-        background-color: $dmSecondaryBackground;
+        color: $light-text;
+        background-color: $dark-secondary;
       }
       .register-submit {
-        color: $dmText;
-        // background-color: $dmSecondaryBackground;
+        color: $light-text;
+        // background-color: $dark-secondary;
       }
     }
     .already-registered-question{
-      color: $dmText;
+      color: $light-text;
     }
   }
 }

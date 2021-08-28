@@ -1,19 +1,4 @@
-$lmText: #1a202c;
-$lmLightText: #718096;
-$lmSecondaryText: #73777c;
-$lmPrimaryBackground: #cbd5df;
-$lmSecondaryBackground: #f8fafc;
-$lmBorderInitial: #cbd5e0;
-$lmHover: #cbd5df;
-$lmBorderHover: #a0a9b3;
-
-$dmText: rgba(255, 255, 255, 0.87);
-$dmSecondaryText: #aab3be;
-$dmPrimaryBackground: #1b1f2b;
-$dmSecondaryBackground: #2e3748;
-$dmHover: #ffffff29;
-$dmBorderInitial: #61676d;
-$dmBorderHover: #b3bdc9;
+@import '../../utilities/variables';
 
 .comment-thread {
   display: flex;
@@ -23,7 +8,7 @@ $dmBorderHover: #b3bdc9;
 
   .comment {
     // background-color: $lmSecondaryBackground;
-    color: $lmText;
+    color: $dark-text;
     padding: 10px 0;
     // border-radius: 5px;
     position: relative;
@@ -46,11 +31,11 @@ $dmBorderHover: #b3bdc9;
       }
       .comment-metadata {
         margin: 0;
-        color: $lmLightText;
+        color: $less-dark-text;
         display: flex;
         align-items: center;
         .user {
-          color: $lmText;
+          color: $dark-text;
           font-weight: 600;
           margin-right: 10px;
         }
@@ -62,7 +47,7 @@ $dmBorderHover: #b3bdc9;
       }
 
       // .reply-button {
-      //   color: $lmLightText;
+      //   color: $less-dark-text;
       //   border: none;
       //   font-size: 0.9rem;
       //   font-weight: 600;
@@ -81,7 +66,7 @@ $dmBorderHover: #b3bdc9;
       //   }
 
       //   &:hover {
-      //     background-color: $dmHover;
+      //     background-color: $dark-hover;
       //   }
       // }
 
@@ -94,14 +79,14 @@ $dmBorderHover: #b3bdc9;
             font-family: inherit;
             font-size: 0.9rem;
             resize: vertical;
-            border: 1px solid $lmBorderInitial;
+            border: 1px solid $border-lighter;
             border-radius: 5px;
             padding: 10px;
             transition: border-color 0.15s ease;
             background-color: transparent;
 
             &:hover {
-              border: 1px solid $lmBorderHover;
+              border: 1px solid $border-darker;
             }
           }
           .save-and-cancel {
@@ -124,10 +109,10 @@ $dmBorderHover: #b3bdc9;
               margin-right: 10px;
               font-size: 0.9rem;
               padding: 4px;
-              color: $lmLightText;
+              color: $less-dark-text;
         
               &:hover{
-                background-color: $lmHover;
+                background-color: $light-hover;
               }
         
               &:disabled:hover{
@@ -150,7 +135,7 @@ $dmBorderHover: #b3bdc9;
         gap: 15px;
 
         .reply-button, .edit-button, .delete-button {
-          color: $lmLightText;
+          color: $less-dark-text;
           display: flex;
           align-items: center;
           border: none;
@@ -181,7 +166,7 @@ $dmBorderHover: #b3bdc9;
   
   
           &:hover {
-            background-color: $lmHover;
+            background-color: $light-hover;
           }
         }
       }
@@ -207,7 +192,7 @@ $dmBorderHover: #b3bdc9;
     //     .edit-icon,
     //     .delete-icon {
     //       max-width: 20px;
-    //       stroke: $lmText;
+    //       stroke: $dark-text;
     //     }
 
     //     &:hover {
@@ -282,42 +267,42 @@ $dmBorderHover: #b3bdc9;
   }
 
   &.dark {
-    background-color: $dmSecondaryBackground;
+    background-color: $dark-secondary;
 
     .comment {
-      background-color: $dmSecondaryBackground;
-      color: $dmText;
+      background-color: $dark-secondary;
+      color: $light-text;
 
       .comment-main-section {
         .comment-metadata {
-          color: $dmSecondaryText;
+          color: $less-light-text;
           .user {
-            color: $dmText;
+            color: $light-text;
           }
         }
 
         .comment-body {
           .edit-comment-form {
             textarea {
-              color: $dmText;
-              border: 1px solid $dmBorderInitial;
+              color: $light-text;
+              border: 1px solid $border-darker;
 
               &:hover {
-                border: 1px solid $dmBorderHover;
+                border: 1px solid $border-lighter;
               }
             }
             .save-and-cancel {
               button {
                 &:hover {
-                  color: $dmText;
-                  background-color: $dmSecondaryBackground;
+                  color: $light-text;
+                  background-color: $dark-secondary;
                 }
               }
             }
           }
 
           .comment-body-text {
-            color: $dmText;
+            color: $light-text;
           }
         }
       }
@@ -328,12 +313,12 @@ $dmBorderHover: #b3bdc9;
           background-color: inherit;
           .edit-icon,
           .delete-icon {
-            fill: $dmText;
-            stroke: $dmText;
+            fill: $light-text;
+            stroke: $light-text;
           }
 
           &:hover {
-            background-color: $dmHover;
+            background-color: $dark-hover;
           }
         }
       }
@@ -346,9 +331,9 @@ $dmBorderHover: #b3bdc9;
   
         .bar-parent {
           .bar {
-            background-color: $dmSecondaryText;
-            // border-right: 2px $dmSecondaryText solid;
-            border-left: 2px $dmSecondaryText solid;
+            background-color: $less-light-text;
+            // border-right: 2px $less-light-text solid;
+            border-left: 2px $less-light-text solid;
   
             &:hover {
               background-color: orange;
@@ -364,7 +349,7 @@ $dmBorderHover: #b3bdc9;
       }
   
       .replies-toggle {
-        color: $dmText;
+        color: $light-text;
         &:hover {
           text-decoration: underline;
         }

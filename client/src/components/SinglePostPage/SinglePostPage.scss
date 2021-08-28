@@ -1,18 +1,11 @@
-$lmText: #1b1f2b;
-$lmPrimaryBackground: #cbd5df;
-$lmSecondaryBackground: #f8fafc;
-
-$dmText: rgba(255, 255, 255, 0.87);
-$dmPrimaryBackground: #1b1f2b;
-$dmSecondaryBackground: #2e3748;
-$dmHover: #ffffff29;
+@import '../../utilities/variables';
 
 .single-post-page{
   width: 100%;
   padding: 20px;
   margin-top: 98px;
   border-radius: 4px;
-  background-color: $lmSecondaryBackground;
+  background-color: $light-secondary;
   height: fit-content;
   .single-post-page-container{
     display: flex;
@@ -24,7 +17,7 @@ $dmHover: #ffffff29;
     }
 
     .post-not-found-p{
-      color: $lmText;    
+      color: $dark-text;    
       .post-not-found-link{
       color: #181818;
       margin: 0 auto;
@@ -34,12 +27,12 @@ $dmHover: #ffffff29;
   } 
 
   &.dark{
-    background-color: $dmSecondaryBackground;
+    background-color: $dark-secondary;
 
     .single-post-page-container{
       
       .post-not-found-p{
-        color: $dmText;    
+        color: $light-text;    
         .post-not-found-link{
         color: #fff;
         margin: 0 auto;

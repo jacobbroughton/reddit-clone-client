@@ -1,17 +1,4 @@
-$lmText: #1a202c;
-$lmSecondaryText: #73777c;
-$lmPrimaryBackground: #cbd5df;
-$lmSecondaryBackground: #f8fafc;
-$lmBorderInitial: #cbd5e0;
-$lmBorderHover: #a0a9b3;
-
-$dmText: rgba(255, 255, 255, 0.87);
-$dmSecondaryText: #aab3be;
-$dmPrimaryBackground: #1b1f2b;
-$dmSecondaryBackground: #2e3748;
-$dmHover: #ffffff29;
-$dmBorderInitial: #61676d;
-$dmBorderHover: #b3bdc9;
+@import '../../utilities/variables';
 
 .create-subreddit{
   height: 100%;
@@ -32,7 +19,7 @@ $dmBorderHover: #b3bdc9;
       width: calc(100% - 30px);
       padding: 10px 15px;
       border: none;
-      background-color: $lmSecondaryBackground;
+      background-color: $light-secondary;
       border-radius: 5px;
       font-size: 0.875rem;
     }
@@ -42,7 +29,7 @@ $dmBorderHover: #b3bdc9;
       resize: vertical;
       height: 150px;
       border: none;
-      background-color: $lmSecondaryBackground;
+      background-color: $light-secondary;
       font-family: inherit;
       border-radius: 5px;
       font-size: 0.875rem;
@@ -56,24 +43,24 @@ $dmBorderHover: #b3bdc9;
       border: none;
       // align-self: center;
       border-radius: 3px;
-      background-color: $lmSecondaryBackground;
+      background-color: $light-secondary;
     }
   }
 }
 
 .dark{
   form{
-    input{
-      background-color: $dmSecondaryBackground;
-      color: $dmText;
+    input, textarea, button{
+      background-color: $dark-secondary;
+      color: $light-text;
     }
-    textarea{
-      background-color: $dmSecondaryBackground;
-      color: $dmText;
-    }
-    button{
-      background-color: $dmSecondaryBackground;
-      color: $dmText;
-    }
+    // textarea{
+    //   background-color: $dark-secondary;
+    //   color: $light-text;
+    // }
+    // button{
+    //   background-color: $dark-secondary;
+    //   color: $light-text;
+    // }
   }
 }

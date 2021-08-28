@@ -1,7 +1,4 @@
-$lmHover: #cbd5df;
-$lmText: #1a202c;
-$dmText: rgba(255, 255, 255, 0.87);
-$dmHover: #ffffff29;
+@import '../../utilities/variables';
 
 
 .votes-section {
@@ -31,7 +28,7 @@ $dmHover: #ffffff29;
     padding: 3px;
 
     &:hover {
-      background-color: $lmHover;
+      background-color: $light-hover;
     }
   }
 
@@ -60,25 +57,21 @@ $dmHover: #ffffff29;
   }
 
   &.dark {
-    // background-color: #2e3748;
     background-color:transparent;
     
       .votes-count{
-        color: $dmText;
+        color: $light-text;
       }
   
       button {
-        // background-color: transparent;
         border: none;
-        // color: $dmText;
         cursor: pointer;
-        // color: $dmText;
   
         &.up-vote {
-          color: $dmText;
+          color: $light-text;
 
           .up-arrow{
-            fill: $dmText;          
+            fill: $light-text;          
             
             &.selected{
               fill: orange;
@@ -89,10 +82,10 @@ $dmHover: #ffffff29;
         }
   
         &.down-vote {
-          color: $dmText;
+          color: $light-text;
 
           .down-arrow{
-            fill: $dmText;
+            fill: $light-text;
 
             &.selected{
               fill: teal;
@@ -101,7 +94,7 @@ $dmHover: #ffffff29;
         }
   
         &:hover {
-          background-color: $dmHover;
+          background-color: $dark-hover;
         }
       }
     

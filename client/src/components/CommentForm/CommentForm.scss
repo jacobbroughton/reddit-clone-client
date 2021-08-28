@@ -1,26 +1,11 @@
-$lmText: #1a202c;
-$lmSecondaryText: #73777c;
-$lmPrimaryBackground: #cbd5df;
-$lmSecondaryBackground: #f8fafc;
-$lmBorderInitial: #cbd5e0;
-$lmBorderHover: #a0a9b3;
-$lmHover: #cbd5df;
-
-$dmText: rgba(255, 255, 255, 0.87);
-$dmSecondaryText: #aab3be;
-$dmPrimaryBackground: #1b1f2b;
-$dmSecondaryBackground: #2e3748;
-$dmHover: #ffffff29;
-$dmBorderInitial: #61676d;
-$dmBorderHover: #b3bdc9;
-
+@import '../../utilities/variables';
 
 
 .user-comment{
   width: 100%;
   margin-top: 15px;
   p{ 
-    color: $lmText;
+    color: $dark-text;
     margin-top: 0;
     margin-bottom: 5px;
     font-size: 0.9rem;
@@ -39,8 +24,8 @@ $dmBorderHover: #b3bdc9;
       padding: 15px;
       border-radius: 5px;
       font-family: inherit;
-      background-color: $lmSecondaryBackground;
-      border: 1px solid $lmBorderInitial;
+      background-color: $light-secondary;
+      border: 1px solid $border-lighter;
     }
     .comment-button, .cancel-button{
       appearance: none;
@@ -58,7 +43,7 @@ $dmBorderHover: #b3bdc9;
       padding: 4px;
 
       &:hover{
-        background-color: $lmHover;
+        background-color: $light-hover;
       }
 
       &:disabled:hover{
@@ -81,7 +66,7 @@ $dmBorderHover: #b3bdc9;
     //   cursor: pointer;
 
     //   &:hover{
-    //     background-color: $lmHover;
+    //     background-color: $light-hover;
     //   }
     // }    
   }
@@ -89,16 +74,16 @@ $dmBorderHover: #b3bdc9;
   &.dark{
     background-color: transparent;
     p{ 
-      color: $dmText;
+      color: $light-text;
       span{
       }
     }
   
     form{
       textarea{
-        border: 1px $dmBorderInitial solid;
-        color: $dmText;
-        background-color: $dmSecondaryBackground;
+        border: 1px $border-darker solid;
+        color: $light-text;
+        background-color: $dark-secondary;
         position: relative;
       }
       .comment-button{
@@ -108,7 +93,7 @@ $dmBorderHover: #b3bdc9;
         transition: background-color .1s ease;
   
         &:hover{
-          background-color: $dmHover;
+          background-color: $dark-hover;
         }
       }
     }

@@ -1,28 +1,11 @@
-$lmText: #1a202c;
-$lmNavButtonText: #ecf2f6;
-$lmNavButtonBackground: #ecf2f6;
-$lmSecondaryText: #73777c;
-$lmPrimaryBackground: #cbd5df;
-$lmSecondaryBackground: #f8fafc;
-$lmBorderInitial: #cbd5e0;
-$lmBorderHover: #a0a9b3;
-
-$dmText: rgba(255, 255, 255, 0.87);
-$dmNavBackground: #728095;
-$dmSecondaryText: #aab3be;
-$dmPrimaryBackground: #1b1f2b;
-$dmSecondaryBackground: #2e3748;
-$dmButtonBackground: #ffffff29;
-$dmHover: #ffffff29;
-$dmBorderInitial: #61676d;
-$dmBorderHover: #b3bdc9;
+@import '../../utilities/variables';
 
 
 .current-subreddit-banner{
   display: flex;
   gap: 8px;
   align-items: flex-end;
-  background-color: $lmSecondaryBackground;
+  background-color: $light-secondary;
   padding: 20px;
   border-radius: 3px;
   box-shadow: 2px 2px 5px #1818181f;
@@ -65,7 +48,7 @@ $dmBorderHover: #b3bdc9;
     display: flex;
     align-items: center;
     gap: 8px;
-    color: $lmSecondaryText;
+    color: $less-dark-text;
     font-weight: 600;
 
   }
@@ -80,7 +63,7 @@ $dmBorderHover: #b3bdc9;
     display: flex;
     align-items: center;
     gap: 8px;
-    color: $lmSecondaryText;
+    color: $less-dark-text;
     font-weight: 600;
     font-size: 0.875rem;
 
@@ -105,11 +88,11 @@ $dmBorderHover: #b3bdc9;
     }
   }
   &.dark{
-    background-color: $dmSecondaryBackground;
+    background-color: $dark-secondary;
 
     .current-subreddit-banner-stack{  
       .search-value{
-        color: $dmText;
+        color: $light-text;
         border-left: cornflowerblue solid 3px;
         span{}
       }

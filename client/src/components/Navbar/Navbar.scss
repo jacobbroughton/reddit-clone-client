@@ -1,21 +1,4 @@
-$lmText: #1a202c;
-$lmNavButtonText: #ecf2f6;
-$lmNavButtonBackground: #ecf2f6;
-$lmSecondaryText: #73777c;
-$lmPrimaryBackground: #cbd5df;
-$lmSecondaryBackground: #f8fafc;
-$lmBorderInitial: #cbd5e0;
-$lmBorderHover: #a0a9b3;
-
-$dmText: rgba(255, 255, 255, 0.87);
-$dmNavBackground: #728095;
-$dmSecondaryText: #aab3be;
-$dmPrimaryBackground: #1b1f2b;
-$dmSecondaryBackground: #2e3748;
-$dmButtonBackground: #ffffff29;
-$dmHover: #ffffff29;
-$dmBorderInitial: #61676d;
-$dmBorderHover: #b3bdc9;
+@import '../../utilities/variables';
 
 .nav {
   width: 100%;
@@ -59,7 +42,7 @@ $dmBorderHover: #b3bdc9;
       //     height: auto;
       //     width: 100%;
       //     max-width: 17px;
-      //     fill: $lmText;
+      //     fill: $dark-text;
       //   }
       //   .search-label{
       //     font-size: 0.875rem;
@@ -117,13 +100,13 @@ $dmBorderHover: #b3bdc9;
       transition: background-color 0.1s ease;
       margin-left: 15px;
       color: black;
-      background-color: $lmNavButtonBackground;
+      background-color: $light-mode-interactive;
       text-decoration: none;
       border-radius: 5px;
       cursor: pointer;
 
       &:hover {
-        background-color: $lmPrimaryBackground;
+        background-color: $light-primary;
       }
     }
 
@@ -164,7 +147,7 @@ $dmBorderHover: #b3bdc9;
           font-weight: 500;
           transition: background-color 0.1s ease;
           border-radius: 5px;
-          background-color: $lmNavButtonText;
+          background-color: $light-mode-interactive;
           cursor: pointer;
 
           .down-arrow{
@@ -173,7 +156,7 @@ $dmBorderHover: #b3bdc9;
           }
 
           &:hover {
-            background-color: $lmPrimaryBackground;
+            background-color: $light-primary;
           }
         }
         .user-dropdown {
@@ -231,13 +214,13 @@ $dmBorderHover: #b3bdc9;
 
 
 &.dark {
-  background-color: $dmSecondaryBackground;
-  color: $dmText ;
+  background-color: $dark-secondary;
+  color: $light-text ;
   .nav-container {
     // Home Link
     .home-link-parent {
       .nav-home-link {
-        color: $dmText;
+        color: $light-text;
         span {
         }
       }
@@ -249,12 +232,12 @@ $dmBorderHover: #b3bdc9;
         }
       }
       .subreddit-dropdown {
-        background-color: $dmSecondaryBackground;
+        background-color: $dark-secondary;
         a {
-          color: $dmText;
+          color: $light-text;
 
           &:hover {
-            // background-color: $dmHover;
+            // background-color: $dark-hover;
           }
         }
       }
@@ -262,10 +245,10 @@ $dmBorderHover: #b3bdc9;
 
     .subreddit-dropdown-toggle-button,
     .new-post-link {
-      color: $dmText;
-      background-color: $dmButtonBackground;
+      color: $light-text;
+      background-color: $dark-mode-interactive;
       &:hover {
-        // background-color: $dmHover;
+        // background-color: $dark-hover;
       }
     }
 
@@ -273,30 +256,30 @@ $dmBorderHover: #b3bdc9;
     .nav-menu {
       .logged-out-nav-view {
         a {
-          color: $dmText;
+          color: $light-text;
         }
       }
 
       .logged-in-nav-view {
         .nav-username-button {
-          background-color: $dmButtonBackground;
-          color: $dmText;
+          background-color: $dark-mode-interactive;
+          color: $light-text;
           &:hover {
-            // background-color: $dmHover;
+            // background-color: $dark-hover;
           }
         }
         .user-dropdown {
-          background-color: $dmSecondaryBackground;
+          background-color: $dark-secondary;
           a {
-            color: $dmText;
+            color: $light-text;
             &:hover {
-              background-color: $dmHover;
+              background-color: $dark-hover;
             }
           }
           .logout-button {
-            color: $dmText;
+            color: $light-text;
             &:hover {
-              background-color: $dmHover;
+              background-color: $dark-hover;
             }
           }
         }

@@ -1,11 +1,4 @@
-$lmText: #1b1f2b;
-$lmPrimaryBackground: #cbd5df;
-$lmSecondaryBackground: #f8fafc;
-
-$dmText: rgba(255, 255, 255, 0.87);
-$dmPrimaryBackground: #1b1f2b;
-$dmSecondaryBackground: #2e3748;
-$dmHover: #ffffff29;
+@import '../../utilities/variables';
 
 .new-post{
   height: 100%;
@@ -51,7 +44,7 @@ $dmHover: #ffffff29;
         resize: vertical;
         font-size: 0.875rem;
         border: none;
-        background-color: $lmSecondaryBackground;
+        background-color: $light-secondary;
         padding: 8px 10px;
         border-radius: 5px;
       }
@@ -65,7 +58,7 @@ $dmHover: #ffffff29;
       select{
         font-size: 1rem;
         border: none;
-        background-color: $lmSecondaryBackground;
+        background-color: $light-secondary;
         padding: 8px 10px;
         border-radius: 5px;
         font-size: 0.875rem;
@@ -75,7 +68,7 @@ $dmHover: #ffffff29;
         align-self: flex-start;
         background-color: transparent;
         font-weight: 600;
-        color: $lmText;
+        color: $dark-text;
         font-size: 1rem;
         border: none;
         padding: 5px;
@@ -97,24 +90,24 @@ $dmHover: #ffffff29;
       .both-radio-inputs{
         .post-type-buttons{
           .post-type-button{
-            color: $dmText;
+            color: $light-text;
           }
           .clicked{
           }
         }
       }
       .new-post-input{
-        background-color: $dmSecondaryBackground;
+        background-color: $dark-secondary;
       }
       input, textarea, select{
-        color: $dmText;
+        color: $light-text;
       }
       select{
-        background-color: $dmSecondaryBackground;
+        background-color: $dark-secondary;
       }
       .new-post-submit{
-        // background-color: $dmSecondaryBackground;
-        color: $dmText;
+        // background-color: $dark-secondary;
+        color: $light-text;
 
         &:disabled{
           opacity: 0.5;

@@ -1,24 +1,13 @@
 const bcrypt = require("bcryptjs")
 const localStrategy = require("passport-local").Strategy
-const mysql = require("mysql")
 require("dotenv").config()
+const db = require("../db")
 
-const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
-    port: process.env.DB_PORT
-})
-
-connection.connect()
 
 module.exports = function(passport) {
-
-    //
     passport.use(
         new localStrategy((username, password, done) => {
-            connection.query(`SELECT * FROM users WHERE username = '${username}'`, (err, rows, fields) => {
+            db.query(`SELECT * FROM users WHERE username = '${username}'`, (err, rows) => {
                 if(err) throw err;
                 if(!rows[0]) return done(null, false)
 
@@ -42,7 +31,7 @@ module.exports = function(passport) {
 
     passport.deserializeUser((id, callback) => {
         console.log("Deserializing user")
-        connection.query(`SELECT * FROM users WHERE id = '${id}'`, (err, rows, fields) => {
+        db.query(`SELECT * FROM users WHERE id = '${id}'`, (err, rows) => {
             callback(err, rows[0])
         })
     })

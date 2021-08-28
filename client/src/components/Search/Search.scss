@@ -1,25 +1,8 @@
-$lmText: #1a202c;
-$lmNavButtonText: #ecf2f6;
-$lmNavButtonBackground: #ecf2f6;
-$lmSecondaryText: #73777c;
-$lmPrimaryBackground: #cbd5df;
-$lmSecondaryBackground: #f8fafc;
-$lmBorderInitial: #cbd5e0;
-$lmBorderHover: #a0a9b3;
-
-$dmText: rgba(255, 255, 255, 0.87);
-$dmNavBackground: #728095;
-$dmSecondaryText: #aab3be;
-$dmPrimaryBackground: #1b1f2b;
-$dmSecondaryBackground: #2e3748;
-$dmButtonBackground: #ffffff29;
-$dmHover: #ffffff29;
-$dmBorderInitial: #61676d;
-$dmBorderHover: #b3bdc9;
+@import '../../utilities/variables';
 
 
 .search-bar{
-  border: 1px solid $lmBorderHover;
+  border: 1px solid $border-lighter;
   border-radius: 4px;
   margin-left: 10px;
   display: flex;
@@ -28,17 +11,18 @@ $dmBorderHover: #b3bdc9;
   padding: 0 10px;
   height: 30px;
   width: 400px;
+  background-color: $light-mode-interactive;
   .search-icon{
     height: auto;
     width: 100%;
     max-width: 17px;
-    fill: $lmText;
+    fill: $dark-text;
   }
   .search-label{
     font-size: 0.875rem;
     margin: 0;
     background-color: #d6d6d6;
-    color: $lmText;
+    color: $dark-text;
     font-weight: 550;
     padding: 3px 10px;
     border-radius: 10px;
@@ -55,24 +39,25 @@ $dmBorderHover: #b3bdc9;
       width: 100%;
       border: none;
       outline: none;
+      background-color: $light-mode-interactive;
     }
   }
 
   &.dark{
-    background-color: #4e5866;
+    background-color: $dark-mode-interactive;
     .search-icon{
       height: auto;
       width: 100%;
       max-width: 17px;
-      fill: $dmText;
+      fill: $light-text;
     }
 
     .search-form{
       .search-input{
-        background-color: #4e5866;
+        background-color: $dark-mode-interactive;
 
         &::placeholder{
-          color: $dmText;
+          color: $light-text;
 
         }
       }

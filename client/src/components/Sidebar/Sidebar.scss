@@ -1,21 +1,4 @@
-$lmText: #1a202c;
-$lmNavButtonText: #ecf2f6;
-$lmNavButtonBackground: #ecf2f6;
-$lmSecondaryText: #73777c;
-$lmPrimaryBackground: #cbd5df;
-$lmSecondaryBackground: #f8fafc;
-$lmBorderInitial: #cbd5e0;
-$lmBorderHover: #a0a9b3;
-
-$dmText: rgba(255, 255, 255, 0.87);
-$dmNavBackground: #728095;
-$dmSecondaryText: #aab3be;
-$dmPrimaryBackground: #1b1f2b;
-$dmSecondaryBackground: #2e3748;
-$dmButtonBackground: #ffffff29;
-$dmHover: #ffffff29;
-$dmBorderInitial: #61676d;
-$dmBorderHover: #b3bdc9;
+@import '../../utilities/variables';
 
 
 .sidebar{
@@ -42,7 +25,7 @@ $dmBorderHover: #b3bdc9;
 
       .new-post-sidebar, .new-link-sidebar{
         padding: 5px;
-        color: $lmText;
+        color: $dark-text;
         font-weight: 500;
         text-decoration: none;
         border-radius: 3px;
@@ -53,18 +36,15 @@ $dmBorderHover: #b3bdc9;
         }
       }
 
-      .new-post-sidebar{
-        background-color: #fff;
-      }
-      .new-link-sidebar{
-        background-color: #fff;
+      .new-post-sidebar, .new-link-sidebar{
+        background-color: $light-mode-interactive;
       }
     }
     .create-subreddit{
       padding: 5px;
       width: calc(100% - 10px);
       color: black;
-      background-color: #fff;
+      background-color: $light-mode-interactive;
       font-weight: 500;
       text-decoration: none;
       border-radius: 3px;
@@ -91,7 +71,7 @@ $dmBorderHover: #b3bdc9;
     .subreddit-link{
       text-decoration: none;
       color: inherit;
-      color: $lmText;
+      color: $dark-text;
 
       &:hover{
         text-decoration: underline;
@@ -102,19 +82,25 @@ $dmBorderHover: #b3bdc9;
   &.dark{
     .sidebar-buttons{
       .post-and-link-buttons{
-        .new-post-sidebar, .new-link-sidebar{}
+        .new-post-sidebar, .new-link-sidebar{
+          background-color: #4f5967;
+          color: $light-text;
+        }
         .new-post-sidebar{}
         .new-link-sidebar{}
       }
-      .create-subreddit{}
+      .create-subreddit{
+        background-color: #4f5967;
+        color: $light-text;
+      }
     }
   
     .subreddit-list{
       .subreddit-list-label{
-        color: $dmText;
+        color: $light-text;
       }
       .subreddit-link{
-        color: $dmText;
+        color: $light-text;
         &:hover{}
       }
     }

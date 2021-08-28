@@ -1,26 +1,10 @@
-$lmText: #1a202c;
-$lmSecondaryText: #718096;
-$lmPrimaryBackground: #cbd5df;
-$lmSecondaryBackground: #f8fafc;
-$lmBorderInitial: #cbd5e0;
-$lmBorderHover: #a0a9b3;
-$lmHover: #cbd5df;
-
-$linkColor: #0079d3;
-
-$dmText: rgba(255, 255, 255, 0.87);
-$dmSecondaryText: #aab3be;
-$dmPrimaryBackground: #1b1f2b;
-$dmSecondaryBackground: #2e3748;
-$dmHover: #ffffff29;
-$dmBorderInitial: #61676d;
-$dmBorderHover: #b3bdc9;
+@import '../../utilities/variables';
 
 .post {
   border-radius: 4px;
-  background-color: $lmSecondaryBackground;
+  background-color: $light-secondary;
   text-decoration: none;
-  // color: $lmText;
+  // color: $dark-text;
   padding: 20px;
   display: flex;
   flex-direction: row;
@@ -36,7 +20,7 @@ $dmBorderHover: #b3bdc9;
     min-height: 100%;
     padding-right: 25px;
     gap: 7px;
-    color: $lmText;
+    color: $dark-text;
 
     .votes-count {
       font-size: 1rem;
@@ -59,7 +43,7 @@ $dmBorderHover: #b3bdc9;
     .post-metadata {
       margin: 0;
       display: flex;
-      color: $lmSecondaryText;
+      color: $less-dark-text;
       font-size: 0.75rem;
 
       .subreddit {
@@ -84,7 +68,7 @@ $dmBorderHover: #b3bdc9;
         margin-right: 3px;
         .user {
           // font-weight: 500;
-          // color: $lmText;
+          // color: $dark-text;
         }
       }
 
@@ -106,7 +90,7 @@ $dmBorderHover: #b3bdc9;
       margin-top: 8px;
       .post-title {
         appearance: none;
-        color: $lmText;
+        color: $dark-text;
         text-decoration: none;
         font-size: 1.125rem;
         font-weight: 500;
@@ -126,14 +110,14 @@ $dmBorderHover: #b3bdc9;
           font-family: inherit;
           font-size: 0.9rem;
           resize: vertical;
-          border: 1px solid $lmBorderInitial;
+          border: 1px solid $border-lighter;
           border-radius: 5px;
           padding: 10px;
           transition: border-color 0.15s ease;
           background-color: transparent;
 
           &:hover {
-            border: 1px solid $lmBorderHover;
+            border: 1px solid $border-darker;
           }
         }
         .save-and-cancel {
@@ -153,7 +137,7 @@ $dmBorderHover: #b3bdc9;
           cursor: pointer;
 
           &:hover {
-            background-color: $lmPrimaryBackground;
+            background-color: $light-primary;
           }
         }
       }
@@ -186,35 +170,35 @@ $dmBorderHover: #b3bdc9;
       display: flex;
       align-items: center;
       gap: 8px;
-      color: $lmSecondaryText;
+      color: $less-dark-text;
       font-weight: 600;
       .edit-icon,
       .delete-icon {
         width: 100%;
         max-width: 14px;
-        stroke: $lmSecondaryText;
-        fill: $lmSecondaryText;
+        stroke: $less-dark-text;
+        fill: $less-dark-text;
       }
 
       &:hover {
-        background-color: $lmPrimaryBackground;
+        background-color: $light-primary;
       }
     }
   }
 }
 
 .dark .post {
-  background-color: $dmSecondaryBackground;
+  background-color: $dark-secondary;
   .votes-section {
     
     .votes-count{
-      color: $dmText;
+      color: $light-text;
     }
 
     button {
       background-color: transparent;
       border: none;
-      color: $dmText;
+      color: $light-text;
       cursor: pointer;
 
       &.up-vote {
@@ -224,7 +208,7 @@ $dmBorderHover: #b3bdc9;
       }
 
       &:hover {
-        background-color: $dmHover;
+        background-color: $dark-hover;
       }
     }
   }
@@ -234,46 +218,46 @@ $dmBorderHover: #b3bdc9;
     }
 
     .post-metadata {
-      color: $dmSecondaryText;
+      color: $less-light-text;
       .posted-by-span {
         .user {
-          color: $dmText;
+          color: $light-text;
         }
       }
     }
 
     .link-title {
-      color: $linkColor;
+      color: $link-color;
     }
 
     .title-and-body {
       .post-title {
-        color: $dmText;
+        color: $light-text;
       }
     }
 
     .post-body {
       .edit-post-form {
         textarea {
-          color: $dmText;
-          border: 1px solid $dmBorderInitial;
+          color: $light-text;
+          border: 1px solid $border-darker;
 
           &:hover {
-            border: 1px solid $dmBorderHover;
+            border: 1px solid $border-lighter;
           }
         }
         .save-and-cancel {
           button {
             &:hover {
-              color: $dmText;
-              background-color: $dmSecondaryBackground;
+              color: $light-text;
+              background-color: $dark-secondary;
             }
           }
         }
       }
 
       .post-body-text {
-        color: $dmText;
+        color: $light-text;
       }
     }
   }
@@ -281,17 +265,17 @@ $dmBorderHover: #b3bdc9;
   .posted-user-accessable-options {
     button {
       transition: background-color 0.1s ease;
-      color: $dmSecondaryText;
+      color: $less-light-text;
       cursor: pointer;
       background-color: inherit;
       .edit-icon,
       .delete-icon {
-        fill: $dmSecondaryText;
-        stroke: $dmSecondaryText;
+        fill: $less-light-text;
+        stroke: $less-light-text;
       }
 
       &:hover {
-        background-color: $dmHover;
+        background-color: $dark-hover;
       }
     }
   }

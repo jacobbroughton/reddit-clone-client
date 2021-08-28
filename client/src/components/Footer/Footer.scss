@@ -1,20 +1,4 @@
-$lmText: #1a202c;
-$lmSecondaryText: #73777c;
-$lmPrimaryBackground: #cbd5df;
-$lmSecondaryBackground: #f8fafc;
-$lmBorderInitial: #cbd5e0;
-$lmBorderHover: #a0a9b3;
-$lmHover: #cbd5df;
-
-$linkColor: #0079d3;
-
-$dmText: rgba(255, 255, 255, 0.87);
-$dmSecondaryText: #aab3be;
-$dmPrimaryBackground: #1b1f2b;
-$dmSecondaryBackground: #2e3748;
-$dmHover: #ffffff29;
-$dmBorderInitial: #61676d;
-$dmBorderHover: #b3bdc9;
+@import '../../utilities/variables';
 
 footer{
   padding: 30px;
@@ -34,32 +18,32 @@ footer{
     }
 
     .created-by{
-      color: $lmText;
+      color: $dark-text;
       font-weight: 600;
       margin-bottom: 10px;
     }
 
     .github{
       a{
-        color: $lmText;
+        color: $dark-text;
         font-weight: 500;
       }
     }
   }
 
   &.dark{
-    background-color: $dmPrimaryBackground;
+    background-color: $dark-primary;
 
     .container{
       
       .created-by{
-        color: $dmText;
+        color: $light-text;
       }
   
       .github{
-        color: $dmText;
+        color: $light-text;
         a{
-          color: $dmText;
+          color: $light-text;
         }
       }
     }

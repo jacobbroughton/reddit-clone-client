@@ -1,20 +1,4 @@
-$lmText: #1a202c;
-$lmSecondaryText: #73777c;
-$lmPrimaryBackground: #cbd5df;
-$lmSecondaryBackground: #f8fafc;
-$lmBorderInitial: #cbd5e0;
-$lmBorderHover: #a0a9b3;
-$lmHover: #cbd5df;
-
-$linkColor: #0079d3;
-
-$dmText: rgba(255, 255, 255, 0.87);
-$dmSecondaryText: #aab3be;
-$dmPrimaryBackground: #1b1f2b;
-$dmSecondaryBackground: #2e3748;
-$dmHover: #ffffff29;
-$dmBorderInitial: #61676d;
-$dmBorderHover: #b3bdc9;
+@import '../../utilities/variables';
 
 .login {
   height: 100%;
@@ -53,7 +37,7 @@ $dmBorderHover: #b3bdc9;
         width: initial;
         align-self: flex-start;
         background-color:transparent;
-        color: $lmText;
+        color: $dark-text;
         border: none;
         // padding: 8px 10px;
         border-radius: 3px;
@@ -68,7 +52,7 @@ $dmBorderHover: #b3bdc9;
       .create-account-link{
         text-decoration: none;
         margin-left: 5px;
-        color: $linkColor;
+        color: $link-color;
         font-weight: 500;
       }
     }
@@ -78,19 +62,19 @@ $dmBorderHover: #b3bdc9;
 .dark {
   .login-container {
     h2{
-      color: $dmText;
+      color: $light-text;
     }
     form {
       .login-input {
-        color: $dmText;
-        background-color: $dmSecondaryBackground;
+        color: $light-text;
+        background-color: $dark-secondary;
       }
       .login-submit {
-        color: $dmText;
+        color: $light-text;
       }
     }
     .need-to-register-question{
-      color: $dmText;
+      color: $light-text;
     }
   }
 }
