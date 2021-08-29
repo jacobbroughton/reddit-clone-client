@@ -13,6 +13,25 @@
   flex-direction: column;
   gap: 20px;
 
+  .no-user-error {
+    color: $dark-text;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: $light-secondary;
+    padding: 10px;
+    border-radius: 3px;
+    margin: 0;
+
+    a{
+      color: inherit;
+    }
+
+    span {
+      font-weight: 600;
+      font-style: italic;
+    }
+  }
+
   .sidebar-buttons{
     display: flex;
     flex-direction: column;
@@ -38,6 +57,15 @@
 
       .new-post-sidebar, .new-link-sidebar{
         background-color: $light-mode-interactive;
+
+        &.disabled {
+          cursor: not-allowed;
+          opacity: 0.6;
+    
+          &:hover {
+            text-decoration: none;
+          }
+        }
       }
     }
     .create-subreddit{
@@ -52,6 +80,23 @@
 
       &:hover{
         text-decoration: underline;
+      }
+
+      &.disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+  
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .disabled {
+      cursor: not-allowed;
+
+      &:hover {
+        text-decoration: none;
       }
     }
   }
@@ -80,6 +125,12 @@
   }
 
   &.dark{
+
+    .no-user-error {
+      color: crimson;
+      background: $dark-secondary;
+    }
+
     .sidebar-buttons{
       .post-and-link-buttons{
         .new-post-sidebar, .new-link-sidebar{
@@ -104,5 +155,9 @@
         &:hover{}
       }
     }
+  }
+
+  @media screen and (max-width: $mobile-bp) {
+    display: none;
   }
 }

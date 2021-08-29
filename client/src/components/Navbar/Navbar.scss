@@ -1,4 +1,4 @@
-@import '../../utilities/variables';
+@import "../../utilities/variables";
 
 .nav {
   width: 100%;
@@ -15,7 +15,7 @@
     justify-content: space-between;
 
     // Home Link
-    .home-link-parent {
+    .home-search-darkicon {
       position: relative;
       display: flex;
       align-items: center;
@@ -65,7 +65,6 @@
       //   }
       // }
 
-
       .dark-mode-icon-parent {
         appearance: none;
         border: none;
@@ -110,10 +109,10 @@
       }
     }
 
-    .subreddit-dropdown-toggle-button{
+    .subreddit-dropdown-toggle-button {
       display: flex;
 
-      .down-arrow{
+      .down-arrow {
         width: 20px;
         margin-left: 10px;
       }
@@ -150,7 +149,7 @@
           background-color: $light-mode-interactive;
           cursor: pointer;
 
-          .down-arrow{
+          .down-arrow {
             width: 20px;
             margin-left: 10px;
           }
@@ -171,7 +170,7 @@
           right: 0;
           min-width: 220px;
           border-radius: 5px;
-          box-shadow: 5px 5px 15px 5px rgba(24,24,24,0.15);
+          box-shadow: 5px 5px 15px 5px rgba(24, 24, 24, 0.15);
 
           a {
             padding: 10px;
@@ -212,79 +211,87 @@
     }
   }
 
-
-&.dark {
-  background-color: $dark-secondary;
-  color: $light-text ;
-  .nav-container {
-    // Home Link
-    .home-link-parent {
-      .nav-home-link {
-        color: $light-text;
-        span {
-        }
-      }
-
-      .dark-mode-icon-parent {
-        .dark-mode-icon {
-          fill: #fff;
-          
-        }
-      }
-      .subreddit-dropdown {
-        background-color: $dark-secondary;
-        a {
+  &.dark {
+    background-color: $dark-secondary;
+    color: $light-text;
+    .nav-container {
+      // Home Link
+      .home-search-darkicon {
+        .nav-home-link {
           color: $light-text;
-
-          &:hover {
-            // background-color: $dark-hover;
+          span {
           }
         }
-      }
-    }
 
-    .subreddit-dropdown-toggle-button,
-    .new-post-link {
-      color: $light-text;
-      background-color: $dark-mode-interactive;
-      &:hover {
-        // background-color: $dark-hover;
-      }
-    }
-
-    // Nav Menu
-    .nav-menu {
-      .logged-out-nav-view {
-        a {
-          color: $light-text;
-        }
-      }
-
-      .logged-in-nav-view {
-        .nav-username-button {
-          background-color: $dark-mode-interactive;
-          color: $light-text;
-          &:hover {
-            // background-color: $dark-hover;
+        .dark-mode-icon-parent {
+          .dark-mode-icon {
+            fill: #fff;
           }
         }
-        .user-dropdown {
+        .subreddit-dropdown {
           background-color: $dark-secondary;
           a {
             color: $light-text;
+
             &:hover {
-              background-color: $dark-hover;
+              // background-color: $dark-hover;
             }
           }
-          .logout-button {
+        }
+      }
+
+      .subreddit-dropdown-toggle-button,
+      .new-post-link {
+        color: $light-text;
+        background-color: $dark-mode-interactive;
+        &:hover {
+          // background-color: $dark-hover;
+        }
+      }
+
+      // Nav Menu
+      .nav-menu {
+        .logged-out-nav-view {
+          a {
+            color: $light-text;
+          }
+        }
+
+        .logged-in-nav-view {
+          .nav-username-button {
+            background-color: $dark-mode-interactive;
             color: $light-text;
             &:hover {
-              background-color: $dark-hover;
+              // background-color: $dark-hover;
+            }
+          }
+          .user-dropdown {
+            background-color: $dark-secondary;
+            a {
+              color: $light-text;
+              &:hover {
+                background-color: $dark-hover;
+              }
+            }
+            .logout-button {
+              color: $light-text;
+              &:hover {
+                background-color: $dark-hover;
+              }
             }
           }
         }
       }
     }
   }
-}
+
+  @media screen and (max-width: $mobile-bp) {
+    .nav-container {
+      padding: 10px 15px;
+    }
+
+    .nav-container .home-search-darkicon .nav-home-link {
+      display: none;
+    }
+  }
 }

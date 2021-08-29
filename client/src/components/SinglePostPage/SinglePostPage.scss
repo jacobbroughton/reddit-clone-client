@@ -2,7 +2,7 @@
 
 .single-post-page{
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   margin-top: 98px;
   border-radius: 4px;
   background-color: $light-secondary;
@@ -42,4 +42,8 @@
     } 
   }
   
+  @media screen and (max-width: $mobile-bp) {
+    width: calc(100% - 20px);
+    max-width: calc(100% - 20px);
+  }
 }

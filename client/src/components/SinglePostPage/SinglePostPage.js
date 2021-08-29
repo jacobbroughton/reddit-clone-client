@@ -7,6 +7,7 @@ import { getComments, resetComments } from "../../actions/commentsActions"
 import CommentForm from "../CommentForm/CommentForm"
 import CommentsList from "../CommentsList/CommentsList"
 import Post from "../Post/Post"
+import LogInPrompt from "../LogInPrompt/LogInPrompt"
 // import { getElapsedTime } from "../GetElapsedTime";
 
 const SinglePostPage = () => {
@@ -42,12 +43,15 @@ const SinglePostPage = () => {
           <Link className="post-not-found-link" to={subredditName ? `/${subredditName[0]}` : '/'}>{subredditName ? `${subredditName}` : 'Home'}</Link>
         </p>
         }
-        { user && post &&
-          <CommentForm
-            parentComment={null}
-            post={post}
-            alwaysOpen={true}
-          />
+        { user ? ( post &&
+            <CommentForm
+              parentComment={null}
+              post={post}
+              alwaysOpen={true}
+            />
+          )
+          :
+          <LogInPrompt actionText="comment" />
         }
         { comments.length > 0  && 
           <CommentsList/>

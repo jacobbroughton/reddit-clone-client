@@ -1,0 +1,39 @@
+@import "../../utilities/variables";
+
+.log-in-prompt{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $dark-text;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid $border-lighter;
+  border-radius: 5px;
+}
+
+.log-in-prompt__buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.log-in-prompt a {
+  color: $dark-text;
+  padding: 5px;
+  background: $light-mode-interactive;
+  border-radius: 3px;
+  filter: drop-shadow(1px 1px 1px #18181810)
+}
+
+.dark .log-in-prompt {
+  color: $light-text;
+  border: 1px solid $border-lighter;
+}
+
+.dark .log-in-prompt a {
+  color: $light-text;
+  padding: 5px;
+  background: $dark-mode-interactive;
+  text-decoration: none;
+}

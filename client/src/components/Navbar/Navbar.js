@@ -31,7 +31,7 @@ const Navbar = () => {
   return (
     <nav className={`nav ${darkMode ? 'dark' : ''}`}>
       <div className={`nav-container`}>
-        <div className={`home-link-parent`} >
+        <div className={`home-search-darkicon`} >
           <Link className={`nav-home-link`} to="/"><span className="not-span" onClick={() => {
               dispatch(setCurrentSubreddit(null))
               // dispatch(getPosts(user ? user.id : null, name));
@@ -42,14 +42,6 @@ const Navbar = () => {
             subredditDropdownToggle={subredditDropdownToggle} 
             setSubredditDropdownToggle={setSubredditDropdownToggle}
           /> */}
-
-          {/* <div className="search-bar">
-            <SearchIcon className="search-icon"/>
-            { currentSubreddit && <label className="search-label">r/{currentSubreddit.name}</label> }
-            <form className="search-form">
-              <input className="search-input" placeholder="Search"/>
-            </form>
-          </div> */}
           <Search/>
 
           <button className={`dark-mode-icon-parent`}  >

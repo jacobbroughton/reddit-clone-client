@@ -33,31 +33,11 @@ const Search = () => {
   }
 
 
-  // useEffect(() => {
-  //   let searchQueryFromURL = query.get("q");
-
-  //   if(searchValue === "" && searchQueryFromURL) {
-  //     console.log('currentSubreddit:',  name)
-  //     searchFunc(searchQueryFromURL, currentSubreddit?.name)
-  //   //   setSearchValue(searchQueryFromURL)
-  //   //   dispatch(search(user?.id, currentSubreddit?.name, searchQueryFromURL))
-
-  //   //   history.push({
-  //   //     search: `?q=${searchQueryFromURL}`
-  //   //   })
-  //   } else { return }
-  // }, [name])
-
   const handleSearchSubmit = async (e) => {
     e.preventDefault()
 
     if(searchValue === "") return
 
-    // dispatch(search(user?.id, currentSubreddit?.name, searchValue))
-
-    // history.push({
-    //   search: `?q=${searchValue}`
-    // })
     searchFunc(searchValue, currentSubreddit?.name)
   }
 

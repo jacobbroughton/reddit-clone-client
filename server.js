@@ -21,6 +21,7 @@ let options = {
     database: process.env.DB_DATABASE,
     port: process.env.DB_PORT
 }
+
 let MySQLStore = require("express-mysql-session")(session)
 
 let origin;

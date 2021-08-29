@@ -8,34 +8,35 @@ import { Link } from "react-router-dom"
 const Sidebar = () => {
 
   const dispatch = useDispatch()
-  // const location = useLocation()
   const subreddits = useSelector(state => state.subreddits)
   const darkMode = useSelector(state => state.darkMode)
-  // const user = useSelector(state => state.auth.user)
+  const user = useSelector(state => state.auth.user)
 
-
-  // const [searchQueryFromURL, setSearchQueryFromURL] = useState('')
-
+  // const [noUserError, setNoUserError] = useState(null)
 
   useEffect(() => {
     dispatch(getSubreddits());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   let searchQueryFromURL = query.get("q");
-  //   setSearchQueryFromURL(searchQueryFromURL);
-  // }, [location]);
+  // const handleNoUserError = (text) => {
+  //   setNoUserError(`${text}`)
+  //   clearTimeout()
+  //   setTimeout(() => {
+  //     setNoUserError(null)
+  //   }, 3000)
+  // }
 
   return (
     <aside className={`sidebar ${darkMode ? 'dark' : ''}`}>
+      <p className="no-user-error"> <Link to="/login">Sign in</Link> or <Link to="/register">register</Link> to create new content</p>
       <div className="sidebar-buttons">
         {/* <img className="profile" src={user?.profile_picture}/> */}
         {/* <ProfilePicture size="large" source={user.profile_picture}/> */}
         <div className="post-and-link-buttons">
-          <Link to={"/new-post?type=text"} className="new-post-sidebar">New Post</Link>
-          <Link to={"/new-post?type=link"} className="new-link-sidebar">New Link</Link>
+          <Link to={`${user ? '/new-post?type=text' : '#'}`} className={`new-post-sidebar ${!user ? 'disabled' : ''}`}>New Post</Link>
+          <Link to={`${user ? '/new-post?type=link' : '#'}`} className={`new-link-sidebar ${!user ? 'disabled' : ''}`}>New Link</Link>
         </div>
-        <Link to={"/subreddits/create"} className="create-subreddit">Create Subreddit</Link>
+        <Link to={`${user ? '/subreddits/create' : '#'}`} className={`create-subreddit ${!user ? 'disabled' : ''}`}>Create Subreddit</Link>
       </div>
       <div className="subreddit-list"> 
       <p className="subreddit-list-label">Subreddits</p>

@@ -1,5 +1,5 @@
-import React from "react"
-import { Switch, Route, useLocation, useParams } from "react-router-dom";
+import React, { useEffect } from "react"
+import { Switch, Route, useLocation, useParams, Redirect } from "react-router-dom";
 import ScrollToTop from './components/ScrollToTop'
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
@@ -12,8 +12,8 @@ import CreateSubreddit from "./components/CreateSubreddit/CreateSubreddit";
 import Sidebar from "./components/Sidebar/Sidebar";
 import SearchPage from "./components/SearchPage/SearchPage";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
 import "./App.scss"
+import PropTypes from "prop-types"
 import { setCurrentSubreddit } from "./actions/subredditActions";
 
 function App() {
@@ -56,12 +56,12 @@ function App() {
             <Route path="/login">
               <Login />
             </Route>
-            <Route path="/subreddits/create">
+            <ProtectedRoute path="/subreddits/create">
               <CreateSubreddit />
-            </Route>
-            <Route path="/new-post">
+            </ProtectedRoute>
+            <ProtectedRoute path="/new-post">
               <NewPost />
-            </Route>
+            </ProtectedRoute>
             <Route exact path="/r/:name/search">
               <SearchPage />
             </Route>
@@ -85,6 +85,31 @@ function App() {
       
     </div>
   );
+}
+
+function ProtectedRoute ({ children, ...rest }) {
+  let user = useSelector(state => state.auth.user)
+  return (
+    <Route
+      {...rest}
+      render={({ location }) => 
+        user ? (
+          children
+        ) : (
+          <Redirect 
+            to={{
+              pathname: "/login",
+              state: { from: location }
+            }}
+          />
+        )
+      }
+    />
+  )
+}
+
+ProtectedRoute.propTypes = {
+  children: PropTypes.object
 }
 
 export default App;
