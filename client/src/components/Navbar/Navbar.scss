@@ -5,6 +5,7 @@
   position: fixed;
   background-color: #fff;
   z-index: 2;
+  box-shadow: $heavy-box-shadow;
 
   .nav-container {
     max-width: 1100px;

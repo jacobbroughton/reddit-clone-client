@@ -1,4 +1,4 @@
-@import '../../utilities/variables';
+  @import '../../utilities/variables';
 
 .single-post-page{
   width: 100%;
@@ -6,7 +6,9 @@
   margin-top: 98px;
   border-radius: 4px;
   background-color: $light-secondary;
+  box-shadow: $subtle-box-shadow;
   height: fit-content;
+
   .single-post-page-container{
     display: flex;
     flex-direction: column;
@@ -14,6 +16,7 @@
     .post{
       padding: 0;
       margin-bottom: 15px;
+      box-shadow: none;
     }
 
     .post-not-found-p{

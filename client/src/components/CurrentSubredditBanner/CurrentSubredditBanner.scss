@@ -8,7 +8,7 @@
   background-color: $light-secondary;
   padding: 20px;
   border-radius: 3px;
-  box-shadow: 2px 2px 5px #1818181f;
+  box-shadow: $subtle-box-shadow;
   width: calc(100% - 40px);
 
   .current-subreddit-banner-stack{

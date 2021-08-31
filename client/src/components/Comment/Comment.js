@@ -133,16 +133,17 @@ const Comment = ({ comment }) => {
           <div className="comment-buttons">
             <VoteButtons item={comment} handleVoteClick={handleVoteClick}/>          
             
-            {/* {!toggleCommentReply && ( */}
-              <button
+            {user && <button
                 className="reply-button"
                 onClick={() => setToggleCommentReply(!toggleCommentReply)}
               >
                 <CommentIcon className="comment-icon" /> Reply
               </button>
-            {/* )} */}
+            }
 
-            {user && user.id === comment.author_id && (
+            {user && 
+            
+            user.id === comment.author_id && (
               // <div className="commented-user-accessable-options">
               <>
                 {!isEditing && (

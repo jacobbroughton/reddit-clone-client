@@ -15,7 +15,9 @@ const CreateSubreddit = () => {
 
 
   const handleSubmit = (e) => {
-    dispatch(createSubreddit(user.id, subredditName, subredditDescription))
+    if(subredditName !== "") {
+      dispatch(createSubreddit(user.id, subredditName, subredditDescription))
+    }
     e.preventDefault()
   }
 
@@ -26,7 +28,7 @@ const CreateSubreddit = () => {
       <form onSubmit={(e) => handleSubmit(e)}>
         <input onChange={e => setSubredditName(e.target.value)} placeholder="Subreddit name"/>
         <textarea onChange={e => setSubredditDescription(e.target.value)} placeholder="Description (optional)"/>
-        <button type="submit">Create</button>
+        <button disabled={subredditName === ""} className={subredditName === "" ? 'disabled' : ''} type="submit">Create</button>
       </form>
     </div>
   )

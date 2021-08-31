@@ -37,22 +37,32 @@
     }
     button{
       // width: 100%;
-      padding: 10px 15px;
+      padding: 5px;
       font-size: 1rem;
       font-weight: 600;
       border: none;
       // align-self: center;
       border-radius: 3px;
-      background-color: $light-secondary;
+      background-color: transparent;
+      cursor: pointer;
+
+      &:disabled {
+        cursor: not-allowed;
+      }
     }
   }
 }
 
 .dark{
   form{
-    input, textarea, button{
+    input, textarea {
       background-color: $dark-secondary;
       color: $light-text;
+    }
+
+    button {
+      color: $light-text;
+      opacity: 0.5;
     }
     // textarea{
     //   background-color: $dark-secondary;

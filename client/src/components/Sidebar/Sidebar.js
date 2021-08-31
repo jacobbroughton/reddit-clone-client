@@ -28,7 +28,7 @@ const Sidebar = () => {
 
   return (
     <aside className={`sidebar ${darkMode ? 'dark' : ''}`}>
-      <p className="no-user-error"> <Link to="/login">Sign in</Link> or <Link to="/register">register</Link> to create new content</p>
+      {!user && <p className="no-user-error"> <Link to="/login">Sign in</Link> or <Link to="/register">register</Link> to create new content</p>}
       <div className="sidebar-buttons">
         {/* <img className="profile" src={user?.profile_picture}/> */}
         {/* <ProfilePicture size="large" source={user.profile_picture}/> */}
