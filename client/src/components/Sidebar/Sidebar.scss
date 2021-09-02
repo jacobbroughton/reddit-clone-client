@@ -57,6 +57,7 @@
 
       .new-post-sidebar, .new-link-sidebar{
         background-color: $light-secondary;
+        box-shadow: $subtle-box-shadow;
 
         &.disabled {
           cursor: not-allowed;
@@ -73,6 +74,7 @@
       width: calc(100% - 10px);
       color: black;
       background-color: $light-secondary;
+      box-shadow: $subtle-box-shadow;
       font-weight: 500;
       text-decoration: none;
       border-radius: 3px;

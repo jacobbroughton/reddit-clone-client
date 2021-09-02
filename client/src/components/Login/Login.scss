@@ -28,7 +28,8 @@
       gap: 10px;
       .login-input {
         border: none;
-        background-color: #efefef;
+        background-color: $light-secondary;
+        box-shadow: $subtle-box-shadow;
         padding: 8px 10px;
         border-radius: 5px;
         font-size: 1rem;

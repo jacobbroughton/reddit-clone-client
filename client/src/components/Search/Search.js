@@ -48,6 +48,7 @@ const Search = () => {
       <form onSubmit={(e) => handleSearchSubmit(e)} className="search-form">
         <input onChange={(e) => setSearchValue(e.target.value)} value={searchValue} className="search-input" placeholder="Search"/>
       </form>
+
     </div>
   )
 }

@@ -4,7 +4,7 @@
 .search-bar{
   border: 1px solid $border-lighter;
   border-radius: 4px;
-  margin-left: 10px;
+  // margin-left: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -66,6 +66,21 @@
 
   @media screen and (max-width: $mobile-bp) {
     margin-left: 0;
+    padding: 3px;
+    border-radius: 99px;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .search-icon {
+      height: 100%;
+      max-width: 23px;
+    }
+
+    .search-form {
+      display: none;
+    }
   }
 }
 

@@ -59,7 +59,9 @@ const Navbar = () => {
                 {user.username} 
                 <DownArrow className="down-arrow"/></button>
               <div className={`${isUserDropdownOpen ? 'user-dropdown open' : 'user-dropdown closed' }`}>
-                <Link onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} to="/subreddits/create">Create Subreddit</Link>
+                <Link className="dropdown-link" onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} to="/new-post?type=text">New Text Post</Link>
+                <Link className="dropdown-link" onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} to="/new-post?type=link">New Link Post</Link>
+                <Link className="dropdown-link" onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} to="/subreddits/create">Create Subreddit</Link>
                 <button  className="logout-button" onClick={() => {
                   dispatch(startLogout(user))
                   setIsUserDropdownOpen(!isUserDropdownOpen)
