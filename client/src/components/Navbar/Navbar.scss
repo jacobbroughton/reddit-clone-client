@@ -197,8 +197,6 @@
       .home-search-darkicon {
         .nav-home-link {
           color: $light-text;
-          span {
-          }
         }
 
         .dark-mode-icon-parent {
@@ -270,15 +268,7 @@
     }
 
     .nav-container .home-search-darkicon .nav-home-link {
-      // display: none;
-      display: flex;
-      flex-direction: column;
-      font-size: 1.2rem;
-      height: 100%;
-
-      span {
-        font-size: 0.9rem;
-      }
+      display: none;
     }
 
     .nav-container .nav-menu .logged-in-nav-view .user-dropdown .dropdown-link {
