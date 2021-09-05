@@ -1,15 +1,17 @@
 import "./Search.scss"
 import { ReactComponent as SearchIcon } from "../../images/search.svg"
+import { ReactComponent as BackArrow } from "../../images/backarrow.svg"
 import { useSelector, useDispatch } from "react-redux"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { search } from "../../actions/searchActions"
+import useBrowserResize from "../useBrowserResize"
 import React from "react"
 
 
 const Search = () => {
 
-  // /search/q=search query here
+  const { width } = useBrowserResize()
 
   const dispatch = useDispatch()
   const history = useHistory()
@@ -20,9 +22,26 @@ const Search = () => {
 
 
   const [searchValue, setSearchValue] = useState("")
+  const [searchExpanded, setSearchExpanded] = useState(false)
+  const [mobile, setMobile] = useState(false)
 
-  // const query = useQuery()
-  // const { name } = useParams()
+  // useEffect(() => {
+  //   console.log(browserWidth)
+  // }, [browserWidth])
+
+  useEffect(() => {
+    if(width <= 767) {
+      setMobile(true)
+    } else {
+      setMobile(false)
+      setSearchExpanded(false)
+    }
+  }, [width])
+
+  useEffect(() => {
+    console.log(searchExpanded, mobile)
+  }, [searchExpanded, mobile])
+
 
   const searchFunc = (value, subreddit) => {
 
@@ -43,12 +62,24 @@ const Search = () => {
 
   return (
     <div className={`search-bar ${darkMode ? 'dark' : ''}`}>
-      <SearchIcon className="search-icon"/>
-      { currentSubreddit && <label className="search-label">r/{currentSubreddit.name}</label> }
-      <form onSubmit={(e) => handleSearchSubmit(e)} className="search-form">
-        <input onChange={(e) => setSearchValue(e.target.value)} value={searchValue} className="search-input" placeholder="Search"/>
-      </form>
-
+      <button className="search-icon-button" onClick={mobile ? () => setSearchExpanded(!searchExpanded) : undefined}>
+        {searchExpanded ? <BackArrow className="search-icon" /> : <SearchIcon className="search-icon"/> }
+      </button>
+      { mobile && searchExpanded ? 
+        <div className="mobile-search">
+          {currentSubreddit && <label className="search-label">r/{currentSubreddit.name}</label>}
+          <form onSubmit={(e) => handleSearchSubmit(e)} className="search-form">
+            <input onChange={(e) => setSearchValue(e.target.value)} value={searchValue} className="search-input" placeholder="Search"/>
+          </form>
+        </div>
+        :
+        <div className="desktop-search">
+          {currentSubreddit && <label className="search-label">r/{currentSubreddit.name}</label>}
+          <form onSubmit={(e) => handleSearchSubmit(e)} className="search-form">
+            <input onChange={(e) => setSearchValue(e.target.value)} value={searchValue} className="search-input" placeholder="Search"/>
+          </form>
+        </div>
+      }
     </div>
   )
 }

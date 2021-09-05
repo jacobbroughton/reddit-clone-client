@@ -12,6 +12,18 @@
   height: 30px;
   max-width: 400px;
   background-color: $light-primary;
+
+  .search-icon-button {
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .search-icon{
     height: auto;
     width: 100%;
@@ -65,21 +77,32 @@
   }
 
   @media screen and (max-width: $mobile-bp) {
-    margin-left: 0;
-    padding: 3px;
-    border-radius: 99px;
-    aspect-ratio: 1/1;
-    display: flex;
-    align-items: center;
     justify-content: center;
+    padding: 0;
+    // border: 0;
+    // border-radius: 99px;
+    
+    .search-icon-button {
+      // border-radius: 99px;
+      // border: 1px solid $border-lighter;
+    }
 
     .search-icon {
       height: 100%;
+      width: 100%;
       max-width: 23px;
+      padding: 2px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .desktop-search {
+      display: none;
     }
 
     .search-form {
-      display: none;
+      // display: none;
     }
   }
 }

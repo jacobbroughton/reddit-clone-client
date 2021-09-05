@@ -61,10 +61,12 @@
 
         &.disabled {
           cursor: not-allowed;
-          opacity: 0.6;
+          text-decoration: line-through;
+          // opacity: 0.6;
     
           &:hover {
-            text-decoration: none;
+            text-decoration: line-through;
+            text-decoration-thickness: 2px;
           }
         }
       }
@@ -86,10 +88,11 @@
 
       &.disabled {
         cursor: not-allowed;
-        opacity: 0.6;
+        text-decoration: line-through;
   
         &:hover {
-          text-decoration: none;
+          text-decoration: line-through;
+          text-decoration-thickness: 2px;
         }
       }
     }
@@ -130,20 +133,20 @@
 
     .no-user-error {
       color: $light-text;
-      background: $dark-secondary;
+      background-color: $dark-secondary;
     }
 
     .sidebar-buttons{
       .post-and-link-buttons{
         .new-post-sidebar, .new-link-sidebar{
-          background-color: #4f5967;
+          background-color: $dark-secondary;
           color: $light-text;
         }
         .new-post-sidebar{}
         .new-link-sidebar{}
       }
       .create-subreddit{
-        background-color: #4f5967;
+        background-color: $dark-secondary;
         color: $light-text;
       }
     }
