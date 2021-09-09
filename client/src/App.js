@@ -12,6 +12,7 @@ import CreateSubreddit from "./components/CreateSubreddit/CreateSubreddit";
 import Sidebar from "./components/Sidebar/Sidebar";
 import SearchPage from "./components/SearchPage/SearchPage";
 import { useSelector, useDispatch } from "react-redux";
+import Meta from "./components/Meta"
 import "./App.scss"
 import PropTypes from "prop-types"
 import { setCurrentSubreddit } from "./actions/subredditActions";
@@ -47,6 +48,7 @@ function App() {
 
   return (
     <div className={`App ${darkMode ? "dark" : ""}`}>
+      <Meta/>
       <ScrollToTop>
         <Navbar />
         <main>
