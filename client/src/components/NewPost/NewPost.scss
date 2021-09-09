@@ -106,12 +106,10 @@
         background-color: $dark-secondary;
       }
       .new-post-submit{
-        // background-color: $dark-secondary;
         color: $light-text;
 
         &:disabled{
           opacity: 0.5;
-          cursor: initial;
         }
       }
     }

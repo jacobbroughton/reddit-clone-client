@@ -24,9 +24,14 @@ const Navbar = () => {
 
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
+  const [overlayToggle, setOverlayToggle] = useState(false)
+
   // const [subredditDropdownToggle, setSubredditDropdownToggle] = useState(false)
 
-
+  const handleDropdownClick = () => {
+    setOverlayToggle(!overlayToggle)
+    setIsUserDropdownOpen(!isUserDropdownOpen)
+  }
 
   return (
     <nav className={`nav ${darkMode ? 'dark' : ''}`}>
@@ -53,21 +58,28 @@ const Navbar = () => {
         <div className="nav-menu">
           {
             user ? 
+            <>
+            {overlayToggle && <div onClick={() => handleDropdownClick()} className="overlay"></div> }
             <div className="logged-in-nav-view">
-              <button onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} className="nav-username-button">
-                <ProfilePicture size="small" source={user.profile_picture} />
-                <span className="nav-username-span">{user.username} </span>
-                <DownArrow className="down-arrow"/></button>
+              <button onClick={() => {
+                setOverlayToggle(!overlayToggle)
+                setIsUserDropdownOpen(!isUserDropdownOpen)
+              }} className="nav-username-button">
+              <ProfilePicture size="small" source={user.profile_picture} />
+              <span className="nav-username-span">{user.username} </span>
+              <DownArrow className="down-arrow"/></button>
               <div className={`${isUserDropdownOpen ? 'user-dropdown open' : 'user-dropdown closed' }`}>
-                <Link className="dropdown-link" onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} to="/new-post?type=text">New Text Post</Link>
-                <Link className="dropdown-link" onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} to="/new-post?type=link">New Link Post</Link>
-                <Link className="dropdown-link" onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} to="/subreddits/create">Create Subreddit</Link>
+                <Link className="dropdown-link" onClick={() => handleDropdownClick()} to="/">Home</Link>
+                <Link className="dropdown-link" onClick={() => handleDropdownClick()} to="/new-post?type=text">New Text Post</Link>
+                <Link className="dropdown-link" onClick={() => handleDropdownClick()} to="/new-post?type=link">New Link Post</Link>
+                <Link className="dropdown-link" onClick={() => handleDropdownClick()} to="/subreddits/create">Create Subreddit</Link>
                 <button  className="logout-button" onClick={() => {
                   dispatch(startLogout(user))
-                  setIsUserDropdownOpen(!isUserDropdownOpen)
+                  handleDropdownClick()
                 }}>Logout</button>
               </div>
             </div>
+            </>
             :
             <div className="logged-out-nav-view">
               <Link to="/login">Login</Link>

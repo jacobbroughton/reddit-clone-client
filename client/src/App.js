@@ -38,6 +38,7 @@ function App() {
       document.body.classList.remove("dark");
     }
   }, [darkMode]);
+  
 
   const sidebarExcludedRoutes = [
     '/login',
