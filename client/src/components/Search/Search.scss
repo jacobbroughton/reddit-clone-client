@@ -52,13 +52,15 @@
     width: 100%;
     display: flex;
     align-items: center;
+
     .search-input{
+      appearance: none;
       padding: 0;
       height: 100%;
       width: 100%;
       border: none;
       outline: none;
-      background-color: $light-mode-interactive;
+      background-color: $light-primary;
     }
   }
 
@@ -105,11 +107,14 @@
     .mobile-search {
       display: block;
       height: 100%;
-      width: 100%;;
+      width: 100%;
+      appearance: none;
     }
 
     .mobile-search input {
       font-size: 1rem;
+      appearance: none;
+      
     }
 
     .desktop-search {
@@ -119,6 +124,7 @@
     .search-form input {
       // display: none;
       border-radius: 3px;
+      appearance: none;
     }
   }
 }
