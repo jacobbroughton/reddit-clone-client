@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from "react-redux"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import "./SubredditsSelect.scss"
 
 const SubredditsSelect = () => {
@@ -9,12 +9,14 @@ const SubredditsSelect = () => {
   const history = useHistory()
 
   const subreddits = useSelector(state => state.subreddits)
+  const currentSubreddit = useSelector(state => state.currentSubreddit)
+  const darkMode = useSelector(state => state.darkMode)
+
 
   const generalSubreddits = subreddits.filter(subreddit => subreddit.user_id === 1)
   const userCreatedSubreddits = subreddits.filter(subreddit => subreddit.user_id !== 1)
 
-  console.log(generalSubreddits)
-  console.log(userCreatedSubreddits)
+  generalSubreddits.unshift({name: "Home"})
 
 
   const [allSubs, setAllSubs] = useState([])
@@ -32,12 +34,34 @@ const SubredditsSelect = () => {
     ])
   }, [subreddits])
 
+  // useEffect(() => {
+  //   if(currentSubreddit === null) {
+
+  //   }
+  // }, [currentSubreddit])
+
+  const handleSelect = (e) => {
+    if(e.target.value === "Home") {
+      history.push('/')
+    } else {
+      history.push(`/r/${e.target.value}`)
+    }
+    
+  }
+
   if(!allSubs) return <p>Loading</p>
 
   return (
-    <div className="mobile-subreddit-selector">
-      <Link to="/">Home</Link>
-      <select onChange={(e) => history.push(`/r/${e.target.value}`)} className="subreddits">
+    <div className={`mobile-subreddit-selector ${darkMode ? 'dark' : ''}`}>
+      {/* <Link className="home-link" to="/">Go to home</Link> */}
+      <label>Select a subreddit</label>
+      <select 
+        // defaultValue={generalSubreddits[0]}
+        value={currentSubreddit ? currentSubreddit.name : "Home"}
+        label="Select a subreddit" 
+        onChange={(e) => handleSelect(e)} 
+        className="subreddits"
+        >
         {allSubs.map((subObject, index) => 
           <optgroup label={subObject.type} key={index}>
             {subObject.includedSubreddits.map((sub, index) => 

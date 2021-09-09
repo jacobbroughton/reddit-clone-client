@@ -2,10 +2,43 @@
 
 .mobile-subreddit-selector {
   display: none;
+  padding-left: 5px;
+
+  label {
+    color: $less-dark-text;
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+
+  select {
+    border: $border-lighter solid 1px;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 1rem;
+    position: relative;
+  }
+  
+  &.dark {
+    label {
+      color: $less-light-text;
+    }
+
+    select {
+      border: $border-darker solid 1px;
+      background-color: $dark-mode-interactive;
+      color: $light-text;
+    }
+  }
 }
 
 @media screen and (max-width: $mobile-bp) {
   .mobile-subreddit-selector {
     display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+    justify-content: center;
+    padding-bottom: 20px;
+    // padding-left: 5px;
   }
 }

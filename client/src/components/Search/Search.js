@@ -3,7 +3,7 @@ import { ReactComponent as SearchIcon } from "../../images/search.svg"
 import { ReactComponent as BackArrow } from "../../images/backarrow.svg"
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
-import { useHistory } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom"
 import { search } from "../../actions/searchActions"
 import useBrowserResize from "../useBrowserResize"
 import React from "react"
@@ -15,6 +15,7 @@ const Search = () => {
 
   const dispatch = useDispatch()
   const history = useHistory()
+  const location = useLocation()
 
   const user = useSelector(state => state.auth.user)
   const currentSubreddit = useSelector(state => state.currentSubreddit)
@@ -45,10 +46,17 @@ const Search = () => {
 
   const searchFunc = (value, subreddit) => {
 
-      setSearchValue(value)
-      dispatch(search(user?.id, subreddit, value))
+    setSearchValue(value)
+    dispatch(search(user?.id, subreddit, value))
 
-      history.push(`search?q=${value}`)
+    console.log(location)
+
+    if(currentSubreddit) {
+      history.push(`${location.pathname}?q=${value}`)
+    } else {
+      console.log(location)
+      history.push(`/search?q=${value}`)
+    }
   }
 
 

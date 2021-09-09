@@ -30,3 +30,9 @@
     }
   }
 }
+
+@media screen and (max-width: $mobile-bp) {
+  .post-list-main {
+    padding-top: 78px;
+  }
+}
