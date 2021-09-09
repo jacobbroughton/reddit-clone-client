@@ -10,8 +10,15 @@
   gap: 10px;
   padding: 0 10px;
   height: 30px;
-  max-width: 400px;
+  max-width: none;
   background-color: $light-primary;
+
+  .desktop-search {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
 
   .search-icon-button {
     background: transparent;
@@ -77,15 +84,12 @@
   }
 
   @media screen and (max-width: $mobile-bp) {
-    justify-content: center;
+    justify-content: flex-start;
     padding: 0;
     gap: 5px;
-    // border: 0;
-    // border-radius: 99px;
+    width: 100%;
     
     .search-icon-button {
-      // border-radius: 99px;
-      // border: 1px solid $border-lighter;
       padding: 2px 10px;
     }
 
@@ -99,7 +103,9 @@
     }
 
     .mobile-search {
+      display: block;
       height: 100%;
+      width: 100%;;
     }
 
     .mobile-search input {

@@ -274,5 +274,13 @@
     .nav-container .nav-menu .logged-in-nav-view .user-dropdown .dropdown-link {
       display: block;
     }
+
+    .nav-container .nav-username-button .profile-picture {
+      margin: 0;
+    }
+
+    .nav-container .nav-username-span {
+      display: none;
+    }
   }
 }

@@ -56,7 +56,7 @@ const Navbar = () => {
             <div className="logged-in-nav-view">
               <button onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} className="nav-username-button">
                 <ProfilePicture size="small" source={user.profile_picture} />
-                {user.username} 
+                <span className="nav-username-span">{user.username} </span>
                 <DownArrow className="down-arrow"/></button>
               <div className={`${isUserDropdownOpen ? 'user-dropdown open' : 'user-dropdown closed' }`}>
                 <Link className="dropdown-link" onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)} to="/new-post?type=text">New Text Post</Link>

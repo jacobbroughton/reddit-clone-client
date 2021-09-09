@@ -66,10 +66,10 @@ const Search = () => {
         {searchExpanded ? <BackArrow className="search-icon" /> : <SearchIcon className="search-icon"/> }
       </button>
       { mobile && searchExpanded ? 
-        <div className="mobile-search">
-          {currentSubreddit && <label className="search-label">r/{currentSubreddit.name}</label>}
+        <div className='mobile-search'>
+          {/* {currentSubreddit && <label className="search-label">r/{currentSubreddit.name}</label>} */}
           <form onSubmit={(e) => handleSearchSubmit(e)} className="search-form">
-            <input onChange={(e) => setSearchValue(e.target.value)} value={searchValue} className="search-input" placeholder="Search"/>
+            <input onChange={(e) => setSearchValue(e.target.value)} value={searchValue} className="search-input" placeholder={`Search ${currentSubreddit ? `in ${currentSubreddit.name}` : ''}`}/>
           </form>
         </div>
         :

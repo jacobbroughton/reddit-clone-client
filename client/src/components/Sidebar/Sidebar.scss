@@ -106,16 +106,24 @@
     }
   }
 
-  .subreddit-list{
+  .subreddit-lists{
     display: flex;
     flex-direction: column;
     gap: 8px;
 
+    .subreddit-list-label-main{
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 20px;
+      text-decoration: underline;
+    }
+
     .subreddit-list-label{
       margin: 0;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-top: 20px;
     }
 
     .subreddit-link{
@@ -151,8 +159,8 @@
       }
     }
   
-    .subreddit-list{
-      .subreddit-list-label{
+    .subreddit-lists{
+      .subreddit-list-label-main, .subreddit-list-label{
         color: $light-text;
       }
       .subreddit-link{

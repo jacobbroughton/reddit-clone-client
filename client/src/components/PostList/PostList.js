@@ -8,6 +8,7 @@ import { useQuery } from "../useQuery"
 
 // import { setPost } from "../../reducers/postReducer"
 import Post from "../Post/Post";
+import SubredditsSelect from "../SubredditsSelect/SubredditsSelect";
 import CurrentSubredditBanner from "../CurrentSubredditBanner/CurrentSubredditBanner"
 // import { post } from "../../../../routers/postsRouter";
 
@@ -51,6 +52,7 @@ const PostList = () => {
 
   return (
     <div className={`post-list-main ${darkMode ? 'dark' : ''}`}>
+      <SubredditsSelect/>
       <div className="post-list-container">
         <div className="post-list">
           <CurrentSubredditBanner name={name} user={user}/>

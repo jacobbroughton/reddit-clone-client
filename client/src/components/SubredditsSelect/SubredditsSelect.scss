@@ -1,0 +1,11 @@
+@import '../../utilities/variables';
+
+.mobile-subreddit-selector {
+  display: none;
+}
+
+@media screen and (max-width: $mobile-bp) {
+  .mobile-subreddit-selector {
+    display: flex;
+  }
+}
