@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useHistory, useLocation } from "react-router-dom"
 import { search } from "../../actions/searchActions"
+// import { getPosts } from "../../actions/postListActions"
 import useBrowserResize from "../useBrowserResize"
 import React from "react"
 
@@ -63,8 +64,10 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
   const handleSearchSubmit = async (e) => {
     e.preventDefault()
 
-    if(searchValue === "") return
-
+    if(searchValue === "") {
+      history.push(currentSubreddit ? `${currentSubreddit.name}` : "/")
+      return 
+    }
     searchFunc(searchValue, currentSubreddit?.name)
   }
 

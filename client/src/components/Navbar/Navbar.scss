@@ -22,12 +22,11 @@
       align-items: center;
       gap: 10px;
       .nav-home-link {
-        // display: flex;
-        // align-items: flex-end;
         text-decoration: none;
         color: black;
         font-weight: 700;
         font-size: 2rem;
+        white-space: nowrap;
         span {
           font-size: 1.3rem;
         }
@@ -254,6 +253,10 @@
             &:hover {
               // background-color: $dark-hover;
             }
+
+            .nav-username-span {
+              white-space: nowrap;
+            }
           }
           .user-dropdown {
             background-color: $dark-secondary;
@@ -293,6 +296,12 @@
     }
 
     .nav-container .nav-username-span {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: $tablet-bp) {
+    .nav-container .home-search-darkicon .nav-home-link {
       display: none;
     }
   }
