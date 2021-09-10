@@ -25,6 +25,7 @@ const Navbar = () => {
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
   const [overlayToggle, setOverlayToggle] = useState(false)
+  const [searchExpanded, setSearchExpanded] = useState(false)
 
   // const [subredditDropdownToggle, setSubredditDropdownToggle] = useState(false)
 
@@ -47,11 +48,13 @@ const Navbar = () => {
             subredditDropdownToggle={subredditDropdownToggle} 
             setSubredditDropdownToggle={setSubredditDropdownToggle}
           /> */}
-          <Search/>
+          <Search setSearchExpanded={setSearchExpanded} searchExpanded={searchExpanded}/>
 
-          <button className={`dark-mode-icon-parent`}  >
-            <DarkModeIcon className={`dark-mode-icon`}  onClick={() => dispatch(toggleDarkMode())}/>
-          </button>
+          {!searchExpanded && 
+            <button className={`dark-mode-icon-parent`}  >
+              <DarkModeIcon className={`dark-mode-icon`}  onClick={() => dispatch(toggleDarkMode())}/>
+            </button>
+          }
         </div>
         
         

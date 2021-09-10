@@ -3,13 +3,14 @@ import { ReactComponent as SearchIcon } from "../../images/search.svg"
 import { ReactComponent as BackArrow } from "../../images/backarrow.svg"
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
+import PropTypes from "prop-types"
 import { useHistory, useLocation } from "react-router-dom"
 import { search } from "../../actions/searchActions"
 import useBrowserResize from "../useBrowserResize"
 import React from "react"
 
 
-const Search = () => {
+const Search = ({ searchExpanded, setSearchExpanded }) => {
 
   const { width } = useBrowserResize()
 
@@ -23,7 +24,6 @@ const Search = () => {
 
 
   const [searchValue, setSearchValue] = useState("")
-  const [searchExpanded, setSearchExpanded] = useState(false)
   const [mobile, setMobile] = useState(false)
 
   // useEffect(() => {
@@ -90,6 +90,11 @@ const Search = () => {
       }
     </div>
   )
+}
+
+Search.propTypes = {
+  searchExpanded: PropTypes.bool,
+  setSearchExpanded: PropTypes.func
 }
 
 export default Search
