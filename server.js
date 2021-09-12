@@ -45,18 +45,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Configuring Passport
 const passport = require("passport")
 let sessionStore = new MySQLStore(options)
+app.use(cookieParser(process.env.cookieSecret))
 app.use(session({
   secret: `${process.env.cookieSecret}`,
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: true,
   store: sessionStore,
   cookie: {
+    secure : true,
     maxAge: 1000 * 60 * 60 * 24
   }
 }))
 
 require("./middleware/passportConfig")(passport)
-app.use(cookieParser(process.env.cookieSecret))
 app.use(passport.initialize())
 app.use(passport.session())
 
