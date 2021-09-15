@@ -4,14 +4,17 @@ const db = require("../db")
 
 // Get single subreddit
 router.get("/:name", (req, res) => {
+
+  const { name } = req.params
+
   try {
 
     const getSingleSubredditStatement = `
       SELECT * FROM subreddits
-      WHERE name = '${req.params.name}'
+      WHERE name = ?
     `
 
-    db.query(getSingleSubredditStatement, (err, rows) => {
+    db.query(getSingleSubredditStatement, [name], (err, rows) => {
       if(err) throw err
 
       
@@ -38,14 +41,16 @@ router.get("/", (req, res) => {
 
 // Create subreddit
 router.post("/", (req, res) => {
-  try {
 
+  const { userId, name, description } = req.body
+
+  try {
     const insertSubredditStatement = `
     INSERT INTO subreddits 
     (user_id, name, description) 
-    VALUES (${req.body.userId}, '${req.body.name}', '${req.body.description}')`
+    VALUES (?, ?, ?)`
 
-    db.query(insertSubredditStatement, (err, results) => {
+    db.query(insertSubredditStatement, [userId, name, description], (err, results) => {
       if(err) throw err
 
       res.send({ idForNewSubreddit: results.insertId })
@@ -70,10 +75,10 @@ router.delete('/:subredditId/:userId', (req, res) => {
       LEFT JOIN comments c ON c.post_id = p.id
       LEFT JOIN post_votes pv ON pv.post_id = p.id
       LEFT JOIN comment_votes cv ON cv.comment_id = c.id
-      WHERE s.user_id = ${userId} AND s.id = ${subredditId}
+      WHERE s.user_id = ? AND s.id = ?
     `
 
-    db.query(deleteSubredditStatement, (err, results) => {
+    db.query(deleteSubredditStatement, [userId, subredditId], (err, results) => {
       if(err) throw err
       res.send(results)
     })

@@ -32,7 +32,7 @@ const getPostsStatement = `
 
 
 // Get single post
-router.get('/single/:postId/:userId', (req, res) => {
+router.get('/single/:postId/:userId?', (req, res) => {
 
   let { postId, userId } = req.params
 

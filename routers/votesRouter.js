@@ -4,37 +4,30 @@ const db = require("../db")
 
 router.post("/:type", (req, res) => {
 
-  const { type } = req.params
-
   let insertVoteStatement;
 
+  const { type } = req.params
+  const { userId, value } = req.body.data
+  const typeId = type === "post" ? req.body.data.postId : req.body.data.commentId
+
   if(type === "post") {
-    const {
-      userId,
-      postId,
-      value
-    } = req.body.data
 
     insertVoteStatement = `
-      INSERT INTO post_votes (user_id, post_id, vote_value) 
-      VALUES (${userId}, ${postId}, ${value})
-      ON DUPLICATE KEY UPDATE vote_value = ${value}
+      INSERT INTO post_votes (user_id, post_id, vote_value)
+      VALUES (?, ?, ?)
+      ON DUPLICATE KEY UPDATE vote_value = ?
     `
-  } else if (type === "comment") {
-    const {
-      userId,
-      commentId,
-      value
-    } = req.body.data
+  }
+   else if (type === "comment") {
 
     insertVoteStatement = `
       INSERT INTO comment_votes (user_id, comment_id, vote_value) 
-      VALUES (${userId}, ${commentId}, ${value})
-      ON DUPLICATE KEY UPDATE vote_value = ${value}
+      VALUES (?, ?, ?)
+      ON DUPLICATE KEY UPDATE vote_value = ?
     `
   }
 
-  db.query(insertVoteStatement, (err, result) => {
+  db.query(insertVoteStatement,[userId, typeId, value, value] , (err, result) => {
     if(err) throw err
     console.log(result)
     res.send(result)

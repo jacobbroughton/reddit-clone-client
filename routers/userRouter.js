@@ -9,13 +9,15 @@ require("dotenv").config();
 
 // Get User
 router.get("/get-user/:username", (req, res) => {
+    const { username } = req.params
+
     let searchForUserStatement = `
         SELECT id, username, gender, profile_picture, created_at, updated_at FROM users 
-        WHERE username = '${req.params.username}' 
+        WHERE username = ?
         LIMIT 1
     `;
 
-    db.query(searchForUserStatement, (err, rows) => {
+    db.query(searchForUserStatement, [username], (err, rows) => {
         if (err) throw err;
         res.send(rows[0])
     })
@@ -55,18 +57,22 @@ router.post("/logout", (req, res, next) => {
 
 // Register
 router.post("/register", (req, res) => {
+  const { username } = req.params
+
   let searchForUserStatement = `
         SELECT * FROM users 
-        WHERE username = '${req.body.username}' 
+        WHERE username = ? 
         LIMIT 1
     `;
 
-  db.query(searchForUserStatement, async (err, rows) => {
+  db.query(searchForUserStatement, [username], async (err, rows) => {
     if (err) throw err;
     if (rows[0]) {
       console.log("User Exists");
     }
     if (!rows[0]) {
+
+      const { username, gender, profilePicture, updatedAt } = req.body
 
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
@@ -75,17 +81,15 @@ router.post("/register", (req, res) => {
         (username, password, gender, profile_picture, updated_at) 
         VALUES 
         (
-            '${req.body.username}',
-            '${hashedPassword}',
-            '${req.body.gender}',
-            '${req.body.profilePicture}',
-            '${req.body.updatedAt}'
+            ?,
+            ?,
+            ?,
+            ?,
+            ?
         )
       `;
 
-      console.log(insertUserStatement)
-
-      db.query(insertUserStatement, (err) => {
+      db.query(insertUserStatement, [username, hashedPassword, gender, profilePicture, updatedAt],  (err) => {
         if(err) console.log(err)
         if (err) throw err;
         res.send(req.body);

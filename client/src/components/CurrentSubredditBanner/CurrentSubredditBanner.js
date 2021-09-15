@@ -1,11 +1,12 @@
 import "./CurrentSubredditBanner.scss";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types"
-import { useLocation
+import PropTypes from "prop-types";
+import {
+  useLocation,
   // , useHistory
- } from "react-router-dom";
-import { useQuery } from "../useQuery"
+} from "react-router-dom";
+import { useQuery } from "../useQuery";
 import { deleteSubreddit } from "../../actions/subredditsActions";
 
 const CurrentSubredditBanner = ({ name }) => {
@@ -49,11 +50,15 @@ const CurrentSubredditBanner = ({ name }) => {
               "Home"
             )}{" "}
           </h1>
-          {searchQuery && <p className="search-value">
-            {/* <button onClick={() =>  history.push(currentSubreddit ? `${currentSubreddit.name}` : "/")}>X</button> */}
-            <span>Search: </span>{searchQuery}</p>}
-          {user && (
-                currentSubreddit?.user_id === user?.id && deleteToggle ? (
+          {searchQuery && (
+            <p className="search-value">
+              <span>Search: </span>
+              {searchQuery}
+            </p>
+          )}
+          {user &&
+            currentSubreddit && currentSubreddit?.user_id === user?.id &&
+            (deleteToggle ? (
               <span className="delete-confirmation-span">
                 Are you sure?
                 <button onClick={() => handleSubredditDelete()}>Yes</button>
@@ -66,15 +71,17 @@ const CurrentSubredditBanner = ({ name }) => {
               >
                 Delete Subreddit
               </button>
-            )
-          )}
-
+            ))}
         </div>
       ) : (
         <div className="current-subreddit-banner-stack">
           <h1>Home</h1>
-          {searchQuery && <p className="search-value"><span>Search: </span>{searchQuery}</p>}
-
+          {searchQuery && (
+            <p className="search-value">
+              <span>Search: </span>
+              {searchQuery}
+            </p>
+          )}
         </div>
       )}
     </section>
@@ -82,7 +89,7 @@ const CurrentSubredditBanner = ({ name }) => {
 };
 
 CurrentSubredditBanner.propTypes = {
-  name: PropTypes.string
-}
+  name: PropTypes.string,
+};
 
 export default CurrentSubredditBanner;
