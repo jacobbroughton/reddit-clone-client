@@ -41,8 +41,6 @@ app.use(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
-
 // Configuring Passport
 const passport = require("passport")
 let sessionStore = new MySQLStore(options)
