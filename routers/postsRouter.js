@@ -9,14 +9,12 @@ router.get('/', (req, res) => {
   let subredditName = req.query.filters
   let { userId } = req.query
 
-  console.log('user after posts loaded: ', userId)
-
 
 const getPostsStatement = `
   SELECT p.*, u.username, v.user_id, v.post_id, v.vote_value,
   ${userId ? `(
     SELECT vote_value FROM post_votes WHERE post_votes.post_id = p.id AND post_votes.user_id = ${userId} LIMIT 1
-  ) AS has_voted,` : ''} 
+  ) AS has_voted,` : ''}
   COALESCE(SUM(v.vote_value), 0) AS vote_count
   FROM posts AS p
   INNER JOIN users AS u ON p.author_id = u.id 
@@ -38,9 +36,11 @@ router.get('/single/:postId/:userId', (req, res) => {
 
   let { postId, userId } = req.params
 
+  console.log(userId)
+
   const getSinglePostStatement = `
   SELECT p.*, u.username, v.vote_value,
-  ${userId !== '' ? `(
+  ${userId ? `(
     SELECT vote_value FROM post_votes WHERE post_votes.post_id = p.id AND post_votes.user_id = ${userId} LIMIT 1
   ) AS has_voted,` : ''} 
   COALESCE(SUM(v.vote_value), 0) AS vote_count
@@ -50,6 +50,8 @@ router.get('/single/:postId/:userId', (req, res) => {
   WHERE p.id = ${postId}
   LIMIT 1
 `
+
+console.log(getSinglePostStatement)
 
 db.query(getSinglePostStatement, (err, rows) => {
   if(err) throw err
@@ -74,7 +76,7 @@ router.put('/single/:postId', (req, res) => {
   LIMIT 1
 `
 
-  db.query(updatePostBodyStatement, (err, rows) => {
+  db.query(updatePostBodyStatement, (err) => {
     if(err) throw err
     db.query(getSinglePostStatement, (err, rows) => {
       if(err) throw err;
