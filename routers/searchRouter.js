@@ -25,7 +25,6 @@ router.get("/", (req, res) => {
 
   db.query(searchStatement, [q, q], (err, result) => {
     if (err) throw err
-    // console.log(result)
     res.send(result)
   })
 })

@@ -34,7 +34,7 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <select
-            className="register-input"
+            // className="register-input"
             type="text"
             placeholder="Male / Female"
             onChange={(e) => setGender(e.target.value)}

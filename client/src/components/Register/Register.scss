@@ -32,6 +32,28 @@
         border-radius: 5px;
         font-size: 1rem;
       }
+
+      select {
+        border: $border-lighter solid 1px;
+        border-radius: 3px;
+        padding: 8px 10px;
+        font-size: 1rem;
+        position: relative;
+        width: 100%;
+        appearance: none;
+        -webkit-appearance: none;
+        background-image:
+        linear-gradient(45deg, transparent 50%, $dark-primary 50%),
+        linear-gradient(135deg, $dark-primary 50%, transparent 50%);
+        background-position:
+          calc(100% - 20px) calc(0.55em + 2px),
+          calc(100% - 15px) calc(0.55em + 2px);
+        background-size:
+          5px 5px,
+          5px 5px;
+        background-repeat: no-repeat;
+      }
+
       .register-submit {
         width: initial;
         align-self: flex-start;
@@ -69,6 +91,16 @@
       }
       .register-submit {
         color: $light-text;
+      }
+
+      select {
+        border: $border-darker solid 1px;
+        background-color: $dark-secondary;
+        color: $light-text;
+  
+        background-image:
+        linear-gradient(45deg, transparent 50%, $light-primary 50%),
+        linear-gradient(135deg, $light-primary 50%, transparent 50%);
       }
     }
     .already-registered-question{
