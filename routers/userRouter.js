@@ -79,13 +79,7 @@ router.post("/register", (req, res) => {
         INSERT INTO users 
         (username, password, gender, profile_picture, updated_at) 
         VALUES 
-        (
-            ?,
-            ?,
-            ?,
-            ?,
-            ?
-        )
+        (?, ?, ?, ?, ?)
       `;
 
       db.query(insertUserStatement, [username, hashedPassword, gender, profilePicture, updatedAt],  (err) => {
