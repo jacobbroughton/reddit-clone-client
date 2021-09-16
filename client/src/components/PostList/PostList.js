@@ -5,12 +5,9 @@ import React, { useEffect } from "react";
 import { getPosts } from "../../actions/postListActions";
 import { setCurrentSubreddit } from "../../actions/subredditActions";
 import { useQuery } from "../useQuery"
-
-// import { setPost } from "../../reducers/postReducer"
 import Post from "../Post/Post";
 import SubredditsSelect from "../SubredditsSelect/SubredditsSelect";
 import CurrentSubredditBanner from "../CurrentSubredditBanner/CurrentSubredditBanner"
-// import { post } from "../../../../routers/postsRouter";
 
 const PostList = () => {
   const dispatch = useDispatch();
@@ -30,19 +27,13 @@ const PostList = () => {
     }
   }, [searchQueryFromURL])
 
-  // When { name } changes
   useEffect(() => {
 
     if(searchQueryFromURL) {
-      // dispatch(setCurrentSubreddit(name ? name : null));
       return 
     } else {
       dispatch(getPosts(user ? user.id : null, name ? name : null));
-      // dispatch(setCurrentSubreddit(name ? name : null));
     }
-    // dispatch(getPosts(user ? user.id : null, name ? name : null));
-    // dispatch(setCurrentSubreddit(name ? name : null));
-    // dispatch(getPosts(user ? user.id : null, name ? name : null));
   }, [name, user]);
 
   useEffect(() => {

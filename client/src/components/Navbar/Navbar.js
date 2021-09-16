@@ -7,8 +7,6 @@ import { setCurrentSubreddit } from "../../actions/subredditActions"
 import { ReactComponent as DarkModeIcon } from "../../images/dark-mode-icon.svg"
 import { ReactComponent as DownArrow } from "../../images/down-arrow.svg"
 import ProfilePicture from "../ProfilePicture/ProfilePicture"
-// import { ReactComponent as SearchIcon } from "../../images/search.svg"
-// import SubredditDropdown from "../SubredditsDropdown/SubredditDropdown"
 import Search from "../Search/Search"
 import "./Navbar.scss";
 
@@ -17,17 +15,10 @@ const Navbar = () => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.auth.user)
   const darkMode = useSelector(state => state.darkMode)
-  // const currentSubreddit = useSelector(state => state.currentSubreddit)
-
-  // const location = useLocation()
-  // const subredditName = location.pathname.match(/r\/[^\/]+/)
-
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
   const [overlayToggle, setOverlayToggle] = useState(false)
   const [searchExpanded, setSearchExpanded] = useState(false)
-
-  // const [subredditDropdownToggle, setSubredditDropdownToggle] = useState(false)
 
   const handleDropdownClick = () => {
     setOverlayToggle(!overlayToggle)
@@ -40,14 +31,7 @@ const Navbar = () => {
         <div className={`home-search-darkicon`} >
           <Link className={`nav-home-link`} to="/"><span className="not-span" onClick={() => {
               dispatch(setCurrentSubreddit(null))
-              // dispatch(getPosts(user ? user.id : null, name));
             }} >(Not)</span> Reddit</Link>
-          {/* <button className={`subreddit-dropdown-toggle-button`} onClick={() => setSubredditDropdownToggle(!subredditDropdownToggle)}>{subredditName ? subredditName : "Home "} <DownArrow className="down-arrow"/></button> */}
-          {/* { user && <Link className={`new-post-link`} to="/new-post">New Post</Link> } */}
-          {/* <SubredditDropdown 
-            subredditDropdownToggle={subredditDropdownToggle} 
-            setSubredditDropdownToggle={setSubredditDropdownToggle}
-          /> */}
           <Search setSearchExpanded={setSearchExpanded} searchExpanded={searchExpanded}/>
 
           {!searchExpanded && 

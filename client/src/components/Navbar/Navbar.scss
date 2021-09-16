@@ -15,7 +15,6 @@
     align-items: center;
     justify-content: space-between;
 
-    // Home Link
     .home-search-darkicon {
       position: relative;
       display: flex;
@@ -39,24 +38,17 @@
         border: none;
         padding: 0;
         background-color: transparent;
-        // max-width: 30px;
         display: flex;
         justify-content: center;
         align-items: center;
-        // max-height: 40px;
-        // background-color: blue;
-        // margin-left: 15px;
-        // padding-top: 5px;
         cursor: pointer;
         .dark-mode-icon {
           width: 100%;
           height: auto;
-          // border-radius: 5px;
           display: flex;
           justify-content: center;
           align-items: center;
           fill: black;
-          // stroke: blue;
           width: 30px;
         }
       }
@@ -89,7 +81,6 @@
       }
     }
 
-    // Nav Menu
     .nav-menu {
       display: flex;
 
@@ -157,7 +148,6 @@
           right: 0;
           min-width: 220px;
           border-radius: 5px;
-          // box-shadow: 5px 5px 15px 5px rgba(24, 24, 24, 0.15);
 
           a {
             padding: 10px;
@@ -206,7 +196,6 @@
     background-color: $dark-secondary;
     color: $light-text;
     .nav-container {
-      // Home Link
       .home-search-darkicon {
         .nav-home-link {
           color: $light-text;
@@ -223,7 +212,6 @@
             color: $light-text;
 
             &:hover {
-              // background-color: $dark-hover;
             }
           }
         }
@@ -234,11 +222,9 @@
         color: $light-text;
         background-color: $dark-mode-interactive;
         &:hover {
-          // background-color: $dark-hover;
         }
       }
 
-      // Nav Menu
       .nav-menu {
         .logged-out-nav-view {
           a {
@@ -251,7 +237,6 @@
             background-color: $dark-mode-interactive;
             color: $light-text;
             &:hover {
-              // background-color: $dark-hover;
             }
 
             .nav-username-span {

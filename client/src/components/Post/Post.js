@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types"
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost, startEditPost, deletePost } from "../../actions/postActions";
 import { handleVote } from "../../actions/postListActions"
 import { handleSinglePostVote } from "../../actions/postActions"
-// import { deletePost } from "../../actions/postActions";
 import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
 import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";
 import { getElapsedTime } from "../GetElapsedTime";
@@ -15,8 +14,10 @@ import VoteButtons from "../VoteButtons/VoteButtons";
 const Post = ({ post, single }) => {
 
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const user = useSelector((state) => state.auth.user);
+  const currentSubreddit = useSelector((state) => state.currentSubreddit)
 
   const [isEditing, setIsEditing] = useState(false);
   const [editPostBody, setEditPostBody] = useState(post ? post.body : "");
@@ -36,6 +37,7 @@ const Post = ({ post, single }) => {
 
   const handlePostDelete = () => {
     dispatch(deletePost(post, post.id))
+    if(single) history.push(currentSubreddit ? `/r/${currentSubreddit.name}` : '/')
   }
 
   const handleVoteClick = (vote_value) => {

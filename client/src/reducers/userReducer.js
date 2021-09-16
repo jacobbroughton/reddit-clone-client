@@ -1,13 +1,8 @@
 import { loadState } from "../localStorage";
 
-// *
-// Initial State
-// **
 const initialState = loadState("authState") || {};
 
-// *
-// User Reducer
-// **
+
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case "REGISTER_REQUEST": {

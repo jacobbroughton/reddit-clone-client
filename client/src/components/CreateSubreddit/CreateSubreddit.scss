@@ -1,21 +1,16 @@
-@import '../../utilities/variables';
+@import "../../utilities/variables";
 
-.create-subreddit{
+.create-subreddit {
   height: 100%;
   width: 100%;
-  // max-width: 750px;
-  // padding: 0 20px;
-  form{
+  form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    // max-width: 500px;
-    
     gap: 10px;
     margin: 0 auto;
-    // margin-top: 100px;
     padding-top: 100px;
-    input{
+    input {
       width: calc(100% - 30px);
       padding: 10px 15px;
       border: none;
@@ -23,7 +18,7 @@
       border-radius: 5px;
       font-size: 0.875rem;
     }
-    textarea{
+    textarea {
       width: calc(100% - 30px);
       padding: 10px 15px;
       resize: vertical;
@@ -33,15 +28,12 @@
       font-family: inherit;
       border-radius: 5px;
       font-size: 0.875rem;
-
     }
-    button{
-      // width: 100%;
+    button {
       padding: 5px;
       font-size: 1rem;
       font-weight: 600;
       border: none;
-      // align-self: center;
       border-radius: 3px;
       background-color: transparent;
       cursor: pointer;
@@ -53,29 +45,21 @@
   }
 }
 
-.dark{
-  form{
-    input, textarea {
+.dark {
+  form {
+    input,
+    textarea {
       background-color: $dark-secondary;
       color: $light-text;
     }
 
     button {
       color: $light-text;
-      // opacity: 0.5;
 
       &:disabled {
         opacity: 0.5;
         cursor: not-allowed;
       }
     }
-    // textarea{
-    //   background-color: $dark-secondary;
-    //   color: $light-text;
-    // }
-    // button{
-    //   background-color: $dark-secondary;
-    //   color: $light-text;
-    // }
   }
 }

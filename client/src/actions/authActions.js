@@ -30,7 +30,6 @@ export const getUser = (username) => async (dispatch) => {
     })
     .then((res) => {
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data })
-      // history.push("/")
     })
 
 

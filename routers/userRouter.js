@@ -27,7 +27,6 @@ router.get("/get-user/:username", (req, res) => {
 
 // Log In
 router.post("/login", (req, res, next) => {
-  // const { username, password } = req.body;
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
     if (!user) {

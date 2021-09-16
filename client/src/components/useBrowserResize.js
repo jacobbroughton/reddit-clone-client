@@ -13,11 +13,6 @@ const useBrowserResize = () => {
 
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
 
-  // let dimensions = {
-  //   x: window.innerWidth,
-  //   y: window.innerHeight
-  // } 
-
   useEffect(() => {
 
     function handleResize() {

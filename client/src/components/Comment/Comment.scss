@@ -7,16 +7,12 @@
   width: 100%;
 
   .comment {
-    // background-color: $lmSecondaryBackground;
     color: $dark-text;
     padding: 10px 0;
-    // border-radius: 5px;
     position: relative;
     display: flex;
     flex-direction: row;
     width: 100%;
-    // width: calc(100% - 60px);
-    // border-left: #fff solid 4px;
 
     .comment-main-section {
       width: 100%;
@@ -47,32 +43,10 @@
         }
       }
 
-      // .reply-button {
-      //   color: $less-dark-text;
-      //   border: none;
-      //   font-size: 0.9rem;
-      //   font-weight: 600;
-      //   // padding: 8px 7px;
-      //   border-radius: 5px;
-      //   background-color: transparent;
-      //   transition: background-color 0.1s ease;
-      //   cursor: pointer;
-      //   display: flex;
-      //   flex-direction: row;
-      //   // margin-top: 15px;
 
-      //   .comment-icon {
-      //     width: 18px;
-      //     margin-right: 8px;
-      //   }
 
-      //   &:hover {
-      //     background-color: $dark-hover;
-      //   }
-      // }
 
       .comment-body {
-        // margin-top: 15px;
         .edit-comment-form {
           textarea {
             width: calc(100% - 20px);;
@@ -142,7 +116,6 @@
           border: none;
           font-size: 0.8rem;
           font-weight: 600;
-          // padding: 8px 7px;
           border-radius: 5px;
           background-color: transparent;
           transition: background-color 0.1s ease;
@@ -150,7 +123,6 @@
           display: flex;
           gap: 8px;
           flex-direction: row;
-          // margin-top: 15px;
 
           .comment-icon{
             width: 100%;
@@ -173,34 +145,7 @@
       }
     }
 
-    // .commented-user-accessable-options {
-    //   position: absolute;
-    //   display: flex;
-    //   flex-direction: row;
-    //   gap: 10px;
-    //   // width: 100px;
-    //   right: 30px;
-    //   top: 30px;
-    //   button {
-    //     padding: 0;
-    //     width: 30px;
-    //     padding: 5px;
-    //     border: none;
-    //     border-radius: 5px;
-    //     transition: background-color 0.1s ease;
-    //     background-color: transparent;
-    //     cursor: pointer;
-    //     .edit-icon,
-    //     .delete-icon {
-    //       max-width: 20px;
-    //       stroke: $dark-text;
-    //     }
 
-    //     &:hover {
-    //       background-color: $lmPrimaryBackground;
-    //     }
-    //   }
-    // }
   }
 
   .nested-comment {
@@ -221,12 +166,10 @@
           min-height: 100%;
           max-height: calc(100% - 15px);
           background-color: #edeff1;
-          // border-right: 2px #edeff1 solid;
           border-left: 2px #edeff1 solid;
 
           &:hover {
             background-color: orange;
-            // border-right: 2px orange solid;
             border-left: 2px orange solid;
           }
         }
@@ -238,14 +181,11 @@
     }
 
     .replies-toggle {
-      // display: none;
       background-color: transparent;
       margin: 0;
       font-weight: 600;
-      // margin-top: 15px;
       padding-bottom: 10px;
       cursor: pointer;
-      // width: 20px;
       height: 20px;
       padding: 0;
       border: none;
@@ -333,12 +273,10 @@
         .bar-parent {
           .bar {
             background-color: $less-light-text;
-            // border-right: 2px $less-light-text solid;
             border-left: 2px $less-light-text solid;
   
             &:hover {
               background-color: orange;
-              // border-right: 2px orange solid;
               border-left: 2px orange solid;
             }
           }

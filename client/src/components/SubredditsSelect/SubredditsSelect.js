@@ -34,11 +34,6 @@ const SubredditsSelect = () => {
     ])
   }, [subreddits])
 
-  // useEffect(() => {
-  //   if(currentSubreddit === null) {
-
-  //   }
-  // }, [currentSubreddit])
 
   const handleSelect = (e) => {
     if(e.target.value === "Home") {
@@ -53,10 +48,8 @@ const SubredditsSelect = () => {
 
   return (
     <div className={`mobile-subreddit-selector ${darkMode ? 'dark' : ''}`}>
-      {/* <Link className="home-link" to="/">Go to home</Link> */}
       <label>Select a subreddit</label>
       <select 
-        // defaultValue={generalSubreddits[0]}
         value={currentSubreddit ? currentSubreddit.name : "Home"}
         label="Select a subreddit" 
         onChange={(e) => handleSelect(e)} 

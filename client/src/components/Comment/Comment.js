@@ -144,7 +144,6 @@ const Comment = ({ comment }) => {
             {user && 
             
             user.id === comment.author_id && (
-              // <div className="commented-user-accessable-options">
               <>
                 {!isEditing && (
                   <button className="edit-button" onClick={() => setIsEditing(!isEditing)}>
@@ -155,7 +154,6 @@ const Comment = ({ comment }) => {
                 <button className="delete-button" onClick={() => dispatch(deleteComment(comment.id))}>
                   <DeleteIcon className="delete-icon" /> Delete
                 </button>
-              {/* // </div> */}
               </>
             )}
           </div>

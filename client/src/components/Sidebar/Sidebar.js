@@ -2,9 +2,7 @@ import "./Sidebar.scss";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getSubreddits } from "../../actions/subredditsActions";
-// import { baseSubreddits } from "../baseSubreddits";
 import { Link } from "react-router-dom";
-// import ProfilePicture from "../ProfilePicture/ProfilePicture"
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -12,19 +10,9 @@ const Sidebar = () => {
   const darkMode = useSelector((state) => state.darkMode);
   const user = useSelector((state) => state.auth.user);
 
-  // const [noUserError, setNoUserError] = useState(null)
-
   useEffect(() => {
     dispatch(getSubreddits());
   }, [dispatch]);
-
-  // const handleNoUserError = (text) => {
-  //   setNoUserError(`${text}`)
-  //   clearTimeout()
-  //   setTimeout(() => {
-  //     setNoUserError(null)
-  //   }, 3000)
-  // }
 
   return (
     <aside className={`sidebar ${darkMode ? "dark" : ""}`}>
@@ -36,8 +24,6 @@ const Sidebar = () => {
         </p>
       )}
       <div className="sidebar-buttons">
-        {/* <img className="profile" src={user?.profile_picture}/> */}
-        {/* <ProfilePicture size="large" source={user.profile_picture}/> */}
         <div className="post-and-link-buttons">
           <Link
             to={`${user ? "/new-post?type=text" : "#"}`}

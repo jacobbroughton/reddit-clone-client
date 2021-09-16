@@ -75,8 +75,6 @@ export const createPost = ({
     const response = await axios.post(`${API_URL}/posts`, createdPost)
 
     let postId = response.data.insertId
-
-    // dispatch(getPosts())
     
     dispatch(setPost({
       id: postId,

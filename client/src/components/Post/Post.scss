@@ -4,7 +4,6 @@
   border-radius: 4px;
   background-color: $light-secondary;
   text-decoration: none;
-  // color: $dark-text;
   padding: 20px;
   display: flex;
   flex-direction: row;
@@ -53,7 +52,6 @@
         margin: 0;
         font-weight: 700;
         white-space: nowrap;
-        // margin-right: 10px;
       }
 
       .post-subreddit-link{
@@ -74,8 +72,6 @@
         white-space: nowrap;
 
         .user {
-          // font-weight: 500;
-          // color: $dark-text;
         }
       }
 
@@ -131,7 +127,6 @@
           display: flex;
           gap: 10px;
           margin-top: 15px;
-          // padding: 10px;
           align-self: flex-start;
         }
         button {
@@ -157,17 +152,12 @@
   }
 
   .posted-user-accessable-options {
-    // position: absolute;
     display: flex;
     flex-direction: row;
     gap: 15px;
-    // width: 100px;
-    // right: 30px;
-    // top: 30px;
     margin-top: 8px;
     button {
       padding: 0;
-      // width: 30px;
       padding: 4px;
       border: none;
       border-radius: 5px;

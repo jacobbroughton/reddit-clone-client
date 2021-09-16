@@ -2,15 +2,11 @@ import "./CurrentSubredditBanner.scss";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import {
-  useLocation,
-  // , useHistory
-} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useQuery } from "../useQuery";
 import { deleteSubreddit } from "../../actions/subredditsActions";
 
 const CurrentSubredditBanner = ({ name }) => {
-  // const history = useHistory()
   const location = useLocation();
   const dispatch = useDispatch();
   const currentSubreddit = useSelector((state) => state.currentSubreddit);

@@ -26,12 +26,10 @@ let MySQLStore = require("express-mysql-session")(session)
 
 let origin;
 if(process.env.NODE_ENV === "production") {
-  // origin = "https://reddit-clone-jb.herokuapp.com"
   origin = "https://reddit-clone-jb.netlify.app"
 } else {
   origin = "http://localhost:3000"
 }
-// test
 
 app.use(
   cors({
@@ -59,18 +57,6 @@ app.use(session({
 require("./middleware/passportConfig")(passport)
 app.use(passport.initialize())
 app.use(passport.session())
-
-
-// if (process.env.NODE_ENV === "production") {
-//   // Exprees will serve up production assets
-//   app.use(express.static("client/build"));
-
-//   // Express serve up index.html file if it doesn't recognize route
-//   const path = require("path");
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-//   });
-// }
 
 app.get("/", (req, res) => {
   res.send("Hello from the server")

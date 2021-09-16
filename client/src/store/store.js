@@ -12,18 +12,10 @@ import { loadingReducer } from "../reducers/loadingReducer"
 import { commentsReducer } from "../reducers/commentsReducer"
 import throttle from "lodash.throttle"
 
-
-
-
-// * 
-// Enhancers
-// **
 const enhancers = [
     applyMiddleware(thunk), // Allows for async action creators, a thunk is a function that returns another function
-    // window.navigator.userAgent.includes('Chrome') ?
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__({ trace: true }) || compose
 ]
-
 
 // Persisted state via localStorage
 const persistedState = loadState()
@@ -41,9 +33,6 @@ const rootReducer = combineReducers({
 })
 
 
-// * 
-// Store 
-// **
 const store = createStore(
     rootReducer,
     persistedState,
@@ -54,7 +43,7 @@ const store = createStore(
 // Use return value of loadState as the second argument to create store so that it
 // overrides the initial state specified by the reducers
 
-// Subscripe to the store
+// Subscribe to the store
 store.subscribe(throttle(() => {
     saveState(store.getState().auth, 'authState')
     saveState(store.getState().darkMode, 'darkModeState')

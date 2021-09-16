@@ -2,9 +2,7 @@
 
 
 .sidebar{
-  // padding-top: 65px;
   margin-top: 78px;
-  // background-color: #fff;
   min-height: calc(100% - 180px);
   width: 100%;
   max-width: 250px;
@@ -62,7 +60,6 @@
         &.disabled {
           cursor: not-allowed;
           text-decoration: line-through;
-          // opacity: 0.6;
     
           &:hover {
             text-decoration: line-through;

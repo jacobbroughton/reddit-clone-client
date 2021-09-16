@@ -6,7 +6,6 @@ import { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useHistory, useLocation } from "react-router-dom"
 import { search } from "../../actions/searchActions"
-// import { getPosts } from "../../actions/postListActions"
 import useBrowserResize from "../useBrowserResize"
 import React from "react"
 
@@ -23,13 +22,9 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
   const currentSubreddit = useSelector(state => state.currentSubreddit)
   const darkMode = useSelector(state => state.darkMode)
 
-
   const [searchValue, setSearchValue] = useState("")
   const [mobile, setMobile] = useState(false)
 
-  // useEffect(() => {
-  //   console.log(browserWidth)
-  // }, [browserWidth])
 
   useEffect(() => {
     if(width <= 767) {
@@ -40,22 +35,15 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
     }
   }, [width])
 
-  useEffect(() => {
-    console.log(searchExpanded, mobile)
-  }, [searchExpanded, mobile])
-
 
   const searchFunc = (value, subreddit) => {
 
     setSearchValue(value)
     dispatch(search(user?.id, subreddit, value))
 
-    console.log(location)
-
     if(currentSubreddit) {
       history.push(`${location.pathname}?q=${value}`)
     } else {
-      console.log(location)
       history.push(`/search?q=${value}`)
     }
   }
@@ -78,16 +66,15 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
       </button>
       { mobile && searchExpanded ? 
         <div className='mobile-search'>
-          {/* {currentSubreddit && <label className="search-label">r/{currentSubreddit.name}</label>} */}
           <form onSubmit={(e) => handleSearchSubmit(e)} className="search-form">
-            <input onChange={(e) => setSearchValue(e.target.value)} value={searchValue} className="search-input" placeholder={`Search ${currentSubreddit ? `in ${currentSubreddit.name}` : ''}`}/>
+            <input onChange={(e) => setSearchValue(e.target.value)} type="text" value={searchValue} className="search-input" placeholder={`Search ${currentSubreddit ? `in ${currentSubreddit.name}` : ''}`}/>
           </form>
         </div>
         :
         <div className="desktop-search">
           {currentSubreddit && <label className="search-label">r/{currentSubreddit.name}</label>}
           <form onSubmit={(e) => handleSearchSubmit(e)} className="search-form">
-            <input onChange={(e) => setSearchValue(e.target.value)} value={searchValue} className="search-input" placeholder="Search"/>
+            <input onChange={(e) => setSearchValue(e.target.value)} type="text" value={searchValue} className="search-input" placeholder="Search"/>
           </form>
         </div>
       }

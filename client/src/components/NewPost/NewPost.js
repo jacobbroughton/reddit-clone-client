@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useLocation, Link } from "react-router-dom";
-// import { setPost } from "../../actions/postActions";
 import { createPost } from "../../actions/postListActions"
 import "./NewPost.scss"
 
@@ -61,14 +60,8 @@ useEffect(() => {
     console.log(subreddit)
   }, [subreddit])
 
-  // const filterSubreddit = () => {
-  //   let filteredSubreddit = subreddits.filter(subreddit => subreddit === currentSubreddit)
-  //   return filteredSubreddit
-  // }
-
 
   const handleSubredditChange = (selectValue) => {
-    // setSubreddit(subreddits.filter(filterSubreddit(selectValue))[0])
     setSubreddit(subreddits.filter(sub => sub.name === selectValue)[0])
   }
 
@@ -92,7 +85,6 @@ useEffect(() => {
                   </>
                 }
                   <select 
-                    // defaultValue={currentSubreddit ? currentSubreddit.name : subreddits.filter(subreddit => subreddit === currentSubreddit)} 
                     defaultValue={currentSubreddit && currentSubreddit.name} 
                     onChange={(e) => handleSubredditChange(e.target.value)}>
                       <option disabled selected value> Select a subreddit </option>
