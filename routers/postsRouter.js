@@ -36,8 +36,6 @@ router.get('/single/:postId/:userId?', (req, res) => {
 
   let { postId, userId } = req.params
 
-  console.log(userId)
-
   const getSinglePostStatement = `
   SELECT p.*, u.username, v.vote_value,
   ${userId ? `(
@@ -47,13 +45,11 @@ router.get('/single/:postId/:userId?', (req, res) => {
   FROM posts AS p
   INNER JOIN users AS u ON p.author_id = u.id
   LEFT JOIN post_votes v ON p.id = v.post_id 
-  WHERE p.id = ${postId}
+  WHERE p.id = ?
   LIMIT 1
 `
 
-console.log(getSinglePostStatement)
-
-db.query(getSinglePostStatement, (err, rows) => {
+db.query(getSinglePostStatement, [postId], (err, rows) => {
   if(err) throw err
   console.log(rows[0])
   res.send(rows[0])
@@ -63,22 +59,25 @@ db.query(getSinglePostStatement, (err, rows) => {
 
 router.put('/single/:postId', (req, res) => {
 
+  const { body } = req.body
+  const { postId } = req.params
+
   const updatePostBodyStatement = `
     UPDATE posts 
-    SET body = '${req.body.body}', updated_at = NOW()
-    WHERE id = ${req.params.postId}
+    SET body = ?, updated_at = NOW()
+    WHERE id = ?
     LIMIT 1
   ` 
 
   const getSinglePostStatement = `
   SELECT * FROM posts 
-  WHERE id = ${req.params.postId}
+  WHERE id = ?
   LIMIT 1
 `
 
-  db.query(updatePostBodyStatement, (err) => {
+  db.query(updatePostBodyStatement, [body, postId], (err) => {
     if(err) throw err
-    db.query(getSinglePostStatement, (err, rows) => {
+    db.query(getSinglePostStatement, [postId], (err, rows) => {
       if(err) throw err;
       res.send(rows[0])
     })
@@ -89,13 +88,15 @@ router.put('/single/:postId', (req, res) => {
 // Add new post
 router.post('/', (req, res) => {
 
+  const { postType, title, body, authorId, subredditId, subredditName } = req.body
+
   const createPostStatement = `
   INSERT INTO posts
   (post_type, title, body, author_id, subreddit_id, subreddit_name) 
-  VALUES ('${req.body.postType}', '${req.body.title}', '${req.body.body}', '${req.body.authorId}', '${req.body.subredditId}', '${req.body.subredditName}')
+  VALUES (?, ?, ?, ?, ?, ?)
   `
 
-  db.query(createPostStatement, (err, result) => {
+  db.query(createPostStatement, [postType, title, body, authorId, subredditId, subredditName], (err, result) => {
     if(err) throw err;
     res.send(result)
   })
@@ -104,19 +105,18 @@ router.post('/', (req, res) => {
 
 router.delete('/', (req, res) => {
   
-  const id = req.body.id
+  const { id } = req.body
 
-  console.log(id)
 
   const deletePostStatement = `
     DELETE p, c, v
     FROM posts as p
     LEFT JOIN comments AS c ON p.id = c.post_id
     LEFT JOIN post_votes AS v ON p.id = v.post_id
-    WHERE p.id = ${id}
+    WHERE p.id = ?
   `
 
-  db.query(deletePostStatement, (err, result) => {
+  db.query(deletePostStatement, [id], (err, result) => {
     if(err) throw err
     res.send(result)
   })

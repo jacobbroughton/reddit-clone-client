@@ -18,12 +18,12 @@ router.get("/", (req, res) => {
   FROM posts AS p
   INNER JOIN users AS u ON p.author_id = u.id 
   LEFT JOIN post_votes AS v ON v.post_id = p.id
-  WHERE (p.title LIKE '%${q}%' OR p.body LIKE '%${q}%')
+  WHERE (p.title LIKE '%?%' OR p.body LIKE '%?%')
   ${subredditName ? `AND p.subreddit_name = '${subredditName}'` : ''} 
   GROUP BY p.id
   `
 
-  db.query(searchStatement, (err, result) => {
+  db.query(searchStatement, [q, q], (err, result) => {
     if (err) throw err
     // console.log(result)
     res.send(result)

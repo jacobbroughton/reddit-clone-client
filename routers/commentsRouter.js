@@ -4,15 +4,15 @@ const db = require("../db")
 
 // Add comment
 router.post('/', (req, res) => {
-  let comment = req.body
+  const { body, author_id, post_id, parent_comment } = req.params
   
   let addCommentStatement = `
     INSERT INTO comments 
     (body, author_id, post_id, parent_comment)
-    VALUES ('${comment.body}', ${comment.author_id}, ${comment.post_id}, ${comment.parent_comment})
+    VALUES (?, ?, ?, ?)
   `
 
-  db.query(addCommentStatement, (err, result) => {
+  db.query(addCommentStatement, [body, author_id, post_id, parent_comment], (err, result) => {
     if(err) throw err
     res.send(result)
   })
@@ -25,11 +25,11 @@ router.put('/:commentId', (req, res) => {
 
   let editCommentStatement = `
     UPDATE comments 
-    SET body = '${body}'
-    WHERE comments.id = ${commentId}
+    SET body = ?
+    WHERE comments.id = ?
   `
 
-  db.query(editCommentStatement, (err, result) => {
+  db.query(editCommentStatement, [body, commentId], (err, result) => {
     if(err) throw err
     res.send(result)
   })
@@ -40,6 +40,7 @@ router.put('/:commentId', (req, res) => {
 router.get('/:postId', (req, res) => {
 
   const { userId } = req.query
+  const { postId } = req.params
 
   let getCommentsStatement = `
     SELECT c.*, u.username, u.profile_picture, v.comment_id, v.vote_value,
@@ -50,12 +51,12 @@ router.get('/:postId', (req, res) => {
     FROM comments AS c
     INNER JOIN users AS u ON c.author_id = u.id
     LEFT JOIN comment_votes AS v ON v.comment_id = c.id
-    WHERE c.post_id = ${req.params.postId}
+    WHERE c.post_id = ?
     GROUP BY c.id
     ORDER BY c.id DESC
   `
 
-  db.query(getCommentsStatement, (err, rows) => {
+  db.query(getCommentsStatement, [postId], (err, rows) => {
     if(err) throw err
     res.send(rows)
   })
@@ -69,10 +70,10 @@ router.delete('/', (req, res) => {
     DELETE c, v
     FROM comments AS c
     LEFT JOIN comment_votes AS v ON c.id = v.comment_id
-    WHERE c.id = ${id}
+    WHERE c.id = ?
   `
 
-  db.query(deleteCommentStatement, (err, result) => {
+  db.query(deleteCommentStatement, [id], (err, result) => {
     if(err) throw err
     res.send(result)
   })
