@@ -4,7 +4,7 @@ const db = require("../db")
 
 // Add comment
 router.post('/', (req, res) => {
-  const { body, author_id, post_id, parent_comment } = req.params
+  const { body, author_id, post_id, parent_comment } = req.body
   
   let addCommentStatement = `
     INSERT INTO comments 
