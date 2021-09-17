@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getSubreddits } from "../../actions/subredditsActions";
 import { Link, useHistory } from "react-router-dom";
+import SidebarSubredditLink from "../SidebarSubredditLink/SidebarSubredditLink"
 
 const Sidebar = () => {
   const history = useHistory()
@@ -14,7 +15,6 @@ const Sidebar = () => {
   useEffect(() => {
     dispatch(getSubreddits());
   }, [dispatch]);
-
 
   return (
     <aside className={`sidebar ${darkMode ? "dark" : ""}`}>
@@ -55,24 +55,12 @@ const Sidebar = () => {
         </Link>
         <h3 className="subreddit-list-label">General</h3>
         {subreddits.filter(subreddit => subreddit.user_id === 1).map((subreddit, key) => (
-          <Link
-            className={`subreddit-link ${history.location.pathname.replace("/r/", "") === subreddit.name ? 'current' : ''}`}
-            to={`/r/${subreddit.name}`}
-            key={key}
-          >
-            r/{subreddit.name}
-          </Link>
+          <SidebarSubredditLink subreddit={subreddit} key={key}/>
         ))}
 
         <h3 className="subreddit-list-label">User Created</h3>
         {subreddits.filter(subreddit => subreddit.user_id !== 1).map((subreddit, key) => (
-          <Link
-            className={`subreddit-link ${history.location.pathname.replace("/r/", "") === subreddit.name ? 'current' : ''}`}
-            to={`/r/${subreddit.name}`}
-            key={key}
-          >
-            r/{subreddit.name}
-          </Link>
+          <SidebarSubredditLink subreddit={subreddit} key={key}/>
         ))}
       </div>}
     </aside>

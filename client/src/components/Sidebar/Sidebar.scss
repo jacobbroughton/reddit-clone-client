@@ -123,19 +123,19 @@
       margin-top: 20px;
     }
 
-    .subreddit-link{
-      text-decoration: none;
-      color: inherit;
-      color: $dark-text;
+    // .subreddit-link{
+    //   text-decoration: none;
+    //   color: inherit;
+    //   color: $dark-text;
 
-      &.current {
-        text-decoration: underline;
-      }
+    //   &.current {
+    //     text-decoration: underline;
+    //   }
 
-      &:hover{
-        text-decoration: underline;
-      }
-    }
+    //   &:hover{
+    //     text-decoration: underline;
+    //   }
+    // }
   }
 
   &.dark{
@@ -166,7 +166,6 @@
       }
       .subreddit-link{
         color: $light-text;
-        &:hover{}
       }
     }
   }

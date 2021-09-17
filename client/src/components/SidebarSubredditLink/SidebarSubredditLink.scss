@@ -1,0 +1,15 @@
+@import '../../utilities/variables';
+
+.subreddit-link{
+  text-decoration: none;
+  color: inherit;
+  color: $dark-text;
+
+  &.current {
+    text-decoration: underline;
+  }
+
+  &:hover{
+    text-decoration: underline;
+  }
+}
