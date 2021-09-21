@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { createSubreddit } from "../../actions/subredditsActions"
+import Meta from "../Meta"
 import "./CreateSubreddit.scss"
 
 const CreateSubreddit = () => {
@@ -24,7 +25,7 @@ const CreateSubreddit = () => {
 
   return (
     <div className={`create-subreddit ${darkMode ? 'dark' : ''}`}>
-      
+      <Meta title={`Create a new subreddit`}/>
       <form onSubmit={(e) => handleSubmit(e)}>
         <input onChange={e => setSubredditName(e.target.value)} placeholder="Subreddit name"/>
         <textarea onChange={e => setSubredditDescription(e.target.value)} placeholder="Description (optional)"/>

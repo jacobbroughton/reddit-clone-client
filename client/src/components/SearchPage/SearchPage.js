@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { setCurrentSubreddit } from "../../actions/subredditActions"
 import { search } from "../../actions/searchActions"
 import { useQuery } from "../useQuery"
+import Meta from "../Meta"
 
 const SearchPage = () => {
 
@@ -15,6 +16,7 @@ const SearchPage = () => {
 
   let searchQueryFromURL = query.get("q");
   const user = useSelector(state => state.auth.user)
+  const currentSubreddit = useSelector(state => state.currentSubreddit)
 
 
   useEffect(() => {
@@ -26,6 +28,7 @@ const SearchPage = () => {
 
   return (
     <div className="search-page">
+      <Meta title={`Searching for '${searchQueryFromURL}' ${currentSubreddit ? `in r/${currentSubreddit.name}` : ''}`}/>
       <PostList/>
     </div>
   )

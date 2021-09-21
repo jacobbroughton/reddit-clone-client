@@ -8,8 +8,9 @@ import { handleSinglePostVote } from "../../actions/postActions"
 import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
 import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";
 import { getElapsedTime } from "../GetElapsedTime";
-import "./Post.scss";
 import VoteButtons from "../VoteButtons/VoteButtons";
+import Meta from "../Meta"
+import "./Post.scss";
 
 const Post = ({ post, single }) => {
 
@@ -56,6 +57,7 @@ const Post = ({ post, single }) => {
 
   return (
     <div className="post">
+      {single && <Meta title={post.title}/>}
       <VoteButtons item={post} handleVoteClick={handleVoteClick}/>
       <div className="post-main-section">   
       { error && <p className="vote-error">{error}</p> }   

@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { startLogin } from "../../actions/authActions"
 import { Link } from "react-router-dom"
+import Meta from "../Meta"
 import "./Login.scss"
 
 const Login = () => {
@@ -23,6 +24,7 @@ const Login = () => {
 
     return (
         <div className={`login ${darkMode ? 'dark' : ''}`}>
+            <Meta title="Log in"/>
             <div className="login-container">
                 <h2>Login</h2>
                 <form onSubmit={(e) => handleSubmit(e)}>

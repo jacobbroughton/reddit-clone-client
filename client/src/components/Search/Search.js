@@ -41,7 +41,9 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
     setSearchValue(value)
     dispatch(search(user?.id, subreddit, value))
 
-    if(currentSubreddit) {
+    if(currentSubreddit && !history.location.pathname.includes('/search')) {
+      history.push(`${location.pathname}/search?q=${value}`)
+    } else if (currentSubreddit && history.location.pathname.includes('/search')) {
       history.push(`${location.pathname}?q=${value}`)
     } else {
       history.push(`/search?q=${value}`)

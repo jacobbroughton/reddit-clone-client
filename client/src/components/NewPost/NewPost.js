@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useLocation, Link } from "react-router-dom";
 import { createPost } from "../../actions/postListActions"
+import Meta from "../Meta"
 import "./NewPost.scss"
 
 const NewPost = () => {
@@ -18,19 +19,13 @@ const NewPost = () => {
   const [body, setBody] = useState("")
   const [url, setUrl] = useState("")
   const [subreddit, setSubreddit] = useState(null)
- 
-useEffect(() => {
-  console.log(new URLSearchParams(search).get('type'))
-}, [])
-
-
 
   const handleSubmit = (e) => {
 
     const post = {
       postType,
       title,
-      body: (postType === 'text' ? body : url),
+      body: (postType === 'Text' ? body : url),
       authorId: auth.user.id,
       subredditId: subreddit.id,
       subredditName: subreddit.name
@@ -45,7 +40,7 @@ useEffect(() => {
   }, [search])
 
   useEffect(() => {
-    if (postType === 'text') {
+    if (postType === 'Text') {
       setUrl('')
     }
   }, [postType])
@@ -56,17 +51,13 @@ useEffect(() => {
     }
   }, [subreddits, currentSubreddit])
 
-  useEffect(() => {
-    console.log(subreddit)
-  }, [subreddit])
-
-
   const handleSubredditChange = (selectValue) => {
     setSubreddit(subreddits.filter(sub => sub.name === selectValue)[0])
   }
 
   return (
       <div className={`new-post ${darkMode ? 'dark' : ''}`}>
+        <Meta title={`Create a new ${postType} post`}/>
           <div className="new-post-container">
               <form onSubmit={(e) => handleSubmit(e)}>
                   <div className="both-radio-inputs">
@@ -81,7 +72,7 @@ useEffect(() => {
                   </> 
                   :
                   <>
-                     <input type="url" className="new-post-input" placeholder="url *" onChange={e => setUrl(e.target.value)}/>
+                     <input type="url" className="new-post-input" placeholder="url (required)" onChange={e => setUrl(e.target.value)}/>
                   </>
                 }
                   <select 

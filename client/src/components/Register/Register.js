@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { startRegister } from "../../actions/authActions";
 import { Link } from "react-router-dom"
+import Meta from "../Meta"
+
 import "./Register.scss";
 
 const Register = () => {
@@ -19,6 +21,7 @@ const Register = () => {
 
   return (
     <div className={`register ${darkMode ? 'dark' : ''}`}>
+      <Meta title="Register"/>
       <div className="register-container">
         <h2>Register</h2>
         <form onSubmit={(e) => handleSubmit(e)}>
