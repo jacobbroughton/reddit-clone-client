@@ -4,6 +4,8 @@ const db = require("../db")
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 require("../middleware/passportConfig")(passport);
+const { check } = require("express-validator")
+const returnErrors = require("../middleware/validatorErrors")
 require("dotenv").config();
 
 
@@ -55,7 +57,17 @@ router.post("/logout", (req, res, next) => {
 
 
 // Register
-router.post("/register", (req, res) => {
+router.post("/register", [
+  check('username').notEmpty('Username cannot be empty').trim().escape(),
+  check('gender').notEmpty('Gender cannot be empty').trim().escape(),
+  check('profilePicture').notEmpty(),
+  check('updatedAt').notEmpty()
+],(req, res) => {
+
+  const validatorFailed = returnErrors(req, res)
+
+  if(validatorFailed) return 
+
   const { username } = req.params
 
   let searchForUserStatement = `

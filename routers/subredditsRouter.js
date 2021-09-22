@@ -1,4 +1,6 @@
 const express = require("express");
+const { check } = require("express-validator")
+const returnErrors = require("../middleware/validatorErrors")
 const router = express.Router();
 const db = require("../db")
 
@@ -40,7 +42,15 @@ router.get("/", (req, res) => {
 
 
 // Create subreddit
-router.post("/", (req, res) => {
+router.post("/", [
+  check('userId').isNumeric(),
+  check('name').notEmpty().withMessage('Subreddit name cannot be empty').trim().escape(),
+  check('description').trim().escape()
+], (req, res) => {
+
+  const validatorFailed = returnErrors(req, res)
+
+  if(validatorFailed) return 
 
   const { userId, name, description } = req.body
 

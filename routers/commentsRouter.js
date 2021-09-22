@@ -1,9 +1,20 @@
 const express = require("express");
+const { check } = require("express-validator")
 const router = express.Router();
 const db = require("../db")
+const returnErrors = require("../middleware/validatorErrors")
 
 // Add comment
-router.post('/', (req, res) => {
+router.post('/', [
+  check('body').notEmpty().withMessage("Comment body cannot be empty").escape().trim(),
+  check('author_id').isNumeric(),
+  check('post_id').isNumeric()
+], (req, res) => {
+
+  const validatorFailed = returnErrors(req, res)
+
+  if(validatorFailed) return 
+
   const { body, author_id, post_id, parent_comment } = req.body
   
   let addCommentStatement = `
@@ -19,7 +30,14 @@ router.post('/', (req, res) => {
 })
 
 
-router.put('/:commentId', (req, res) => {
+router.put('/:commentId', [
+  check('body').notEmpty().withMessage("Comment body cannot be empty").escape().trim()
+], (req, res) => {
+
+  const validatorFailed = returnErrors(req, res)
+
+  if(validatorFailed) return 
+
   let { commentId } = req.params
   let { body } = req.body
 
@@ -63,7 +81,14 @@ router.get('/:postId', (req, res) => {
 })
 
 
-router.delete('/', (req, res) => {
+router.delete('/', [
+  check('id').isNumeric()
+], (req, res) => {
+
+  const validatorFailed = returnErrors(req, res)
+
+  if(validatorFailed) return 
+
   const { id } = req.body
 
   const deleteCommentStatement = `

@@ -137,7 +137,6 @@
             fill: #718096;
           }
   
-  
           &:hover {
             background-color: $light-hover;
           }
@@ -246,6 +245,13 @@
             color: $light-text;
           }
         }
+        .comment-buttons{  
+          .reply-button, .edit-button, .delete-button {  
+            &:hover {
+              background-color: $dark-hover;
+            }
+          }
+        }
       }
       .commented-user-accessable-options {
         button {
@@ -290,6 +296,7 @@
       .replies-toggle {
         color: $light-text;
         &:hover {
+          background-color: $dark-hover;
           text-decoration: underline;
         }
       }

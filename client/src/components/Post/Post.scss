@@ -126,20 +126,38 @@
         .save-and-cancel {
           display: flex;
           gap: 10px;
-          margin-top: 15px;
-          align-self: flex-start;
-        }
-        button {
-          border: none;
-          font-size: 0.95rem;
-          font-weight: 600;
-          padding: 10px 15px;
-          border-radius: 5px;
-          transition: background-color 0.1s ease;
-          cursor: pointer;
+          width: 100%;
+          justify-content: flex-start;
+          
+          button {
+            appearance: none;
+            border: none;
+            margin-top: 5px;
+            padding: 8px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
+            background-color: transparent;
+            transition: background-color .1s ease;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 0.9rem;
+            padding: 4px;
+            color: $less-dark-text;
+      
+            &:hover{
+              background-color: $light-hover;
+            }
 
-          &:hover {
-            background-color: $light-primary;
+            &:disabled {
+              opacity: 0.5;
+            }
+      
+            &:disabled:hover,
+            &:disabled:focus {
+              background-color: transparent;
+              cursor: not-allowed;
+            }
           }
         }
       }
@@ -249,9 +267,10 @@
         }
         .save-and-cancel {
           button {
+            background: $dark-secondary;
             &:hover {
               color: $light-text;
-              background-color: $dark-secondary;
+              background-color: $dark-hover;
             }
           }
         }

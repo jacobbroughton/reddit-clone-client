@@ -1,4 +1,6 @@
 const express = require("express");
+const { check } = require("express-validator")
+const returnErrors = require("../middleware/validatorErrors")
 const router = express.Router();
 const db = require("../db")
 
@@ -57,7 +59,9 @@ db.query(getSinglePostStatement, [postId], (err, rows) => {
 })
 
 
-router.put('/single/:postId', (req, res) => {
+router.put('/single/:postId', [
+  check('body').trim().escape()
+],(req, res) => {
 
   const { body } = req.body
   const { postId } = req.params
@@ -86,7 +90,18 @@ router.put('/single/:postId', (req, res) => {
 
 
 // Add new post
-router.post('/', (req, res) => {
+router.post('/', [
+  check('postType').isString().isLength(4).withMessage("Post type must be either 'Link' or 'Text'"),
+  check('title').notEmpty().withMessage('Post title cannot be empty').escape().trim(),
+  check('body').notEmpty().withMessage('Post body cannot be empty').trim().escape(),
+  check('authorId').isNumeric(),
+  check('subredditId').notEmpty().withMessage('You must post to a subreddit'),
+  check('subredditName').notEmpty().withMessage('You must post to a subreddit').escape()
+], (req, res) => {
+
+  const validatorFailed = returnErrors(req, res)
+
+  if(validatorFailed) return 
 
   const { postType, title, body, authorId, subredditId, subredditName } = req.body
 
@@ -103,10 +118,15 @@ router.post('/', (req, res) => {
 })
 
 
-router.delete('/', (req, res) => {
+router.delete('/', [
+  check('id').notEmpty().withMessage('In order to delete a post, it must be a valid post').isNumeric()
+], (req, res) => {
   
   const { id } = req.body
 
+  const validatorFailed = returnErrors(req, res)
+
+  if(validatorFailed) return 
 
   const deletePostStatement = `
     DELETE p, c, v
