@@ -60,6 +60,8 @@ export const handleVote = (userId, commentId, value) => async (dispatch) => {
   try {
     dispatch({ type: "COMMENT_VOTE_REQUEST" })
 
+    console.log(typeof(userId))
+
     let voteObj = {
       userId,
       commentId,
