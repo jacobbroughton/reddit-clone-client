@@ -4,25 +4,32 @@ const db = require("../db")
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 require("../middleware/passportConfig")(passport);
-const { check } = require("express-validator")
+const { check, param } = require("express-validator")
 const returnErrors = require("../middleware/validatorErrors")
 require("dotenv").config();
 
 
 // Get User
-router.get("/get-user/:username", (req, res) => {
-    const { username } = req.params
+router.get("/get-user/:username", [
+  param('username').notEmpty().withMessage('Must include a username to get a user')
+], (req, res) => {
 
-    let searchForUserStatement = `
-        SELECT id, username, gender, profile_picture, created_at, updated_at FROM users 
-        WHERE username = ?
-        LIMIT 1
-    `;
+  const validatorFailed = returnErrors(req, res)
 
-    db.query(searchForUserStatement, [username], (err, rows) => {
-        if (err) throw err;
-        res.send(rows[0])
-    })
+  if(validatorFailed) return 
+
+  const { username } = req.params
+
+  let searchForUserStatement = `
+      SELECT id, username, gender, profile_picture, created_at, updated_at FROM users 
+      WHERE username = ?
+      LIMIT 1
+  `;
+
+  db.query(searchForUserStatement, [username], (err, rows) => {
+      if (err) throw err;
+      res.send(rows[0])
+  })
 });
 
 
@@ -58,8 +65,8 @@ router.post("/logout", (req, res, next) => {
 
 // Register
 router.post("/register", [
-  check('username').notEmpty('Username cannot be empty').trim().escape(),
-  check('gender').notEmpty('Gender cannot be empty').trim().escape(),
+  check('username').notEmpty().withMessage('Username cannot be empty').trim().escape(),
+  check('gender').notEmpty().withMessage('Gender cannot be empty').trim().escape(),
   check('profilePicture').notEmpty(),
   check('updatedAt').notEmpty()
 ],(req, res) => {

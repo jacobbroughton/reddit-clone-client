@@ -1,11 +1,17 @@
 const express = require("express");
-const { check } = require("express-validator")
+const { check, param } = require("express-validator")
 const returnErrors = require("../middleware/validatorErrors")
 const router = express.Router();
 const db = require("../db")
 
 // Get single subreddit
-router.get("/:name", (req, res) => {
+router.get("/:name", [
+  param('name').escape()
+], (req, res) => {
+
+  const validatorFailed = returnErrors(req, res)
+
+  if(validatorFailed) return 
 
   const { name } = req.params
 
@@ -72,7 +78,14 @@ router.post("/", [
 })
 
 // Delete subreddit
-router.delete('/:subredditId/:userId', (req, res) => {
+router.delete('/:subredditId/:userId', [
+  param('subredditId').notEmpty().withMessage('Must specify a subreddit with a valid ID in order to delete').escape(),
+  param('userId').notEmpty().withMessage('Must be signed in to delete a subreddit').escape()
+], (req, res) => {
+
+  const validatorFailed = returnErrors(req, res)
+
+  if(validatorFailed) return 
 
   const { subredditId, userId } = req.params
 

@@ -1,5 +1,5 @@
 const express = require("express");
-const { check } = require("express-validator")
+const { check, param } = require("express-validator")
 const returnErrors = require("../middleware/validatorErrors")
 const router = express.Router();
 const db = require("../db")
@@ -34,7 +34,13 @@ const getPostsStatement = `
 
 
 // Get single post
-router.get('/single/:postId/:userId?', (req, res) => {
+router.get('/single/:postId/:userId?', [
+  param('postId').notEmpty().isNumeric().escape()
+], (req, res) => {
+
+  const validatorFailed = returnErrors(req, res)
+
+  if(validatorFailed) return 
 
   let { postId, userId } = req.params
 
@@ -60,8 +66,13 @@ db.query(getSinglePostStatement, [postId], (err, rows) => {
 
 
 router.put('/single/:postId', [
-  check('body').trim().escape()
+  check('body').trim().escape(),
+  param('postId').isNumeric()
 ],(req, res) => {
+
+  const validatorFailed = returnErrors(req, res)
+
+  if(validatorFailed) return 
 
   const { body } = req.body
   const { postId } = req.params

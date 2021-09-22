@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db")
-const { check } = require("express-validator")
+const { check, param } = require("express-validator")
 const returnErrors = require("../middleware/validatorErrors")
 
 router.post("/:type", [
   check('data.userId').isNumeric().notEmpty().withMessage('User ID cannot be empty'),
-  check('data.value').isNumeric().notEmpty().withMessage('Vote value cannot be empty / null')
+  check('data.value').isNumeric().notEmpty().withMessage('Vote value cannot be empty / null'),
+  param('type').notEmpty().withMessage('Must specify the type of post').isLength(4)
 ], (req, res) => {
 
   const validatorFailed = returnErrors(req, res)

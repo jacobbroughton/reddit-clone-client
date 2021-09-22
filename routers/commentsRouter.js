@@ -1,5 +1,5 @@
 const express = require("express");
-const { check } = require("express-validator")
+const { check, param } = require("express-validator")
 const router = express.Router();
 const db = require("../db")
 const returnErrors = require("../middleware/validatorErrors")
@@ -31,7 +31,8 @@ router.post('/', [
 
 
 router.put('/:commentId', [
-  check('body').notEmpty().withMessage("Comment body cannot be empty").escape().trim()
+  check('body').notEmpty().withMessage("Comment body cannot be empty").escape().trim(),
+  param('commentId').isNumeric()
 ], (req, res) => {
 
   const validatorFailed = returnErrors(req, res)
@@ -55,7 +56,9 @@ router.put('/:commentId', [
 
 
 // Get all comments for a post
-router.get('/:postId', (req, res) => {
+router.get('/:postId', [
+  param('postId').isNumeric()
+], (req, res) => {
 
   const { userId } = req.query
   const { postId } = req.params
