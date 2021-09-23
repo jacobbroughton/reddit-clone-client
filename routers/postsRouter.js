@@ -104,7 +104,7 @@ router.put('/single/:postId', [
 router.post('/', [
   check('postType').isString().isLength(4).withMessage("Post type must be either 'Link' or 'Text'"),
   check('title').notEmpty().withMessage('Post title cannot be empty').escape().trim(),
-  check('body').notEmpty().withMessage('Post body cannot be empty').trim().escape(),
+  check('body').trim().escape(),
   check('authorId').isNumeric(),
   check('subredditId').notEmpty().withMessage('You must post to a subreddit'),
   check('subredditName').notEmpty().withMessage('You must post to a subreddit').escape()
