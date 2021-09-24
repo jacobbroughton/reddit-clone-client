@@ -29,9 +29,9 @@ const Navbar = () => {
     <nav className={`nav ${darkMode ? 'dark' : ''}`}>
       <div className={`nav-container`}>
         <div className={`home-search-darkicon`} >
-          <Link className={`nav-home-link`} to="/"><span className="not-span" onClick={() => {
+          <Link className={`nav-home-link`} to="/"><span onClick={() => {
               dispatch(setCurrentSubreddit(null))
-            }} >(Not)</span> Reddit</Link>
+            }} >Zeddit</span> </Link>
           <Search setSearchExpanded={setSearchExpanded} searchExpanded={searchExpanded}/>
 
           {!searchExpanded && 
