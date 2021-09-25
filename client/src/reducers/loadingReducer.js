@@ -1,7 +1,17 @@
 export const loadingReducer = (state = false, action) => {
   switch (action.type) {
-    case "SET_LOADING" :
-      return state = action.payload
+    case "GET_POSTS_REQUEST" :
+      return state = true
+    case "GET_POSTS_SUCCESS" :
+      return state = false
+    case "GET_COMMENTS_REQUEST" :
+      return state = true
+    case "GET_COMMENTS_SUCCESS" :
+      return state = false
+    case "GET_POST_REQUEST" :
+      return state = true
+    case "GET_POST_SUCCESS" :
+      return state = false
     default :
       return state
   }

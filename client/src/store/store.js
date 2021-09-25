@@ -1,6 +1,6 @@
 import { createStore, combineReducers, compose, applyMiddleware } from "redux"
 import thunk from "redux-thunk"
-import { loadState, saveState } from "../localStorage"
+import { loadState, saveState } from "../utilities/localStorage"
 import { userReducer } from "../reducers/userReducer"
 import { errorReducer } from "../reducers/errorReducer"
 import { subredditsReducer } from "../reducers/subredditsReducer"

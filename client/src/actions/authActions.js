@@ -1,6 +1,6 @@
-import axios from "../axios-config"
+import axios from "../utilities/axios-config"
 import moment from "moment"
-import history from "../history"
+import history from "../utilities/history"
 import { getApiUrl } from "../actions/nodeEnvActions"
 import { createAvatar } from '@dicebear/avatars';
 import * as maleStyle from '@dicebear/avatars-male-sprites';

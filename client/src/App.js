@@ -14,7 +14,7 @@ import NewPost from "./components/NewPost/NewPost";
 import SinglePostPage from "./components/SinglePostPage/SinglePostPage";
 import CreateSubreddit from "./components/CreateSubreddit/CreateSubreddit";
 import Sidebar from "./components/Sidebar/Sidebar";
-import SearchPage from "./components/SearchPage/SearchPage";
+// import SearchPage from "./components/SearchPage/SearchPage";
 import Meta from "./components/Meta"
 import "./App.scss"
 
@@ -73,9 +73,9 @@ function App() {
                 <NewPost />
               </ProtectedRoute>
 
-              <Route path="/r/:name/search">
+              {/* <Route path="/r/:name/search">
                 <SearchPage />
-              </Route>
+              </Route> */}
 
               <Route path="/r/:name/:postId">
                 <SinglePostPage />
@@ -85,11 +85,11 @@ function App() {
                 <PostList />
               </Route>
 
-              <Route path="/search">
+              {/* <Route path="/search">
                 <SearchPage />
-              </Route>
+              </Route> */}
 
-              <Route exact path="/">
+              <Route path="/">
                 <PostList />
               </Route>
 

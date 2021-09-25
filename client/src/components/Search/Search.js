@@ -4,7 +4,7 @@ import { ReactComponent as BackArrow } from "../../images/backarrow.svg"
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 import PropTypes from "prop-types"
-import { useHistory, useLocation } from "react-router-dom"
+import { useHistory, useLocation, useParams } from "react-router-dom"
 import { search } from "../../actions/searchActions"
 import useBrowserResize from "../useBrowserResize"
 import React from "react"
@@ -17,6 +17,8 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
   const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()
+  const { name } = useParams()
+  
 
   const user = useSelector(state => state.auth.user)
   const currentSubreddit = useSelector(state => state.currentSubreddit)
@@ -41,13 +43,9 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
     setSearchValue(value)
     dispatch(search(user?.id, subreddit, value))
 
-    if(currentSubreddit && !history.location.pathname.includes('/search')) {
-      history.push(`${location.pathname}/search?q=${value}`)
-    } else if (currentSubreddit && history.location.pathname.includes('/search')) {
-      history.push(`${location.pathname}?q=${value}`)
-    } else {
-      history.push(`/search?q=${value}`)
-    }
+    console.log(location)
+
+    history.push(`${location.pathname}?q=${value}`)
   }
 
 
@@ -55,7 +53,9 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
     e.preventDefault()
 
     if(searchValue === "") {
-      history.push(currentSubreddit ? `${currentSubreddit.name}` : "/")
+      history.push({
+        search: ""
+      })
       return 
     }
     searchFunc(searchValue, currentSubreddit?.name)
@@ -69,7 +69,7 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
       { mobile && searchExpanded ? 
         <div className='mobile-search'>
           <form onSubmit={(e) => handleSearchSubmit(e)} className="search-form">
-            <input onChange={(e) => setSearchValue(e.target.value)} type="text" value={searchValue} className="search-input" placeholder={`Search ${currentSubreddit ? `in ${currentSubreddit.name}` : ''}`}/>
+            <input onChange={(e) => setSearchValue(e.target.value)} type="text" value={searchValue} className="search-input" placeholder={`${name} Search ${currentSubreddit ? `in ${currentSubreddit.name}` : ''}`}/>
           </form>
         </div>
         :

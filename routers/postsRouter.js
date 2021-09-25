@@ -1,6 +1,6 @@
 const express = require("express");
 const { check, param } = require("express-validator")
-const returnErrors = require("../middleware/validatorErrors")
+const checkForErrors = require("../middleware/validationUtils")
 const router = express.Router();
 const db = require("../db")
 
@@ -38,7 +38,7 @@ router.get('/single/:postId/:userId?', [
   param('postId').notEmpty().isNumeric().escape()
 ], (req, res) => {
 
-  const validatorFailed = returnErrors(req, res)
+  const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 
@@ -70,7 +70,7 @@ router.put('/single/:postId', [
   param('postId').isNumeric()
 ],(req, res) => {
 
-  const validatorFailed = returnErrors(req, res)
+  const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 
@@ -110,7 +110,7 @@ router.post('/', [
   check('subredditName').notEmpty().withMessage('You must post to a subreddit').escape()
 ], (req, res) => {
 
-  const validatorFailed = returnErrors(req, res)
+  const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 
@@ -135,7 +135,7 @@ router.delete('/', [
   
   const { id } = req.body
 
-  const validatorFailed = returnErrors(req, res)
+  const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 

@@ -7,6 +7,7 @@
   align-items: flex-end;
   background-color: $light-secondary;
   padding: 20px;
+  margin-bottom: 15px;
   border-radius: 3px;
   box-shadow: $subtle-box-shadow;
   width: calc(100% - 40px);
@@ -90,6 +91,7 @@
   }
   &.dark{
     background-color: $dark-secondary;
+    color: $light-text;
 
     .current-subreddit-banner-stack{  
       .search-value{

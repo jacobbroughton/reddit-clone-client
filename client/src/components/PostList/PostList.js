@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { withRouter, useParams } from "react-router-dom";
 import React, { useEffect } from "react";
 import { getPosts } from "../../actions/postListActions";
+import { search } from "../../actions/searchActions"
 import { setCurrentSubreddit } from "../../actions/subredditActions";
 import { useQuery } from "../useQuery"
 import Post from "../Post/Post";
 import SubredditsSelect from "../SubredditsSelect/SubredditsSelect";
 import CurrentSubredditBanner from "../CurrentSubredditBanner/CurrentSubredditBanner"
+import Loading from "../Loading/Loading";
 
 const PostList = () => {
   const dispatch = useDispatch();
@@ -22,45 +24,41 @@ const PostList = () => {
   let searchQueryFromURL = query.get("q");
 
   useEffect(() => {
-    if(!searchQueryFromURL) {
-      dispatch(getPosts(user ? user.id : null, name ? name : null));
-    }
-  }, [searchQueryFromURL])
 
-  useEffect(() => {
+    dispatch(setCurrentSubreddit(name ? name : null))
 
     if(searchQueryFromURL) {
-      return 
+      console.log("Search: " + searchQueryFromURL)
+      dispatch(search(user?.id, name, searchQueryFromURL)) 
     } else {
       dispatch(getPosts(user ? user.id : null, name ? name : null));
     }
-  }, [name, user]);
-
-  useEffect(() => {
-    dispatch(setCurrentSubreddit(name ? name : null))
-  }, [name])
-
+  }, [searchQueryFromURL, name, user])
 
   return (
     <div className={`post-list-main ${darkMode ? 'dark' : ''}`}>
       <SubredditsSelect/>
-      <div className="post-list-container">
-        <div className="post-list">
-          <CurrentSubredditBanner name={name} user={user}/>
-          {loading ? (
-            <p className="loading">Loading</p>
-          ) : (
-            <>
-              {posts.map((post, key) => (
-                <Post
-                  post={post}
-                  key={key}
-                />
-              ))}
-            </>
-          )}
-        </div>
-      </div>
+      <CurrentSubredditBanner name={name} user={user}/>
+      {loading ?
+        <Loading/>
+        :
+        <>
+          <div className="post-list-container">
+            <div className="post-list">
+                <>
+                  {posts.map((post, key) => (
+                    <Post
+                      post={post}
+                      key={key}
+                    />
+                  ))}
+                </>
+            </div>
+          </div>
+        </>
+
+      }
+      
     </div>
   );
 };

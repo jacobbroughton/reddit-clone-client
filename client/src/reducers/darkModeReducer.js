@@ -1,4 +1,4 @@
-import { loadState } from "../localStorage"
+import { loadState } from "../utilities/localStorage"
 
 export const darkModeReducer = (state = loadState('darkModeState') || false, action) => {
   switch(action.type) {

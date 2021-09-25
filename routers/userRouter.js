@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 require("../middleware/passportConfig")(passport);
 const { check, param } = require("express-validator")
-const returnErrors = require("../middleware/validatorErrors")
+const checkForErrors = require("../middleware/validationUtils")
 require("dotenv").config();
 
 
@@ -14,7 +14,7 @@ router.get("/get-user/:username", [
   param('username').notEmpty().withMessage('Must include a username to get a user')
 ], (req, res) => {
 
-  const validatorFailed = returnErrors(req, res)
+  const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 
@@ -71,7 +71,7 @@ router.post("/register", [
   check('updatedAt').notEmpty()
 ],(req, res) => {
 
-  const validatorFailed = returnErrors(req, res)
+  const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 

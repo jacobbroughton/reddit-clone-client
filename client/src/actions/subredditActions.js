@@ -1,4 +1,4 @@
-import axios from "../axios-config"
+import axios from "../utilities/axios-config"
 import { getApiUrl } from "../actions/nodeEnvActions"
 
 const API_URL = getApiUrl()

@@ -2,7 +2,7 @@ const express = require("express");
 const { check, param } = require("express-validator")
 const router = express.Router();
 const db = require("../db")
-const returnErrors = require("../middleware/validatorErrors")
+const checkForErrors = require("../middleware/validationUtils")
 
 // Add comment
 router.post('/', [
@@ -11,7 +11,7 @@ router.post('/', [
   check('post_id').isNumeric()
 ], (req, res) => {
 
-  const validatorFailed = returnErrors(req, res)
+  const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 
@@ -35,7 +35,7 @@ router.put('/:commentId', [
   param('commentId').isNumeric()
 ], (req, res) => {
 
-  const validatorFailed = returnErrors(req, res)
+  const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 
@@ -88,7 +88,7 @@ router.delete('/', [
   check('id').isNumeric()
 ], (req, res) => {
 
-  const validatorFailed = returnErrors(req, res)
+  const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 

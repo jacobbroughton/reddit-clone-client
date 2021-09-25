@@ -1,5 +1,5 @@
-import axios from "../axios-config"
-import history from "../history"
+import axios from "../utilities/axios-config"
+import history from "../utilities/history"
 import { setPost } from "../actions/postActions"
 import { formatISO9075 } from "date-fns"
 import { getApiUrl } from "../actions/nodeEnvActions"

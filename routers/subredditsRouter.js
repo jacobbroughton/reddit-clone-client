@@ -1,6 +1,6 @@
 const express = require("express");
 const { check, param } = require("express-validator")
-const returnErrors = require("../middleware/validatorErrors")
+const checkForErrors = require("../middleware/validationUtils")
 const router = express.Router();
 const db = require("../db")
 
@@ -9,7 +9,7 @@ router.get("/:name", [
   param('name').escape()
 ], (req, res) => {
 
-  const validatorFailed = returnErrors(req, res)
+  const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 
@@ -54,7 +54,7 @@ router.post("/", [
   check('description').trim().escape()
 ], (req, res) => {
 
-  const validatorFailed = returnErrors(req, res)
+  const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 
@@ -83,7 +83,7 @@ router.delete('/:subredditId/:userId', [
   param('userId').notEmpty().withMessage('Must be signed in to delete a subreddit').escape()
 ], (req, res) => {
 
-  const validatorFailed = returnErrors(req, res)
+  const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 

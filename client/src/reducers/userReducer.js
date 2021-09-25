@@ -1,4 +1,4 @@
-import { loadState } from "../localStorage";
+import { loadState } from "../utilities/localStorage";
 
 const initialState = loadState("authState") || {};
 

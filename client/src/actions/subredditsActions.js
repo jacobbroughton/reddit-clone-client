@@ -1,6 +1,6 @@
-import axios from "../axios-config.js"
+import axios from "../utilities/axios-config.js"
 import moment from "moment"
-import history from "../history"
+import history from "../utilities/history"
 import { getApiUrl } from "../actions/nodeEnvActions"
 
 
