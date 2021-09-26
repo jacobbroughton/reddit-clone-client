@@ -20,12 +20,13 @@
       width: calc(100% - 30px);
       height: 60px;
       resize: vertical;
-      bordeR: none;
+      border: 0;
       padding: 15px;
       border-radius: 5px;
       font-family: inherit;
       background-color: $light-secondary;
       border: 1px solid $border-lighter;
+      font-size: 1rem;
     }
     .comment-button, .cancel-button{
       appearance: none;

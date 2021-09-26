@@ -4,7 +4,7 @@ import { ReactComponent as BackArrow } from "../../images/backarrow.svg"
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 import PropTypes from "prop-types"
-import { useHistory, useLocation, useParams } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom"
 import { search } from "../../actions/searchActions"
 import useBrowserResize from "../useBrowserResize"
 import React from "react"
@@ -17,7 +17,7 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
   const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()
-  const { name } = useParams()
+  // const { name } = useParams()
   
 
   const user = useSelector(state => state.auth.user)
@@ -38,7 +38,6 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
       setSearchExpanded(false)
     }
   }, [width])
-
 
   const searchFunc = (value, subreddit) => {
 
@@ -74,7 +73,7 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
       { mobile && searchExpanded ? 
         <div className='mobile-search'>
           <form onSubmit={(e) => handleSearchSubmit(e)} className="search-form">
-            <input onChange={(e) => setSearchValue(e.target.value)} type="text" value={searchValue} className="search-input" placeholder={`${name} Search ${currentSubreddit ? `in ${currentSubreddit.name}` : ''}`}/>
+            <input onChange={(e) => setSearchValue(e.target.value)} type="text" value={searchValue} className="search-input" placeholder={`Search ${currentSubreddit ? `in ${currentSubreddit.name}` : ''}`}/>
           </form>
         </div>
         :

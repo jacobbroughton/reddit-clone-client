@@ -2,16 +2,16 @@
 
 .single-post-page{
   width: 100%;
-  padding: 10px;
   margin-top: 98px;
-  border-radius: 4px;
-  background-color: $light-secondary;
-  box-shadow: $subtle-box-shadow;
-  height: fit-content;
 
   .single-post-page-container{
     display: flex;
     flex-direction: column;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: $light-secondary;
+    box-shadow: $subtle-box-shadow;
+    height: fit-content;
 
     .post{
       padding: 0;
@@ -30,9 +30,10 @@
   } 
 
   &.dark{
-    background-color: $dark-secondary;
 
     .single-post-page-container{
+    background-color: $dark-secondary;
+
       
       .post-not-found-p{
         color: $light-text;    
@@ -46,7 +47,8 @@
   }
   
   @media screen and (max-width: $mobile-bp) {
-    width: calc(100% - 20px);
-    max-width: calc(100% - 20px);
+    margin-top: 78px;
+    // width: calc(100% - 20px);
+    // max-width: calc(100% - 20px);
   }
 }
