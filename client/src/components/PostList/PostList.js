@@ -11,6 +11,7 @@ import SubredditsSelect from "../SubredditsSelect/SubredditsSelect";
 import CurrentSubredditBanner from "../CurrentSubredditBanner/CurrentSubredditBanner";
 import Loading from "../Loading/Loading";
 import NoPostsPrompt from "../NoPostsPrompt/NoPostsPrompt";
+import { setPost } from "../../actions/postActions";
 
 const PostList = () => {
   const dispatch = useDispatch();
@@ -20,9 +21,14 @@ const PostList = () => {
   const darkMode = useSelector((state) => state.darkMode);
   const posts = useSelector((state) => state.postList);
   const loading = useSelector((state) => state.loading);
+  const post = useSelector((state) => state.post);
   const { name } = useParams();
 
   let searchQueryFromURL = query.get("q");
+
+  useEffect(() => {
+    if(post) { dispatch(setPost(null)) }
+  }, [])
 
   useEffect(() => {
     dispatch(setCurrentSubreddit(name ? name : null));

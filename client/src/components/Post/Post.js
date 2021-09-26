@@ -76,7 +76,7 @@ const Post = ({ post, single }) => {
           :
           <div className="title-and-body">
             <Link
-              to={`/r/${post.subreddit_name.replace(/\s+/g, "-").toLowerCase()}/${
+              to={`/r/${post.subreddit_name.replace(/\s+/g, "-")}/${
                 post.id
               }`}
               className="post-title"

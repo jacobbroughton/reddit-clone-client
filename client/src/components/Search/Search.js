@@ -23,6 +23,8 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
   const user = useSelector(state => state.auth.user)
   const currentSubreddit = useSelector(state => state.currentSubreddit)
   const darkMode = useSelector(state => state.darkMode)
+  const post = useSelector(state => state.post)
+
 
   const [searchValue, setSearchValue] = useState("")
   const [mobile, setMobile] = useState(false)
@@ -43,9 +45,12 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
     setSearchValue(value)
     dispatch(search(user?.id, subreddit, value))
 
-    console.log(location)
-
-    history.push(`${location.pathname}?q=${value}`)
+    if(post) {
+      console.log("post gang")
+      currentSubreddit ? history.push(`/r/${currentSubreddit.name}?q=${value}`) : history.push(`/?q=${value}`)
+    } else {
+      history.push(`${location.pathname}?q=${value}`)
+    }
   }
 
 
