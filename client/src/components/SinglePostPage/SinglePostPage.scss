@@ -10,7 +10,7 @@
     padding: 10px;
     border-radius: 4px;
     background-color: $light-secondary;
-    box-shadow: $subtle-box-shadow;
+    box-shadow: $subtle-box-shadow-light;
     height: fit-content;
 
     .post{
@@ -33,7 +33,7 @@
 
     .single-post-page-container{
     background-color: $dark-secondary;
-
+    box-shadow: $subtle-box-shadow-dark;
       
       .post-not-found-p{
         color: $light-text;    

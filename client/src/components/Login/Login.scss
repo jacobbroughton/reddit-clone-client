@@ -29,7 +29,7 @@
       .login-input {
         border: none;
         background-color: $light-secondary;
-        box-shadow: $subtle-box-shadow;
+        box-shadow: $subtle-box-shadow-light;
         padding: 8px 10px;
         border-radius: 5px;
         font-size: 1rem;
@@ -68,6 +68,8 @@
       .login-input {
         color: $light-text;
         background-color: $dark-secondary;
+        box-shadow: $subtle-box-shadow-dark;
+
       }
       .login-submit {
         color: $light-text;

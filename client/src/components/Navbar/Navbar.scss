@@ -5,7 +5,7 @@
   position: fixed;
   background-color: #fff;
   z-index: 3;
-  box-shadow: $heavy-box-shadow;
+  box-shadow: $heavy-box-shadow-light;
 
   .nav-container {
     max-width: 1100px;
@@ -142,7 +142,7 @@
           align-items: flex-start;
           background: #fff;
           border: $border-lighter solid 1px;
-          box-shadow: $heavy-box-shadow;
+          box-shadow: $heavy-box-shadow-light;
           padding: 10px 0;
           position: absolute;
           top: 45px;
@@ -196,6 +196,8 @@
   &.dark {
     background-color: $dark-secondary;
     color: $light-text;
+    box-shadow: $heavy-box-shadow-dark;
+    
     .nav-container {
       .home-search-darkicon {
         .nav-home-link {
@@ -246,6 +248,7 @@
           }
           .user-dropdown {
             background-color: $dark-secondary;
+            box-shadow: $heavy-box-shadow-dark;
             a {
               color: $light-text;
               &:hover {

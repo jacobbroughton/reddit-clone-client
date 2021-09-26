@@ -9,7 +9,7 @@
   padding: 20px;
   margin-bottom: 15px;
   border-radius: 3px;
-  box-shadow: $subtle-box-shadow;
+  box-shadow: $subtle-box-shadow-light;
   width: calc(100% - 40px);
 
   .current-subreddit-banner-stack{
@@ -92,6 +92,7 @@
   &.dark{
     background-color: $dark-secondary;
     color: $light-text;
+    box-shadow: $subtle-box-shadow-dark;
 
     .current-subreddit-banner-stack{  
       .search-value{

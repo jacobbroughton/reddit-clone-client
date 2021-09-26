@@ -55,7 +55,7 @@
 
       .new-post-sidebar, .new-link-sidebar{
         background-color: $light-secondary;
-        box-shadow: $subtle-box-shadow;
+        box-shadow: $subtle-box-shadow-light;
 
         &.disabled {
           cursor: not-allowed;
@@ -73,7 +73,7 @@
       width: calc(100% - 10px);
       color: black;
       background-color: $light-secondary;
-      box-shadow: $subtle-box-shadow;
+      box-shadow: $subtle-box-shadow-light;
       font-weight: 500;
       text-decoration: none;
       border-radius: 3px;
@@ -143,6 +143,7 @@
     .no-user-error {
       color: $light-text;
       background-color: $dark-secondary;
+      box-shadow: $subtle-box-shadow-dark;
     }
 
     .sidebar-buttons{
@@ -151,12 +152,14 @@
           background-color: $dark-secondary;
           color: $light-text;
         }
-        .new-post-sidebar{}
-        .new-link-sidebar{}
+        .new-post-sidebar, .new-link-sidebar{
+          box-shadow: $subtle-box-shadow-dark;
+        }
       }
       .create-subreddit{
         background-color: $dark-secondary;
         color: $light-text;
+        box-shadow: $subtle-box-shadow-dark;
       }
     }
   

@@ -10,7 +10,7 @@
   flex-direction: column;
   position: relative;
   z-index: 1;
-  box-shadow: $subtle-box-shadow;
+  box-shadow: $subtle-box-shadow-light;
   gap: 15px;
 
   h3, 
@@ -30,5 +30,9 @@
     p {
       color: $light-text;
     }
+  }
+
+  &.dark {
+    box-shadow: $subtle-box-shadow-dark;
   }
 }

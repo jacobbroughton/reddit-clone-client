@@ -9,7 +9,7 @@
   flex-direction: row;
   position: relative;
   z-index: 1;
-  box-shadow: $subtle-box-shadow;
+  box-shadow: $subtle-box-shadow-light;
 
   .votes-section {
     display: flex;
@@ -208,6 +208,8 @@
 
 .dark .post {
   background-color: $dark-secondary;
+  box-shadow: $subtle-box-shadow-dark;
+
   .votes-section {
     
     .votes-count{
