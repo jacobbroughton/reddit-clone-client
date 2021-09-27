@@ -50,8 +50,7 @@ const SinglePostPage = () => {
       { loading ? 
         <Loading/>
         :
-        <>
-          <div className="single-post-page-container">
+          post && <div className="single-post-page-container">
             <Post post={post} single={true} />
 
             {user ? (
@@ -63,7 +62,6 @@ const SinglePostPage = () => {
             )}
             {comments.length > 0 && <CommentsList />}
           </div>
-        </>
       }
     </div>
   );

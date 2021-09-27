@@ -37,6 +37,7 @@ export const addComment = ({
       threadToggle: true,
       created_at: dateNow,
       updated_at: dateNow,
+      vote_count: 0
     };
 
     dispatch({ type: "ADD_COMMENT_SUCCESS", payload: comment });
