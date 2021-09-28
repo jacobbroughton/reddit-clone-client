@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { Switch, Route, useLocation, useParams, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentSubreddit } from "./actions/subredditActions";
-import { HelmetProvider } from "react-helmet-async"
+// import { HelmetProvider } from "react-helmet-async"
 import PropTypes from "prop-types"
 import ScrollToTop from './components/ScrollToTop'
 import Register from "./components/Register/Register";
@@ -14,7 +14,6 @@ import NewPost from "./components/NewPost/NewPost";
 import SinglePostPage from "./components/SinglePostPage/SinglePostPage";
 import CreateSubreddit from "./components/CreateSubreddit/CreateSubreddit";
 import Sidebar from "./components/Sidebar/Sidebar";
-// import SearchPage from "./components/SearchPage/SearchPage";
 import Meta from "./components/Meta"
 import "./App.scss"
 
@@ -49,7 +48,7 @@ function App() {
   ]
 
   return (
-    <HelmetProvider>
+    // <HelmetProvider>
       <div className={`App ${darkMode ? "dark" : ""}`}>
         <Meta title={currentSubreddit ? `r/${currentSubreddit.name}` : 'Home'}/>
         <ScrollToTop>
@@ -99,7 +98,7 @@ function App() {
           <Footer/>
         </ScrollToTop>
       </div>
-    </HelmetProvider>
+    // </HelmetProvider>
     
   );
 }
