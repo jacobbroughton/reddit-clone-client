@@ -70,8 +70,8 @@ app.use('/comments', commentsRouter)
 app.use('/votes', votesRouter)
 app.use('/search', searchRouter)
 
-const pathToIndex = path.join(__dirname, "client/build", "index.html")
-console.log(pathToIndex)
+// const pathToIndex = path.join(__dirname, "client/build", "index.html")
+// console.log(pathToIndex)
 // app.get("/", (req, res) => {
 //   const raw = fs.readFileSync(pathToIndex).toString()
 //   const pageTitle = "Home - Zeddit"

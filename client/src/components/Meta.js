@@ -7,7 +7,7 @@ const Meta = ({ title }) => {
   return (
     <Helmet>
       <meta charSet="utf-8" />
-      <title>{title && `${title} - Reddit Clone`}</title>
+      <title>{title && `${title} - Zeddit`}</title>
       <meta name="description" content="Created by Jacob Broughton, visit my github at www.github.com/jacobbroughton"/>
 
       {/* OpenGraph tags */}
