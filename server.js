@@ -72,20 +72,20 @@ app.use('/search', searchRouter)
 
 const pathToIndex = path.join(__dirname, "client/build", "index.html")
 console.log(pathToIndex)
-app.get("/", (req, res) => {
-  const raw = fs.readFileSync(pathToIndex).toString()
-  const pageTitle = "Home - Zeddit"
-  const updated = raw.replace('__PAGE_META__', `<title>${pageTitle}</title>`)
-  console.log(updated)
-  res.send(updated)
-})
+// app.get("/", (req, res) => {
+//   const raw = fs.readFileSync(pathToIndex).toString()
+//   const pageTitle = "Home - Zeddit"
+//   const updated = raw.replace('__PAGE_META__', `<title>${pageTitle}</title>`)
+//   console.log(updated)
+//   res.send(updated)
+// })
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, "client/build")))
-  app.get("*", (req, res) =>
-    res.sendFile(path.join(__dirname, "client/build/index.html"))
-  )
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, "client/build")))
+//   app.get("*", (req, res) =>
+//     res.sendFile(path.join(__dirname, "client/build/index.html"))
+//   )
+// }
 
 
 
