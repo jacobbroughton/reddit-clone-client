@@ -108,6 +108,7 @@
       .comment-buttons{
         display: flex;
         gap: 15px;
+        
 
         .reply-button, .edit-button, .delete-button {
           color: $less-dark-text;
@@ -126,12 +127,14 @@
 
           .comment-icon{
             width: 100%;
+            min-width: 14px;
             max-width: 14px;
           }
 
           .edit-icon,
           .delete-icon {
             width: 100%;
+            min-width: 14px;
             max-width: 14px;
             stroke: #718096;
             fill: #718096;
@@ -140,6 +143,26 @@
           &:hover {
             background-color: $light-hover;
           }
+        }
+
+        @media screen and (max-width: $mobile-bp) {
+            gap: 15px;
+            
+            .reply-button, .edit-button, .delete-button {
+              // padding: 0;
+              gap: 0;
+              font-size: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+
+              .comment-icon, .edit-icon, .delete-icon {
+                min-width: 16px;
+                max-width: 16px;
+                align-self: center;
+              }
+            }
         }
       }
     }
@@ -260,6 +283,7 @@
           background-color: inherit;
           .edit-icon,
           .delete-icon {
+            min-width: 14px;
             fill: $light-text;
             stroke: $light-text;
           }

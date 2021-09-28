@@ -24,6 +24,10 @@ const PostList = () => {
   const post = useSelector((state) => state.post);
   const { name } = useParams();
 
+  let string = "doop ><?="
+  console.log(escape(string)) 
+  console.log(unescape(string))
+
   let searchQueryFromURL = query.get("q");
 
   useEffect(() => {
