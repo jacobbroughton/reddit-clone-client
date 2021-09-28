@@ -1,8 +1,9 @@
 import React from 'react'
-import { Helmet } from "react-helmet"
+import Helmet from "react-helmet"
 import PropTypes from "prop-types"
 
 const Meta = ({ title }) => {
+
   return (
     <Helmet>
       <meta charSet="utf-8" />
@@ -18,8 +19,7 @@ const Meta = ({ title }) => {
 }
 
 Meta.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string
+  title: PropTypes.string
 }
 
 export default Meta

@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors")
 const app = express();
+const path = require("path")
 const cookieParser = require("cookie-parser")
 const bodyParser = require("body-parser")
 const session = require("express-session")
@@ -39,6 +40,10 @@ app.use(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
+const fs = require("fs")
+
+
 // Configuring Passport
 const passport = require("passport")
 let sessionStore = new MySQLStore(options)
@@ -68,6 +73,21 @@ app.use('/subreddits', subredditsRouter)
 app.use('/comments', commentsRouter)
 app.use('/votes', votesRouter)
 app.use('/search', searchRouter)
+
+const pathToIndex = path.join(__dirname, "client/build/index.html")
+app.get("/", (req, res) => {
+  const raw = fs.readFileSync(pathToIndex)
+  console.log(raw)
+  const pageTitle = "Home - Zeddit"
+  const updated = raw.replace("__PAGE_META__", `<title>${pageTitle}</title>`)
+  res.send(updated)
+})
+//
+app.use(express.static(path.join(__dirname, "client/build")))
+app.get("*", (req, res) =>
+  res.sendFile(path.join(__dirname, "client/build"))
+)
+
 
 const port = process.env.PORT || 5000;
 
