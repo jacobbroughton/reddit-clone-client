@@ -14,14 +14,14 @@ import NewPost from "./components/NewPost/NewPost";
 import SinglePostPage from "./components/SinglePostPage/SinglePostPage";
 import CreateSubreddit from "./components/CreateSubreddit/CreateSubreddit";
 import Sidebar from "./components/Sidebar/Sidebar";
-import Meta from "./components/Meta"
+// import Meta from "./components/Meta"
 import "./App.scss"
 
 function App() {
 
   const dispatch = useDispatch()
   const darkMode = useSelector((state) => state.darkMode);
-  const currentSubreddit = useSelector((state) => state.currentSubreddit);
+  // const currentSubreddit = useSelector((state) => state.currentSubreddit);
 
   const { name } = useParams()
 
@@ -50,7 +50,7 @@ function App() {
   return (
     // <HelmetProvider>
       <div className={`App ${darkMode ? "dark" : ""}`}>
-        <Meta title={currentSubreddit ? `r/${currentSubreddit.name}` : 'Home'}/>
+        {/* <Meta title={currentSubreddit ? `r/${currentSubreddit.name}` : 'Home'}/> */}
         <ScrollToTop>
           <Navbar />
           <main>

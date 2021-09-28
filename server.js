@@ -75,7 +75,7 @@ console.log(pathToIndex)
 app.get("/", (req, res) => {
   const raw = fs.readFileSync(pathToIndex).toString()
   const pageTitle = "Home - Zeddit"
-  const updated = raw.replace("__PAGE_META__", `<title>${pageTitle}</title>`)
+  const updated = raw.replace('__PAGE_META__', `<title>${pageTitle}</title>`)
   console.log(updated)
   res.send(updated)
 })
