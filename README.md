@@ -2,7 +2,7 @@
 
 ### Created by Jacob Broughton
 
-**Note:** This is still a work in progress, but lots of core functionality is already made.
+**Note:** This is still a work in progress, but all core functionality is there.
 
 --- 
 
