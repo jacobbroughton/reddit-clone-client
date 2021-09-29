@@ -1,4 +1,4 @@
-# Reddit Clone
+# Zeddit (Reddit Clone)
 
 ### Created by Jacob Broughton
 
