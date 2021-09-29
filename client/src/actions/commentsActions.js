@@ -1,5 +1,6 @@
 import axios from "../utilities/axios-config";
 import { getApiUrl } from "../actions/nodeEnvActions";
+import escapeHTML from "../utilities/escapeHTML"
 
 const API_URL = getApiUrl();
 
@@ -13,6 +14,8 @@ export const addComment = ({
 }) => async (dispatch) => {
   try {
     dispatch({ type: "ADD_COMMENT_REQUEST" });
+
+    body = escapeHTML(body)
 
     let comment = {
       body,
@@ -92,6 +95,8 @@ export const startEditComment = ({ id, body }) => async (dispatch) => {
 
     // API request
     await axios.put(`${API_URL}/comments/${id}`, { body });
+
+    body = escapeHTML(body)
 
     dispatch(editComment(id, { body }));
 

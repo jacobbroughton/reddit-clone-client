@@ -1,5 +1,7 @@
 import axios from "../utilities/axios-config";
 import { getApiUrl } from "../actions/nodeEnvActions";
+import escapeHTML from "../utilities/escapeHTML"
+
 
 const API_URL = getApiUrl();
 
@@ -64,6 +66,8 @@ export const startEditPost = ({ id, body }) => async (dispatch) => {
     dispatch({ type: "EDIT_POST_REQUEST" });
 
     await axios.put(`${API_URL}/posts/single/${id}`, { body });
+
+    body = escapeHTML(body)
 
     dispatch(editPost(id, { body }));
 
