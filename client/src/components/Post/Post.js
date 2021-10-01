@@ -7,7 +7,7 @@ import { handleVote } from "../../actions/postListActions"
 import { handleSinglePostVote } from "../../actions/postActions"
 import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
 import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";
-import { getElapsedTime } from "../GetElapsedTime";
+import { getElapsedTime } from "../../utilities/useElapsedTime";
 import VoteButtons from "../VoteButtons/VoteButtons";
 import Meta from "../Meta"
 import "./Post.scss";

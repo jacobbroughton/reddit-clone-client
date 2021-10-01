@@ -5,6 +5,8 @@ import { getApiUrl } from "../actions/nodeEnvActions"
 import { createAvatar } from '@dicebear/avatars';
 import * as maleStyle from '@dicebear/avatars-male-sprites';
 import * as femaleStyle from '@dicebear/avatars-female-sprites';
+import escapeHTML from "../utilities/escapeHTML"
+
 
 const API_URL = getApiUrl()
 
@@ -23,6 +25,8 @@ export const LOGIN_SUCCESS = (user) => ({
 export const getUser = (username) => async (dispatch) => {
   try {
     dispatch({ type: "GETTING_USER" });
+
+    username = escapeHTML(username)
 
     axios({
       method: "get",
@@ -76,6 +80,10 @@ export const startRegister = (username, password, gender) => async (dispatch) =>
     });
 
     let profilePicture = `https://avatars.dicebear.com/api/${gender.toLowerCase()}/${username}.svg`
+
+    username = escapeHTML(username)
+    password = escapeHTML(password)
+    gender = escapeHTML(gender)
 
     axios({
       method: "POST",

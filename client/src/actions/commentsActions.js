@@ -1,6 +1,8 @@
 import axios from "../utilities/axios-config";
 import { getApiUrl } from "../actions/nodeEnvActions";
 import escapeHTML from "../utilities/escapeHTML"
+// import { decode} from 'html-entities';
+
 
 const API_URL = getApiUrl();
 
@@ -16,6 +18,8 @@ export const addComment = ({
     dispatch({ type: "ADD_COMMENT_REQUEST" });
 
     body = escapeHTML(body)
+    // body = encode(body)
+    // console.log(decode(body))
 
     let comment = {
       body,

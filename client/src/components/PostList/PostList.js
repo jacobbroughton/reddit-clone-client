@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import { getPosts } from "../../actions/postListActions";
 import { search } from "../../actions/searchActions";
 import { setCurrentSubreddit } from "../../actions/subredditActions";
-import { useQuery } from "../useQuery";
+import { useQuery } from "../../utilities/useQuery";
 import Post from "../Post/Post";
 import SubredditsSelect from "../SubredditsSelect/SubredditsSelect";
 import CurrentSubredditBanner from "../CurrentSubredditBanner/CurrentSubredditBanner";
@@ -15,7 +15,7 @@ import { setPost } from "../../actions/postActions";
 
 const PostList = () => {
   const dispatch = useDispatch();
-  const query = useQuery();
+  const searchQuery = useQuery();
 
   const user = useSelector((state) => state.auth.user);
   const darkMode = useSelector((state) => state.darkMode);
@@ -24,11 +24,7 @@ const PostList = () => {
   const post = useSelector((state) => state.post);
   const { name } = useParams();
 
-  let string = "doop ><?="
-  console.log(escape(string)) 
-  console.log(unescape(string))
-
-  let searchQueryFromURL = query.get("q");
+  // let searchQueryFromURL = query.get("q");
 
   useEffect(() => {
     if(post) { dispatch(setPost(null)) }
@@ -37,13 +33,13 @@ const PostList = () => {
   useEffect(() => {
     dispatch(setCurrentSubreddit(name ? name : null));
 
-    if (searchQueryFromURL) {
-      console.log("Search: " + searchQueryFromURL);
-      dispatch(search(user?.id, name, searchQueryFromURL));
+    if (searchQuery) {
+      console.log("Search: " + searchQuery);
+      dispatch(search(user?.id, name, searchQuery));
     } else {
       dispatch(getPosts(user ? user.id : null, name ? name : null));
     }
-  }, [searchQueryFromURL, name, user]);
+  }, [searchQuery, name, user]);
 
   return (
     <div className={`post-list-main ${darkMode ? "dark" : ""}`}>

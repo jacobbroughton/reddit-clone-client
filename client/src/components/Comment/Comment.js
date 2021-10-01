@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types"
-import { getElapsedTime } from "../GetElapsedTime";
+import { getElapsedTime } from "../../utilities/useElapsedTime";
 import { startEditComment, deleteComment, commentThreadToggle, handleVote } from "../../actions/commentsActions";
 import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
 import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";

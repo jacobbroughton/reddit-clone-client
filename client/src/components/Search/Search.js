@@ -6,7 +6,7 @@ import { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useHistory, useLocation } from "react-router-dom"
 import { search } from "../../actions/searchActions"
-import useBrowserResize from "../useBrowserResize"
+import useBrowserResize from "../../utilities/useBrowserResize"
 import React from "react"
 
 
@@ -44,8 +44,9 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
     setSearchValue(value)
     dispatch(search(user?.id, subreddit, value))
 
+    console.log(location)
+
     if(post) {
-      console.log("post gang")
       currentSubreddit ? history.push(`/r/${currentSubreddit.name}?q=${value}`) : history.push(`/?q=${value}`)
     } else {
       history.push(`${location.pathname}?q=${value}`)

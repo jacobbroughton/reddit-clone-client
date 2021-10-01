@@ -1,10 +1,10 @@
 import React, { useEffect } from "react"
-import { Switch, Route, useLocation, useParams, Redirect } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { setCurrentSubreddit } from "./actions/subredditActions";
+import { Switch, Route, useLocation, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
+// import { setCurrentSubreddit } from "./actions/subredditActions";
 // import { HelmetProvider } from "react-helmet-async"
 import PropTypes from "prop-types"
-import ScrollToTop from './components/ScrollToTop'
+import ScrollToTop from './utilities/ScrollToTop'
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
@@ -16,22 +16,16 @@ import CreateSubreddit from "./components/CreateSubreddit/CreateSubreddit";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Meta from "./components/Meta"
 import "./App.scss"
+import { useQuery } from "./utilities/useQuery";
 
 function App() {
 
-  const dispatch = useDispatch()
+  const searchQuery = useQuery()
+
   const darkMode = useSelector((state) => state.darkMode);
   const currentSubreddit = useSelector((state) => state.currentSubreddit);
 
-  const { name } = useParams()
-
   const location = useLocation()
-
-  useEffect(() => {
-    if(name) {
-      dispatch(setCurrentSubreddit(name))
-    }
-  }, [name])
 
   useEffect(() => {
     if (darkMode) {
@@ -65,16 +59,24 @@ function App() {
               </Route>
 
               <ProtectedRoute path="/subreddits/create">
-                <CreateSubreddit />
+                {searchQuery ? 
+                  <Redirect 
+                    to={currentSubreddit ? `/r/${currentSubreddit.name}?q=${searchQuery}` : `/q=${searchQuery}`}
+                  />
+                  : 
+                  <CreateSubreddit />
+                }
               </ProtectedRoute>
 
               <ProtectedRoute path="/new-post">
-                <NewPost />
+                {searchQuery ? 
+                  <Redirect 
+                    to={currentSubreddit ? `/r/${currentSubreddit.name}?q=${searchQuery}` : `/q=${searchQuery}`}
+                  />
+                  : 
+                  <NewPost />
+                }
               </ProtectedRoute>
-
-              {/* <Route path="/r/:name/search">
-                <SearchPage />
-              </Route> */}
 
               <Route path="/r/:name/:postId">
                 <SinglePostPage />
@@ -83,10 +85,6 @@ function App() {
               <Route path="/r/:name">
                 <PostList />
               </Route>
-
-              {/* <Route path="/search">
-                <SearchPage />
-              </Route> */}
 
               <Route path="/">
                 <PostList />
@@ -104,6 +102,7 @@ function App() {
 }
 
 function ProtectedRoute ({ children, ...rest }) {
+  console.log(rest)
   let user = useSelector(state => state.auth.user)
   return (
     <Route

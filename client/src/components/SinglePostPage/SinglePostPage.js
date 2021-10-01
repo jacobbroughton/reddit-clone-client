@@ -8,7 +8,7 @@ import CommentForm from "../CommentForm/CommentForm";
 import CommentsList from "../CommentsList/CommentsList";
 import Post from "../Post/Post";
 import Loading from "../Loading/Loading";
-import useBrowserResize from "../useBrowserResize"
+import useBrowserResize from "../../utilities/useBrowserResize"
 import LogInPrompt from "../LogInPrompt/LogInPrompt";
 import SubredditsSelect from "../SubredditsSelect/SubredditsSelect";
 

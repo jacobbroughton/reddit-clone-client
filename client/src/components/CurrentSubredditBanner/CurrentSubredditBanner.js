@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
-import { useQuery } from "../useQuery";
+import { useQuery } from "../../utilities/useQuery";
 import { deleteSubreddit } from "../../actions/subredditsActions";
 
 const CurrentSubredditBanner = ({ name }) => {
@@ -28,8 +28,8 @@ const CurrentSubredditBanner = ({ name }) => {
   const query = useQuery();
 
   useEffect(() => {
-    let searchQueryFromURL = query.get("q");
-    setSearchQuery(searchQueryFromURL);
+    // let searchQueryFromURL = query.get("q");
+    setSearchQuery(query);
   }, [location]);
 
   return (

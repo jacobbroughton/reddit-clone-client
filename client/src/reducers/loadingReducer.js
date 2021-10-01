@@ -10,6 +10,10 @@ export const loadingReducer = (state = false, action) => {
       return state = false
     case "GET_POST_REQUEST" :
       return state = true
+    case "LOGIN_START" :
+      return state = true
+    // case "LOGIN_SUCCESS" :
+    //   return state = false
     case "GET_POST_SUCCESS" :
       return state = false
     default :
