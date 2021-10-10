@@ -32,12 +32,14 @@
         display: flex;
         align-items: center;
         .user {
+          white-space: nowrap;
           color: $dark-text;
           font-weight: 600;
           margin-right: 10px;
         }
 
         .time-ago{
+          white-space: nowrap;        
           font-size: 0.9rem;
           font-weight: 500;
         }
