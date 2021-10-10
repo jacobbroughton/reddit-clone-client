@@ -2,11 +2,12 @@ const express = require("express");
 const { check, param } = require("express-validator")
 const router = express.Router();
 const db = require("../db")
+const { encode, decode } = require('html-entities')
 const checkForErrors = require("../middleware/validationUtils")
 
 // Add comment
 router.post('/', [
-  check('body').notEmpty().withMessage("Comment body cannot be empty").escape().trim(),
+  check('body').notEmpty().withMessage("Comment body cannot be empty").trim(),
   check('author_id').isNumeric(),
   check('post_id').isNumeric()
 ], (req, res) => {
@@ -15,7 +16,12 @@ router.post('/', [
 
   if(validatorFailed) return 
 
-  const { body, author_id, post_id, parent_comment } = req.body
+  let { body, author_id, post_id, parent_comment } = req.body
+
+  body = encode(body)
+
+  console.log(body)
+  
   
   let addCommentStatement = `
     INSERT INTO comments 
@@ -31,7 +37,7 @@ router.post('/', [
 
 
 router.put('/:commentId', [
-  check('body').notEmpty().withMessage("Comment body cannot be empty").escape().trim(),
+  check('body').notEmpty().withMessage("Comment body cannot be empty").trim(),
   param('commentId').isNumeric()
 ], (req, res) => {
 
@@ -40,7 +46,7 @@ router.put('/:commentId', [
   if(validatorFailed) return 
 
   let { commentId } = req.params
-  let { body } = req.body
+  let { body } = encode(req.body)
 
   let editCommentStatement = `
     UPDATE comments 

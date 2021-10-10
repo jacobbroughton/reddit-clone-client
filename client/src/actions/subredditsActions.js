@@ -2,7 +2,6 @@ import axios from "../utilities/axios-config.js"
 import moment from "moment"
 import history from "../utilities/history"
 import { getApiUrl } from "../actions/nodeEnvActions"
-import escapeHTML from "../utilities/escapeHTML"
 
 
 const API_URL = getApiUrl()
@@ -51,9 +50,6 @@ export const createSubreddit = (userId, name, description) => async (dispatch) =
     dispatch({ type: "CREATE_SUBREDDIT_REQUEST" })
 
     let dateNow = moment().format("MMMM Do YYYY");
-
-    name = escapeHTML(name).trim();
-    description = escapeHTML(description)
 
     let newSubreddit = {
       id: 0,

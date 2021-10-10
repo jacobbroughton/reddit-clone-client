@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
+import he from "he"
 import "./SubredditsSelect.scss"
 
 const SubredditsSelect = () => {
@@ -58,7 +59,7 @@ const SubredditsSelect = () => {
         {allSubs.map((subObject, index) => 
           <optgroup label={subObject.type} key={index}>
             {subObject.includedSubreddits.map((sub, index) => 
-              <option key={index}>{sub.name}</option>
+              <option key={index}>{he.decode( sub.name)}</option>
             )}
           </optgroup>
         )}

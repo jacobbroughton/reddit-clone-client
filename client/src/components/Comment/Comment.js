@@ -7,6 +7,7 @@ import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
 import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";
 import { ReactComponent as CommentIcon } from "../../images/comment-icon.svg";
 import { ReactComponent as ExpandThreadIcon } from "../../images/expand.svg";
+import he from "he"
 
 import CommentForm from "../CommentForm/CommentForm";
 import VoteButtons from "../VoteButtons/VoteButtons";
@@ -126,7 +127,7 @@ const Comment = ({ comment }) => {
                 </div>
               </form>
             ) : (
-              <p className="comment-body-text">{comment.body}</p>
+              <p className="comment-body-text">{he.decode(comment.body)}</p>
             )}
           </div>
           

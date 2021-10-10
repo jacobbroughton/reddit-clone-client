@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useLocation, Link } from "react-router-dom";
 import { createPost } from "../../actions/postListActions"
 import Meta from "../Meta"
+import he from "he"
 import "./NewPost.scss"
 
 const NewPost = () => {
@@ -12,6 +13,8 @@ const NewPost = () => {
   const subreddits = useSelector(state => state.subreddits)
   const currentSubreddit = useSelector(state => state.currentSubreddit)
   const darkMode = useSelector(state => state.darkMode)
+
+  console.log(currentSubreddit)
   
   
   const [postType, setPostType] = useState(new URLSearchParams(search).get('type'))
@@ -30,6 +33,8 @@ const NewPost = () => {
       subredditId: subreddit.id,
       subredditName: subreddit.name
     }
+
+    console.log(post)
 
     dispatch(createPost(post))
     e.preventDefault()
@@ -52,7 +57,9 @@ const NewPost = () => {
   }, [subreddits, currentSubreddit])
 
   const handleSubredditChange = (selectValue) => {
-    setSubreddit(subreddits.filter(sub => sub.name === selectValue)[0])
+    console.log(selectValue)
+    console.log(subreddits)
+    setSubreddit(subreddits.filter(sub => he.decode(sub.name) === selectValue)[0])
   }
 
   return (
@@ -80,11 +87,10 @@ const NewPost = () => {
                     onChange={(e) => handleSubredditChange(e.target.value)}>
                       <option disabled selected value> Select a subreddit </option>
                     { subreddits.map((subreddit, key) => 
-                      <option key={key}>{subreddit.name}</option>
+                      <option key={key}>{he.decode(subreddit.name)}</option>
                     )}
                   </select>
                   <button disabled={title === "" || !subreddit} className="new-post-submit" type="submit">Submit</button> 
-                  
               </form>
           </div>
       </div>

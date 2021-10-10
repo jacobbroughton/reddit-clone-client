@@ -10,6 +10,7 @@ import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";
 import { getElapsedTime } from "../../utilities/useElapsedTime";
 import VoteButtons from "../VoteButtons/VoteButtons";
 import Meta from "../Meta"
+import he from "he"
 import "./Post.scss";
 
 const Post = ({ post, single }) => {
@@ -62,7 +63,7 @@ const Post = ({ post, single }) => {
       <div className="post-main-section">   
       { error && <p className="vote-error">{error}</p> }   
           <p className="post-metadata">
-            <Link to={`/r/${post.subreddit_name}`} className="post-subreddit-link">r/{post.subreddit_name}</Link>
+            <Link to={`/r/${he.decode(post.subreddit_name)}`} className="post-subreddit-link">r/{he.decode(post.subreddit_name)}</Link>
             <span className="posted-by-span">
             Posted by <span className="user">u/{post.username && post.username}</span>
             </span>
@@ -72,17 +73,17 @@ const Post = ({ post, single }) => {
 
         
         { post.post_type === "link" ?
-          <a className="link-title" href={post.body}>{post.title}</a>
+          <a className="link-title" href={post.body}>{he.decode(post.title)}</a>
           :
           <div className="title-and-body">
             <Link
-              to={`/r/${post.subreddit_name.replace(/\s+/g, "-")}/${
+              to={`/r/${he.decode(post.subreddit_name.replace(/\s+/g, "-"))}/${
                 post.id
               }`}
               className="post-title"
               onClick={() => dispatch(setPost(post))}
             >
-              {post.title}
+              {he.decode(post.title)}
             </Link>
 
             <div className="post-body">
@@ -98,7 +99,7 @@ const Post = ({ post, single }) => {
                   </div>
                 </form>
                 :
-                <p className="post-body-text">{ post.body }</p>
+                <p className="post-body-text">{ he.decode(post.body) }</p>
               }
             </div>
 

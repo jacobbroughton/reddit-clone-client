@@ -1,6 +1,7 @@
 import axios from "../utilities/axios-config";
 import { getApiUrl } from "../actions/nodeEnvActions";
-import escapeHTML from "../utilities/escapeHTML"
+import he from "he"
+// import escapeHTML from "../utilities/escapeHTML"
 
 
 const API_URL = getApiUrl();
@@ -11,7 +12,15 @@ export const getPost = (postId, userId) => async (dispatch) => {
 
     const response = await axios.get(`${API_URL}/posts/single/${postId}/${userId ? userId : ''}`);
 
-    dispatch({ type: "GET_POST_SUCCESS", payload: response.data });
+    let post = response.data
+
+    post = {
+      ...post,
+      title: he.decode(post.title),
+      body: he.decode(post.body)
+    }
+
+    dispatch({ type: "GET_POST_SUCCESS", payload: post });
   } catch (error) {
     dispatch({
       type: "GET_POST_FAILURE",
@@ -24,6 +33,13 @@ export const getPost = (postId, userId) => async (dispatch) => {
 export const setPost = (post) => async (dispatch) => {
   try {
     dispatch({ type: "SET_POST_REQUEST" });
+
+    post = {
+      ...post,
+      title: he.decode(post.title),
+      body: he.decode(post.body)
+    }
+
     dispatch({ type: "SET_POST_SUCCESS", payload: post });
   } catch (error) {
     dispatch({
@@ -67,7 +83,7 @@ export const startEditPost = ({ id, body }) => async (dispatch) => {
 
     await axios.put(`${API_URL}/posts/single/${id}`, { body });
 
-    body = escapeHTML(body)
+    // body = escapeHTML(body)
 
     dispatch(editPost(id, { body }));
 

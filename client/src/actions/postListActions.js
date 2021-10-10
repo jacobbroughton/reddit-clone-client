@@ -3,7 +3,7 @@ import history from "../utilities/history"
 import { setPost } from "../actions/postActions"
 import { formatISO9075 } from "date-fns"
 import { getApiUrl } from "../actions/nodeEnvActions"
-import escapeHTML from "../utilities/escapeHTML"
+// import escapeHTML from "../utilities/escapeHTML"
 
 
 const API_URL = getApiUrl()
@@ -64,8 +64,8 @@ export const createPost = ({
     let dateNow = formatISO9075(new Date()) 
     console.log("POST DATE NOW", dateNow)
 
-    title = escapeHTML(title)
-    body = escapeHTML(body)
+    // title = escapeHTML(title)
+    // body = escapeHTML(body)
 
     const createdPost = {
       postType,

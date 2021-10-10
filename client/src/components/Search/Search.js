@@ -8,6 +8,7 @@ import { useHistory, useLocation } from "react-router-dom"
 import { search } from "../../actions/searchActions"
 import useBrowserResize from "../../utilities/useBrowserResize"
 import React from "react"
+import he from "he"
 
 
 const Search = ({ searchExpanded, setSearchExpanded }) => {
@@ -79,7 +80,7 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
         </div>
         :
         <div className="desktop-search">
-          {currentSubreddit && <label className="search-label">r/{currentSubreddit.name}</label>}
+          {currentSubreddit && <label className="search-label">r/{he.decode(currentSubreddit.name)}</label>}
           <form onSubmit={(e) => handleSearchSubmit(e)} className="search-form">
             <input onChange={(e) => setSearchValue(e.target.value)} type="text" value={searchValue} className="search-input" placeholder="Search"/>
           </form>

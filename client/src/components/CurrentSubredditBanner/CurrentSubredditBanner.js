@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "../../utilities/useQuery";
 import { deleteSubreddit } from "../../actions/subredditsActions";
+import he from "he"
 
 const CurrentSubredditBanner = ({ name }) => {
   const location = useLocation();
@@ -40,7 +41,7 @@ const CurrentSubredditBanner = ({ name }) => {
             {currentSubreddit ? (
               <>
                 <span className="rSpan">r/</span>
-                {currentSubreddit.name}
+                {he.decode(currentSubreddit.name)}
               </>
             ) : (
               "Home"

@@ -1,7 +1,7 @@
 import axios from "../utilities/axios-config";
 import { getApiUrl } from "../actions/nodeEnvActions";
-import escapeHTML from "../utilities/escapeHTML"
-// import { decode} from 'html-entities';
+// import escapeHTML from "../utilities/escapeHTML"
+import he from "he"
 
 
 const API_URL = getApiUrl();
@@ -17,7 +17,7 @@ export const addComment = ({
   try {
     dispatch({ type: "ADD_COMMENT_REQUEST" });
 
-    body = escapeHTML(body)
+    // body = escapeHTML(body)
     // body = encode(body)
     // console.log(decode(body))
 
@@ -35,6 +35,8 @@ export const addComment = ({
       11,
       8
     )}`;
+
+    body = he.encode(body)
 
     const response = await axios.post(`${API_URL}/comments`, comment);
 
@@ -100,7 +102,9 @@ export const startEditComment = ({ id, body }) => async (dispatch) => {
     // API request
     await axios.put(`${API_URL}/comments/${id}`, { body });
 
-    body = escapeHTML(body)
+    // body = escapeHTML(body)
+
+    body = he.encode(body)
 
     dispatch(editComment(id, { body }));
 

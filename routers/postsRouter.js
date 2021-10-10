@@ -3,6 +3,7 @@ const { check, param } = require("express-validator")
 const checkForErrors = require("../middleware/validationUtils")
 const router = express.Router();
 const db = require("../db")
+const { encode } = require('html-entities')
 
 
 // Get all posts
@@ -11,6 +12,8 @@ router.get('/', (req, res) => {
   let subredditName = req.query.filters
   let { userId } = req.query
 
+  subredditName = encode(subredditName)
+  console.log(subredditName)
 
 const getPostsStatement = `
   SELECT p.*, u.username, v.user_id, v.post_id, v.vote_value,
@@ -27,6 +30,7 @@ const getPostsStatement = `
 
   db.query(getPostsStatement, (err, rows) => {
     if(err) throw err;
+    console.log(rows)
     res.send(rows)
   })
 })
@@ -35,7 +39,7 @@ const getPostsStatement = `
 
 // Get single post
 router.get('/single/:postId/:userId?', [
-  param('postId').notEmpty().isNumeric().escape()
+  param('postId').notEmpty().isNumeric()
 ], (req, res) => {
 
   const validatorFailed = checkForErrors(req, res)
@@ -43,6 +47,8 @@ router.get('/single/:postId/:userId?', [
   if(validatorFailed) return 
 
   let { postId, userId } = req.params
+
+  postId = encode(postId)
 
   const getSinglePostStatement = `
   SELECT p.*, u.username, v.vote_value,
@@ -59,14 +65,13 @@ router.get('/single/:postId/:userId?', [
 
 db.query(getSinglePostStatement, [postId], (err, rows) => {
   if(err) throw err
-  console.log(rows[0])
   res.send(rows[0])
 })
 })
 
 
 router.put('/single/:postId', [
-  check('body').trim().escape(),
+  check('body').trim(),
   param('postId').isNumeric()
 ],(req, res) => {
 
@@ -74,8 +79,8 @@ router.put('/single/:postId', [
 
   if(validatorFailed) return 
 
-  const { body } = req.body
-  const { postId } = req.params
+  const { body } = encode(req.body)
+  const { postId } = encode(req.params)
 
   const updatePostBodyStatement = `
     UPDATE posts 
@@ -103,18 +108,22 @@ router.put('/single/:postId', [
 // Add new post
 router.post('/', [
   check('postType').isString().isLength(4).withMessage("Post type must be either 'Link' or 'Text'"),
-  check('title').notEmpty().withMessage('Post title cannot be empty').escape().trim(),
-  check('body').trim().escape(),
+  check('title').notEmpty().withMessage('Post title cannot be empty').trim(),
+  check('body').trim(),
   check('authorId').isNumeric(),
   check('subredditId').notEmpty().withMessage('You must post to a subreddit'),
-  check('subredditName').notEmpty().withMessage('You must post to a subreddit').escape()
+  check('subredditName').notEmpty().withMessage('You must post to a subreddit')
 ], (req, res) => {
 
   const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 
-  const { postType, title, body, authorId, subredditId, subredditName } = req.body
+  let { postType, title, body, authorId, subredditId, subredditName } = req.body
+
+  title = encode(title)
+  body = encode(body)
+  subredditName = encode(subredditName)
 
   const createPostStatement = `
   INSERT INTO posts

@@ -2,18 +2,21 @@ const express = require("express");
 const { check, param } = require("express-validator")
 const checkForErrors = require("../middleware/validationUtils")
 const router = express.Router();
+const { encode, decode } = require('html-entities')
 const db = require("../db")
 
 // Get single subreddit
 router.get("/:name", [
-  param('name').escape()
+  param('name')
 ], (req, res) => {
 
   const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 
-  const { name } = req.params
+  let { name } = req.params
+
+  name = encode(name)
 
   try {
 
@@ -50,15 +53,18 @@ router.get("/", (req, res) => {
 // Create subreddit
 router.post("/", [
   check('userId').isNumeric(),
-  check('name').notEmpty().withMessage('Subreddit name cannot be empty').trim().escape(),
-  check('description').trim().escape()
+  check('name').notEmpty().withMessage('Subreddit name cannot be empty').trim(),
+  check('description').trim()
 ], (req, res) => {
 
   const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 
-  const { userId, name, description } = req.body
+  let { userId, name, description } = req.body
+
+  name = encode(name)
+  description = encode(description)
 
   try {
     const insertSubredditStatement = `
@@ -79,15 +85,18 @@ router.post("/", [
 
 // Delete subreddit
 router.delete('/:subredditId/:userId', [
-  param('subredditId').notEmpty().withMessage('Must specify a subreddit with a valid ID in order to delete').escape(),
-  param('userId').notEmpty().withMessage('Must be signed in to delete a subreddit').escape()
+  param('subredditId').notEmpty().withMessage('Must specify a subreddit with a valid ID in order to delete'),
+  param('userId').notEmpty().withMessage('Must be signed in to delete a subreddit')
 ], (req, res) => {
 
   const validatorFailed = checkForErrors(req, res)
 
   if(validatorFailed) return 
 
-  const { subredditId, userId } = req.params
+  let { subredditId, userId } = req.params
+
+  subredditId = encode(subredditId)
+  userId = encode(userId)
 
   try {
 

@@ -7,6 +7,7 @@ require("../middleware/passportConfig")(passport);
 const { check, param } = require("express-validator")
 const checkForErrors = require("../middleware/validationUtils")
 require("dotenv").config();
+const { encode } = require("html-entities")
 
 
 // Get User
@@ -65,8 +66,8 @@ router.post("/logout", (req, res, next) => {
 
 // Register
 router.post("/register", [
-  check('username').notEmpty().withMessage('Username cannot be empty').trim().escape(),
-  check('gender').notEmpty().withMessage('Gender cannot be empty').trim().escape(),
+  check('username').notEmpty().withMessage('Username cannot be empty').trim(),
+  check('gender').notEmpty().withMessage('Gender cannot be empty').trim(),
   check('profilePicture').notEmpty(),
   check('updatedAt').notEmpty()
 ],(req, res) => {
@@ -75,7 +76,7 @@ router.post("/register", [
 
   if(validatorFailed) return 
 
-  const { username } = req.params
+  let { username } = encode(req.params)
 
   let searchForUserStatement = `
         SELECT * FROM users 
@@ -90,7 +91,10 @@ router.post("/register", [
     }
     if (!rows[0]) {
 
-      const { username, gender, profilePicture, updatedAt } = req.body
+      let { username, gender, profilePicture, updatedAt } = req.body
+
+      username = encode(username)
+      gender = encode(gender)
 
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
