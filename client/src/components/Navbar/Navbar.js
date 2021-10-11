@@ -4,10 +4,14 @@ import { Link } from "react-router-dom"
 import { startLogout } from "../../actions/authActions"
 import { toggleDarkMode } from "../../reducers/darkModeReducer"
 import { setCurrentSubreddit } from "../../actions/subredditActions"
-import { ReactComponent as DarkModeIcon } from "../../images/dark-mode-icon.svg"
+// import { ReactComponent as DarkModeIcon } from "../../images/dark-mode-icon.svg"
 import { ReactComponent as DownArrow } from "../../images/down-arrow.svg"
 import ProfilePicture from "../ProfilePicture/ProfilePicture"
 import Search from "../Search/Search"
+import useBrowserResize from "../../utilities/useBrowserResize"
+import HomeDark from "../../images/home-dark.png"
+import HomeLight from "../../images/home-light.png"
+
 import "./Navbar.scss";
 
 const Navbar = () => {
@@ -20,6 +24,8 @@ const Navbar = () => {
   const [overlayToggle, setOverlayToggle] = useState(false)
   const [searchExpanded, setSearchExpanded] = useState(false)
 
+  const { width } = useBrowserResize()
+
   const handleDropdownClick = () => {
     setOverlayToggle(!overlayToggle)
     setIsUserDropdownOpen(!isUserDropdownOpen)
@@ -31,12 +37,13 @@ const Navbar = () => {
         <div className={`home-search-darkicon`} >
           <Link className={`nav-home-link`} to="/"><span onClick={() => {
               dispatch(setCurrentSubreddit(null))
-            }} >Zeddit</span> </Link>
+            }} >{width >= 767 ? 'Zeddit' : <img className="home-icon" src={darkMode ? HomeLight : HomeDark}/>}</span> </Link>
           <Search setSearchExpanded={setSearchExpanded} searchExpanded={searchExpanded}/>
 
           {!searchExpanded && 
-            <button className={`dark-mode-icon-parent`}  >
-              <DarkModeIcon className={`dark-mode-icon`}  onClick={() => dispatch(toggleDarkMode())}/>
+            <button className={`dark-mode-icon-parent`}  onClick={() => dispatch(toggleDarkMode())}>
+              {/* <DarkModeIcon className={`dark-mode-icon`}  onClick={() => dispatch(toggleDarkMode())}/> */}
+              {darkMode ? '☀️' : '🌙'}
             </button>
           }
         </div>

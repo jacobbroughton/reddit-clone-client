@@ -7,13 +7,15 @@ import PropTypes from "prop-types"
 import { useHistory, useLocation } from "react-router-dom"
 import { search } from "../../actions/searchActions"
 import useBrowserResize from "../../utilities/useBrowserResize"
-import React from "react"
+import React, { useRef } from "react"
 import he from "he"
 
 
 const Search = ({ searchExpanded, setSearchExpanded }) => {
 
   const { width } = useBrowserResize()
+
+  const inputRef = useRef()
 
   const dispatch = useDispatch()
   const history = useHistory()
@@ -65,6 +67,7 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
       return 
     }
     searchFunc(searchValue, currentSubreddit?.name)
+    inputRef.current.blur()
   }
 
   return (
@@ -75,7 +78,7 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
       { mobile && searchExpanded ? 
         <div className='mobile-search'>
           <form onSubmit={(e) => handleSearchSubmit(e)} className="search-form">
-            <input onChange={(e) => setSearchValue(e.target.value)} type="text" value={searchValue} className="search-input" placeholder={`Search ${currentSubreddit ? `in ${currentSubreddit.name}` : ''}`}/>
+            <input ref={inputRef} onChange={(e) => setSearchValue(e.target.value)} type="text" value={searchValue} className="search-input" placeholder={`Search ${currentSubreddit ? `in ${currentSubreddit.name}` : ''}`}/>
           </form>
         </div>
         :

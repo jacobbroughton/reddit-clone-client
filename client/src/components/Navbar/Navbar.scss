@@ -42,6 +42,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 25px;
+        font-size: 23px;
+        text-shadow: 1px 1px 1px hsl(0, 0%, 80%);
         cursor: pointer;
         .dark-mode-icon {
           width: 100%;
@@ -209,6 +212,8 @@
         }
 
         .dark-mode-icon-parent {
+        text-shadow: 1px 1px 3px hsl(0, 0%, 30%);
+          
           .dark-mode-icon {
             fill: #fff;
           }
@@ -277,7 +282,7 @@
     }
 
     .nav-container .home-search-darkicon .nav-home-link {
-      display: none;
+      // display: none;
     }
 
     .nav-container .nav-menu .logged-in-nav-view .user-dropdown .dropdown-link {
@@ -295,7 +300,12 @@
 
   @media screen and (max-width: $tablet-bp) {
     .nav-container .home-search-darkicon .nav-home-link {
-      display: none;
+      margin: 0;
+
+      .home-icon {
+        width: 30px;
+        height: auto;
+      }
     }
   }
 }

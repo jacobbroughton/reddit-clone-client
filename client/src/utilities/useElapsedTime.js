@@ -22,8 +22,6 @@ export const getElapsedTime = (date) => {
   let matchStr = elapsedTime.match(/\d+/g);
   let matchNum = parseInt(matchStr)
 
-  console.log(elapsedTime)
-
   if(matchNum <= 10 && elapsedTime.includes("seconds")) {
     elapsedTime = "a few seconds ago"
   }
