@@ -4,6 +4,25 @@
   width: 100%;
   margin-top: 98px;
 
+  .back-button-and-subreddit-select {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .back-button {
+      background: transparent;
+      border: 0;
+      padding: 0;
+      height: 30px;
+      width: 30px;
+
+      .back-icon {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
   .single-post-page-container{
     display: flex;
     flex-direction: column;

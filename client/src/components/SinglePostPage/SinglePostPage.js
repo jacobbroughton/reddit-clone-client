@@ -1,7 +1,7 @@
 import "./SinglePostPage.scss";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getPost } from "../../actions/postActions";
 import { getComments, resetComments } from "../../actions/commentsActions";
 import CommentForm from "../CommentForm/CommentForm";
@@ -11,6 +11,9 @@ import Loading from "../Loading/Loading";
 import useBrowserResize from "../../utilities/useBrowserResize"
 import LogInPrompt from "../LogInPrompt/LogInPrompt";
 import SubredditsSelect from "../SubredditsSelect/SubredditsSelect";
+import BackDark from "../../images/back-dark.png"
+import BackLight from "../../images/back-light.png"
+
 
 const SinglePostPage = () => {
   const dispatch = useDispatch();
@@ -21,6 +24,7 @@ const SinglePostPage = () => {
   const darkMode = useSelector((state) => state.darkMode);
   const comments = useSelector((state) => state.comments);
   const loading = useSelector((state) => state.loading);
+  const currentSubreddit = useSelector((state) => state.currentSubreddit);
   const user = useSelector((state) => state.auth.user);
 
   // const location = useLocation();
@@ -46,7 +50,14 @@ const SinglePostPage = () => {
 
   return (
     <div className={`single-post-page ${darkMode ? "dark" : ""}`}>
-      {showingSubredditSelect && <SubredditsSelect/>}
+      {showingSubredditSelect && (
+        <div className="back-button-and-subreddit-select">
+          <Link to={currentSubreddit ? `/r/${currentSubreddit.name}` : '/'} className="back-button">
+            <img className="back-icon" src={darkMode ? BackLight : BackDark}/>
+          </Link>
+          <SubredditsSelect/>
+        </div>
+      )}
       { loading ? 
         <Loading/>
         :
