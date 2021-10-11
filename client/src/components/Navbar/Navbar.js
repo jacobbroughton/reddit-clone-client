@@ -35,9 +35,7 @@ const Navbar = () => {
     <nav className={`nav ${darkMode ? 'dark' : ''}`}>
       <div className={`nav-container`}>
         <div className={`home-search-darkicon`} >
-          <Link className={`nav-home-link`} to="/"><span onClick={() => {
-              dispatch(setCurrentSubreddit(null))
-            }} >{width >= 767 ? 'Zeddit' : <img className="home-icon" src={darkMode ? HomeLight : HomeDark}/>}</span> </Link>
+          {!searchExpanded && <Link className={`nav-home-link`} onClick={() => dispatch(setCurrentSubreddit(null))} to="/">{width >= 767 ? 'Zeddit' : <img className="home-icon" src={darkMode ? HomeLight : HomeDark}/>}</Link>}
           <Search setSearchExpanded={setSearchExpanded} searchExpanded={searchExpanded}/>
 
           {!searchExpanded && 

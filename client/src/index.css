@@ -20,6 +20,10 @@ html, body{
 
 }
 
+* {
+  transition: background 60ms ease;
+}
+
 #root{
   min-height: 100%;
   height: 1px;
