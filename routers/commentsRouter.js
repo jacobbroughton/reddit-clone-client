@@ -30,8 +30,12 @@ router.post('/', [
   `
 
   db.query(addCommentStatement, [body, author_id, post_id, parent_comment], (err, result) => {
-    if(err) throw err
-    res.send(result)
+    if(err) {
+      res.status(404).send("There was an error adding your comment, please try again.")
+      // throw err
+    } else {
+      res.send(result)
+    }
   })
 })
 
@@ -55,8 +59,12 @@ router.put('/:commentId', [
   `
 
   db.query(editCommentStatement, [body, commentId], (err, result) => {
-    if(err) throw err
-    res.send(result)
+    if(err) {
+      res.status(404).send("There was an error editing your comment, please try again.")
+      // throw err
+    } else {
+      res.send(result)
+    }
   })
 })
 
@@ -84,8 +92,12 @@ router.get('/:postId', [
   `
 
   db.query(getCommentsStatement, [postId], (err, rows) => {
-    if(err) throw err
-    res.send(rows)
+    if(err) {
+      res.status(404).send("There was getting the comments for this post, please try again.")
+      // throw err
+    } else {
+      res.send(rows)
+    }
   })
 })
 
@@ -108,8 +120,12 @@ router.delete('/', [
   `
 
   db.query(deleteCommentStatement, [id], (err, result) => {
-    if(err) throw err
-    res.send(result)
+    if(err) {
+      res.status(404).send("There was an error deleting your comment, please try again.")
+      // throw err
+    } else {
+      res.send(result)
+    }
   })
   
 })

@@ -48,8 +48,12 @@ router.get("/", (req, res) => {
   // db.query(searchStatement, [userId, q, q, subredditName, subredditName, subredditName], (err, result) => {
   db.query(searchStatement, [q, q], (err, result) => {
 
-    if (err) throw err
-    res.send(result)
+    if (err) {
+      res.status(404).send("An issue came up during your search, please try again.")
+      // throw err
+    } else {
+      res.send(result)
+    }
   })
 })
 

@@ -22,27 +22,30 @@ const PostList = () => {
   const posts = useSelector((state) => state.postList);
   const loading = useSelector((state) => state.loading);
   const post = useSelector((state) => state.post);
+  const { GET_POSTS: getPostsError } = useSelector(state => state.error)
   const { name } = useParams();
 
-  // let searchQueryFromURL = query.get("q");
 
   useEffect(() => {
+    console.log(getPostsError)
     if(post) { dispatch(setPost(null)) }
   }, [])
+
 
   useEffect(() => {
     dispatch(setCurrentSubreddit(name ? name : null));
 
     if (searchQuery) {
-      console.log("Search: " + searchQuery);
       dispatch(search(user?.id, name, searchQuery));
     } else {
       dispatch(getPosts(user ? user.id : null, name ? name : null));
     }
   }, [searchQuery, name, user]);
 
+
   return (
     <div className={`post-list-main ${darkMode ? "dark" : ""}`}>
+
       <SubredditsSelect />
       <CurrentSubredditBanner name={name} user={user} />
       {loading ? (

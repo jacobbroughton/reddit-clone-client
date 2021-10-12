@@ -25,7 +25,7 @@ export const getPost = (postId, userId) => async (dispatch) => {
     dispatch({
       type: "GET_POST_FAILURE",
       message: error.message,
-      response: error.response,
+      response: error.response.data,
     });
   }
 };
@@ -34,18 +34,20 @@ export const setPost = (post) => async (dispatch) => {
   try {
     dispatch({ type: "SET_POST_REQUEST" });
 
-    post = {
+    if(post) { 
+      post = {
       ...post,
       title: he.decode(post.title),
       body: he.decode(post.body)
     }
+  }
 
     dispatch({ type: "SET_POST_SUCCESS", payload: post });
   } catch (error) {
     dispatch({
       type: "SET_POST_FAILURE",
       message: error.message,
-      response: error.response,
+      response: error.response.data,
     });
   }
 };
@@ -92,7 +94,7 @@ export const startEditPost = ({ id, body }) => async (dispatch) => {
     dispatch({
       type: "EDIT_POST_FAILURE",
       message: error.message,
-      response: error.response,
+      response: error.response.data,
     });
   }
 };
@@ -108,7 +110,7 @@ export const deletePost = (post, id) => async (dispatch) => {
     dispatch({
       type: "DELETE_POST_FAILURE",
       message: error.message,
-      response: error.response,
+      response: error.response.data,
     });
   }
 };

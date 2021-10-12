@@ -26,13 +26,15 @@ router.get("/:name", [
     `
 
     db.query(getSingleSubredditStatement, [name], (err, rows) => {
-      if(err) throw err
-
-      
-      res.send(rows[0])
+      if(err){
+        res.status(404).send("There was an error fetching this subreddit, please try a different one.")
+        // throw err
+      } else {
+        res.send(rows[0])
+      }
     })
   } catch (error) {
-    res.status(400).send({ error: error.message })
+    res.status(404).send("There was an error fetching this subreddit, please try a different one.")
   }
 })
 
@@ -44,8 +46,7 @@ router.get("/", (req, res) => {
       res.send(rows)
     })
   } catch (e) {
-    console.log("ERRORRRRRR")
-    res.status(400).send({ error: e.message })
+    res.status(404).send("There was an issue fetching subreddits, please try again")
   }
 })
 
@@ -73,13 +74,17 @@ router.post("/", [
     VALUES (?, ?, ?)`
 
     db.query(insertSubredditStatement, [userId, name, description], (err, results) => {
-      if(err) throw err
+      if(err) {
+        res.status(404).send('There was error creating the subreddit, please try again.')
 
-      res.send({ idForNewSubreddit: results.insertId })
+        // throw err
+      } else {
+        res.send({ idForNewSubreddit: results.insertId })
+      }
     })
 
   } catch (e) {
-    res.status(400).send({ error: 'A subreddit with this name already exists' })
+    res.status(404).send('A subreddit with this name already exists')
   }
 })
 
@@ -111,12 +116,16 @@ router.delete('/:subredditId/:userId', [
     `
 
     db.query(deleteSubredditStatement, [userId, subredditId], (err, results) => {
-      if(err) throw err
-      res.send(results)
+      if(err) {
+        res.status(404).send("Unable to delete subreddit, please try again.")
+        // throw err
+      } else {
+        res.send(results)
+      }
     })
     
   } catch (error) {
-    res.status(400).send(error)
+    res.status(404).send("Unable to delete subreddit, please try again.")
   }
 })
 

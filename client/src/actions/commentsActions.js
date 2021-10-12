@@ -54,7 +54,7 @@ export const addComment = ({
     dispatch({
       type: "ADD_COMMENT_FAILURE",
       message: error.message,
-      response: error.response,
+      response: error.response.data,
     });
   }
 };
@@ -84,7 +84,8 @@ export const handleVote = (userId, commentId, value) => async (dispatch) => {
   } catch (error) {
     dispatch({ 
       type: "COMMENT_VOTE_FAILURE", 
-      message: error.message 
+      message: error.message,
+      response: error.response.data
     })
   }
 }
@@ -112,7 +113,7 @@ export const startEditComment = ({ id, body }) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "EDIT_COMMENT_FAILURE",
-      response: error.response,
+      response: error.response.data,
       message: error.message,
     });
   }
@@ -133,7 +134,7 @@ export const getComments = (postId, userId) => async (dispatch) => {
     dispatch({
       type: "GET_COMMENTS_FAILURE",
       message: error.message,
-      response: error.response,
+      response: error.response.data,
     });
   }
 };
@@ -152,7 +153,7 @@ export const deleteComment = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "DELETE_COMMENT_FAILURE",
-      response: error.response,
+      response: error.response.data,
       message: error.message,
     });
   }

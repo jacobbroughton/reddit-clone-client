@@ -17,6 +17,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Meta from "./components/Meta"
 import "./App.scss"
 import { useQuery } from "./utilities/useQuery";
+import ErrorPopupList from "./components/ErrorPopupList/ErrorPopupList";
 
 function App() {
 
@@ -93,6 +94,7 @@ function App() {
             </Switch>
             {sidebarExcludedRoutes.indexOf(location.pathname) < 0 && <Sidebar/>}
           </main>
+          <ErrorPopupList/>
           <Footer/>
         </ScrollToTop>
       </div>

@@ -39,6 +39,11 @@ export const getUser = (username) => async (dispatch) => {
 
   } catch (error) {
     console.log(error);
+    dispatch({ 
+      type: "LOGIN_FAILURE",
+      message: error.message,
+      response: error.response.data
+   })
   }
 };
 
@@ -46,25 +51,21 @@ export const getUser = (username) => async (dispatch) => {
 
 export const startLogin = (user) => async (dispatch) => {
   try {
-    dispatch({ type: "LOGIN_START" });
+    dispatch({ type: "LOGIN_REQUEST" });
 
 
-    axios.post(`${API_URL}/users/login`, user)
-    
-    .then(() => { 
-      dispatch(getUser(user.username))
-      history.push("/")
-    })
-    .catch(err => console.log(err))
+    const response = await axios.post(`${API_URL}/users/login`, user)
 
-    
+    console.log(response)
+
+    dispatch(getUser(user.username))
+    history.push("/")  
 
   } catch (error) {
     dispatch({
       type: "LOGIN_FAILURE",
       message: error.message,
-      response: error.response,
-      payload: error.message,
+      response: error.response.data,
     });
   }
 };
@@ -86,7 +87,7 @@ export const startRegister = (username, password, gender) => async (dispatch) =>
     // password = escapeHTML(password)
     // gender = escapeHTML(gender)
 
-    axios({
+    const response = await axios({
       method: "POST",
       url: `${API_URL}/users/register`,
       data: {
@@ -98,27 +99,18 @@ export const startRegister = (username, password, gender) => async (dispatch) =>
       },
       withCredentials: true
     })
-      .then((res) => {
 
-        let registeredUser = res.data;
+      let registeredUser = response.data;
 
-        dispatch({ type: "REGISTER_SUCCESS", payload: registeredUser });
-
-        dispatch(startLogin(registeredUser));
-
-      })
-      .catch((error) => {
-
-        dispatch({ type: "REGISTER_ERROR", message: error.message });
-
-      });
+      dispatch({ type: "REGISTER_SUCCESS", payload: registeredUser });
+      dispatch(startLogin(registeredUser));
 
   } catch (error) {
 
     dispatch({
       type: "REGISTER_FAILURE",
       message: error.message,
-      response: error.response,
+      response: error.response.data,
     });
 
   }

@@ -14,6 +14,9 @@ const Register = () => {
   const [gender, setGender] = useState("Male");
 
   const handleSubmit = (e) => {
+
+    if(username === "" || password === "") return
+
     dispatch(startRegister(username, password, gender));
 
     e.preventDefault();
@@ -26,11 +29,13 @@ const Register = () => {
         <h2>Register</h2>
         <form onSubmit={(e) => handleSubmit(e)}>
           <input
+            required
             className="register-input"
             placeholder="Username"
             onChange={(e) => setUsername(e.target.value)}
           />
           <input
+            required
             className="register-input"
             type="password"
             placeholder="Password"
@@ -38,6 +43,7 @@ const Register = () => {
           />
           <select
             // className="register-input"
+            required
             type="text"
             placeholder="Male / Female"
             onChange={(e) => setGender(e.target.value)}

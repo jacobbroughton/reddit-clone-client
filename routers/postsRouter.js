@@ -29,9 +29,12 @@ const getPostsStatement = `
 `
 
   db.query(getPostsStatement, (err, rows) => {
-    if(err) throw err;
-    console.log(rows)
-    res.send(rows)
+    if(err) {
+      res.status(404).send("There was an error fetching the posts, please try again.")
+      // throw err
+    } else {
+      res.send(rows)
+    }
   })
 })
 // 
@@ -64,8 +67,12 @@ router.get('/single/:postId/:userId?', [
 `
 
 db.query(getSinglePostStatement, [postId], (err, rows) => {
-  if(err) throw err
-  res.send(rows[0])
+  if(err) {
+    res.status(404).send("There was an error fetching this post, please try again.")
+    // throw err
+  } else {
+    res.send(rows[0])
+  }
 })
 })
 
@@ -96,10 +103,17 @@ router.put('/single/:postId', [
 `
 
   db.query(updatePostBodyStatement, [body, postId], (err) => {
-    if(err) throw err
+    if(err) {
+      res.status(404).send("There was an error updating this post, please try again.")
+      // throw err
+    }
     db.query(getSinglePostStatement, [postId], (err, rows) => {
-      if(err) throw err;
-      res.send(rows[0])
+      if(err) {
+        res.status(404).send("There was an error fetching the updated post, please try again.")
+        // throw err
+      } else {
+        res.send(rows[0])
+      }
     })
   })
 })
@@ -132,8 +146,12 @@ router.post('/', [
   `
 
   db.query(createPostStatement, [postType, title, body, authorId, subredditId, subredditName], (err, result) => {
-    if(err) throw err;
-    res.send(result)
+    if(err) {
+      res.status(404).send("There was an error creating the post, please try again.")
+      // throw err
+    } else {
+      res.send(result)
+    }
   })
 })
 
@@ -157,8 +175,13 @@ router.delete('/', [
   `
 
   db.query(deletePostStatement, [id], (err, result) => {
-    if(err) throw err
-    res.send(result)
+    if(err) {
+      res.status(404).send("There was an error deleting the post, please try again.")
+      // throw err
+    } else {
+      res.send(result)
+    }
+    
   })
 
 })

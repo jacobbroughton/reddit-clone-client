@@ -38,9 +38,11 @@ router.post("/:type", [
   }
 
   db.query(insertVoteStatement,[userId, typeId, value, value] , (err, result) => {
-    if(err) throw err
-    console.log(result)
-    res.send(result)
+    if(err) {
+      res.status(404).send('Oops, your vote is not working')
+    } else {
+      res.send(result)
+    }
   })
 })
 

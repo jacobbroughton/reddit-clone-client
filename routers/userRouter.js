@@ -28,8 +28,12 @@ router.get("/get-user/:username", [
   `;
 
   db.query(searchForUserStatement, [username], (err, rows) => {
-      if (err) throw err;
-      res.send(rows[0])
+      if (err) {
+        res.status(404).send('Could not find user')
+        // throw err
+      } else {
+        res.send(rows[0])
+      }
   })
 });
 
@@ -38,14 +42,23 @@ router.get("/get-user/:username", [
 // Log In
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
-    if (err) throw err;
+    if (err) {
+      res.status(404).send('Error while logging in, please try again.')
+      // throw err
+    };
     if (!user) {
       console.log("No user exists, ", info);
+      res.status(404).send("User does not exist, please try again.")
     } else {
       console.log("User found", user);
       req.login(user, (err) => {
-        if (err) throw err;
-        res.send("Successfully authenticated");
+        if (err) {
+          res.status(404).send("User does exist, but there was an error...")
+          // throw err
+        } else {
+          res.send("Successfully authenticated");
+
+        }
       });
     }
   })(req, res, next);
@@ -76,7 +89,9 @@ router.post("/register", [
 
   if(validatorFailed) return 
 
-  let { username } = encode(req.params)
+  let { username } = encode(req.body)
+
+  console.log(username)
 
   let searchForUserStatement = `
         SELECT * FROM users 
@@ -85,9 +100,13 @@ router.post("/register", [
     `;
 
   db.query(searchForUserStatement, [username], async (err, rows) => {
-    if (err) throw err;
+    if (err) {
+      res.status(404).send('Something happened while searching for the user, try again.')
+      // throw err
+    };
+    console.log(rows)
     if (rows[0]) {
-      console.log("User Exists");
+      res.status(404).send('User already exists')
     }
     if (!rows[0]) {
 
@@ -106,10 +125,14 @@ router.post("/register", [
       `;
 
       db.query(insertUserStatement, [username, hashedPassword, gender, profilePicture, updatedAt],  (err) => {
-        if(err) console.log(err)
-        if (err) throw err;
-        res.send(req.body);
-        console.log("Registered user into database");
+        if(err) {
+          res.status(404).send('Error while registering, please try again.')
+          // throw err
+        } else {
+          res.send(req.body);
+          console.log("Registered user into database");
+        }
+
       });
     }
   });

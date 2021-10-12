@@ -73,7 +73,7 @@ export const createSubreddit = (userId, name, description) => async (dispatch) =
     dispatch({ 
       type: "CREATE_SUBREDDIT_FAILURE",
       message: error.message,
-      response: error.response
+      response: error.response.data
     })
   }
 }
@@ -93,7 +93,7 @@ export const deleteSubreddit = (userId, subredditId) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "DELETE_SUBREDDIT_FAILURE",
-      response: error.response,
+      response: error.response.data,
       message: error.message
     })
   }
