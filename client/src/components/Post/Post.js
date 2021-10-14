@@ -11,6 +11,7 @@ import { getElapsedTime } from "../../utilities/useElapsedTime";
 import VoteButtons from "../VoteButtons/VoteButtons";
 import Meta from "../Meta"
 import he from "he"
+import { motion } from "framer-motion"
 import "./Post.scss";
 
 const Post = ({ post, single }) => {
@@ -57,7 +58,11 @@ const Post = ({ post, single }) => {
   }
 
   return (
-    <div className="post">
+    <motion.div 
+      className="post"
+      initial={ single ? { opacity: 1 } : { opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       {single && <Meta title={post.title}/>}
       <VoteButtons item={post} handleVoteClick={handleVoteClick}/>
       <div className="post-main-section">   
@@ -129,7 +134,7 @@ const Post = ({ post, single }) => {
         </div>
       )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

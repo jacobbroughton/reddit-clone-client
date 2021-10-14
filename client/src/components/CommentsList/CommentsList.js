@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
 import Comment from "../Comment/Comment"
+import { motion } from "framer-motion"
 import "./CommentsList.scss"
 
 const CommentsList = () => {
@@ -12,7 +13,11 @@ const CommentsList = () => {
 
   
   return (
-    <div className="comments-list">
+    <motion.div 
+      className="comments-list"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       { !comments  ? 
         !user &&  
           <p className="no-comments-prompt"> It&apos;s quiet here,&nbsp;
@@ -26,7 +31,7 @@ const CommentsList = () => {
           comment={comment}
         />
       )}
-    </div>
+    </motion.div>
   )
 }
 

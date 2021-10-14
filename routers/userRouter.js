@@ -47,8 +47,7 @@ router.post("/login", (req, res, next) => {
       // throw err
     };
     if (!user) {
-      console.log("No user exists, ", info);
-      res.status(404).send("User does not exist, please try again.")
+      res.status(404).send('Username or password is incorrect')
     } else {
       console.log("User found", user);
       req.login(user, (err) => {

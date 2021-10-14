@@ -9,6 +9,7 @@ import { search } from "../../actions/searchActions"
 import useBrowserResize from "../../utilities/useBrowserResize"
 import React, { useRef } from "react"
 import he from "he"
+import { motion } from "framer-motion"
 
 
 const Search = ({ searchExpanded, setSearchExpanded }) => {
@@ -67,14 +68,18 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
       return 
     }
     searchFunc(searchValue, currentSubreddit?.name)
-    inputRef.current.blur()
+    if (mobile) inputRef.current.blur()
   }
 
   return (
     <div className={`search-bar ${darkMode ? 'dark' : ''}`}>
-      <button className="search-icon-button" onClick={mobile ? () => setSearchExpanded(!searchExpanded) : undefined}>
+      <motion.button 
+        className="search-icon-button" 
+        onClick={mobile ? () => setSearchExpanded(!searchExpanded) : undefined} 
+        whileTap={ mobile ? { scale: 1.2 } : { scale: 1 }}
+      >
         {searchExpanded ? <BackArrow className="search-icon" /> : <SearchIcon className="search-icon"/> }
-      </button>
+      </motion.button>
       { mobile && searchExpanded ? 
         <div className='mobile-search'>
           <form onSubmit={(e) => handleSearchSubmit(e)} className="search-form">

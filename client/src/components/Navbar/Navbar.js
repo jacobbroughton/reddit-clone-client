@@ -11,6 +11,7 @@ import Search from "../Search/Search"
 import useBrowserResize from "../../utilities/useBrowserResize"
 import HomeDark from "../../images/home-dark.png"
 import HomeLight from "../../images/home-light.png"
+import { motion } from "framer-motion"
 
 import "./Navbar.scss";
 
@@ -40,10 +41,14 @@ const Navbar = () => {
           <Search setSearchExpanded={setSearchExpanded} searchExpanded={searchExpanded}/>
 
           {!searchExpanded && 
-            <button className={`dark-mode-icon-parent`}  onClick={() => dispatch(toggleDarkMode())}>
+            <motion.button 
+              className={`dark-mode-icon-parent`}  
+              onClick={() => dispatch(toggleDarkMode())}
+              whileTap={{ scale: 1.15 }}
+            >
               {/* <DarkModeIcon className={`dark-mode-icon`}  onClick={() => dispatch(toggleDarkMode())}/> */}
               {darkMode ? '☀️' : '🌙'}
-            </button>
+            </motion.button>
           }
         </div>
         

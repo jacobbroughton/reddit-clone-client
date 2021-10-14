@@ -19,20 +19,20 @@
     color: $dark-text;
   }
 
-  a {
-    color: $link-color;
+  p a {
+    color: $link-color-light;
   }
 
   &.dark {
     background-color: $dark-secondary;
+    box-shadow: $subtle-box-shadow-dark;
 
     h3, 
     p {
       color: $light-text;
+      a {
+        color: $link-color-dark;
+      }
     }
-  }
-
-  &.dark {
-    box-shadow: $subtle-box-shadow-dark;
   }
 }

@@ -13,6 +13,7 @@ import LogInPrompt from "../LogInPrompt/LogInPrompt";
 import SubredditsSelect from "../SubredditsSelect/SubredditsSelect";
 import BackDark from "../../images/back-dark.png"
 import BackLight from "../../images/back-light.png"
+import { motion } from "framer-motion"
 
 
 const SinglePostPage = () => {
@@ -49,7 +50,11 @@ const SinglePostPage = () => {
 
 
   return (
-    <div className={`single-post-page ${darkMode ? "dark" : ""}`}>
+    <motion.div 
+      className={`single-post-page ${darkMode ? "dark" : ""}`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       {showingSubredditSelect && (
         <div className="back-button-and-subreddit-select">
           <Link to={currentSubreddit ? `/r/${currentSubreddit.name}` : '/'} className="back-button">
@@ -74,7 +79,7 @@ const SinglePostPage = () => {
             {comments.length > 0 && <CommentsList />}
           </div>
       }
-    </div>
+    </motion.div>
   );
 };
 

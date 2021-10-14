@@ -72,7 +72,7 @@
       .sign-in-link{
         text-decoration: none;
         margin-left: 5px;
-        color: $link-color;
+        color: $link-color-light;
         font-weight: 500;
       }
     }
@@ -106,6 +106,10 @@
     }
     .already-registered-question{
       color: $light-text;
+
+      .sign-in-link {
+        color: $link-color-dark;
+      }
     }
   }
 }

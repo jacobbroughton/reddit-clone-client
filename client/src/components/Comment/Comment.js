@@ -96,9 +96,9 @@ const Comment = ({ comment }) => {
 
   return (
     <div className={`comment-thread ${darkMode ? 'dark' : ''}`}>
-      <div className='comment'>
-      {/* <VoteButtons item={comment} handleVoteClick={handleVoteClick}/> */}
-        {/* <div className="profile-picture"></div> */}
+      <div 
+        className='comment'
+      >
         <div className="comment-main-section">
         { error && <p className="vote-error">{error}</p> } 
           <p className="comment-metadata">

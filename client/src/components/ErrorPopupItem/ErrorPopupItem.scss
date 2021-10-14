@@ -6,8 +6,10 @@
   gap: 10px;
   padding: 8px 12px;
   background: $light-primary;
-  box-shadow: $subtle-box-shadow-dark;
+  box-shadow: $subtle-box-shadow-light;
+  color: $dark-text;
   border-radius: 3px;
+  border: 1px solid $border-lighter;
 
   img {
     width: 20px;
@@ -24,6 +26,7 @@
     justify-content: center;
     background: transparent;
     border: 0;
+    font-weight: 400;
     // font-weight: 800;
     font-size: 1.1rem;
     border-radius: 2px;
@@ -32,5 +35,19 @@
 
   button:hover {
     background: hsl(0, 0%, 75%)
+  }
+
+  &.dark {
+    background: $dark-primary;
+    box-shadow: $subtle-box-shadow-dark;
+    // border: 1px solid $border-darker;
+
+    .error-message, button {
+      color: $light-text;
+    }
+
+    button:hover {
+      background: hsl(0, 0%, 40%)
+    }
   }
 }

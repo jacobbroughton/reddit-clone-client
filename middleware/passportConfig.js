@@ -17,7 +17,7 @@ module.exports = function(passport) {
                     if(result === true) {
                         return done(null, user) 
                     } else {
-                        return done(null, false, { message: 'Invalid password' })
+                        return done(null, false, { message: 'Username or password is incorrect' })
                     }
                 })
             })

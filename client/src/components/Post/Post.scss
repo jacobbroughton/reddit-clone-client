@@ -83,10 +83,10 @@
 
     .link-title {
       margin-top: 8px;
-      color: #0079d3;
       appearance: none;
       font-size: 1.125rem;
       font-weight: 600;
+      color: $link-color-light;
     }
 
     .title-and-body {
@@ -248,7 +248,7 @@
     }
 
     .link-title {
-      color: $link-color;
+      color: $link-color-dark;
     }
 
     .title-and-body {
