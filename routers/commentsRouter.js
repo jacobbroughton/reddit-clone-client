@@ -60,7 +60,7 @@ router.put('/:commentId', [
 
   db.query(editCommentStatement, [body, commentId], (err, result) => {
     if(err) {
-      res.status(404).send("There was an error editing your comment, please try again.")
+      res.status(404).send("Unable to edit this comment")
       // throw err
     } else {
       res.send(result)

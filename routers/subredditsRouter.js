@@ -75,7 +75,7 @@ router.post("/", [
 
     db.query(insertSubredditStatement, [userId, name, description], (err, results) => {
       if(err) {
-        res.status(404).send('There was error creating the subreddit, please try again.')
+        res.status(404).send('A subreddit with this name already exists')
 
         // throw err
       } else {

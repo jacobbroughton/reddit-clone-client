@@ -41,16 +41,22 @@
         background-color: $light-secondary;
         padding: 8px 10px;
         border-radius: 5px;
+        box-shadow: $subtle-box-shadow-light;
+
       }
       textarea{
         height: 150px;
         font-size: 1rem;
         font-family: inherit;
         font-size: 0.875rem;
+        box-shadow: $subtle-box-shadow-light;
+
 
       }
       select{
-        border: $border-lighter solid 1px;
+        // border: $border-lighter solid 1px;
+        border: 0;
+        box-shadow: $subtle-box-shadow-light;
         border-radius: 3px;
         padding: 5px;
         font-size: 1rem;
@@ -104,12 +110,14 @@
       }
       .new-post-input{
         background-color: $dark-secondary;
+        box-shadow: $subtle-box-shadow-dark;
       }
       input, textarea, select{
         color: $light-text;
+        box-shadow: $subtle-box-shadow-dark;
       }
       select {
-        border: $border-darker solid 1px;
+        // border: $border-darker solid 1px;
         background-color: $dark-secondary;
         color: $light-text;
   

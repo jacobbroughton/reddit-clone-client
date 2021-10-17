@@ -62,6 +62,7 @@ const Post = ({ post, single }) => {
       className="post"
       initial={ single ? { opacity: 1 } : { opacity: 0 }}
       animate={{ opacity: 1 }}
+      edit={ single ? { opacity: 1 } : { opacity: 0 }}
     >
       {single && <Meta title={post.title}/>}
       <VoteButtons item={post} handleVoteClick={handleVoteClick}/>
