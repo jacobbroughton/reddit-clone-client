@@ -1,4 +1,4 @@
-@import '../../utilities/variables';
+@import "../../utilities/variables";
 
 .loading {
   display: flex;
@@ -10,29 +10,33 @@
 
   @keyframes up-and-down {
     to {
-      opacity: .3;
+      opacity: 0.3;
       transform: translateY(-10px);
     }
   }
 
-  .one, .two, .three {
+  .one,
+  .two,
+  .three {
     height: 10px;
     width: 10px;
     background: $dark-primary;
     border-radius: 99px;
-    animation: up-and-down .3s infinite alternate;
+    animation: up-and-down 0.3s infinite alternate;
   }
 
   .two {
-    animation-delay: .1s;
+    animation-delay: 0.1s;
   }
 
   .three {
-    animation-delay: .2s;
+    animation-delay: 0.2s;
   }
 
   &.dark {
-    .one, .two, .three {
+    .one,
+    .two,
+    .three {
       background: $light-primary;
     }
   }

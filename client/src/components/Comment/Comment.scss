@@ -1,4 +1,4 @@
-@import '../../utilities/variables';
+@import "../../utilities/variables";
 
 .comment-thread {
   display: flex;
@@ -20,7 +20,7 @@
       flex-direction: column;
       gap: 8px;
 
-      .vote-error{
+      .vote-error {
         font-size: 0.875rem;
         margin: 0;
         margin-bottom: 10px;
@@ -38,20 +38,17 @@
           margin-right: 10px;
         }
 
-        .time-ago{
-          white-space: nowrap;        
+        .time-ago {
+          white-space: nowrap;
           font-size: 0.9rem;
           font-weight: 500;
         }
       }
 
-
-
-
       .comment-body {
         .edit-comment-form {
           textarea {
-            width: calc(100% - 20px);;
+            width: calc(100% - 20px);
             height: 60px;
             font-family: inherit;
             font-size: 0.9rem;
@@ -71,7 +68,7 @@
             gap: 10px;
             width: 100%;
             justify-content: flex-start;
-            
+
             button {
               appearance: none;
               border: none;
@@ -81,20 +78,19 @@
               font-weight: 600;
               font-size: 1rem;
               background-color: transparent;
-              transition: background-color .1s ease;
+              transition: background-color 0.1s ease;
               cursor: pointer;
               margin-right: 10px;
               font-size: 0.9rem;
               padding: 4px;
               color: $less-dark-text;
-        
-              &:hover{
+
+              &:hover {
                 background-color: $light-hover;
               }
-        
-              &:disabled:hover{
-                background-color: transparent;
-                cursor: not-allowed;
+
+              &:disabled:hover {
+                @include disabled-button;
               }
             }
           }
@@ -107,12 +103,13 @@
         }
       }
 
-      .comment-buttons{
+      .comment-buttons {
         display: flex;
         gap: 15px;
-        
 
-        .reply-button, .edit-button, .delete-button {
+        .reply-button,
+        .edit-button,
+        .delete-button {
           color: $less-dark-text;
           display: flex;
           align-items: center;
@@ -127,7 +124,7 @@
           gap: 8px;
           flex-direction: row;
 
-          .comment-icon{
+          .comment-icon {
             width: 100%;
             min-width: 14px;
             max-width: 14px;
@@ -141,35 +138,37 @@
             stroke: #718096;
             fill: #718096;
           }
-  
+
           &:hover {
             background-color: $light-hover;
           }
         }
 
         @media screen and (max-width: $mobile-bp) {
-            gap: 15px;
-            
-            .reply-button, .edit-button, .delete-button {
-              // padding: 0;
-              gap: 0;
-              font-size: 0;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              text-align: center;
+          gap: 15px;
 
-              .comment-icon, .edit-icon, .delete-icon {
-                min-width: 16px;
-                max-width: 16px;
-                align-self: center;
-              }
+          .reply-button,
+          .edit-button,
+          .delete-button {
+            // padding: 0;
+            gap: 0;
+            font-size: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            .comment-icon,
+            .edit-icon,
+            .delete-icon {
+              min-width: 16px;
+              max-width: 16px;
+              align-self: center;
             }
+          }
         }
       }
     }
-
-
   }
 
   .nested-comment {
@@ -218,7 +217,7 @@
       gap: 10px;
       color: #718096;
 
-      .expand-thread-icon{
+      .expand-thread-icon {
         height: 20px;
         min-width: 20px;
         stroke: transparent;
@@ -270,8 +269,10 @@
             color: $light-text;
           }
         }
-        .comment-buttons{  
-          .reply-button, .edit-button, .delete-button {  
+        .comment-buttons {
+          .reply-button,
+          .edit-button,
+          .delete-button {
             &:hover {
               background-color: $dark-hover;
             }
@@ -298,27 +299,23 @@
     }
 
     .nested-comment {
-
-  
       .bar-and-comment {
-  
         .bar-parent {
           .bar {
             background-color: $less-light-text;
             border-left: 2px $less-light-text solid;
-  
+
             &:hover {
               background-color: orange;
               border-left: 2px orange solid;
             }
           }
         }
-  
-        .comment {
 
+        .comment {
         }
       }
-  
+
       .replies-toggle {
         color: $light-text;
         &:hover {

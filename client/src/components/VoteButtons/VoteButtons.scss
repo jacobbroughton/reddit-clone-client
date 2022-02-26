@@ -1,5 +1,4 @@
-@import '../../utilities/variables';
-
+@import "../../utilities/variables";
 
 .votes-section {
   display: flex;
@@ -32,70 +31,67 @@
   }
 
   .up-vote {
-    .up-arrow{
+    .up-arrow {
       max-width: 15px;
       height: auto;
       fill: #718096;
 
-      &.selected{
+      &.selected {
         fill: #f74309;
       }
     }
   }
 
   .down-vote {
-    .down-arrow{
+    .down-arrow {
       max-width: 15px;
       height: auto;
       fill: #718096;
 
-      &.selected{
+      &.selected {
         fill: #8d8df6;
       }
     }
   }
 
   &.dark {
-    background-color:transparent;
-    
-      .votes-count{
+    background-color: transparent;
+
+    .votes-count {
+      color: $light-text;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+
+      &.up-vote {
         color: $light-text;
-      }
-  
-      button {
-        border: none;
-        cursor: pointer;
-  
-        &.up-vote {
-          color: $light-text;
 
-          .up-arrow{
-            fill: $light-text;          
-            
-            &.selected{
-              fill: orange;
-            }
-          }
+        .up-arrow {
+          fill: $light-text;
 
-
-        }
-  
-        &.down-vote {
-          color: $light-text;
-
-          .down-arrow{
-            fill: $light-text;
-
-            &.selected{
-              fill: teal;
-            }
+          &.selected {
+            fill: orange;
           }
         }
-  
-        &:hover {
-          background-color: $dark-hover;
+      }
+
+      &.down-vote {
+        color: $light-text;
+
+        .down-arrow {
+          fill: $light-text;
+
+          &.selected {
+            fill: teal;
+          }
         }
       }
-    
+
+      &:hover {
+        background-color: $dark-hover;
+      }
+    }
   }
 }

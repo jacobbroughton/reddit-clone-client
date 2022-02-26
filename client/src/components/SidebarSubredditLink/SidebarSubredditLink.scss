@@ -1,6 +1,6 @@
-@import '../../utilities/variables';
+@import "../../utilities/variables";
 
-.subreddit-link{
+.subreddit-link {
   text-decoration: none;
   color: inherit;
   color: $dark-text;
@@ -9,7 +9,7 @@
     text-decoration: underline;
   }
 
-  &:hover{
+  &:hover {
     text-decoration: underline;
   }
 }

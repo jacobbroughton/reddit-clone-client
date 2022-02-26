@@ -1,22 +1,20 @@
-@import '../../utilities/variables';
+@import "../../utilities/variables";
 
-
-.user-comment{
+.user-comment {
   width: 100%;
   margin-top: 15px;
-  p{ 
+  p {
     color: $dark-text;
     margin-top: 0;
     margin-bottom: 5px;
     font-size: 0.9rem;
-    span{
-      
+    span {
       font-weight: 600;
     }
   }
 
-  form{
-    textarea{
+  form {
+    textarea {
       width: calc(100% - 30px);
       height: 60px;
       resize: vertical;
@@ -28,7 +26,8 @@
       border: 1px solid $border-lighter;
       font-size: 1rem;
     }
-    .comment-button, .cancel-button{
+    .comment-button,
+    .cancel-button {
       appearance: none;
       border: none;
       margin-top: 10px;
@@ -37,45 +36,44 @@
       font-weight: 600;
       font-size: 1rem;
       background-color: transparent;
-      transition: background-color .1s ease;
+      transition: background-color 0.1s ease;
       cursor: pointer;
       margin-right: 10px;
       font-size: 0.9rem;
       padding: 4px;
 
-      &:hover{
+      &:hover {
         background-color: $light-hover;
       }
 
-      &:disabled:hover{
-        background-color: transparent;
-        cursor: not-allowed;
+      &:disabled:hover {
+        @include disabled-button;
       }
     }
   }
 
-  &.dark{
+  &.dark {
     background-color: transparent;
-    p{ 
+    p {
       color: $light-text;
-      span{
+      span {
       }
     }
-  
-    form{
-      textarea{
+
+    form {
+      textarea {
         border: 1px $border-lighter solid;
         color: $light-text;
         background-color: $dark-secondary;
         position: relative;
       }
-      .comment-button{
+      .comment-button {
       }
-      button{
+      button {
         background-color: transparent;
-        transition: background-color .1s ease;
-  
-        &:hover{
+        transition: background-color 0.1s ease;
+
+        &:hover {
           background-color: $dark-hover;
         }
       }

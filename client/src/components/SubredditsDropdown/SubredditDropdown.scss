@@ -1,5 +1,5 @@
 .subreddit-dropdown {
-  transition: all .15s ease;
+  transition: all 0.15s ease;
   display: flex;
   flex-direction: column;
   background: #efefef;
@@ -9,17 +9,17 @@
   left: 0;
   min-width: 220px;
   z-index: 100;
-  box-shadow: 5px 5px 15px 5px rgba(24,24,24,0.15);
+  box-shadow: 5px 5px 15px 5px rgba(24, 24, 24, 0.15);
 
   a {
     padding: 10px;
     text-decoration: none;
     color: black;
-    transition: background-color .1s ease;
+    transition: background-color 0.1s ease;
     width: calc(100% - 20px);
     text-align: start;
 
-    &:hover{
+    &:hover {
       background-color: lightgrey;
     }
   }
@@ -38,10 +38,10 @@
     gap: 5px;
   }
 
-  &.dark{
-    a{
-      &:hover{
-        background-color: #ffffff29;;
+  &.dark {
+    a {
+      &:hover {
+        background-color: #ffffff29;
       }
     }
   }

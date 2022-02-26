@@ -1,38 +1,38 @@
 export const baseSubreddits = [
   {
     id: 9991,
-    name: "LearnProgramming"
+    name: "LearnProgramming",
   },
   {
     id: 9992,
-    name: "Gaming"
+    name: "Gaming",
   },
   {
     id: 9993,
-    name: "Cryptocurrency"
+    name: "Cryptocurrency",
   },
   {
     id: 9994,
-    name: "WorldNews"
+    name: "WorldNews",
   },
   {
     id: 9995,
-    name: "Music"
+    name: "Music",
   },
   {
     id: 9996,
-    name: "Health & Fitness"
+    name: "Health & Fitness",
   },
   {
     id: 9997,
-    name: "Mindblowing"
+    name: "Mindblowing",
   },
   {
     id: 9998,
-    name: "Science"
+    name: "Science",
   },
   {
     id: 9999,
-    name: "PoliticalHumor"
-  }
+    name: "PoliticalHumor",
+  },
 ]

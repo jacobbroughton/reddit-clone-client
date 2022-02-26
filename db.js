@@ -1,5 +1,5 @@
-const mysql = require("mysql");
-require("dotenv").config();
+const mysql = require("mysql")
+require("dotenv").config()
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -8,11 +8,11 @@ const connection = mysql.createConnection({
   database: process.env.DB_DATABASE,
   port: process.env.DB_PORT,
   dateStrings: true,
-  timezone: 'UTC'
-});
+  timezone: "UTC",
+})
 
 connection.connect((err) => {
-  if(err) throw err
-});
+  if (err) throw err
+})
 
 module.exports = connection

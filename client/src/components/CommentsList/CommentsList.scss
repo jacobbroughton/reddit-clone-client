@@ -1,15 +1,15 @@
-@import '../../utilities/variables';
+@import "../../utilities/variables";
 
-.comments-list{
+.comments-list {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
   gap: 15px;
 
-  .no-comments-prompt{
+  .no-comments-prompt {
     margin: 0;
     font-size: 0.9rem;
-    a{
+    a {
       color: #0079d3;
     }
   }

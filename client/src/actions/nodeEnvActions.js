@@ -1,7 +1,9 @@
 export const getApiUrl = () => {
-  let API_URL;
+  let API_URL
 
-  if(process.env.NODE_ENV === "production") {
+  console.log(import.meta.env.NODE_ENV)
+
+  if (import.meta.env.PROD) {
     API_URL = "https://reddit-clone-jb.herokuapp.com"
   } else {
     API_URL = "http://localhost:5000"

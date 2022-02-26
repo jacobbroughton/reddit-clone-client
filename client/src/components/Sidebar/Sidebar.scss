@@ -1,15 +1,18 @@
-@import '../../utilities/variables';
+@import "../../utilities/variables";
 
-
-.sidebar{
+.sidebar {
   margin-top: 78px;
   min-height: calc(100% - 180px);
+  height: 100%;
   width: 100%;
   max-width: 250px;
   padding: 20px 10px;
+  padding-right: 0;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: sticky;
+  top: 78px;
 
   .no-user-error {
     color: $dark-text;
@@ -22,7 +25,7 @@
     border-radius: 3px;
     margin: 0;
 
-    a{
+    a {
       color: inherit;
     }
 
@@ -32,17 +35,18 @@
     }
   }
 
-  .sidebar-buttons{
+  .sidebar-buttons {
     display: flex;
     flex-direction: column;
     gap: 8px;
 
-    .post-and-link-buttons{
+    .post-and-link-buttons {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 8px;
 
-      .new-post-sidebar, .new-link-sidebar{
+      .new-post-sidebar,
+      .new-link-sidebar {
         padding: 5px;
         color: $dark-text;
         font-weight: 500;
@@ -50,19 +54,21 @@
         border-radius: 3px;
         text-align: center;
 
-        &:hover{
+        &:hover {
           text-decoration: underline;
         }
       }
 
-      .new-post-sidebar, .new-link-sidebar{
+      .new-post-sidebar,
+      .new-link-sidebar {
         background-color: $light-secondary;
         box-shadow: $subtle-box-shadow-light;
 
         &.disabled {
           cursor: not-allowed;
           text-decoration: line-through;
-    
+
+
           &:hover {
             text-decoration: line-through;
             // text-decoration-thickness: 2px;
@@ -70,7 +76,7 @@
         }
       }
     }
-    .create-subreddit{
+    .create-subreddit {
       padding: 5px;
       width: calc(100% - 10px);
       color: black;
@@ -81,14 +87,14 @@
       border-radius: 3px;
       text-align: center;
 
-      &:hover{
+      &:hover {
         text-decoration: underline;
       }
 
       &.disabled {
         cursor: not-allowed;
         text-decoration: line-through;
-  
+
         &:hover {
           text-decoration: line-through;
           // text-decoration-thickness: 2px;
@@ -105,12 +111,12 @@
     }
   }
 
-  .subreddit-lists{
+  .subreddit-lists {
     display: flex;
     flex-direction: column;
     gap: 8px;
 
-    .subreddit-list-label-main{
+    .subreddit-list-label-main {
       margin: 0;
       font-size: 1.2rem;
       font-weight: 600;
@@ -118,7 +124,7 @@
       text-decoration: underline;
     }
 
-    .subreddit-list-label{
+    .subreddit-list-label {
       margin: 0;
       font-size: 1.2rem;
       font-weight: 600;
@@ -140,36 +146,38 @@
     // }
   }
 
-  &.dark{
-
+  &.dark {
     .no-user-error {
       color: $light-text;
       background-color: $dark-secondary;
       box-shadow: $subtle-box-shadow-dark;
     }
 
-    .sidebar-buttons{
-      .post-and-link-buttons{
-        .new-post-sidebar, .new-link-sidebar{
+    .sidebar-buttons {
+      .post-and-link-buttons {
+        .new-post-sidebar,
+        .new-link-sidebar {
           background-color: $dark-secondary;
           color: $light-text;
         }
-        .new-post-sidebar, .new-link-sidebar{
+        .new-post-sidebar,
+        .new-link-sidebar {
           box-shadow: $subtle-box-shadow-dark;
         }
       }
-      .create-subreddit{
+      .create-subreddit {
         background-color: $dark-secondary;
         color: $light-text;
         box-shadow: $subtle-box-shadow-dark;
       }
     }
-  
-    .subreddit-lists{
-      .subreddit-list-label-main, .subreddit-list-label{
+
+    .subreddit-lists {
+      .subreddit-list-label-main,
+      .subreddit-list-label {
         color: $light-text;
       }
-      .subreddit-link{
+      .subreddit-link {
         color: $light-text;
       }
     }

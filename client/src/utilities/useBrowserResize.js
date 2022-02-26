@@ -5,26 +5,25 @@ const getWindowDimensions = () => {
 
   return {
     width,
-    height
+    height,
   }
 }
 
 const useBrowserResize = () => {
-
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  )
 
   useEffect(() => {
-
     function handleResize() {
       setWindowDimensions(getWindowDimensions())
     }
 
-    window.addEventListener("resize", () => handleResize()) 
+    window.addEventListener("resize", () => handleResize())
     return () => window.removeEventListener("resize", () => handleResize())
   }, [])
 
-
-  return windowDimensions;
+  return windowDimensions
 }
 
 export default useBrowserResize

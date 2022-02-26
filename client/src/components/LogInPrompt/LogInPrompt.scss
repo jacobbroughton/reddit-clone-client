@@ -1,12 +1,12 @@
 @import "../../utilities/variables";
 
-.log-in-prompt{
+.log-in-prompt {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: $dark-text;
   text-decoration: none;
-  padding: 15px;
+  padding: 7px 15px;
   font-size: 1rem;
   font-weight: 600;
   border: 1px solid $border-lighter;
@@ -30,9 +30,15 @@
 .log-in-prompt a {
   color: $dark-text;
   padding: 5px;
-  background: $light-mode-interactive;
+  // background: $light-mode-interactive;
   border-radius: 3px;
-  filter: drop-shadow(1px 1px 1px #18181810)
+  filter: drop-shadow(1px 1px 1px #18181810);
+  text-decoration: none;
+  transition: 0.15s ease background;
+}
+
+.log-in-prompt a:hover {
+  background: $light-mode-interactive;
 }
 
 .dark .log-in-prompt {
@@ -43,6 +49,9 @@
 .dark .log-in-prompt a {
   color: $light-text;
   padding: 5px;
-  background: $dark-mode-interactive;
   text-decoration: none;
+}
+
+.dark .log-in-prompt a:hover {
+  background: $dark-mode-interactive;
 }

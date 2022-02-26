@@ -1,7 +1,6 @@
-@import '../../utilities/variables';
+@import "../../utilities/variables";
 
-
-.current-subreddit-banner{
+.current-subreddit-banner {
   display: flex;
   gap: 8px;
   align-items: flex-end;
@@ -12,17 +11,17 @@
   box-shadow: $subtle-box-shadow-light;
   width: calc(100% - 40px);
 
-  .current-subreddit-banner-stack{
+  .current-subreddit-banner-stack {
     display: flex;
     flex-direction: column;
     gap: 10px;
 
-    .search-value{
+    .search-value {
       font-size: 1rem;
       margin: 0;
       border-left: cornflowerblue solid 3px;
       padding-left: 5px;
-      span{
+      span {
         font-weight: 600;
       }
     }
@@ -31,15 +30,15 @@
   h1 {
     margin: 0;
     font-size: 1.5rem;
-    
-    .rSpan{
+
+    .rSpan {
       font-weight: 600;
       font-size: 1.2rem;
       margin-right: 7px;
     }
   }
 
-  .delete-btn{
+  .delete-btn {
     appearance: none;
     padding: 0px;
     border: none;
@@ -52,10 +51,9 @@
     gap: 8px;
     color: $less-dark-text;
     font-weight: 600;
-
   }
 
-  .delete-confirmation-span{
+  .delete-confirmation-span {
     appearance: none;
     padding: 4px;
     border: none;
@@ -69,7 +67,7 @@
     font-weight: 600;
     font-size: 0.875rem;
 
-    button:nth-child(1){
+    button:nth-child(1) {
       appearance: none;
       border: none;
       background: transparent;
@@ -79,7 +77,7 @@
       border-radius: 3px;
     }
 
-    button:nth-child(2){
+    button:nth-child(2) {
       appearance: none;
       border: none;
       background: transparent;
@@ -89,16 +87,17 @@
       border-radius: 3px;
     }
   }
-  &.dark{
+  &.dark {
     background-color: $dark-secondary;
     color: $light-text;
     box-shadow: $subtle-box-shadow-dark;
 
-    .current-subreddit-banner-stack{  
-      .search-value{
+    .current-subreddit-banner-stack {
+      .search-value {
         color: $light-text;
         border-left: cornflowerblue solid 3px;
-        span{}
+        span {
+        }
       }
     }
   }

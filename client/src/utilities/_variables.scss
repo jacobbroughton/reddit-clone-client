@@ -7,7 +7,6 @@ $dark-mode-interactive: #282828;
 $link-color-light: #0079d3;
 $link-color-dark: orange;
 
-
 $light-text: #ffffffde;
 $less-light-text: #aab3be;
 
@@ -33,3 +32,8 @@ $heavy-box-shadow-dark: 2px 2px 5px #0000003e;
 
 $mobile-bp: 767px;
 $tablet-bp: 940px;
+
+@mixin disabled-button {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

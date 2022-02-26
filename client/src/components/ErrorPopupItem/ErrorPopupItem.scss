@@ -1,4 +1,4 @@
-@import '../../utilities/variables';
+@import "../../utilities/variables";
 
 .error-popup-item {
   display: flex;
@@ -34,7 +34,7 @@
   }
 
   button:hover {
-    background: hsl(0, 0%, 75%)
+    background: hsl(0, 0%, 75%);
   }
 
   &.dark {
@@ -42,12 +42,13 @@
     box-shadow: $subtle-box-shadow-dark;
     // border: 1px solid $border-darker;
 
-    .error-message, button {
+    .error-message,
+    button {
       color: $light-text;
     }
 
     button:hover {
-      background: hsl(0, 0%, 40%)
+      background: hsl(0, 0%, 40%);
     }
   }
 }

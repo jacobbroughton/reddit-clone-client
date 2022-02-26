@@ -28,12 +28,7 @@
         font-size: 2rem;
         white-space: nowrap;
         margin-right: 5px;
-        // span {
-        //   font-size: 1.3rem;
-        // }
       }
-
-
 
       .dark-mode-icon-parent {
         appearance: none;
@@ -120,8 +115,6 @@
         position: relative;
         z-index: 4;
 
-
-
         .nav-username-button {
           display: flex;
           align-items: center;
@@ -205,7 +198,7 @@
     background-color: $dark-secondary;
     color: $light-text;
     box-shadow: $heavy-box-shadow-dark;
-    
+
     .nav-container {
       .home-search-darkicon {
         .nav-home-link {
@@ -213,8 +206,8 @@
         }
 
         .dark-mode-icon-parent {
-        text-shadow: 1px 1px 3px hsl(0, 0%, 30%);
-          
+          text-shadow: 1px 1px 3px hsl(0, 0%, 30%);
+
           .dark-mode-icon {
             fill: #fff;
           }

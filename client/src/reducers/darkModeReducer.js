@@ -1,10 +1,13 @@
 import { loadState } from "../utilities/localStorage"
 
-export const darkModeReducer = (state = loadState('darkModeState') || false, action) => {
-  switch(action.type) {
-    case "TOGGLE_DARK_MODE": 
+export const darkModeReducer = (
+  state = loadState("darkModeState") || false,
+  action
+) => {
+  switch (action.type) {
+    case "TOGGLE_DARK_MODE":
       return !state
-    default : { 
+    default: {
       return state
     }
   }
