@@ -5,9 +5,11 @@
   flex-direction: column;
   gap: 20px;
   width: 100%;
+  background: var(--color-bg-secondary);
 
   .comment {
-    color: $dark-text;
+    background-color: var(--color-bg-secondary);
+     
     padding: 10px 0;
     position: relative;
     display: flex;
@@ -28,12 +30,12 @@
       }
       .comment-metadata {
         margin: 0;
-        color: $less-dark-text;
+        color: var(--color-text-secondary);
         display: flex;
         align-items: center;
         .user {
           white-space: nowrap;
-          color: $dark-text;
+           
           font-weight: 600;
           margin-right: 10px;
         }
@@ -53,14 +55,14 @@
             font-family: inherit;
             font-size: 0.9rem;
             resize: vertical;
-            border: 1px solid $border-lighter;
+            border: 1px solid var(--color-border);
             border-radius: 5px;
             padding: 10px;
             transition: border-color 0.15s ease;
             background-color: transparent;
 
             &:hover {
-              border: 1px solid $border-darker;
+              border: 1px solid var(--color-border);
             }
           }
           .save-and-cancel {
@@ -68,6 +70,7 @@
             gap: 10px;
             width: 100%;
             justify-content: flex-start;
+            background: var(--color-bg-secondary);
 
             button {
               appearance: none;
@@ -83,13 +86,15 @@
               margin-right: 10px;
               font-size: 0.9rem;
               padding: 4px;
-              color: $less-dark-text;
+              color: var(--color-text-secondary);
 
               &:hover {
-                background-color: $light-hover;
+                background-color: var(--color-bg-interactive-hover);
               }
 
-              &:disabled:hover {
+
+
+              &:disabled {
                 @include disabled-button;
               }
             }
@@ -100,6 +105,7 @@
           white-space: pre-wrap;
           margin: 0;
           font-size: 0.875rem;
+          color: var(--color-text)
         }
       }
 
@@ -110,7 +116,7 @@
         .reply-button,
         .edit-button,
         .delete-button {
-          color: $less-dark-text;
+          color: var(--color-text-secondary);
           display: flex;
           align-items: center;
           border: none;
@@ -135,12 +141,12 @@
             width: 100%;
             min-width: 14px;
             max-width: 14px;
-            stroke: #718096;
-            fill: #718096;
+            stroke: var(--color-text);
+            fill: var(--color-text);
           }
 
           &:hover {
-            background-color: $light-hover;
+            background-color: var(--color-bg-interactive-hover);
           }
         }
 
@@ -188,8 +194,8 @@
           cursor: pointer;
           min-height: 100%;
           max-height: calc(100% - 15px);
-          background-color: #edeff1;
-          border-left: 2px #edeff1 solid;
+          background-color: var(--color-border);
+          border-left: 2px var(--color-border) solid;
 
           &:hover {
             background-color: orange;
@@ -215,112 +221,17 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      color: #718096;
+      color: var(--color-text);
 
       .expand-thread-icon {
         height: 20px;
         min-width: 20px;
         stroke: transparent;
-        fill: #718096;
+        fill: var(--color-text);
       }
 
       &:hover {
         text-decoration: underline;
-      }
-    }
-  }
-
-  &.dark {
-    background-color: $dark-secondary;
-
-    .comment {
-      background-color: $dark-secondary;
-      color: $light-text;
-
-      .comment-main-section {
-        .comment-metadata {
-          color: $less-light-text;
-          .user {
-            color: $light-text;
-          }
-        }
-
-        .comment-body {
-          .edit-comment-form {
-            textarea {
-              color: $light-text;
-              border: 1px solid $border-darker;
-
-              &:hover {
-                border: 1px solid $border-lighter;
-              }
-            }
-            .save-and-cancel {
-              button {
-                &:hover {
-                  color: $light-text;
-                  background-color: $dark-secondary;
-                }
-              }
-            }
-          }
-
-          .comment-body-text {
-            color: $light-text;
-          }
-        }
-        .comment-buttons {
-          .reply-button,
-          .edit-button,
-          .delete-button {
-            &:hover {
-              background-color: $dark-hover;
-            }
-          }
-        }
-      }
-      .commented-user-accessable-options {
-        button {
-          transition: background-color 0.1s ease;
-          cursor: pointer;
-          background-color: inherit;
-          .edit-icon,
-          .delete-icon {
-            min-width: 14px;
-            fill: $light-text;
-            stroke: $light-text;
-          }
-
-          &:hover {
-            background-color: $dark-hover;
-          }
-        }
-      }
-    }
-
-    .nested-comment {
-      .bar-and-comment {
-        .bar-parent {
-          .bar {
-            background-color: $less-light-text;
-            border-left: 2px $less-light-text solid;
-
-            &:hover {
-              background-color: orange;
-              border-left: 2px orange solid;
-            }
-          }
-        }
-
-        .comment {
-        }
-      }
-
-      .replies-toggle {
-        color: $light-text;
-        &:hover {
-          text-decoration: underline;
-        }
       }
     }
   }

@@ -14,8 +14,9 @@
       width: calc(100% - 30px);
       padding: 10px 15px;
       border: none;
-      background-color: $light-secondary;
-      box-shadow: $subtle-box-shadow-light;
+      background-color: var(--color-bg-secondary);
+      box-shadow: var(--subtle-box-shadow);
+      color: var(--color-text);
       border-radius: 5px;
       font-size: 1rem;
     }
@@ -25,9 +26,9 @@
       resize: vertical;
       height: 150px;
       border: none;
-      background-color: $light-secondary;
-      box-shadow: $subtle-box-shadow-light;
-
+      background-color: var(--color-bg-secondary);;
+      box-shadow: var(--subtle-box-shadow);
+      color: var(--color-text);
       font-family: inherit;
       border-radius: 5px;
       font-size: 1rem;
@@ -40,29 +41,10 @@
       border-radius: 3px;
       background-color: transparent;
       cursor: pointer;
+      color: var(--color-text-secondary);
 
       &:disabled {
         @include disabled-button;
-      }
-    }
-  }
-}
-
-.dark {
-  form {
-    input,
-    textarea {
-      background-color: $dark-secondary;
-      color: $light-text;
-      box-shadow: $subtle-box-shadow-dark;
-    }
-
-    button {
-      color: $light-text;
-
-      &:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
       }
     }
   }

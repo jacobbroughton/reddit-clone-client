@@ -12,7 +12,7 @@
   .votes-count {
     font-size: 1rem;
     font-weight: 500;
-    color: #718096;
+    color: var(--color-text-secondary);
   }
 
   button {
@@ -20,13 +20,13 @@
     display: flex;
     align-items: center;
     border: none;
-    color: #718096;
+    color: var(--color-text-secondary);
     border-radius: 5px;
     cursor: pointer;
     padding: 3px;
 
     &:hover {
-      background-color: $light-hover;
+      background-color: var(--color-bg-interactive-hover);
     }
   }
 
@@ -34,7 +34,7 @@
     .up-arrow {
       max-width: 15px;
       height: auto;
-      fill: #718096;
+      fill: var(--color-text-secondary);
 
       &.selected {
         fill: #f74309;
@@ -46,51 +46,10 @@
     .down-arrow {
       max-width: 15px;
       height: auto;
-      fill: #718096;
+      fill: var(--color-text-secondary);
 
       &.selected {
         fill: #8d8df6;
-      }
-    }
-  }
-
-  &.dark {
-    background-color: transparent;
-
-    .votes-count {
-      color: $light-text;
-    }
-
-    button {
-      border: none;
-      cursor: pointer;
-
-      &.up-vote {
-        color: $light-text;
-
-        .up-arrow {
-          fill: $light-text;
-
-          &.selected {
-            fill: orange;
-          }
-        }
-      }
-
-      &.down-vote {
-        color: $light-text;
-
-        .down-arrow {
-          fill: $light-text;
-
-          &.selected {
-            fill: teal;
-          }
-        }
-      }
-
-      &:hover {
-        background-color: $dark-hover;
       }
     }
   }

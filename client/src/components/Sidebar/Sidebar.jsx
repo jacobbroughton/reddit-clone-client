@@ -9,7 +9,7 @@ const Sidebar = () => {
   const history = useHistory()
   const dispatch = useDispatch()
   const subreddits = useSelector((state) => state.subreddits)
-  const darkMode = useSelector((state) => state.darkMode)
+  
   const user = useSelector((state) => state.auth.user)
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const Sidebar = () => {
   }, [dispatch])
 
   return (
-    <aside className={`sidebar ${darkMode ? "dark" : ""}`}>
+    <aside className={`sidebar  `}>
       {!user && (
         <p className="no-user-error">
           {" "}

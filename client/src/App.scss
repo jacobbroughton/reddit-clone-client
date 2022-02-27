@@ -1,8 +1,9 @@
-@import "./utilities/variables";
+// @import "./utilities/variables";
 
 .App {
   min-height: 100%;
-  // height: auto;
+  // height: auto;\
+  background-color: var(--color-bg-primary);
 
   main {
     margin: 0 auto;
@@ -15,16 +16,11 @@
     gap: 10px;
     position: relative;
     padding: 0px 10px;
+    background-color: var(--color-bg-primary);
   }
 
   .loading {
     margin: 0;
   }
 
-  &.dark {
-    background-color: $dark-primary;
-    main {
-      background-color: $dark-primary;
-    }
-  }
 }

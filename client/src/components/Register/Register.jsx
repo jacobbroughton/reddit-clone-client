@@ -8,7 +8,7 @@ import "./Register.scss"
 
 const Register = () => {
   const dispatch = useDispatch()
-  const darkMode = useSelector((state) => state.darkMode)
+  
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [gender, setGender] = useState("Male")
@@ -22,7 +22,7 @@ const Register = () => {
   }
 
   return (
-    <div className={`register ${darkMode ? "dark" : ""}`}>
+    <div className={`register  `}>
       <Meta title="Register" />
       <div className="register-container">
         <h2>Register</h2>
@@ -51,7 +51,7 @@ const Register = () => {
             <option>Female</option>
           </select>
           {/* <input placeholder="Confirm Password" onChange={e => setConfirmPassword(e.target.value)}/> */}
-          <input className="register-submit" type="submit" value="Register" />
+          <input className="register-submit" type="submit" value="Register" disabled={password === '' || username === ''}/>
         </form>
         {/* { doNotMatchError !== '' && <p>{ doNotMatchError }</p> } */}
         <p className="already-registered-question">

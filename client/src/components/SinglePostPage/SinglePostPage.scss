@@ -28,8 +28,8 @@
     flex-direction: column;
     padding: 10px;
     border-radius: 4px;
-    background-color: $light-secondary;
-    box-shadow: $subtle-box-shadow-light;
+    background-color: var(--color-bg-secondary);
+    box-shadow: var(--subtle-box-shadow);
     height: fit-content;
 
     .post {
@@ -39,27 +39,11 @@
     }
 
     .post-not-found-p {
-      color: $dark-text;
+       
       .post-not-found-link {
         color: #181818;
         margin: 0 auto;
         margin-left: 5px;
-      }
-    }
-  }
-
-  &.dark {
-    .single-post-page-container {
-      background-color: $dark-secondary;
-      box-shadow: $subtle-box-shadow-dark;
-
-      .post-not-found-p {
-        color: $light-text;
-        .post-not-found-link {
-          color: #fff;
-          margin: 0 auto;
-          margin-left: 5px;
-        }
       }
     }
   }

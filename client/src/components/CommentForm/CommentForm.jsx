@@ -13,7 +13,7 @@ const CommentForm = ({
   const dispatch = useDispatch()
 
   const user = useSelector((state) => state.auth.user)
-  const darkMode = useSelector((state) => state.darkMode)
+  
 
   const [body, setBody] = useState("")
 
@@ -35,7 +35,7 @@ const CommentForm = ({
   }
 
   return (
-    <div className={`user-comment ${darkMode ? "dark" : ""}`}>
+    <div className={`user-comment`}>
       <p>
         {alwaysOpen ? "Comment as " : "Reply as "}
         <span>{user.username}</span>{" "}

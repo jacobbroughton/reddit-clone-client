@@ -6,13 +6,13 @@
   // padding-left: 5px;
 
   label {
-    color: $less-dark-text;
+    color: var(--color-text-secondary);
     text-decoration: none;
     font-size: 0.875rem;
   }
 
   select {
-    border: $border-lighter solid 1px;
+    border: var(--color-border) solid 1px;
     border-radius: 3px;
     padding: 5px;
     font-size: 1rem;
@@ -20,31 +20,12 @@
     width: 100%;
     appearance: none;
     -webkit-appearance: none;
-    background-image: linear-gradient(45deg, transparent 50%, $dark-primary 50%),
-      linear-gradient(135deg, $dark-primary 50%, transparent 50%);
+    background-image: linear-gradient(45deg, transparent 50%, var(--color-bg-primary) 50%),
+      linear-gradient(135deg, var(--color-bg-primary) 50%, transparent 50%);
     background-position: calc(100% - 20px) calc(0.55em + 2px),
       calc(100% - 15px) calc(0.55em + 2px);
     background-size: 5px 5px, 5px 5px;
     background-repeat: no-repeat;
-  }
-
-  &.dark {
-    label {
-      color: $less-light-text;
-    }
-
-    select {
-      border: $border-darker solid 1px;
-      background-color: $dark-mode-interactive;
-      color: $light-text;
-
-      background-image: linear-gradient(
-          45deg,
-          transparent 50%,
-          $light-primary 50%
-        ),
-        linear-gradient(135deg, $light-primary 50%, transparent 50%);
-    }
   }
 }
 

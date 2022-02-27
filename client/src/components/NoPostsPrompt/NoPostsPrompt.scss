@@ -2,36 +2,23 @@
 
 .no-posts-prompt {
   border-radius: 4px;
-  background-color: $light-secondary;
+  background-color: var(--color-bg-secondary);
   text-decoration: none;
   padding: 20px;
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 1;
-  box-shadow: $subtle-box-shadow-light;
+  box-shadow: var(--subtle-box-shadow);
   gap: 15px;
 
   h3,
   p {
     margin: 0;
-    color: $dark-text;
+    color: var(--color-text);
   }
 
   p a {
-    color: $link-color-light;
-  }
-
-  &.dark {
-    background-color: $dark-secondary;
-    box-shadow: $subtle-box-shadow-dark;
-
-    h3,
-    p {
-      color: $light-text;
-      a {
-        color: $link-color-dark;
-      }
-    }
+    color: var(--color-link);
   }
 }

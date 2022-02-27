@@ -8,7 +8,7 @@ import { motion } from "framer-motion"
 
 const ErrorPopupItem = ({ error }) => {
   const dispatch = useDispatch()
-  const darkMode = useSelector((state) => state.darkMode)
+  
 
   const [errorShowing, setErrorShowing] = useState(true)
 
@@ -30,7 +30,7 @@ const ErrorPopupItem = ({ error }) => {
 
   return (
     <motion.div
-      className={`error-popup-item ${darkMode ? "dark" : ""}`}
+      className={`error-popup-item`}
       animate={{
         opacity: errorShowing ? 1 : 0,
         x: errorShowing ? 0 : "-100%",

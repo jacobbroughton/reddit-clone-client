@@ -3,6 +3,7 @@
 footer {
   padding: 30px;
   padding-top: 100px;
+  background-color: var(--color-bg-primary);
 
   .container {
     max-width: 1100px;
@@ -18,32 +19,15 @@ footer {
     }
 
     .created-by {
-      color: $dark-text;
+       
       font-weight: 600;
       margin-bottom: 10px;
     }
 
     .github {
       a {
-        color: $dark-text;
+         
         font-weight: 500;
-      }
-    }
-  }
-
-  &.dark {
-    background-color: $dark-primary;
-
-    .container {
-      .created-by {
-        color: $light-text;
-      }
-
-      .github {
-        color: $light-text;
-        a {
-          color: $light-text;
-        }
       }
     }
   }

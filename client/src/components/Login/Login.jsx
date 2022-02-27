@@ -6,7 +6,7 @@ import Meta from "../Meta"
 import "./Login.scss"
 
 const Login = () => {
-  const darkMode = useSelector((state) => state.darkMode)
+  
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -22,7 +22,7 @@ const Login = () => {
   }
 
   return (
-    <div className={`login ${darkMode ? "dark" : ""}`}>
+    <div className={`login`}>
       <Meta title="Log in" />
       <div className="login-container">
         <h2>Login</h2>
@@ -41,11 +41,11 @@ const Login = () => {
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <input className="login-submit" type="submit" value="Login" />
+          <input className="login-submit" type="submit" value="Login" disabled={username === '' || password === ''} />
         </form>
         <p className="need-to-register-question">
           Not registered?{" "}
-          <Link className="create-account-link" to="/login">
+          <Link className="create-account-link" to="/register">
             Create an account
           </Link>
         </p>

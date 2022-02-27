@@ -14,6 +14,7 @@ import HomeLight from "../../images/home-light.png"
 import { motion } from "framer-motion"
 
 import "./Navbar.scss"
+import { useTheme } from "../../utilities/useTheme"
 
 const Navbar = () => {
   const dispatch = useDispatch()
@@ -25,6 +26,8 @@ const Navbar = () => {
   const [searchExpanded, setSearchExpanded] = useState(false)
 
   const { width } = useBrowserResize()
+  const [theme, toggleTheme] = useTheme()
+
 
   const handleDropdownClick = () => {
     setOverlayToggle(!overlayToggle)
@@ -32,8 +35,9 @@ const Navbar = () => {
   }
   // test
 
+
   return (
-    <nav className={`nav ${darkMode ? "dark" : ""}`}>
+    <nav className={`nav`}>
       <div className={`nav-container`}>
         <div className={`home-search-darkicon`}>
           {!searchExpanded && (
@@ -47,7 +51,7 @@ const Navbar = () => {
               ) : (
                 <img
                   className="home-icon"
-                  src={darkMode ? HomeLight : HomeDark}
+                  src={theme === 'light' ? 'light' : 'dark' ? HomeLight : HomeDark}
                 />
               )}
             </Link>
@@ -60,16 +64,16 @@ const Navbar = () => {
           {!searchExpanded && (
             <motion.button
               className={`dark-mode-icon-parent`}
-              onClick={() => dispatch(toggleDarkMode())}
-              whileTap={{ scale: 1.15 }}
+              onClick={() => toggleTheme()}
+              whileTap={{ scale: 1.25 }}
             >
               {/* <DarkModeIcon className={`dark-mode-icon`}  onClick={() => dispatch(toggleDarkMode())}/> */}
-              {darkMode ? "☀️" : "🌙"}
+              {theme === 'light' ? "🌙" : "☀️"}
             </motion.button>
           )}
         </div>
 
-        <div className="nav-menu">
+        <div className="nav-menu"> 
           {user ? (
             <>
               {overlayToggle && (

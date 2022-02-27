@@ -20,7 +20,8 @@
   .three {
     height: 10px;
     width: 10px;
-    background: $dark-primary;
+    background: #333;
+    // background: var(--color-bg-primary);
     border-radius: 99px;
     animation: up-and-down 0.3s infinite alternate;
   }
@@ -31,13 +32,5 @@
 
   .three {
     animation-delay: 0.2s;
-  }
-
-  &.dark {
-    .one,
-    .two,
-    .three {
-      background: $light-primary;
-    }
   }
 }

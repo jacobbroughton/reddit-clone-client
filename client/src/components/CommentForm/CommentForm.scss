@@ -3,11 +3,13 @@
 .user-comment {
   width: 100%;
   margin-top: 15px;
+  
   p {
-    color: $dark-text;
+     
     margin-top: 0;
     margin-bottom: 5px;
     font-size: 0.9rem;
+    color: var(--color-text-secondary);
     span {
       font-weight: 600;
     }
@@ -22,8 +24,9 @@
       padding: 15px;
       border-radius: 5px;
       font-family: inherit;
-      background-color: $light-secondary;
-      border: 1px solid $border-lighter;
+      background-color: var(--color-bg-secondary);;
+      border: 1px solid var(--color-border);
+      color: var(--color-text);
       font-size: 1rem;
     }
     .comment-button,
@@ -41,42 +44,18 @@
       margin-right: 10px;
       font-size: 0.9rem;
       padding: 4px;
+      color: var(--color-text-secondary);
 
       &:hover {
-        background-color: $light-hover;
+        background-color: var(--color-bg-interactive-hover);
       }
 
-      &:disabled:hover {
-        @include disabled-button;
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
       }
     }
   }
 
-  &.dark {
-    background-color: transparent;
-    p {
-      color: $light-text;
-      span {
-      }
-    }
-
-    form {
-      textarea {
-        border: 1px $border-lighter solid;
-        color: $light-text;
-        background-color: $dark-secondary;
-        position: relative;
-      }
-      .comment-button {
-      }
-      button {
-        background-color: transparent;
-        transition: background-color 0.1s ease;
-
-        &:hover {
-          background-color: $dark-hover;
-        }
-      }
-    }
-  }
+  
 }

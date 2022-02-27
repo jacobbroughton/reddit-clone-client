@@ -23,7 +23,7 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
 
   const user = useSelector((state) => state.auth.user)
   const currentSubreddit = useSelector((state) => state.currentSubreddit)
-  const darkMode = useSelector((state) => state.darkMode)
+  
   const post = useSelector((state) => state.post)
 
   const [searchValue, setSearchValue] = useState("")
@@ -67,7 +67,7 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
   }
 
   return (
-    <div className={`search-bar ${darkMode ? "dark" : ""}`}>
+    <div className={`search-bar  `}>
       <motion.button
         className="search-icon-button"
         onClick={mobile ? () => setSearchExpanded(!searchExpanded) : undefined}

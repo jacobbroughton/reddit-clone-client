@@ -17,27 +17,36 @@ import Meta from "./components/Meta"
 import "./App.scss"
 import { useQuery } from "./utilities/useQuery"
 import ErrorPopupList from "./components/ErrorPopupList/ErrorPopupList"
+import { useTheme } from "./utilities/useTheme"
 
 function App() {
   const searchQuery = useQuery()
 
-  const darkMode = useSelector((state) => state.darkMode)
+  
   const currentSubreddit = useSelector((state) => state.currentSubreddit)
 
   const location = useLocation()
-
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark")
-    } else if (!darkMode) {
-      document.body.classList.remove("dark")
-    }
-  }, [darkMode])
+  const [theme] = useTheme()
 
   const sidebarExcludedRoutes = ["/login", "/register"]
 
+  useEffect(() => {
+    // function getUserPreferance() {
+    //   if(window.localStorage.getItem('theme')) {
+    //     return window.localStorage.getItem('theme')
+    //   }
+    //   return window.matchMedia('(prefers-color-scheme: dark').matches
+    //     ? 'dark'
+    //     : 'light'
+    // }
+
+    // TODO: Fix the dark mode flashing on refresh
+    document.body.dataset.theme = theme
+
+  }, [])
+
   return (
-    <div className={`App ${darkMode ? "dark" : ""}`}>
+    <div className={`App`}>
       <Meta title={currentSubreddit ? `r/${currentSubreddit.name}` : "Home"} />
       <ScrollToTop>
         <Navbar />

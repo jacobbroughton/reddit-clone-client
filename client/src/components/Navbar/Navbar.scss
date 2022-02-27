@@ -3,9 +3,9 @@
 .nav {
   width: 100%;
   position: fixed;
-  background-color: #fff;
+  background-color: var(--color-bg-secondary);
   z-index: 3;
-  box-shadow: $heavy-box-shadow-light;
+  box-shadow: var(--heavy-box-shadow);
 
   .nav-container {
     max-width: 1100px;
@@ -23,7 +23,7 @@
       height: 38px;
       .nav-home-link {
         text-decoration: none;
-        color: black;
+        color: var(--color-text);
         font-weight: 700;
         font-size: 2rem;
         white-space: nowrap;
@@ -31,26 +31,10 @@
       }
 
       .dark-mode-icon-parent {
-        appearance: none;
-        border: none;
-        padding: 0;
         background-color: transparent;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 25px;
-        font-size: 23px;
-        text-shadow: 1px 1px 1px hsl(0, 0%, 80%);
+        border: 0;
+        font-size: 1.25rem;
         cursor: pointer;
-        .dark-mode-icon {
-          width: 100%;
-          height: auto;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          fill: black;
-          width: 30px;
-        }
       }
     }
 
@@ -61,14 +45,14 @@
       font-size: 1rem;
       transition: background-color 0.1s ease;
       margin-left: 15px;
-      color: black;
-      background-color: $light-mode-interactive;
+      color: var(--color-text);
+      background-color: var(--color-text-secondary);;
       text-decoration: none;
       border-radius: 5px;
       cursor: pointer;
 
       &:hover {
-        background-color: $light-primary;
+        background-color: var(--color-bg-primary);
       }
     }
 
@@ -88,17 +72,20 @@
         display: flex;
         gap: 10px;
         a {
-          color: black;
+          color: var(--color-text);
           text-decoration: none;
+          padding: 5px;
+          border-radius: 3px;
+          transition: background 0.15s ease;
 
           &:hover {
-            text-decoration: underline;
+            background: var(--color-bg-interactive);
           }
         }
       }
 
       .overlay {
-        background-color: $dark-primary;
+        background-color: var(--color-bg-primary);
         width: 100%;
         height: 100%;
         position: fixed;
@@ -124,7 +111,8 @@
           font-weight: 500;
           transition: background-color 0.1s ease;
           border-radius: 5px;
-          background-color: $light-mode-interactive;
+          background-color: var(--color-bg-interactive);
+          color: var(--color-text);
           cursor: pointer;
 
           .down-arrow {
@@ -133,22 +121,23 @@
           }
 
           &:hover {
-            background-color: $light-primary;
+            background-color: var(--color-bg-interactive-hover);
           }
         }
         .user-dropdown {
+          background-color: var(--color-bg-secondary);
           transition: all 0.15s ease;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           background: #fff;
-          border: $border-lighter solid 1px;
-          box-shadow: $heavy-box-shadow-light;
+          border: var(--color-border) solid 1px;
+          box-shadow: var(--heavy-box-shadow);
           padding: 10px 0;
           position: absolute;
           top: 45px;
           right: 0;
-          min-width: 220px;
+          min-width: 100px;
           border-radius: 5px;
 
           a {
@@ -160,7 +149,7 @@
             text-align: start;
 
             &:hover {
-              background-color: $light-hover;
+              background-color: var(--color-bg-interactive-hover);
             }
           }
           .logout-button {
@@ -169,12 +158,13 @@
             font-size: 1rem;
             padding: 10px;
             width: 100%;
-            text-align: start;
+            text-align: end;
             transition: background-color 0.1s ease;
             cursor: pointer;
 
             &:hover {
-              background-color: $light-hover;
+              // background-color: var(--color-bg-interactive-hover);
+              text-decoration: underline;
             }
           }
 
@@ -189,82 +179,6 @@
         .closed {
           visibility: hidden;
           opacity: 0;
-        }
-      }
-    }
-  }
-
-  &.dark {
-    background-color: $dark-secondary;
-    color: $light-text;
-    box-shadow: $heavy-box-shadow-dark;
-
-    .nav-container {
-      .home-search-darkicon {
-        .nav-home-link {
-          color: $light-text;
-        }
-
-        .dark-mode-icon-parent {
-          text-shadow: 1px 1px 3px hsl(0, 0%, 30%);
-
-          .dark-mode-icon {
-            fill: #fff;
-          }
-        }
-        .subreddit-dropdown {
-          background-color: $dark-secondary;
-          a {
-            color: $light-text;
-
-            &:hover {
-            }
-          }
-        }
-      }
-
-      .subreddit-dropdown-toggle-button,
-      .new-post-link {
-        color: $light-text;
-        background-color: $dark-mode-interactive;
-        &:hover {
-        }
-      }
-
-      .nav-menu {
-        .logged-out-nav-view {
-          a {
-            color: $light-text;
-          }
-        }
-
-        .logged-in-nav-view {
-          .nav-username-button {
-            background-color: $dark-mode-interactive;
-            color: $light-text;
-            &:hover {
-            }
-
-            .nav-username-span {
-              white-space: nowrap;
-            }
-          }
-          .user-dropdown {
-            background-color: $dark-secondary;
-            box-shadow: $heavy-box-shadow-dark;
-            a {
-              color: $light-text;
-              &:hover {
-                background-color: $dark-hover;
-              }
-            }
-            .logout-button {
-              color: $light-text;
-              &:hover {
-                background-color: $dark-hover;
-              }
-            }
-          }
         }
       }
     }

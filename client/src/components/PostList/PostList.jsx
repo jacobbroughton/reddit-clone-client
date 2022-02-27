@@ -18,7 +18,7 @@ const PostList = () => {
   const searchQuery = useQuery()
 
   const user = useSelector((state) => state.auth.user)
-  const darkMode = useSelector((state) => state.darkMode)
+  
   const posts = useSelector((state) => state.postList)
   const loading = useSelector((state) => state.loading)
   const post = useSelector((state) => state.post)
@@ -26,7 +26,6 @@ const PostList = () => {
   const { name } = useParams()
 
   useEffect(() => {
-    console.log(getPostsError)
     if (post) {
       dispatch(setPost(null))
     }
@@ -43,7 +42,7 @@ const PostList = () => {
   }, [searchQuery, name, user])
 
   return (
-    <div className={`post-list-main ${darkMode ? "dark" : ""}`}>
+    <div className={`post-list-main  `}>
       <SubredditsSelect />
       <CurrentSubredditBanner name={name} user={user} />
       {loading ? (
@@ -56,7 +55,7 @@ const PostList = () => {
                 {posts.length > 0 ? (
                   posts.map((post, key) => <Post post={post} key={key} />)
                 ) : (
-                  <NoPostsPrompt user={user} darkMode={darkMode} />
+                  <NoPostsPrompt user={user} />
                 )}
               </>
             </div>

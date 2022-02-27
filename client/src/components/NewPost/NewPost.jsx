@@ -12,7 +12,7 @@ const NewPost = () => {
   const auth = useSelector((state) => state.auth)
   const subreddits = useSelector((state) => state.subreddits)
   const currentSubreddit = useSelector((state) => state.currentSubreddit)
-  const darkMode = useSelector((state) => state.darkMode)
+  
 
   const [postType, setPostType] = useState(
     new URLSearchParams(search).get("type")
@@ -65,7 +65,7 @@ const NewPost = () => {
   }
 
   return (
-    <div className={`new-post ${darkMode ? "dark" : ""}`}>
+    <div className={`new-post`}>
       <Meta title={`Create a new ${postType} post`} />
       <div className="new-post-container">
         <form onSubmit={(e) => handleSubmit(e)}>
@@ -111,7 +111,7 @@ const NewPost = () => {
               <input
                 type="url"
                 className="new-post-input"
-                placeholder="url (required)"
+                placeholder="URL (required)"
                 onChange={(e) => setUrl(e.target.value)}
               />
             </>

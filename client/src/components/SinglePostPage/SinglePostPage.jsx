@@ -13,15 +13,18 @@ import LogInPrompt from "../LogInPrompt/LogInPrompt"
 import SubredditsSelect from "../SubredditsSelect/SubredditsSelect"
 import BackDark from "../../images/back-dark.png"
 import BackLight from "../../images/back-light.png"
+import { useTheme } from "../../utilities/useTheme"
 import { motion } from "framer-motion"
 
 const SinglePostPage = () => {
   const dispatch = useDispatch()
   const { postId } = useParams()
   const { width } = useBrowserResize()
+  const [theme] = useTheme()
+
 
   const post = useSelector((state) => state.post)
-  const darkMode = useSelector((state) => state.darkMode)
+  
   const comments = useSelector((state) => state.comments)
   const loading = useSelector((state) => state.loading)
   const currentSubreddit = useSelector((state) => state.currentSubreddit)
@@ -49,7 +52,7 @@ const SinglePostPage = () => {
 
   return (
     <motion.div
-      className={`single-post-page ${darkMode ? "dark" : ""}`}
+      className={`single-post-page  `}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
@@ -59,7 +62,7 @@ const SinglePostPage = () => {
             to={currentSubreddit ? `/r/${currentSubreddit.name}` : "/"}
             className="back-button"
           >
-            <img className="back-icon" src={darkMode ? BackLight : BackDark} />
+            <img className="back-icon" src={theme === 'light' ? 'light' : 'dark' ? BackLight : BackDark} />
           </Link>
           <SubredditsSelect />
         </div>

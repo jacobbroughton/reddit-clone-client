@@ -3,9 +3,9 @@ import PropTypes from "prop-types"
 import { Link } from "react-router-dom"
 import "./NoPostsPrompt.scss"
 
-const NoPostsPrompt = ({ user, darkMode }) => {
+const NoPostsPrompt = ({ user }) => {
   return (
-    <div className={`no-posts-prompt ${darkMode ? "dark" : ""}`}>
+    <div className={`no-posts-prompt`}>
       <h3>It&apos;s quiet in here...😴</h3>
       {!user ? (
         <p>
@@ -25,8 +25,7 @@ const NoPostsPrompt = ({ user, darkMode }) => {
 }
 
 NoPostsPrompt.propTypes = {
-  user: PropTypes.object,
-  darkMode: PropTypes.bool,
+  user: PropTypes.object
 }
 
 export default NoPostsPrompt

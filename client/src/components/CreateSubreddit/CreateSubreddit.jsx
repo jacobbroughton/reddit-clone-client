@@ -9,7 +9,7 @@ const CreateSubreddit = () => {
   const [subredditDescription, setSubredditDescription] = useState("")
 
   const dispatch = useDispatch()
-  const darkMode = useSelector((state) => state.darkMode)
+  
   const user = useSelector((state) => state.auth.user)
 
   const handleSubmit = (e) => {
@@ -20,7 +20,7 @@ const CreateSubreddit = () => {
   }
 
   return (
-    <div className={`create-subreddit ${darkMode ? "dark" : ""}`}>
+    <div className={`create-subreddit`}>
       <Meta title={`Create a new subreddit`} />
       <form onSubmit={(e) => handleSubmit(e)}>
         <input

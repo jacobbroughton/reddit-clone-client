@@ -9,7 +9,7 @@ import "./ErrorPopupList.scss"
 
 const ErrorPopupList = () => {
   const errors = useSelector((state) => state.error)
-  const darkMode = useSelector((state) => state.darkMode)
+  
 
   useEffect(() => {
     console.log("ERRORS: ", errors)
@@ -17,7 +17,7 @@ const ErrorPopupList = () => {
 
   return (
     <AnimatePresence>
-      <div className={`error-popup-list ${darkMode ? "dark" : ""}`}>
+      <div className={`error-popup-list`}>
         {errors.map((errorItem, index) => (
           <ErrorPopupItem key={index} error={errorItem} />
         ))}

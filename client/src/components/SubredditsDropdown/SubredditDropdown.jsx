@@ -12,7 +12,7 @@ const SubredditDropdown = ({
 }) => {
   const dispatch = useDispatch()
   const subreddits = useSelector((state) => state.subreddits)
-  const darkMode = useSelector((state) => state.darkMode)
+  
 
   useEffect(() => {
     dispatch(getSubreddits())
@@ -30,7 +30,7 @@ const SubredditDropdown = ({
 
   return (
     <div
-      className={`${darkMode ? "dark" : ""} ${
+      className={`  ${
         subredditDropdownToggle
           ? "subreddit-dropdown open"
           : "subreddit-dropdown closed"

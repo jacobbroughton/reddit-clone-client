@@ -11,7 +11,7 @@ const CurrentSubredditBanner = ({ name }) => {
   const location = useLocation()
   const dispatch = useDispatch()
   const currentSubreddit = useSelector((state) => state.currentSubreddit)
-  const darkMode = useSelector((state) => state.darkMode)
+  
   const user = useSelector((state) => state.auth.user)
 
   const [deleteToggle, setDeleteToggle] = useState(false)
@@ -34,7 +34,7 @@ const CurrentSubredditBanner = ({ name }) => {
   }, [location])
 
   return (
-    <section className={`current-subreddit-banner ${darkMode ? "dark" : ""}`}>
+    <section className={`current-subreddit-banner`}>
       {name ? (
         <div className="current-subreddit-banner-stack">
           <h1>

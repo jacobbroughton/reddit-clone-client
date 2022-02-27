@@ -1,7 +1,7 @@
 @import "../../utilities/variables";
 
 .search-bar {
-  border: 1px solid $border-lighter;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -9,7 +9,7 @@
   padding: 0 10px;
   height: 30px;
   max-width: none;
-  background-color: $light-primary;
+  background-color: var(--color-bg-interactive);
   border-radius: 99px;
 
   .desktop-search {
@@ -35,14 +35,14 @@
     height: auto;
     width: 100%;
     max-width: 16px;
-    fill: $dark-text;
+    fill: var(--color-text);
     opacity: 0.7;
   }
   .search-label {
     font-size: 0.875rem;
     margin: 0;
     background-color: #d6d6d6;
-    color: $dark-text;
+     
     font-weight: 550;
     padding: 3px 10px;
     border-radius: 10px;
@@ -61,28 +61,20 @@
       width: 100%;
       border: none;
       outline: none;
-      background-color: $light-primary;
+      background-color: transparent;
       text-decoration: none;
       box-shadow: none;
-    }
-  }
-
-  &.dark {
-    background-color: $dark-mode-interactive;
-    .search-icon {
-      // height: auto;
-      width: 100%;
-      fill: $light-text;
+      color: var(--color-text);
     }
 
-    .search-form {
-      .search-input {
-        background-color: $dark-mode-interactive;
+    .search-input::placeholder {
+      color: var(--color-text);
+      opacity: 0.7;
+    }
 
-        &::placeholder {
-          color: $light-text;
-        }
-      }
+    .search-input::-ms-input-placeholder {
+      color: var(--color-text);
+      opacity: 0.6;
     }
   }
 

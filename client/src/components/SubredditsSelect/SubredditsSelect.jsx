@@ -9,7 +9,7 @@ const SubredditsSelect = () => {
 
   const subreddits = useSelector((state) => state.subreddits)
   const currentSubreddit = useSelector((state) => state.currentSubreddit)
-  const darkMode = useSelector((state) => state.darkMode)
+  
 
   const generalSubreddits = subreddits.filter(
     (subreddit) => subreddit.user_id === 1
@@ -46,7 +46,7 @@ const SubredditsSelect = () => {
   if (!allSubs) return <p>Loading</p>
 
   return (
-    <div className={`mobile-subreddit-selector ${darkMode ? "dark" : ""}`}>
+    <div className={`mobile-subreddit-selector  `}>
       <label>Select a subreddit</label>
       <select
         value={currentSubreddit ? currentSubreddit.name : "Home"}

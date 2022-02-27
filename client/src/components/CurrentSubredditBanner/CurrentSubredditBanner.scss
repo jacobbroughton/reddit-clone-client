@@ -4,11 +4,11 @@
   display: flex;
   gap: 8px;
   align-items: flex-end;
-  background-color: $light-secondary;
+  background-color: var(--color-bg-secondary);
   padding: 20px;
   margin-bottom: 15px;
   border-radius: 3px;
-  box-shadow: $subtle-box-shadow-light;
+  box-shadow: var(--subtle-box-shadow);
   width: calc(100% - 40px);
 
   .current-subreddit-banner-stack {
@@ -30,6 +30,7 @@
   h1 {
     margin: 0;
     font-size: 1.5rem;
+    color: var(--color-text);
 
     .rSpan {
       font-weight: 600;
@@ -49,7 +50,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: $less-dark-text;
+    color: var(--color-text-secondary);
     font-weight: 600;
   }
 
@@ -63,21 +64,11 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    color: $less-dark-text;
+    color: var(--color-text-secondary);
     font-weight: 600;
     font-size: 0.875rem;
 
-    button:nth-child(1) {
-      appearance: none;
-      border: none;
-      background: transparent;
-      background: crimson;
-      font-weight: 600;
-      color: #fff;
-      border-radius: 3px;
-    }
-
-    button:nth-child(2) {
+    button {
       appearance: none;
       border: none;
       background: transparent;
@@ -85,20 +76,15 @@
       font-weight: 600;
       color: #fff;
       border-radius: 3px;
+      cursor: pointer;
     }
-  }
-  &.dark {
-    background-color: $dark-secondary;
-    color: $light-text;
-    box-shadow: $subtle-box-shadow-dark;
 
-    .current-subreddit-banner-stack {
-      .search-value {
-        color: $light-text;
-        border-left: cornflowerblue solid 3px;
-        span {
-        }
-      }
+    button:nth-child(1) {
+      background: crimson;
+    }
+
+    button:nth-child(2) {
+      background: green;
     }
   }
 }

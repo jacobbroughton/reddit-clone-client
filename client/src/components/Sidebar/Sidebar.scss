@@ -15,23 +15,28 @@
   top: 78px;
 
   .no-user-error {
-    color: $dark-text;
     font-size: 0.875rem;
     font-weight: 500;
-    background: $light-secondary;
-    box-shadow: $subtle-box-shadow-light;
+    background: var(--color-bg-secondary);
+    box-shadow: var(--subtle-box-shadow);
 
     padding: 10px;
     border-radius: 3px;
     margin: 0;
+    color: var(--color-text);
+    
+    a {
+      color: var(--color-link);
+    }
 
     a {
-      color: inherit;
+      // color: inherit;
     }
 
     span {
       font-weight: 600;
       font-style: italic;
+      color: var(--color-text);
     }
   }
 
@@ -48,7 +53,9 @@
       .new-post-sidebar,
       .new-link-sidebar {
         padding: 5px;
-        color: $dark-text;
+        background-color: var(--color-bg-secondary);;
+        color: var(--color-text);
+         
         font-weight: 500;
         text-decoration: none;
         border-radius: 3px;
@@ -61,8 +68,8 @@
 
       .new-post-sidebar,
       .new-link-sidebar {
-        background-color: $light-secondary;
-        box-shadow: $subtle-box-shadow-light;
+        background-color: var(--color-bg-secondary);
+        box-shadow: var(--subtle-box-shadow);
 
         &.disabled {
           cursor: not-allowed;
@@ -79,9 +86,9 @@
     .create-subreddit {
       padding: 5px;
       width: calc(100% - 10px);
-      color: black;
-      background-color: $light-secondary;
-      box-shadow: $subtle-box-shadow-light;
+      color: var(--color-text);
+      background-color: var(--color-bg-secondary);
+      box-shadow: var(--subtle-box-shadow);
       font-weight: 500;
       text-decoration: none;
       border-radius: 3px;
@@ -122,6 +129,7 @@
       font-weight: 600;
       margin-top: 5px;
       text-decoration: underline;
+      color: var(--color-text);
     }
 
     .subreddit-list-label {
@@ -129,56 +137,19 @@
       font-size: 1.2rem;
       font-weight: 600;
       margin-top: 15px;
+      color: var(--color-text);
     }
 
-    // .subreddit-link{
-    //   text-decoration: none;
-    //   color: inherit;
-    //   color: $dark-text;
-
-    //   &.current {
-    //     text-decoration: underline;
-    //   }
-
-    //   &:hover{
-    //     text-decoration: underline;
-    //   }
-    // }
-  }
-
-  &.dark {
-    .no-user-error {
-      color: $light-text;
-      background-color: $dark-secondary;
-      box-shadow: $subtle-box-shadow-dark;
-    }
-
-    .sidebar-buttons {
-      .post-and-link-buttons {
-        .new-post-sidebar,
-        .new-link-sidebar {
-          background-color: $dark-secondary;
-          color: $light-text;
-        }
-        .new-post-sidebar,
-        .new-link-sidebar {
-          box-shadow: $subtle-box-shadow-dark;
-        }
+    .subreddit-link{
+      text-decoration: none;
+      color: var(--color-text);
+       
+      &.current {
+        text-decoration: underline;
       }
-      .create-subreddit {
-        background-color: $dark-secondary;
-        color: $light-text;
-        box-shadow: $subtle-box-shadow-dark;
-      }
-    }
 
-    .subreddit-lists {
-      .subreddit-list-label-main,
-      .subreddit-list-label {
-        color: $light-text;
-      }
-      .subreddit-link {
-        color: $light-text;
+      &:hover{
+        text-decoration: underline;
       }
     }
   }

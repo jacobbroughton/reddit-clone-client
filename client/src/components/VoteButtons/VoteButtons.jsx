@@ -7,11 +7,11 @@ import { ReactComponent as DownArrow } from "../../images/down-vote-arrow.svg"
 import { motion } from "framer-motion"
 
 const VoteButtons = ({ item, handleVoteClick }) => {
-  const darkMode = useSelector((state) => state.darkMode)
+  
   const user = useSelector((state) => state.auth.user)
 
   return (
-    <div className={`votes-section ${darkMode ? "dark" : ""}`}>
+    <div className={`votes-section  `}>
       <motion.button
         onClick={() => handleVoteClick(1)}
         className="up-vote"

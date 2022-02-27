@@ -12,6 +12,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    color: var(--color-text);
 
     h2 {
       margin-top: 0;
@@ -26,15 +27,19 @@
       .register-input {
         padding: 8px 10px;
         border: none;
-        background-color: $light-secondary;
-        box-shadow: $subtle-box-shadow-light;
+        background-color: var(--color-bg-secondary);
+        box-shadow: var(--subtle-box-shadow);
         padding: 8px 10px;
         border-radius: 5px;
         font-size: 1rem;
+        color: var(--color-text);
       }
 
       select {
-        border: $border-lighter solid 1px;
+        // border: var(--color-border) solid 1px;
+        border: 0;
+        color: var(--color-text);
+        background-color: var(--color-bg-secondary);
         border-radius: 3px;
         padding: 8px 10px;
         font-size: 1rem;
@@ -45,25 +50,35 @@
         background-image: linear-gradient(
             45deg,
             transparent 50%,
-            $dark-primary 50%
+            var(--color-border) 50%
           ),
-          linear-gradient(135deg, $dark-primary 50%, transparent 50%);
+          linear-gradient(135deg, var(--color-border) 50%, transparent 50%);
         background-position: calc(100% - 20px) calc(0.55em + 2px),
           calc(100% - 15px) calc(0.55em + 2px);
         background-size: 5px 5px, 5px 5px;
         background-repeat: no-repeat;
+        box-shadow: var(--subtle-box-shadow);
       }
 
       .register-submit {
         width: initial;
         align-self: flex-start;
         background-color: transparent;
-        color: $dark-text;
+        color: var(--color-text);
         border: none;
         border-radius: 3px;
         font-weight: 600;
         font-size: 1rem;
         cursor: pointer;
+      }
+
+      .register-submit:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
+      .register-submit:hover {
+
       }
     }
 
@@ -72,46 +87,8 @@
       .sign-in-link {
         text-decoration: none;
         margin-left: 5px;
-        color: $link-color-light;
+        color: var(--color-link);
         font-weight: 500;
-      }
-    }
-  }
-}
-
-.dark {
-  .register-container {
-    h2 {
-      color: $light-text;
-    }
-    form {
-      .register-input {
-        color: $light-text;
-        background-color: $dark-secondary;
-        box-shadow: $subtle-box-shadow-dark;
-      }
-      .register-submit {
-        color: $light-text;
-      }
-
-      select {
-        border: $border-darker solid 1px;
-        background-color: $dark-secondary;
-        color: $light-text;
-
-        background-image: linear-gradient(
-            45deg,
-            transparent 50%,
-            $light-primary 50%
-          ),
-          linear-gradient(135deg, $light-primary 50%, transparent 50%);
-      }
-    }
-    .already-registered-question {
-      color: $light-text;
-
-      .sign-in-link {
-        color: $link-color-dark;
       }
     }
   }

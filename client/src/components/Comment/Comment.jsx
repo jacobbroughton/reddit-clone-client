@@ -24,7 +24,7 @@ const Comment = ({ comment }) => {
 
   const user = useSelector((state) => state.auth.user)
   const post = useSelector((state) => state.post)
-  const darkMode = useSelector((state) => state.darkMode)
+  
   const comments = useSelector((state) => state.comments)
   const [toggleCommentReply, setToggleCommentReply] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
@@ -92,7 +92,7 @@ const Comment = ({ comment }) => {
   }, [isEditing])
 
   return (
-    <div className={`comment-thread ${darkMode ? "dark" : ""}`}>
+    <div className={`comment-thread`}>
       <div className="comment">
         <div className="comment-main-section">
           {error && <p className="vote-error">{error}</p>}

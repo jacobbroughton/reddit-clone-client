@@ -21,7 +21,7 @@
           align-items: center;
           .post-type-button {
             text-decoration: none;
-            color: #181818;
+            color: var(--color-text);
             padding: 3px 8px;
             border-radius: 3px;
             border: none;
@@ -38,22 +38,26 @@
         resize: vertical;
         font-size: 1rem;
         border: none;
-        background-color: $light-secondary;
+        background-color: var(--color-bg-secondary);
+        color: var(--color-text);
         padding: 8px 10px;
         border-radius: 5px;
-        box-shadow: $subtle-box-shadow-light;
+        box-shadow: var(--subtle-box-shadow);
       }
       textarea {
         height: 150px;
         font-size: 1rem;
         font-family: inherit;
         font-size: 0.875rem;
-        box-shadow: $subtle-box-shadow-light;
+        box-shadow: var(--subtle-box-shadow);
+        color: var(--color-text);
       }
       select {
-        // border: $border-lighter solid 1px;
+        // border: var(--color-border) solid 1px;
         border: 0;
-        box-shadow: $subtle-box-shadow-light;
+        box-shadow: var(--subtle-box-shadow);
+        background-color: var(--color-bg-secondary);
+        color: var(--color-text);
         border-radius: 3px;
         padding: 5px;
         font-size: 1rem;
@@ -64,9 +68,9 @@
         background-image: linear-gradient(
             45deg,
             transparent 50%,
-            $dark-primary 50%
+            var(--color-bg-primary) 50%
           ),
-          linear-gradient(135deg, $dark-primary 50%, transparent 50%);
+          linear-gradient(135deg, var(--color-bg-primary) 50%, transparent 50%);
         background-position: calc(100% - 20px) calc(0.55em + 2px),
           calc(100% - 15px) calc(0.55em + 2px);
         background-size: 5px 5px, 5px 5px;
@@ -76,57 +80,12 @@
         align-self: flex-start;
         background-color: transparent;
         font-weight: 600;
-        color: $dark-text;
+        color: var(--color-text-secondary);
         font-size: 1rem;
         border: none;
         padding: 5px;
         border-radius: 3px;
         cursor: pointer;
-
-        &:disabled {
-          @include disabled-button;
-        }
-      }
-    }
-  }
-}
-
-.dark {
-  .new-post-container {
-    form {
-      .both-radio-inputs {
-        .post-type-buttons {
-          .post-type-button {
-            color: $light-text;
-          }
-          .clicked {
-          }
-        }
-      }
-      .new-post-input {
-        background-color: $dark-secondary;
-        box-shadow: $subtle-box-shadow-dark;
-      }
-      input,
-      textarea,
-      select {
-        color: $light-text;
-        box-shadow: $subtle-box-shadow-dark;
-      }
-      select {
-        // border: $border-darker solid 1px;
-        background-color: $dark-secondary;
-        color: $light-text;
-
-        background-image: linear-gradient(
-            45deg,
-            transparent 50%,
-            $light-primary 50%
-          ),
-          linear-gradient(135deg, $light-primary 50%, transparent 50%);
-      }
-      .new-post-submit {
-        color: $light-text;
 
         &:disabled {
           @include disabled-button;
