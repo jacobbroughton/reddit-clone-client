@@ -12,13 +12,14 @@
   }
 
   select {
-    border: var(--color-border) solid 1px;
-    border-radius: 3px;
+    border:0;
+    border-radius: 5px;
     padding: 7px 10px;
     font-size: 1rem;
     position: relative;
     width: 100%;
     appearance: none;
+    box-shadow: var(--subtle-box-shadow);
     -webkit-appearance: none;
     background-color: var(--color-bg-secondary);
     background-image: linear-gradient(

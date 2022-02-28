@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export function useTheme() {
   let localStorageTheme = window.localStorage.getItem("theme")
@@ -8,9 +8,7 @@ export function useTheme() {
     ? "dark"
     : "light"
 
-  const [theme, setTheme] = useState(
-    localStorageTheme ? localStorageTheme : userPreferredTheme
-  )
+  const [theme, setTheme] = useState(localStorageTheme ? localStorageTheme : userPreferredTheme)
 
   function toggleTheme() {
     window.localStorage.setItem("theme", localStorageOpposite)
@@ -18,6 +16,10 @@ export function useTheme() {
 
     setTheme(localStorageOpposite)
   }
+
+  useEffect(() => {
+    setTheme(localStorageTheme ? localStorageTheme : userPreferredTheme)
+  }, [])
 
   return [theme, toggleTheme]
 }
