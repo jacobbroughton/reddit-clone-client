@@ -53,6 +53,7 @@
     width: 100%;
     display: flex;
     align-items: center;
+    -webkit-appearance: none;
 
     .search-input {
       appearance: none;
@@ -82,10 +83,11 @@
     justify-content: flex-start;
     padding: 0;
     gap: 5px;
-    width: 100%;
+    // width: 100%;
 
     .search-icon-button {
-      padding: 2px 10px;
+      // padding: 2px 10px;
+      width: 36px;
     }
 
     .search-icon {

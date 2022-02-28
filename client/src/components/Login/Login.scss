@@ -26,6 +26,7 @@
       max-width: 400px;
       width: 100%;
       gap: 10px;
+      -webkit-appearance: none;
       .login-input {
         border: none;
         background-color: var(--color-bg-secondary);

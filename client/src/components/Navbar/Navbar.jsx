@@ -51,7 +51,7 @@ const Navbar = () => {
               ) : (
                 <img
                   className="home-icon"
-                  src={theme === 'light' ? 'light' : 'dark' ? HomeLight : HomeDark}
+                  src={theme === 'dark' ? HomeLight : HomeDark}
                 />
               )}
             </Link>

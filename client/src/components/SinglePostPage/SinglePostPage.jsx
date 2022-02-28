@@ -62,7 +62,7 @@ const SinglePostPage = () => {
             to={currentSubreddit ? `/r/${currentSubreddit.name}` : "/"}
             className="back-button"
           >
-            <img className="back-icon" src={theme === 'light' ? 'light' : 'dark' ? BackLight : BackDark} />
+            <img className="back-icon" src={theme === 'light' ? BackDark : BackLight} />
           </Link>
           <SubredditsSelect />
         </div>

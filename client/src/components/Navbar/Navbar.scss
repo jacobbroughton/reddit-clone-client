@@ -33,7 +33,10 @@
       .dark-mode-icon-parent {
         background-color: transparent;
         border: 0;
-        font-size: 1.25rem;
+        font-size: 1.5rem;
+        height: 32px;
+        width: 32px;
+        padding: 0;
         cursor: pointer;
       }
     }
@@ -130,26 +133,28 @@
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          background: #fff;
           border: var(--color-border) solid 1px;
           box-shadow: var(--heavy-box-shadow);
           padding: 10px 0;
           position: absolute;
           top: 45px;
           right: 0;
-          min-width: 100px;
+          // min-width: 100px;
           border-radius: 5px;
 
           a {
             padding: 10px;
             text-decoration: none;
-            color: black;
             transition: background-color 0.1s ease;
             width: calc(100% - 20px);
-            text-align: start;
+            text-align: end;
+            white-space: nowrap;
+            color: var(--color-text);
+
 
             &:hover {
-              background-color: var(--color-bg-interactive-hover);
+              // background-color: var(--color-bg-interactive-hover);
+              text-decoration: underline;
             }
           }
           .logout-button {
@@ -161,6 +166,7 @@
             text-align: end;
             transition: background-color 0.1s ease;
             cursor: pointer;
+            color: var(--color-text);
 
             &:hover {
               // background-color: var(--color-bg-interactive-hover);

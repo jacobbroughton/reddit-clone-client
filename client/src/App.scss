@@ -5,6 +5,10 @@
   // height: auto;\
   background-color: var(--color-bg-primary);
 
+  input, textarea, select {
+    -webkit-appearance: none;
+  }
+
   main {
     margin: 0 auto;
     min-height: 100vh;

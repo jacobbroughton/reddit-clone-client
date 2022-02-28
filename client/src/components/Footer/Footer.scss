@@ -16,17 +16,18 @@ footer {
     p {
       margin: 0;
       font-size: 0.9rem;
+      color: var(--color-text);
     }
 
     .created-by {
-       
+      
       font-weight: 600;
       margin-bottom: 10px;
     }
 
     .github {
       a {
-         
+        color: var(--color-link);
         font-weight: 500;
       }
     }
