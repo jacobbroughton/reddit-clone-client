@@ -19,8 +19,10 @@
     .search-value {
       font-size: 1rem;
       margin: 0;
-      border-left: cornflowerblue solid 3px;
+      border-left: var(--color-link) solid 3px;
       padding-left: 5px;
+      color: var(--color-text);
+
       span {
         font-weight: 600;
       }
