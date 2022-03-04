@@ -42,8 +42,8 @@ function App() {
 
     // TODO: Fix the dark mode flashing on refresh
     document.body.dataset.theme = theme
-
-  }, [])
+    console.log(theme)
+  },[theme])
 
   return (
     <div className={`App`}>

@@ -1,25 +1,35 @@
 import { useEffect, useState } from "react"
 
-export function useTheme() {
+function getTheme() {
   let localStorageTheme = window.localStorage.getItem("theme")
-  let localStorageOpposite = localStorageTheme === "light" ? "dark" : "light"
+  // let localStorageOpposite = localStorageTheme === "light" ? "dark" : "light"
   let userPreferredTheme = window.matchMedia("(prefers-color-scheme: dark")
     .matches
     ? "dark"
     : "light"
 
-  const [theme, setTheme] = useState(localStorageTheme ? localStorageTheme : userPreferredTheme)
+  if(localStorageTheme) return localStorageTheme
+  else if(userPreferredTheme) return userPreferredTheme
 
-  function toggleTheme() {
-    window.localStorage.setItem("theme", localStorageOpposite)
-    document.body.dataset.theme = localStorageOpposite
+  // return localStorageTheme ? localStorageTheme : userPreferredTheme
+}
 
-    setTheme(localStorageOpposite)
-  }
+export function useTheme() {
+  const [theme, setTheme] = useState(getTheme())
+
+  // function toggleTheme() {
+  //   window.localStorage.setItem("theme", localStorageOpposite)
+  //   document.body.dataset.theme = localStorageOpposite
+
+  //   setTheme(localStorageOpposite)
+  // }
 
   useEffect(() => {
-    setTheme(localStorageTheme ? localStorageTheme : userPreferredTheme)
-  }, [])
+    window.localStorage.setItem("theme", theme)
+    document.body.dataset.theme = theme
+    // setTheme(theme)
+    // console.log(theme)
+  }, [theme])
 
-  return [theme, toggleTheme]
+  return [theme, setTheme]
 }

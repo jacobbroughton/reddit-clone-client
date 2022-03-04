@@ -26,7 +26,7 @@ const Navbar = () => {
   const [searchExpanded, setSearchExpanded] = useState(false)
 
   const { width } = useBrowserResize()
-  const [theme, toggleTheme] = useTheme()
+  const [theme, setTheme] = useTheme()
 
 
   const handleDropdownClick = () => {
@@ -64,7 +64,7 @@ const Navbar = () => {
           {!searchExpanded && (
             <motion.button
               className={`dark-mode-icon-parent`}
-              onClick={() => toggleTheme()}
+              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
               whileTap={{ scale: 1.25 }}
             >
               {/* <DarkModeIcon className={`dark-mode-icon`}  onClick={() => dispatch(toggleDarkMode())}/> */}

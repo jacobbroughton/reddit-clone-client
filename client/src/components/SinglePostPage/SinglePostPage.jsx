@@ -48,7 +48,7 @@ const SinglePostPage = () => {
     } else {
       setShowingSubredditSelect(false)
     }
-  }, [width])
+  }, [width, theme])
 
   return (
     <motion.div
