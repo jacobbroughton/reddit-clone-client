@@ -5,4 +5,7 @@ $tablet-bp: 940px;
 @mixin disabled-button {
   opacity: 0.5;
   cursor: not-allowed;
+  &:hover {
+    background-color: transparent;
+  }
 }

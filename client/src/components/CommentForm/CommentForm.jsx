@@ -48,7 +48,7 @@ const CommentForm = ({
             alwaysOpen ? "What are your thoughts?" : "Your thoughts?"
           }
         />
-        <button className="comment-button" type="submit">
+        <button className="comment-button" type="submit" disabled={body.length === 0}>
           Comment
         </button>
         {!alwaysOpen && (

@@ -149,10 +149,7 @@
               background-color: var(--color-bg-interactive-hover);
             }
 
-            &:disabled {
-              @include disabled-button;
-            }
-
+            &:disabled,
             &:disabled:hover,
             &:disabled:focus {
               @include disabled-button;
@@ -197,7 +194,7 @@
       }
 
       &:hover {
-        background-color: var(--color-bg-primary);
+        background-color: var(--color-bg-interactive-hover);
       }
     }
   }
