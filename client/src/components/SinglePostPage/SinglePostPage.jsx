@@ -13,18 +13,16 @@ import LogInPrompt from "../LogInPrompt/LogInPrompt"
 import SubredditsSelect from "../SubredditsSelect/SubredditsSelect"
 import BackDark from "../../images/back-dark.png"
 import BackLight from "../../images/back-light.png"
-import { useTheme } from "../../utilities/useTheme"
 import { motion } from "framer-motion"
 
 const SinglePostPage = () => {
   const dispatch = useDispatch()
   const { postId } = useParams()
   const { width } = useBrowserResize()
-  const [theme] = useTheme()
 
 
   const post = useSelector((state) => state.post)
-  
+  const theme = useSelector(state => state.theme)
   const comments = useSelector((state) => state.comments)
   const loading = useSelector((state) => state.loading)
   const currentSubreddit = useSelector((state) => state.currentSubreddit)
@@ -42,8 +40,8 @@ const SinglePostPage = () => {
   }, [dispatch, postId])
 
   useEffect(() => {
+    console.log("theme")
     if (width <= 767) {
-      console.log("Should be showing")
       setShowingSubredditSelect(true)
     } else {
       setShowingSubredditSelect(false)
@@ -62,7 +60,7 @@ const SinglePostPage = () => {
             to={currentSubreddit ? `/r/${currentSubreddit.name}` : "/"}
             className="back-button"
           >
-            <img className="back-icon" src={theme === 'light' ? BackDark : BackLight} />
+            <img className="back-icon" src={theme ? BackLight : BackDark} />
           </Link>
           <SubredditsSelect />
         </div>

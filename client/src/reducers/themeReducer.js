@@ -1,9 +1,10 @@
 import { loadState } from "../utilities/localStorage"
 
-export const darkModeReducer = (
-  state = loadState("darkModeState") || false,
+export const themeReducer = (
+  state = loadState("themeState") || false,
   action
 ) => {
+
   switch (action.type) {
     case "TOGGLE_DARK_MODE":
       return !state
@@ -13,6 +14,6 @@ export const darkModeReducer = (
   }
 }
 
-export const toggleDarkMode = () => async (dispatch) => {
+export const toggleTheme = () => async (dispatch) => {
   dispatch({ type: "TOGGLE_DARK_MODE" })
 }

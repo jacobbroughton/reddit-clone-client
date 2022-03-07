@@ -1,11 +1,7 @@
 // Saves the state to localStorage
 export const saveState = (state, stateName) => {
-  try {
-    const serializedState = JSON.stringify(state)
-    localStorage.setItem(stateName, serializedState)
-  } catch {
-    // ignore write errors ?
-  }
+  const serializedState = JSON.stringify(state)
+  localStorage.setItem(stateName, serializedState)
 }
 
 // Loads state from localStorage
@@ -18,7 +14,6 @@ export const loadState = (stateName) => {
     const state = JSON.parse(serializedState)
     return state
   } catch (err) {
-    console.log(err)
     return undefined
   }
 }

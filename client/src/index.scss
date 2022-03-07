@@ -63,6 +63,14 @@ body {
   background-color: var(--color-bg-primary);
 }
 
+svg {
+  width: 100%;
+}
+
+button {
+  appearance: none;
+  -webkit-appearance: none;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

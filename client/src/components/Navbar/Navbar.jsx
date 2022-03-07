@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import { startLogout } from "../../actions/authActions"
-import { toggleDarkMode } from "../../reducers/darkModeReducer"
+import { toggleTheme } from "../../reducers/themeReducer"
 import { setCurrentSubreddit } from "../../actions/subredditActions"
 // import { ReactComponent as DarkModeIcon } from "../../images/dark-mode-icon.svg"
 import { ReactComponent as DownArrow } from "../../images/down-arrow.svg"
@@ -14,26 +14,23 @@ import HomeLight from "../../images/home-light.png"
 import { motion } from "framer-motion"
 
 import "./Navbar.scss"
-import { useTheme } from "../../utilities/useTheme"
 
 const Navbar = () => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.auth.user)
-  const darkMode = useSelector((state) => state.darkMode)
+  const theme = useSelector(state => state.theme)
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
   const [overlayToggle, setOverlayToggle] = useState(false)
   const [searchExpanded, setSearchExpanded] = useState(false)
 
   const { width } = useBrowserResize()
-  const [theme, setTheme] = useTheme()
 
 
   const handleDropdownClick = () => {
     setOverlayToggle(!overlayToggle)
     setIsUserDropdownOpen(!isUserDropdownOpen)
   }
-  // test
 
 
   return (
@@ -51,7 +48,7 @@ const Navbar = () => {
               ) : (
                 <img
                   className="home-icon"
-                  src={theme === 'dark' ? HomeLight : HomeDark}
+                  src={theme ? HomeLight : HomeDark}
                 />
               )}
             </Link>
@@ -64,11 +61,10 @@ const Navbar = () => {
           {!searchExpanded && (
             <motion.button
               className={`dark-mode-icon-parent`}
-              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+              onClick={() => dispatch(toggleTheme())}
               whileTap={{ scale: 1.25 }}
             >
-              {/* <DarkModeIcon className={`dark-mode-icon`}  onClick={() => dispatch(toggleDarkMode())}/> */}
-              {theme === 'light' ? "🌙" : "☀️"}
+              {theme ? "🌙" : "☀️"}
             </motion.button>
           )}
         </div>

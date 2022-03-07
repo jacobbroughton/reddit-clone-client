@@ -5,7 +5,7 @@ import { userReducer } from "../reducers/userReducer"
 import { errorReducer } from "../reducers/errorReducer"
 import { subredditsReducer } from "../reducers/subredditsReducer"
 import { subredditReducer } from "../reducers/subredditReducer"
-import { darkModeReducer } from "../reducers/darkModeReducer"
+import { themeReducer } from "../reducers/themeReducer"
 import { postListReducer } from "../reducers/postListReducer"
 import { postReducer } from "../reducers/postReducer"
 import { loadingReducer } from "../reducers/loadingReducer"
@@ -30,7 +30,7 @@ const rootReducer = combineReducers({
   post: postReducer,
   error: errorReducer,
   loading: loadingReducer,
-  darkMode: darkModeReducer,
+  theme: themeReducer,
   comments: commentsReducer,
 })
 
@@ -43,7 +43,7 @@ const store = createStore(rootReducer, persistedState, compose(...enhancers))
 store.subscribe(
   throttle(() => {
     saveState(store.getState().auth, "authState")
-    saveState(store.getState().darkMode, "darkModeState")
+    saveState(store.getState().theme, "themeState")
   }, 1000)
 )
 

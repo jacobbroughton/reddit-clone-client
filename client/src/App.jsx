@@ -17,32 +17,21 @@ import Meta from "./components/Meta"
 import "./App.scss"
 import { useQuery } from "./utilities/useQuery"
 import ErrorPopupList from "./components/ErrorPopupList/ErrorPopupList"
-import { useTheme } from "./utilities/useTheme"
+import { loadState } from "./utilities/localStorage"
 
 function App() {
   const searchQuery = useQuery()
 
   
   const currentSubreddit = useSelector((state) => state.currentSubreddit)
+  const theme = useSelector(state => state.theme)
 
   const location = useLocation()
-  const [theme] = useTheme()
 
   const sidebarExcludedRoutes = ["/login", "/register"]
 
   useEffect(() => {
-    // function getUserPreferance() {
-    //   if(window.localStorage.getItem('theme')) {
-    //     return window.localStorage.getItem('theme')
-    //   }
-    //   return window.matchMedia('(prefers-color-scheme: dark').matches
-    //     ? 'dark'
-    //     : 'light'
-    // }
-
-    // TODO: Fix the dark mode flashing on refresh
-    document.body.dataset.theme = theme
-    console.log(theme)
+    document.body.dataset.theme = theme ? 'dark' : 'light'
   },[theme])
 
   return (

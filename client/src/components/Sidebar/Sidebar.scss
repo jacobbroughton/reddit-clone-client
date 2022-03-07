@@ -60,12 +60,12 @@
         text-decoration: none;
         border-radius: 3px;
         text-align: center;
-        transition: background ease 0.1s;
+        // transition: background ease 0.1s;
 
 
         &:hover {
           text-decoration: underline;
-          background-color: var(--color-bg-interactive-hover);
+          // background-color: var(--color-bg-interactive-hover);
         }
 
         &.disabled {
@@ -89,11 +89,11 @@
       text-decoration: none;
       border-radius: 3px;
       text-align: center;
-      transition: background ease 0.1s;
+      // transition: background ease 0.1s;
 
       &:hover {
         text-decoration: underline;
-        background-color: var(--color-bg-interactive-hover);
+        // background-color: var(--color-bg-interactive-hover);
       }
 
       &.disabled {

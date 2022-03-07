@@ -163,12 +163,14 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+            
 
             .comment-icon,
             .edit-icon,
             .delete-icon {
-              min-width: 16px;
-              max-width: 16px;
+              width: 100%;
+              min-width: 22px;
+              max-width: 22px;
               align-self: center;
             }
           }
