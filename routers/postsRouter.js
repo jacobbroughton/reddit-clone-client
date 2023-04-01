@@ -7,6 +7,10 @@ const { encode } = require("html-entities")
 
 // Get all posts
 router.get("/", (req, res) => {
+
+  console.log("req.user", req.user)
+  console.log("req.session", req.session)
+
   let subredditName = req.query.filters
   let { userId } = req.query
 
