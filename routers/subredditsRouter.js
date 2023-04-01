@@ -4,9 +4,10 @@ const checkForErrors = require("../middleware/validationUtils")
 const router = express.Router()
 const { encode, decode } = require("html-entities")
 const db = require("../db")
+const { isAuth } = require("../middleware/authMiddleware")
 
 // Get single subreddit
-router.get("/:name", [param("name")], (req, res) => {
+router.get("/:name", isAuth, [param("name")], (req, res) => {
   const validatorFailed = checkForErrors(req, res)
 
   if (validatorFailed) return
@@ -43,7 +44,7 @@ router.get("/:name", [param("name")], (req, res) => {
 })
 
 // Get all subreddits
-router.get("/", (req, res) => {
+router.get("/", isAuth, (req, res) => {
   try {
     db.query("SELECT * FROM subreddits", (err, rows) => {
       res.send(rows)
@@ -58,6 +59,7 @@ router.get("/", (req, res) => {
 // Create subreddit
 router.post(
   "/",
+  isAuth,
   [
     check("userId").isNumeric(),
     check("name")
@@ -104,6 +106,7 @@ router.post(
 // Delete subreddit
 router.delete(
   "/:subredditId/:userId",
+  isAuth,
   [
     param("subredditId")
       .notEmpty()

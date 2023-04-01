@@ -4,9 +4,10 @@ const checkForErrors = require("../middleware/validationUtils")
 const router = express.Router()
 const db = require("../db")
 const { encode } = require("html-entities")
+const { isAuth } = require("../middleware/authMiddleware")
 
 // Get all posts
-router.get("/", (req, res) => {
+router.get("/", isAuth, (req, res) => {
 
   console.log("req.user", req.user)
   console.log("req.session", req.session)
@@ -50,6 +51,7 @@ router.get("/", (req, res) => {
 // Get single post
 router.get(
   "/single/:postId/:userId?",
+  isAuth,
   [param("postId").notEmpty().isNumeric()],
   (req, res) => {
     const validatorFailed = checkForErrors(req, res)
@@ -93,6 +95,7 @@ router.get(
 // Edit single post
 router.put(
   "/single/:postId",
+  isAuth,
   [check("body").trim(), param("postId").isNumeric()],
   (req, res) => {
     const validatorFailed = checkForErrors(req, res)
@@ -141,6 +144,7 @@ router.put(
 // Add new post
 router.post(
   "/",
+  isAuth,
   [
     check("postType")
       .isString()
@@ -195,6 +199,7 @@ router.post(
 
 router.delete(
   "/",
+  isAuth,
   [
     check("id")
       .notEmpty()

@@ -8,10 +8,12 @@ const { check, param } = require("express-validator")
 const checkForErrors = require("../middleware/validationUtils")
 require("dotenv").config()
 const { encode } = require("html-entities")
+const { isAuth } = require("../middleware/authMiddleware")
 
 // Get User
 router.get(
   "/get-user/:username",
+  isAuth,
   [
     param("username")
       .notEmpty()
@@ -42,7 +44,7 @@ router.get(
 )
 
 // Log In
-router.post("/login", (req, res, next) => {
+router.post("/login", isAuth, (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) {
       res.status(404).send("Error while logging in, please try again.")
@@ -65,7 +67,7 @@ router.post("/login", (req, res, next) => {
 })
 
 // Log Out
-router.post("/logout", (req, res, next) => {
+router.post("/logout", isAuth, (req, res, next) => {
   console.log("logging out " + req.user.username)
   req.logout()
   req.session.destroy((err) => {
@@ -77,6 +79,7 @@ router.post("/logout", (req, res, next) => {
 // Register
 router.post(
   "/register",
+  isAuth,
   [
     check("username").notEmpty().withMessage("Username cannot be empty").trim(),
     check("gender").notEmpty().withMessage("Gender cannot be empty").trim(),

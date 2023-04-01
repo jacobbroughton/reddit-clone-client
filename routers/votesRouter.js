@@ -3,9 +3,11 @@ const router = express.Router()
 const db = require("../db")
 const { check, param } = require("express-validator")
 const checkForErrors = require("../middleware/validationUtils")
+const { isAuth } = require("../middleware/authMiddleware")
 
 router.post(
   "/:type",
+  isAuth,
   [
     check("data.userId")
       .isNumeric()

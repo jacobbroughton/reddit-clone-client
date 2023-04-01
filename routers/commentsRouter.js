@@ -4,10 +4,12 @@ const router = express.Router()
 const db = require("../db")
 const { encode, decode } = require("html-entities")
 const checkForErrors = require("../middleware/validationUtils")
+const { isAuth } = require("../middleware/authMiddleware")
 
 // Add comment
 router.post(
   "/",
+  isAuth,
   [
     check("body").notEmpty().withMessage("Comment body cannot be empty").trim(),
     check("author_id").isNumeric(),
@@ -49,6 +51,7 @@ router.post(
 
 router.put(
   "/:commentId",
+  isAuth,
   [
     check("body").notEmpty().withMessage("Comment body cannot be empty").trim(),
     param("commentId").isNumeric(),
@@ -79,7 +82,7 @@ router.put(
 )
 
 // Get all comments for a post
-router.get("/:postId", [param("postId").isNumeric()], (req, res) => {
+router.get("/:postId", isAuth, [param("postId").isNumeric()], (req, res) => {
   const { userId } = req.query
   const { postId } = req.params
 
@@ -113,7 +116,7 @@ router.get("/:postId", [param("postId").isNumeric()], (req, res) => {
   })
 })
 
-router.delete("/", [check("id").isNumeric()], (req, res) => {
+router.delete("/", isAuth, [check("id").isNumeric()], (req, res) => {
   const validatorFailed = checkForErrors(req, res)
 
   if (validatorFailed) return
