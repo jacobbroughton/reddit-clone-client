@@ -5,7 +5,9 @@
   // height: auto;\
   background-color: var(--color-bg-primary);
 
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     -webkit-appearance: none;
   }
 
@@ -27,4 +29,37 @@
     margin: 0;
   }
 
+  .full-page-disabling-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    left: 0;
+    background-color: #f0f2f6db;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .full-page-disabling-banner p {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    height: auto;
+    margin: 30px;
+    max-width: 400px;
+    box-shadow: var(--subtle-box-shadow);
+  }
+
+  .full-page-disabling-banner a {
+    color: var(--color-link);
+    text-decoration: none;
+  }
+
+  .full-page-disabling-banner a:hover {
+    text-decoration: underline;
+  }
 }
