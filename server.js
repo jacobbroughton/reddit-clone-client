@@ -48,13 +48,26 @@ let sessionStore = new MySQLStore(options)
 app.use(cookieParser(process.env.cookieSecret))
 app.use(
   session({
-    secret: `${process.env.cookieSecret}`,
-    resave: false,
-    saveUninitialized: true,
+    // ! Below is backup that works on every browser
+    // secret: `${process.env.cookieSecret}`,
+    // resave: false,
+    // saveUninitialized: true,
+    // store: sessionStore,
+    // cookie: {
+    //   secure: false,
+    //   maxAge: 1000 * 60 * 60 * 24,
+    // },
+
     store: sessionStore,
+    secret: process.env.cookieSecret,
+    proxy: true,
+    saveUninitialized: true, // allows any uninitialized session to be sent to the store. When a session is created but not modified, it is referred to as uninitialized.
+    resave: false, // enables the session to be stored back to the session store, even if the session was never modified during the request.
     cookie: {
-      secure: false,
-      maxAge: 1000 * 60 * 60 * 24,
+      maxAge: 1000 * 60 * 60 * 24, // one day
+      secure: process.env.NODE_ENV === 'production',
+      httpOnly: false,
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : false
     },
   })
 )

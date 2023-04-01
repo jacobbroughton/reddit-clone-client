@@ -36,7 +36,7 @@ function App() {
   return (
     <div className={`App`}>
       <Meta title={currentSubreddit ? `r/${currentSubreddit.name}` : "Home"} />
-      <div className="full-page-disabling-banner">
+      {/* <div className="full-page-disabling-banner">
         <p>
           This app's server is currently being migrated from Heroku to Render. If you'd
           like to see how this app functions normally, check out a screen recording I
@@ -48,7 +48,7 @@ function App() {
           you'd like to learn a little bit more about it. (
           <a href="https://www.jlbroughton.com/portfolio/reddit-clone">Link</a>)
         </p>
-      </div>
+      </div> */}
       <ScrollToTop>
         <Navbar />
         <main>
