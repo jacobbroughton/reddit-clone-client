@@ -2,7 +2,7 @@ const express = require("express")
 const { check, param } = require("express-validator")
 const router = express.Router()
 const db = require("../db")
-const { encode, decode } = require("html-entities")
+const { encode } = require("html-entities")
 const checkForErrors = require("../middleware/validationUtils")
 const { isAuth } = require("../middleware/authMiddleware")
 
@@ -88,12 +88,11 @@ router.get("/:postId", isAuth, [param("postId").isNumeric()], (req, res) => {
 
   let getCommentsStatement = `
     SELECT c.*, u.username, u.profile_picture, v.comment_id, v.vote_value,
-    ${
-      userId
-        ? `(
+    ${userId
+      ? `(
       SELECT vote_value FROM comment_votes v WHERE v.comment_id = c.id AND v.user_id = ${userId} LIMIT 1
     ) AS has_voted,`
-        : ""
+      : ""
     } 
     COALESCE(SUM(v.vote_value), 0) AS vote_count
     FROM comments AS c
