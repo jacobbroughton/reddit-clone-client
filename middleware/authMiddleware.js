@@ -1,4 +1,5 @@
 module.exports.isAuth = function (req, res, next) {
+  console.log("Auth middleware is happening")
   console.log("req.session", req.session)
   console.log("req.user", req.user)
   console.log("req.body", req.body)

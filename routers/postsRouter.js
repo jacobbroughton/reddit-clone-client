@@ -9,9 +9,6 @@ const { isAuth } = require("../middleware/authMiddleware")
 // Get all posts
 router.get("/", isAuth, (req, res) => {
 
-  console.log("req.user", req.user)
-  console.log("req.session", req.session)
-
   let subredditName = req.query.filters
   let { userId } = req.query
 
@@ -20,13 +17,12 @@ router.get("/", isAuth, (req, res) => {
 
   const getPostsStatement = `
   SELECT p.*, u.username, v.user_id, v.post_id, v.vote_value,
-  ${
-    userId
+  ${userId
       ? `(
     SELECT vote_value FROM post_votes WHERE post_votes.post_id = p.id AND post_votes.user_id = ${userId} LIMIT 1
   ) AS has_voted,`
       : ""
-  }
+    }
   COALESCE(SUM(v.vote_value), 0) AS vote_count
   FROM posts AS p
   INNER JOIN users AS u ON p.author_id = u.id 
@@ -64,13 +60,12 @@ router.get(
 
     const getSinglePostStatement = `
   SELECT p.*, u.username, v.vote_value,
-  ${
-    userId
-      ? `(
+  ${userId
+        ? `(
     SELECT vote_value FROM post_votes WHERE post_votes.post_id = p.id AND post_votes.user_id = ${userId} LIMIT 1
   ) AS has_voted,`
-      : ""
-  } 
+        : ""
+      } 
   COALESCE(SUM(v.vote_value), 0) AS vote_count
   FROM posts AS p
   INNER JOIN users AS u ON p.author_id = u.id
