@@ -1,7 +1,6 @@
 const express = require("express")
 const cors = require("cors")
 const app = express()
-const path = require("path")
 const cookieParser = require("cookie-parser")
 const bodyParser = require("body-parser")
 const session = require("express-session")
@@ -100,7 +99,7 @@ app.use("/search", searchRouter)
 //   )
 // }
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 6000
 
 app.listen(port, () =>
   console.log(

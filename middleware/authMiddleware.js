@@ -1,4 +1,4 @@
-export function isAuth (req, res, next) {
+module.exports.isAuth = function (req, res, next) {
   console.log("req.session", req.session)
   console.log("req.user", req.user)
   console.log("req.body", req.body)
@@ -13,12 +13,12 @@ export function isAuth (req, res, next) {
         session: req.session,
       });
   }
-}
+};
 
-export function isAdmin (req, res, next) {
+module.exports.isAdmin = function (req, res, next) {
   if (req.isAuthenticated() && req.user.ADMIN) {
     next(); // moves on
   } else {
     res.status(401).json({ message: "You are not an admin" });
   }
-}
+};

@@ -24,8 +24,6 @@ router.post(
 
     body = encode(body)
 
-    console.log(body)
-
     let addCommentStatement = `
     INSERT INTO comments 
     (body, author_id, post_id, parent_comment)

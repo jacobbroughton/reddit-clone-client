@@ -1,18 +1,18 @@
-import { compare } from "bcryptjs"
-import { Strategy as localStrategy } from "passport-local"
+const bcrypt = require("bcryptjs")
+const localStrategy = require("passport-local").Strategy
 require("dotenv").config()
-import { query } from "../db"
+const db = require("../db")
 
-export default function (passport) {
+module.exports = function (passport) {
   passport.use(
     new localStrategy((username, password, done) => {
-      query(
+      db.query(
         `SELECT * FROM users WHERE username = '${username}'`,
         (err, rows) => {
           if (err) throw err
           if (!rows[0]) return done(null, false)
 
-          compare(password, rows[0].password, (err, result) => {
+          bcrypt.compare(password, rows[0].password, (err, result) => {
             if (err) throw err
             let user = rows[0]
             if (result === true) {
@@ -35,7 +35,7 @@ export default function (passport) {
 
   passport.deserializeUser((id, callback) => {
     console.log("Deserializing user")
-    query(`SELECT * FROM users WHERE id = '${id}'`, (err, rows) => {
+    db.query(`SELECT * FROM users WHERE id = '${id}'`, (err, rows) => {
       callback(err, rows[0])
     })
   })

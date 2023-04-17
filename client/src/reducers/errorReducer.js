@@ -1,18 +1,11 @@
 export const errorReducer = (state = [], action) => {
   switch (action.type) {
     case "REMOVE_ERROR": {
-      // // return state.filter((errorItem, errorIndex) => errorIndex !== action.payload)
+
       let clonedErrorArray = state.filter(
         (errorItem) => errorItem.itemIndex !== action.payload
       )
-      // // setTimeout(() => {
-      // //   return state.splice(action.payload,  1)
-      // // }, 5000)
 
-      // return [
-      //   ...state.slice(0, action.payload),
-      //   ...state.slice(action.payload + 1)
-      // ]
       return clonedErrorArray
     }
     default: {
