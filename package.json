@@ -32,7 +32,6 @@
     "serve": "vite preview",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "netlify deploy --prod",
     "find": "pgrep node",
     "kill": "pkill node"
   },
