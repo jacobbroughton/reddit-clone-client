@@ -1,43 +1,64 @@
 {
-  "name": "reddit-clone",
-  "version": "1.0.0",
-  "description": "Created by Jacob Broughton",
-  "main": "server.js",
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "concurrently": "^6.1.0",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "dotenv": "^9.0.2",
-    "express": "^4.17.1",
-    "express-mysql-session": "^2.1.6",
-    "express-session": "^1.17.1",
-    "express-validator": "^6.12.1",
-    "html-entities": "^2.3.2",
-    "mysql": "^2.18.1",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
-  },
-  "devDependencies": {
-    "eslint": "^7.32.0"
+    "@dicebear/avatars": "^4.7.4",
+    "@dicebear/avatars-female-sprites": "^4.7.4",
+    "@dicebear/avatars-male-sprites": "^4.7.4",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "date-fns": "^2.22.1",
+    "framer-motion": "^4.1.17",
+    "he": "^1.2.0",
+    "html-entities": "^1.4.0",
+    "lodash.throttle": "^4.1.1",
+    "moment": "^2.29.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet-async": "^1.1.2",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0",
+    "sass": "^1.49.9",
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"nodemon server\" \"npm run client\"",
-    "start": "node server.js",
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "netlify deploy --prod",
     "find": "pgrep node",
     "kill": "pkill node"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jlbroughton88/reddit-clone.git"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "author": "Jacob Broughton",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jlbroughton88/reddit-clone/issues"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
-  "homepage": "https://github.com/jlbroughton88/reddit-clone#readme"
+  "devDependencies": {
+    "@vitejs/plugin-react-refresh": "^1.3.6",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.24.0",
+    "vite": "^2.8.4",
+    "vite-plugin-svgr": "^1.0.1"
+  }
 }
