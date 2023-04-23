@@ -27,7 +27,7 @@ export const setCurrentSubreddit = (name) => async (dispatch) => {
     dispatch({
       type: "SET_CURRENT_SUBREDDIT_FAILURE",
       message: error.message,
-      response: error.response.data,
+      
     })
   }
 }

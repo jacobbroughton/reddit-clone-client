@@ -15,7 +15,7 @@ const ErrorPopupItem = ({ error }) => {
   const handleErrorTimer = () => {
     setTimeout(() => {
       setErrorShowing(false)
-    }, 5000)
+    }, 5001)
   }
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const ErrorPopupItem = ({ error }) => {
       initial={{ x: "-100%" }}
     >
       <img src={ErrorIcon} alt="warning icon" />
-      <p className="error-message">{error.response}</p>
+      <p className="error-message">{error.message}</p>
     </motion.div>
   )
 }

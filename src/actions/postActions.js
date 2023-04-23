@@ -26,7 +26,7 @@ export const getPost = (postId, userId) => async (dispatch) => {
     dispatch({
       type: "GET_POST_FAILURE",
       message: error.message,
-      response: error.response.data,
+      
     })
   }
 }
@@ -50,7 +50,7 @@ export const setPost = (post) => async (dispatch) => {
     dispatch({
       type: "SET_POST_FAILURE",
       message: error.message,
-      response: error.response.data,
+      
     })
   }
 }
@@ -100,7 +100,7 @@ export const startEditPost =
       dispatch({
         type: "EDIT_POST_FAILURE",
         message: error.message,
-        response: error.response.data,
+        
       })
     }
   }
@@ -116,7 +116,7 @@ export const deletePost = (post, id) => async (dispatch) => {
     dispatch({
       type: "DELETE_POST_FAILURE",
       message: error.message,
-      response: error.response.data,
+      
     })
   }
 }

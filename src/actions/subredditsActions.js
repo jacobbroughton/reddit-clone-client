@@ -9,6 +9,7 @@ export const getSubreddits = () => async (dispatch) => {
   try {
     dispatch({ type: "GET_SUBREDDITS_REQUEST" })
 
+    console.log(`${API_URL}/subreddits`)
     const response = await axios.get(`${API_URL}/subreddits`)
 
     dispatch({ type: "GET_SUBREDDITS_SUCCESS", payload: response.data })
@@ -16,7 +17,6 @@ export const getSubreddits = () => async (dispatch) => {
     dispatch({
       type: "GET_SUBREDDITS_FAILURE",
       message: error.message,
-      response: error.response,
     })
   }
 }
@@ -35,7 +35,6 @@ export const getSingleSubreddit = (name) => async (dispatch) => {
     dispatch({
       type: "GET_SINGLE_SUBREDDIT_FAILURE",
       message: error.message,
-      response: error.response,
     })
   }
 }
@@ -68,7 +67,6 @@ export const createSubreddit =
       dispatch({
         type: "CREATE_SUBREDDIT_FAILURE",
         message: error.message,
-        response: error.response.data,
       })
     }
   }
@@ -87,7 +85,6 @@ export const deleteSubreddit = (userId, subredditId) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "DELETE_SUBREDDIT_FAILURE",
-      response: error.response.data,
       message: error.message,
     })
   }

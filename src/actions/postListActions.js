@@ -17,10 +17,10 @@ export const getPosts = (userId, filters) => async (dispatch) => {
 
     dispatch({ type: "GET_POSTS_SUCCESS", payload: response.data })
   } catch (error) {
+    console.log(error)
     dispatch({
       type: "GET_POSTS_FAILURE",
       message: error.message,
-      response: error.response.data,
     })
   }
 }
@@ -45,7 +45,7 @@ export const handleVote = (userId, postId, value) => async (dispatch) => {
     dispatch({
       type: "POST_VOTE_FAILURE",
       message: error.message,
-      response: error.response.data,
+      
     })
   }
 }
@@ -97,7 +97,6 @@ export const createPost =
       dispatch({
         type: "CREATE_POST_FAILURE",
         message: error.message,
-        response: error.response.data,
       })
     }
   }

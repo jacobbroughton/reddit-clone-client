@@ -32,7 +32,7 @@ export const getUser = (username) => async (dispatch) => {
     dispatch({
       type: "LOGIN_FAILURE",
       message: error.message,
-      response: error.response.data,
+      
     })
   }
 }
@@ -51,7 +51,7 @@ export const startLogin = (user) => async (dispatch) => {
     dispatch({
       type: "LOGIN_FAILURE",
       message: error.message,
-      response: error.response.data,
+      
     })
   }
 }
@@ -93,7 +93,7 @@ export const startRegister =
       dispatch({
         type: "REGISTER_FAILURE",
         message: error.message,
-        response: error.response.data,
+        
       })
     }
   }

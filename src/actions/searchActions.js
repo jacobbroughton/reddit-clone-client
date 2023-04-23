@@ -19,7 +19,6 @@ export const search =
       dispatch({
         type: "SEARCH_FAILURE",
         message: error.message,
-        response: error.response.data,
       })
     }
   }

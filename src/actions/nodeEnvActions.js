@@ -1,10 +1,11 @@
 export const getApiUrl = () => {
   let API_URL
 
+
   if (import.meta.env.PROD) {
     API_URL = "https://zeddit-backend.onrender.com"
   } else {
-    API_URL = "http://localhost:6000"
+    API_URL = "http://localhost:5001"
   }
 
   return API_URL
