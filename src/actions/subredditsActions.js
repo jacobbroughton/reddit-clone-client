@@ -16,7 +16,7 @@ export const getSubreddits = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "GET_SUBREDDITS_FAILURE",
-      message: error.message,
+      message: error.response.statusText,
     })
   }
 }
@@ -34,7 +34,7 @@ export const getSingleSubreddit = (name) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "GET_SINGLE_SUBREDDIT_FAILURE",
-      message: error.message,
+      message: error.response.statusText,
     })
   }
 }
@@ -66,7 +66,7 @@ export const createSubreddit =
     } catch (error) {
       dispatch({
         type: "CREATE_SUBREDDIT_FAILURE",
-        message: error.message,
+        message: error.response.statusText,
       })
     }
   }
@@ -85,7 +85,7 @@ export const deleteSubreddit = (userId, subredditId) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "DELETE_SUBREDDIT_FAILURE",
-      message: error.message,
+      message: error.response.statusText,
     })
   }
 }

@@ -18,7 +18,7 @@ export const search =
       console.log(error)
       dispatch({
         type: "SEARCH_FAILURE",
-        message: error.message,
+        message: error.response.statusText,
       })
     }
   }

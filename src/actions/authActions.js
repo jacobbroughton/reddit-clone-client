@@ -31,7 +31,7 @@ export const getUser = (username) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "LOGIN_FAILURE",
-      message: error.message,
+      message: error.response.statusText,
 
     })
   }
@@ -94,7 +94,7 @@ export const startRegister =
     } catch (error) {
       dispatch({
         type: "REGISTER_FAILURE",
-        message: error.message,
+        message: error.response.statusText,
 
       })
     }

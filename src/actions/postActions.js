@@ -25,7 +25,7 @@ export const getPost = (postId, userId) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "GET_POST_FAILURE",
-      message: error.message,
+      message: error.response.statusText,
       
     })
   }
@@ -49,7 +49,7 @@ export const setPost = (post) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "SET_POST_FAILURE",
-      message: error.message,
+      message: error.response.statusText,
       
     })
   }
@@ -99,7 +99,7 @@ export const startEditPost =
     } catch (error) {
       dispatch({
         type: "EDIT_POST_FAILURE",
-        message: error.message,
+        message: error.response.statusText,
         
       })
     }
@@ -115,7 +115,7 @@ export const deletePost = (post, id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "DELETE_POST_FAILURE",
-      message: error.message,
+      message: error.response.statusText,
       
     })
   }
