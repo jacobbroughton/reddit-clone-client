@@ -13,6 +13,10 @@ export const getPost = (postId, userId) => async (dispatch) => {
       `${API_URL}/posts/single/${postId}/${userId ? userId : ""}`
     )
 
+    if (response.status !== 200) {
+      throw response.data.message
+    }
+
     let post = response.data
 
     post = {
@@ -25,7 +29,7 @@ export const getPost = (postId, userId) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "GET_POST_FAILURE",
-      message: error.response.statusText,
+      message: error.response.data.message,
       
     })
   }
@@ -49,7 +53,7 @@ export const setPost = (post) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "SET_POST_FAILURE",
-      message: error.response.statusText,
+      message: error.response.data.message,
       
     })
   }
@@ -68,7 +72,11 @@ export const handleSinglePostVote =
 
       console.log(value)
 
-      await axios.post(`${API_URL}/votes/post`, { data: voteObj })
+      const response = await axios.post(`${API_URL}/votes/post`, { data: voteObj })
+
+      if (response.status !== 200) {
+        throw response.data.message
+      }
 
       dispatch({ type: "SINGLEPOST_VOTE_SUCCESS", payload: voteObj })
     } catch (error) {
@@ -89,9 +97,11 @@ export const startEditPost =
     try {
       dispatch({ type: "EDIT_POST_REQUEST" })
 
-      await axios.put(`${API_URL}/posts/single/${id}`, { body })
+      const response = await axios.put(`${API_URL}/posts/single/${id}`, { body })
 
-      // body = escapeHTML(body)
+      if (response.status !== 200) {
+        throw response.data.message
+      }
 
       dispatch(editPost(id, { body }))
 
@@ -99,7 +109,7 @@ export const startEditPost =
     } catch (error) {
       dispatch({
         type: "EDIT_POST_FAILURE",
-        message: error.response.statusText,
+        message: error.response.data.message,
         
       })
     }
@@ -109,13 +119,17 @@ export const deletePost = (post, id) => async (dispatch) => {
   try {
     dispatch({ type: "DELETE_POST_REQUEST" })
 
-    await axios.delete(`${API_URL}/posts`, { data: { id } })
+    const response = await axios.delete(`${API_URL}/posts`, { data: { id } })
+
+    if (response.status !== 200) {
+      throw response.data.message
+    }
 
     dispatch({ type: "DELETE_POST_SUCCESS", payload: { id } })
   } catch (error) {
     dispatch({
       type: "DELETE_POST_FAILURE",
-      message: error.response.statusText,
+      message: error.response.data.message,
       
     })
   }

@@ -13,12 +13,16 @@ export const search =
         }${!userId && !subredditName ? "?" : "&"}q=${searchValue}`
       )
 
+      if (response.status !== 200) {
+        throw response.data.message
+      }
+
       dispatch({ type: "GET_POSTS_SUCCESS", payload: response.data })
     } catch (error) {
       console.log(error)
       dispatch({
         type: "SEARCH_FAILURE",
-        message: error.response.statusText,
+        message: error.response.data.message,
       })
     }
   }

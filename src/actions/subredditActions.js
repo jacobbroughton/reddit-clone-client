@@ -11,6 +11,10 @@ export const setCurrentSubreddit = (name) => async (dispatch) => {
     if (name) {
       let response = await axios.get(`${API_URL}/subreddits/${name}`)
 
+      if (response.status !== 200) {
+        throw response.data.message
+      }
+
       let subreddit = response.data === "" ? null : response.data
 
       subreddit = {
@@ -26,7 +30,7 @@ export const setCurrentSubreddit = (name) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "SET_CURRENT_SUBREDDIT_FAILURE",
-      message: error.response.statusText,
+      message: error.response.data.message,
       
     })
   }

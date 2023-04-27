@@ -15,12 +15,16 @@ export const getPosts = (userId, filters) => async (dispatch) => {
       params: { userId, filters },
     })
 
+    if (response.status !== 200) {
+      throw response.data.message
+    }
+
     dispatch({ type: "GET_POSTS_SUCCESS", payload: response.data })
   } catch (error) {
     console.log(error)
     dispatch({
       type: "GET_POSTS_FAILURE",
-      message: error.response.statusText,
+      message: error.response.data.message,
     })
   }
 }
@@ -37,14 +41,18 @@ export const handleVote = (userId, postId, value) => async (dispatch) => {
 
     console.log(voteObj)
 
-    await axios.post(`${API_URL}/votes/post`, { data: voteObj })
+    const response = await axios.post(`${API_URL}/votes/post`, { data: voteObj })
+
+    if (response.status !== 200) {
+      throw response.data.message
+    }
 
     dispatch({ type: "POST_VOTE_SUCCESS", payload: voteObj })
   } catch (error) {
     console.log(error)
     dispatch({
       type: "POST_VOTE_FAILURE",
-      message: error.response.statusText,
+      message: error.response.data.message,
       
     })
   }
@@ -57,10 +65,6 @@ export const createPost =
       dispatch({ type: "CREATE_POST_REQUEST" })
 
       let dateNow = formatISO9075(new Date())
-      console.log("POST DATE NOW", dateNow)
-
-      // title = escapeHTML(title)
-      // body = escapeHTML(body)
 
       const createdPost = {
         postType,
@@ -72,6 +76,10 @@ export const createPost =
       }
 
       const response = await axios.post(`${API_URL}/posts`, createdPost)
+
+      if (response.status !== 200) {
+        throw response.data.message
+      }
 
       let postId = response.data.insertId
 
@@ -96,7 +104,7 @@ export const createPost =
     } catch (error) {
       dispatch({
         type: "CREATE_POST_FAILURE",
-        message: error.response.statusText,
+        message: error.response.data.message,
       })
     }
   }

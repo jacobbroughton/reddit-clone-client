@@ -31,7 +31,7 @@ export const getUser = (username) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "LOGIN_FAILURE",
-      message: error.response.statusText,
+      message: error.response.data.message,
 
     })
   }
@@ -43,10 +43,8 @@ export const startLogin = (user) => async (dispatch) => {
 
     const response = await axios.post(`${API_URL}/users/login`, user)
 
-    console.log(response)
-
     if (response.status !== 200) {
-      throw response.message
+      throw response.data.message
     }
 
     dispatch(getUser(user.username))
@@ -96,7 +94,7 @@ export const startRegister =
     } catch (error) {
       dispatch({
         type: "REGISTER_FAILURE",
-        message: error.response.statusText,
+        message: error.response.data.message,
 
       })
     }

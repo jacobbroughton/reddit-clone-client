@@ -9,14 +9,17 @@ export const getSubreddits = () => async (dispatch) => {
   try {
     dispatch({ type: "GET_SUBREDDITS_REQUEST" })
 
-    console.log(`${API_URL}/subreddits`)
     const response = await axios.get(`${API_URL}/subreddits`)
+
+    if (response.status !== 200) {
+      throw response.data.message
+    }
 
     dispatch({ type: "GET_SUBREDDITS_SUCCESS", payload: response.data })
   } catch (error) {
     dispatch({
       type: "GET_SUBREDDITS_FAILURE",
-      message: error.response.statusText,
+      message: error.response.data.message,
     })
   }
 }
@@ -25,16 +28,20 @@ export const getSingleSubreddit = (name) => async (dispatch) => {
   try {
     dispatch({ type: "GET_SINGLE_SUBREDDIT_REQUEST" })
 
-    const subreddit = await axios.get(`${API_URL}/subreddits/${name}`)
+    const response = await axios.get(`${API_URL}/subreddits/${name}`)
+
+    if (response.status !== 200) {
+      throw response.data.message
+    }
 
     dispatch({
       type: "GET_SINGLE_SUBREDDIT_SUCCESS",
-      payload: subreddit,
+      payload: response,
     })
   } catch (error) {
     dispatch({
       type: "GET_SINGLE_SUBREDDIT_FAILURE",
-      message: error.response.statusText,
+      message: error.response.data.message,
     })
   }
 }
@@ -56,6 +63,10 @@ export const createSubreddit =
 
       const response = await axios.post(`${API_URL}/subreddits`, newSubreddit)
 
+      if (response.status !== 200) {
+        throw response.data.message
+      }
+
       newSubreddit.id = response.data.idForNewSubreddit
 
       dispatch({ type: "CREATE_SUBREDDIT_SUCCESS", payload: newSubreddit })
@@ -66,7 +77,7 @@ export const createSubreddit =
     } catch (error) {
       dispatch({
         type: "CREATE_SUBREDDIT_FAILURE",
-        message: error.response.statusText,
+        message: error.response.data.message,
       })
     }
   }
@@ -75,7 +86,12 @@ export const deleteSubreddit = (userId, subredditId) => async (dispatch) => {
   try {
     dispatch({ type: "DELETE_SUBREDDIT_REQUEST" })
 
-    await axios.delete(`${API_URL}/subreddits/${subredditId}/${userId}`)
+    const response = await axios.delete(`${API_URL}/subreddits/${subredditId}/${userId}`)
+
+    if (response.status !== 200) {
+      throw response.data.message
+    }
+
     history.push("/")
 
     dispatch({
@@ -85,7 +101,7 @@ export const deleteSubreddit = (userId, subredditId) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "DELETE_SUBREDDIT_FAILURE",
-      message: error.response.statusText,
+      message: error.response.data.message,
     })
   }
 }
