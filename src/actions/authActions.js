@@ -55,7 +55,7 @@ export const startLogin = (user) => async (dispatch) => {
     console.log(error.response)
     dispatch({
       type: "LOGIN_FAILURE",
-      message: error.response.statusText,
+      message: error.response.data.message,
     })
   }
 }
