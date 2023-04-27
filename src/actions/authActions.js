@@ -43,14 +43,16 @@ export const startLogin = (user) => async (dispatch) => {
 
     const response = await axios.post(`${API_URL}/users/login`, user)
 
+    console.log(response)
+
     if (response.status !== 200) {
       throw response.message
     }
 
-
     dispatch(getUser(user.username))
     history.push("/")
   } catch (error) {
+    console.log(error.response)
     dispatch({
       type: "LOGIN_FAILURE",
       message: error.response.statusText,
