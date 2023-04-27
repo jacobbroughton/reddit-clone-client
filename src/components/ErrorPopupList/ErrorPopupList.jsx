@@ -1,19 +1,11 @@
-import React, { useEffect } from "react"
-import {
-  // useDispatch,
-  useSelector,
-} from "react-redux"
-import ErrorPopupItem from "../ErrorPopupItem/ErrorPopupItem"
-import { AnimatePresence } from "framer-motion"
-import "./ErrorPopupList.scss"
+import React from "react";
+import { useSelector } from "react-redux";
+import ErrorPopupItem from "../ErrorPopupItem/ErrorPopupItem";
+import { AnimatePresence } from "framer-motion";
+import "./ErrorPopupList.scss";
 
 const ErrorPopupList = () => {
-  const errors = useSelector((state) => state.error)
-  
-
-  useEffect(() => {
-    console.log("ERRORS: ", errors)
-  }, [errors])
+  const errors = useSelector((state) => state.error);
 
   return (
     <AnimatePresence>
@@ -23,7 +15,7 @@ const ErrorPopupList = () => {
         ))}
       </div>
     </AnimatePresence>
-  )
-}
+  );
+};
 
-export default ErrorPopupList
+export default ErrorPopupList;

@@ -2,14 +2,12 @@ export const errorReducer = (state = [], action) => {
   switch (action.type) {
     case "REMOVE_ERROR": {
 
-      let clonedErrorArray = state.filter(
+      return state.filter(
         (errorItem) => errorItem.itemIndex !== action.payload
       )
-
-      return clonedErrorArray
     }
     default: {
-      const { type, response } = action
+      const { type, message } = action
       const matches = /(.*)_(REQUEST|FAILURE)/.exec(type)
 
       if (!matches) {
@@ -19,13 +17,11 @@ export const errorReducer = (state = [], action) => {
       const [, requestName, requestStatus] = matches
 
       if (requestStatus === "FAILURE") {
-        state.push({ itemIndex: state.length, requestName, response })
+        state.push({ itemIndex: state.length, requestName, message })
       }
 
       return [
         ...state,
-        // [requestName]: requestStatus === 'FAILURE' ? response : {}
-        // requestStatus === 'FAILURE' && {requestName, response}
       ]
     }
   }
