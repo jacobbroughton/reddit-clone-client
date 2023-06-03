@@ -15,25 +15,25 @@ This project is my attempt at recreating a reddit-like experience. Users can cre
 
 ---
 ## Home Screen
-![Home screen](client/public/images/home-light.png)
+![Home screen](public/images/home-light.png)
 ---
 ---
 ## Home Screen (Dark Mode)
 
-![Home screen (dark mode)](client/public/images/home-dark.png)
+![Home screen (dark mode)](public/images/home-dark.png)
 ---
 ---
 ## Single Post
 
-![Single Post](client/public/images/single-post.png)
+![Single Post](public/images/single-post.png)
 ---
 ---
 ## Search View
 
-![Search View](client/public/images/search.png)
+![Search View](public/images/search.png)
 ---
 ---
 ## New Post
 
-![New post](client/public/images/new-post.png)
+![New post](public/images/new-post.png)
 
