@@ -12,12 +12,14 @@ import PostList from "./components/PostList/PostList";
 import NewPost from "./components/NewPost/NewPost";
 import SinglePostPage from "./components/SinglePostPage/SinglePostPage";
 import CreateSubreddit from "./components/CreateSubreddit/CreateSubreddit";
+import WrongBrowser from "./components/WrongBrowser/WrongBrowser";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Meta from "./components/Meta";
 import "./App.scss";
 import { useQuery } from "./utilities/useQuery";
 import ErrorPopupList from "./components/ErrorPopupList/ErrorPopupList";
-import { loadState } from "./utilities/localStorage";
+import { detect } from "detect-browser";
+const browser = detect();
 
 function App() {
   const searchQuery = useQuery();
@@ -32,6 +34,14 @@ function App() {
   useEffect(() => {
     document.body.dataset.theme = theme ? "dark" : "light";
   }, [theme]);
+
+  if (
+    browser?.name === "safari" ||
+    browser?.name === "ios" ||
+    browser?.name === "crios"
+  ) {
+    return <WrongBrowser />;
+  }
 
   return (
     <div className={`App`}>

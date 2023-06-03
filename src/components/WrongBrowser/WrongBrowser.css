@@ -1,0 +1,21 @@
+.wrong-browser-view {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-primary);
+}
+
+.wrong-browser-view .wrong-browser-container {
+  box-shadow: var(--subtle-box-shadow);
+  border-radius: 5px;
+  max-width: 500px;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  padding: 15px;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

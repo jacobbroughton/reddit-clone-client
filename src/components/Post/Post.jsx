@@ -1,60 +1,60 @@
-import React, { useState } from "react"
-import PropTypes from "prop-types"
-import { Link, useHistory } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-import { setPost, startEditPost, deletePost } from "../../actions/postActions"
-import { handleVote } from "../../actions/postListActions"
-import { handleSinglePostVote } from "../../actions/postActions"
-import { ReactComponent as EditIcon } from "../../images/edit-icon.svg"
-import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg"
-import { getElapsedTime } from "../../utilities/useElapsedTime"
-import VoteButtons from "../VoteButtons/VoteButtons"
-import Meta from "../Meta"
-import he from "he"
-import { motion } from "framer-motion"
-import "./Post.scss"
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setPost, startEditPost, deletePost } from "../../actions/postActions";
+import { handleVote } from "../../actions/postListActions";
+import { handleSinglePostVote } from "../../actions/postActions";
+import { ReactComponent as EditIcon } from "../../images/edit-icon.svg";
+import { ReactComponent as DeleteIcon } from "../../images/delete-icon.svg";
+import { getElapsedTime } from "../../utilities/useElapsedTime";
+import VoteButtons from "../VoteButtons/VoteButtons";
+import Meta from "../Meta";
+import he from "he";
+import { motion } from "framer-motion";
+import "./Post.scss";
 
 const Post = ({ post, single }) => {
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  const user = useSelector((state) => state.auth.user)
-  const currentSubreddit = useSelector((state) => state.currentSubreddit)
+  const user = useSelector((state) => state.auth.user);
 
-  const [isEditing, setIsEditing] = useState(false)
-  const [editPostBody, setEditPostBody] = useState(post ? post.body : "")
-  const [error, setError] = useState(null)
+  const currentSubreddit = useSelector((state) => state.currentSubreddit);
 
-  const dateCreated = getElapsedTime(post.created_at)
+  const [isEditing, setIsEditing] = useState(false);
+  const [editPostBody, setEditPostBody] = useState(post ? post.body : "");
+  const [error, setError] = useState(null);
+  const dateCreated = getElapsedTime(post.created_at);
 
   const handleEditPostFormSubmit = (e, id) => {
-    const body = editPostBody
+    const body = editPostBody;
 
-    dispatch(startEditPost({ id, body }))
-    setIsEditing(!isEditing)
+    dispatch(startEditPost({ id, body }));
+    setIsEditing(!isEditing);
 
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
   const handlePostDelete = () => {
-    dispatch(deletePost(post, post.id))
-    if (single)
-      history.push(currentSubreddit ? `/r/${currentSubreddit.name}` : "/")
-  }
+    dispatch(deletePost(post, post.id));
+
+    if (single) history.push(currentSubreddit ? `/r/${currentSubreddit.name}` : "/");
+  };
 
   const handleVoteClick = (vote_value) => {
     if (!user) {
-      setError("You must log in to vote")
-      setTimeout(() => setError(null), 4000)
-      return
+      setError("You must log in to vote");
+      setTimeout(() => setError(null), 4000);
+      return;
     }
 
     if (single) {
-      dispatch(handleSinglePostVote(user.id, post.id, vote_value))
+      dispatch(handleSinglePostVote(user.id, post.id, vote_value));
     } else {
-      dispatch(handleVote(user.id, post.id, vote_value))
+      dispatch(handleVote(user.id, post.id, vote_value));
     }
-  }
+  };
 
   return (
     <motion.div
@@ -75,8 +75,7 @@ const Post = ({ post, single }) => {
             r/{he.decode(post.subreddit_name)}
           </Link>
           <span className="posted-by-span">
-            Posted by{" "}
-            <span className="user">u/{post.username && post.username}</span>
+            Posted by <span className="user">u/{post.username && post.username}</span>
           </span>
 
           <span className="time-ago-span">{dateCreated}</span>
@@ -89,9 +88,7 @@ const Post = ({ post, single }) => {
         ) : (
           <div className="title-and-body">
             <Link
-              to={`/r/${he.decode(post.subreddit_name.replace(/\s+/g, "-"))}/${
-                post.id
-              }`}
+              to={`/r/${he.decode(post.subreddit_name.replace(/\s+/g, "-"))}/${post.id}`}
               className="post-title"
               onClick={() => dispatch(setPost(post))}
             >
@@ -103,7 +100,7 @@ const Post = ({ post, single }) => {
                 <form
                   className="edit-post-form"
                   onSubmit={(e) => {
-                    handleEditPostFormSubmit(e, post.id)
+                    handleEditPostFormSubmit(e, post.id);
                   }}
                 >
                   <textarea
@@ -114,9 +111,7 @@ const Post = ({ post, single }) => {
                     <button disabled={post.body === editPostBody} type="submit">
                       Save
                     </button>
-                    <button onClick={() => setIsEditing(!isEditing)}>
-                      Cancel
-                    </button>
+                    <button onClick={() => setIsEditing(!isEditing)}>Cancel</button>
                   </div>
                 </form>
               ) : (
@@ -143,12 +138,12 @@ const Post = ({ post, single }) => {
         )}
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
 Post.propTypes = {
   post: PropTypes.object,
   single: PropTypes.bool,
-}
+};
 
-export default Post
+export default Post;
