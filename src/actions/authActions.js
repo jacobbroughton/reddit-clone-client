@@ -68,7 +68,7 @@ export const startRegister =
         seed: username,
       })
 
-      let profilePicture = `https://avatars.dicebear.com/api/${gender.toLowerCase()}/${username}.svg`
+      let profilePicture = `https://api.dicebear.com/7.x/identicon/svg`
 
       // username = escapeHTML(username)
       // password = escapeHTML(password)
