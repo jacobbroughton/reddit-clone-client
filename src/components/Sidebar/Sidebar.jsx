@@ -1,28 +1,28 @@
-import "./Sidebar.scss"
-import React, { useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { getSubreddits } from "../../actions/subredditsActions"
-import { Link, useHistory } from "react-router-dom"
-import SidebarSubredditLink from "../SidebarSubredditLink/SidebarSubredditLink"
+import "./Sidebar.scss";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getSubreddits } from "../../actions/subredditsActions";
+import { Link, useHistory } from "react-router-dom";
+import SidebarSubredditLink from "../SidebarSubredditLink/SidebarSubredditLink";
 
 const Sidebar = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const subreddits = useSelector((state) => state.subreddits)
-  
-  const user = useSelector((state) => state.auth.user)
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const subreddits = useSelector((state) => state.subreddits);
+
+  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
-    dispatch(getSubreddits())
-  }, [dispatch])
+    dispatch(getSubreddits());
+  }, [dispatch]);
 
   return (
     <aside className={`sidebar  `}>
       {!user && (
         <p className="no-user-error">
           {" "}
-          <Link to="/login">Sign in</Link> or{" "}
-          <Link to="/register">register</Link> to create new content
+          <Link to="/login">Sign in</Link> or <Link to="/register">register</Link> to
+          create new content
         </p>
       )}
       <div className="sidebar-buttons">
@@ -49,32 +49,37 @@ const Sidebar = () => {
       </div>
       {subreddits.length > 0 && (
         <div className="subreddit-lists">
-          <h3 className="subreddit-list-label-main">Subreddits</h3>
-          <Link
-            className={`subreddit-link ${
-              history.location.pathname === "/" ? "current" : ""
-            }`}
-            to="/"
-          >
-            Home
-          </Link>
-          <h3 className="subreddit-list-label">General</h3>
-          {subreddits
-            .filter((subreddit) => subreddit.user_id === 1)
-            .map((subreddit, key) => (
-              <SidebarSubredditLink subreddit={subreddit} key={key} />
-            ))}
-
-          <h3 className="subreddit-list-label">User Created</h3>
-          {subreddits
-            .filter((subreddit) => subreddit.user_id !== 1)
-            .map((subreddit, key) => (
-              <SidebarSubredditLink subreddit={subreddit} key={key} />
-            ))}
+          <div className='subreddit-list'>
+            <h3 className="subreddit-list-label-main">Subreddits</h3>
+            <Link
+              className={`subreddit-link ${
+                history.location.pathname === "/" ? "current" : ""
+              }`}
+              to="/"
+            >
+              Home
+            </Link>
+          </div>
+          <div className="subreddit-list">
+            <h3 className="subreddit-list-label">General</h3>
+            {subreddits
+              .filter((subreddit) => subreddit.user_id === 1)
+              .map((subreddit, key) => (
+                <SidebarSubredditLink subreddit={subreddit} key={key} />
+              ))}
+          </div>
+          <div className="subreddit-list">
+            <h3 className="subreddit-list-label">User Created</h3>
+            {subreddits
+              .filter((subreddit) => subreddit.user_id !== 1)
+              .map((subreddit, key) => (
+                <SidebarSubredditLink subreddit={subreddit} key={key} />
+              ))}
+          </div>
         </div>
       )}
     </aside>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

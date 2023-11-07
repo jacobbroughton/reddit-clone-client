@@ -2,8 +2,7 @@
 
 .sidebar {
   margin-top: 78px;
-  // min-height: calc(100% - 180px);
-  height: calc(100% - 78px);
+  height: calc(100vh - 66px - 20px - 10px);
   width: 100%;
   max-width: 250px;
   padding: 20px 10px;
@@ -120,7 +119,15 @@
   .subreddit-lists {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 20px;
+    overflow-y: auto;
+    padding-bottom: 20px;
+
+    .subreddit-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
     .subreddit-list-label-main {
       margin: 0;
@@ -135,7 +142,6 @@
       margin: 0;
       font-size: 1.2rem;
       font-weight: 600;
-      margin-top: 15px;
       color: var(--color-text);
     }
 
