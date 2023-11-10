@@ -3,7 +3,7 @@ export const getApiUrl = () => {
 
 
   if (import.meta.env.PROD) {
-    API_URL = "https://api.jacobbroughton.com"
+    API_URL = "https://api.zedditapp.com"
   } else {
     API_URL = "http://localhost:5001"
   }
