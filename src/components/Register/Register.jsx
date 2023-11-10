@@ -40,7 +40,7 @@ const Register = () => {
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <select
+          {/* <select
             // className="register-input"
             required
             type="text"
@@ -49,7 +49,7 @@ const Register = () => {
           >
             <option>Male</option>
             <option>Female</option>
-          </select>
+          </select> */}
           {/* <input placeholder="Confirm Password" onChange={e => setConfirmPassword(e.target.value)}/> */}
           <input className="register-submit" type="submit" value="Register" disabled={password === '' || username === ''}/>
         </form>
