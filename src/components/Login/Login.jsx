@@ -32,7 +32,6 @@ const Login = () => {
         <h2>Login</h2>
         {warningVisible && (
           <div className="warning">
-            <WarningIcon />
             <p>
               Mobile users may experience authentication issues. I'm working on fixing
               this now, sorry!

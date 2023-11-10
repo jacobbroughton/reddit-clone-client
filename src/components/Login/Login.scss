@@ -19,7 +19,7 @@
 
     .warning {
       background-color: rgba(220, 20, 60, 0.313);
-      color: black;
+      color: #721c24;
       border: 1px solid crimson;
       padding: 10px;
       border-radius: 5px;
@@ -28,13 +28,13 @@
       align-items: center;
       gap: 15px;
       font-size: 0.875rem;
+      font-weight: 600;
     }
 
     .warning svg {
       width: 25px;
-      fill: black;
+      fill: #721c24;
     }
-
 
     h2 {
       margin-top: 0;

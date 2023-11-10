@@ -33,7 +33,6 @@ const Register = () => {
         <h2>Register</h2>
         {warningVisible && (
           <div className="warning">
-            <WarningIcon />
             <p>
               Mobile users may experience authentication issues. I'm working on fixing
               this now, sorry!

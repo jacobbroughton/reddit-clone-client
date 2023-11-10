@@ -15,11 +15,9 @@ import CreateSubreddit from "./components/CreateSubreddit/CreateSubreddit";
 import WrongBrowser from "./components/WrongBrowser/WrongBrowser";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Meta from "./components/Meta";
-import "./App.scss";
 import { useQuery } from "./utilities/useQuery";
 import ErrorPopupList from "./components/ErrorPopupList/ErrorPopupList";
-import { detect } from "detect-browser";
-const browser = detect();
+import "./App.scss";
 
 function App() {
   const searchQuery = useQuery();

@@ -39,18 +39,11 @@
     }
 
     .post-not-found-p {
-       
       .post-not-found-link {
         color: #181818;
         margin: 0 auto;
         margin-left: 5px;
       }
     }
-  }
-
-  @media screen and (max-width: $mobile-bp) {
-    margin-top: 78px;
-    // width: calc(100% - 20px);
-    // max-width: calc(100% - 20px);
   }
 }
