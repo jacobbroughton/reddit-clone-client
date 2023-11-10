@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { startLogin } from "../../actions/authActions";
 import { Link } from "react-router-dom";
 import Meta from "../Meta";
-import WarningIcon from "../icons/WarningIcon";
-import { detect } from "detect-browser";
-const browser = detect();
 import "./Login.scss";
 
 const Login = () => {
@@ -22,22 +19,12 @@ const Login = () => {
     e.preventDefault();
   };
 
-  const warningVisible =
-    browser?.name === "safari" || browser?.name === "ios" || browser?.name === "crios";
-
   return (
     <div className={`login`}>
       <Meta title="Log in" />
       <div className="login-container">
         <h2>Login</h2>
-        {warningVisible && (
-          <div className="warning">
-            <p>
-              Mobile users may experience authentication issues. I'm working on fixing
-              this now, sorry!
-            </p>
-          </div>
-        )}
+
         <form onSubmit={(e) => handleSubmit(e)}>
           <input
             required

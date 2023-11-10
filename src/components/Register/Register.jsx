@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import WarningIcon from "../icons/WarningIcon";
 import Meta from "../Meta";
 import "./Register.scss";
-import { detect } from "detect-browser";
-const browser = detect();
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -23,22 +21,11 @@ const Register = () => {
     e.preventDefault();
   };
 
-  const warningVisible =
-    browser?.name === "safari" || browser?.name === "ios" || browser?.name === "crios";
-
   return (
     <div className={`register  `}>
       <Meta title="Register" />
       <div className="register-container">
         <h2>Register</h2>
-        {warningVisible && (
-          <div className="warning">
-            <p>
-              Mobile users may experience authentication issues. I'm working on fixing
-              this now, sorry!
-            </p>
-          </div>
-        )}
         <form onSubmit={(e) => handleSubmit(e)}>
           <input
             required
