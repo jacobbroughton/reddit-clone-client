@@ -35,14 +35,6 @@ function App() {
     document.body.dataset.theme = theme ? "dark" : "light";
   }, [theme]);
 
-  // if (
-  //   browser?.name === "safari" ||
-  //   browser?.name === "ios" ||
-  //   browser?.name === "crios"
-  // ) {
-  //   return <WrongBrowser />;
-  // }
-
   return (
     <div className={`App`}>
       <Meta title={currentSubreddit ? `r/${currentSubreddit.name}` : "Home"} />

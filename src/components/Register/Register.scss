@@ -15,6 +15,24 @@
     color: var(--color-text);
     gap: 10px;
 
+    .warning {
+      background-color: rgba(220, 20, 60, 0.313);
+      color: black;
+      border: 1px solid crimson;
+      padding: 10px;
+      border-radius: 5px;
+      max-width: 400px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 0.875rem;
+    }
+
+    .warning svg {
+      width: 25px;
+      fill: black;
+    }
+
     h2 {
       margin-top: 0;
     }

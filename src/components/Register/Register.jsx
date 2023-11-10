@@ -1,31 +1,45 @@
-import React, { useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { startRegister } from "../../actions/authActions"
-import { Link } from "react-router-dom"
-import Meta from "../Meta"
-
-import "./Register.scss"
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { startRegister } from "../../actions/authActions";
+import { Link } from "react-router-dom";
+import WarningIcon from "../icons/WarningIcon";
+import Meta from "../Meta";
+import "./Register.scss";
+import { detect } from "detect-browser";
+const browser = detect();
 
 const Register = () => {
-  const dispatch = useDispatch()
-  
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [gender, setGender] = useState("Male")
+  const dispatch = useDispatch();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [gender, setGender] = useState("Male");
 
   const handleSubmit = (e) => {
-    if (username === "" || password === "") return
+    if (username === "" || password === "") return;
 
-    dispatch(startRegister(username, password, gender))
+    dispatch(startRegister(username, password, gender));
 
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
+
+  const warningVisible =
+    browser?.name === "safari" || browser?.name === "ios" || browser?.name === "crios";
 
   return (
     <div className={`register  `}>
       <Meta title="Register" />
       <div className="register-container">
         <h2>Register</h2>
+        {warningVisible && (
+          <div className="warning">
+            <WarningIcon />
+            <p>
+              Mobile users may experience authentication issues. I'm working on fixing
+              this now, sorry!
+            </p>
+          </div>
+        )}
         <form onSubmit={(e) => handleSubmit(e)}>
           <input
             required
@@ -51,7 +65,12 @@ const Register = () => {
             <option>Female</option>
           </select> */}
           {/* <input placeholder="Confirm Password" onChange={e => setConfirmPassword(e.target.value)}/> */}
-          <input className="register-submit" type="submit" value="Register" disabled={password === '' || username === ''}/>
+          <input
+            className="register-submit"
+            type="submit"
+            value="Register"
+            disabled={password === "" || username === ""}
+          />
         </form>
         {/* { doNotMatchError !== '' && <p>{ doNotMatchError }</p> } */}
         <p className="already-registered-question">
@@ -62,7 +81,7 @@ const Register = () => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
