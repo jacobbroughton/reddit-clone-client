@@ -1,0 +1,92 @@
+@import "../../../utils/variables";
+
+.current-subreddit-banner {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  background-color: var(--color-bg-secondary);
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 3px;
+  box-shadow: var(--subtle-box-shadow);
+
+  .current-subreddit-banner-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+
+    .search-value {
+      font-size: 1rem;
+      margin: 0;
+      border-left: var(--color-link) solid 3px;
+      padding-left: 5px;
+      color: var(--color-text);
+
+      span {
+        font-weight: 600;
+      }
+    }
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--color-text);
+
+    .rSpan {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-right: 7px;
+    }
+  }
+
+  .delete-btn {
+    appearance: none;
+    padding: 0px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.1s ease;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-secondary);
+    font-weight: 600;
+  }
+
+  .delete-confirmation-span {
+    appearance: none;
+    padding: 4px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.1s ease;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    font-size: 0.875rem;
+
+    button {
+      appearance: none;
+      border: none;
+      background: transparent;
+      background: green;
+      font-weight: 600;
+      color: #fff;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    button:nth-child(1) {
+      background: crimson;
+    }
+
+    button:nth-child(2) {
+      background: green;
+    }
+  }
+}

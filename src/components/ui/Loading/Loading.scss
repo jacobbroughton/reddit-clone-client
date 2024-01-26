@@ -1,0 +1,35 @@
+@import "../../../utils/variables";
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding-top: 50px;
+
+  @keyframes up-and-down {
+    to {
+      opacity: 0.3;
+      transform: translateY(-10px);
+    }
+  }
+
+  .one,
+  .two,
+  .three {
+    height: 10px;
+    width: 10px;
+    background-color: var(--loading-dots-color);
+    border-radius: 99px;
+    animation: up-and-down 0.3s infinite alternate;
+  }
+
+  .two {
+    animation-delay: 0.1s;
+  }
+
+  .three {
+    animation-delay: 0.2s;
+  }
+}

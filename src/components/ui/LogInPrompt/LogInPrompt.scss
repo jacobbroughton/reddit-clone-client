@@ -1,0 +1,43 @@
+@import "../../../utils/variables";
+
+.log-in-prompt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+   
+  text-decoration: none;
+  padding: 7px 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  gap: 10px;
+  color: var(--color-text);
+
+  p {
+    margin: 0;
+  }
+
+  @media screen and (max-width: $mobile-bp) {
+    flex-direction: column;
+  }
+}
+
+.log-in-prompt__buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.log-in-prompt a {
+  color: var(--color-text);
+  padding: 5px;
+  // color: var(--color-text-secondary);;
+  border-radius: 3px;
+  filter: drop-shadow(1px 1px 1px #18181810);
+  text-decoration: none;
+  transition: 0.15s ease background;
+}
+
+.log-in-prompt a:hover {
+  background: var(--color-bg-interactive);
+}
