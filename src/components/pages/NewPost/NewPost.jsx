@@ -62,7 +62,7 @@ const NewPost = () => {
       <Meta title={`Create a new ${postType} post`} />
       <div className="new-post-container">
         <form onSubmit={(e) => handleSubmit(e)}>
-          <h3>Create a New Subreddit</h3>
+          <h3>Create a New Post</h3>
           <div className="both-radio-inputs">
             <p>Select the type of post you'd like to create</p>
             <div className="post-type-buttons">
