@@ -1,37 +1,38 @@
-import React, { useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { Link } from "react-router-dom"
-import { startLogout } from "../../../redux/actions/authActions"
-import { toggleTheme } from "../../../redux/reducers/themeReducer"
-import { setCurrentSubreddit } from "../../../redux/actions/subredditActions"
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { startLogout } from "../../../redux/actions/authActions";
+import { toggleTheme } from "../../../redux/reducers/themeReducer";
+import { setCurrentSubreddit } from "../../../redux/actions/subredditActions";
 // import { ReactComponent as DarkModeIcon } from "../../../images/dark-mode-icon.svg"
-import DownArrow from "../icons/DownArrow"
-import ProfilePicture from "../ProfilePicture/ProfilePicture"
-import Search from "../Search/Search"
-import useBrowserResize from "../../../utils/useBrowserResize"
-import HomeDark from "../../../images/home-dark.png"
-import HomeLight from "../../../images/home-light.png"
-import { motion } from "framer-motion"
+import DownArrow from "../icons/DownArrow";
+import ProfilePicture from "../ProfilePicture/ProfilePicture";
+import Search from "../Search/Search";
+import useBrowserResize from "../../../utils/useBrowserResize";
+import HomeDark from "../../../images/home-dark.png";
+import HomeLight from "../../../images/home-light.png";
+import { motion } from "framer-motion";
 
-import "./Navbar.scss"
+import "./Navbar.scss";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 const Navbar = () => {
-  const dispatch = useDispatch()
-  const user = useSelector((state) => state.auth.user)
-  const theme = useSelector(state => state.theme)
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+  const theme = useSelector((state) => state.theme);
 
-  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
-  const [overlayToggle, setOverlayToggle] = useState(false)
-  const [searchExpanded, setSearchExpanded] = useState(false)
+  
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [overlayToggle, setOverlayToggle] = useState(false);
+  const [searchExpanded, setSearchExpanded] = useState(false);
 
-  const { width } = useBrowserResize()
-
+  const { width } = useBrowserResize();
+  const location = useLocation()
 
   const handleDropdownClick = () => {
-    setOverlayToggle(!overlayToggle)
-    setIsUserDropdownOpen(!isUserDropdownOpen)
-  }
-
+    setOverlayToggle(!overlayToggle);
+    setIsUserDropdownOpen(!isUserDropdownOpen);
+  };
 
   return (
     <nav className={`nav`}>
@@ -46,17 +47,16 @@ const Navbar = () => {
               {width >= 767 ? (
                 "Zeddit"
               ) : (
-                <img
-                  className="home-icon"
-                  src={theme ? HomeLight : HomeDark}
-                />
+                <img className="home-icon" src={theme ? HomeLight : HomeDark} />
               )}
             </Link>
           )}
-          <Search
-            setSearchExpanded={setSearchExpanded}
-            searchExpanded={searchExpanded}
-          />
+          {!['/login', '/register'].includes(location.pathname) &&
+            <Search
+              setSearchExpanded={setSearchExpanded}
+              searchExpanded={searchExpanded}
+            />
+          }
 
           {!searchExpanded && (
             <motion.button
@@ -69,32 +69,27 @@ const Navbar = () => {
           )}
         </div>
 
-        <div className="nav-menu"> 
+        <div className="nav-menu">
           {user ? (
             <>
               {overlayToggle && (
-                <div
-                  onClick={() => handleDropdownClick()}
-                  className="overlay"
-                ></div>
+                <div onClick={() => handleDropdownClick()} className="overlay"></div>
               )}
               <div className="logged-in-nav-view">
                 <button
                   onClick={() => {
-                    setOverlayToggle(!overlayToggle)
-                    setIsUserDropdownOpen(!isUserDropdownOpen)
+                    setOverlayToggle(!overlayToggle);
+                    setIsUserDropdownOpen(!isUserDropdownOpen);
                   }}
                   className="nav-username-button"
                 >
                   <ProfilePicture size="small" source={user.profile_picture} />
                   <span className="nav-username-span">{user.username} </span>
-                  <DownArrow/>
+                  <DownArrow />
                 </button>
                 <div
                   className={`${
-                    isUserDropdownOpen
-                      ? "user-dropdown open"
-                      : "user-dropdown closed"
+                    isUserDropdownOpen ? "user-dropdown open" : "user-dropdown closed"
                   }`}
                 >
                   <Link
@@ -128,8 +123,8 @@ const Navbar = () => {
                   <button
                     className="logout-button"
                     onClick={() => {
-                      dispatch(startLogout(user))
-                      handleDropdownClick()
+                      dispatch(startLogout(user));
+                      handleDropdownClick();
                     }}
                   >
                     Logout
@@ -146,7 +141,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
