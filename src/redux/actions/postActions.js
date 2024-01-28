@@ -1,5 +1,5 @@
 import axios from "../../utils/axios-config"
-import { getApiUrl } from "./nodeEnvActions"
+import { getApiUrl } from "../../utils/getUrl"
 import he from "he"
 // import escapeHTML from "../utils/escapeHTML"
 

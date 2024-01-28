@@ -23,6 +23,7 @@ const CreateSubreddit = () => {
     <div className={`create-subreddit`}>
       <Meta title={`Create a new subreddit`} />
       <form onSubmit={(e) => handleSubmit(e)}>
+      <h3>Create a New Subreddit</h3>
         <input
           onChange={(e) => setSubredditName(e.target.value)}
           placeholder="Subreddit name"

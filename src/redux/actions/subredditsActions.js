@@ -1,7 +1,7 @@
 import axios from "../../utils/axios-config.js"
 import moment from "moment"
 import history from "../../utils/history"
-import { getApiUrl } from "./nodeEnvActions"
+import { getApiUrl } from "../../utils/getUrl"
 
 const API_URL = getApiUrl()
 

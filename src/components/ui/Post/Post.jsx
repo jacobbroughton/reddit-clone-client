@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPost, startEditPost, deletePost } from "../../../redux/actions/postActions";
 import { handleVote } from "../../../redux/actions/postListActions";
 import { handleSinglePostVote } from "../../../redux/actions/postActions";
-import { ReactComponent as EditIcon } from "../../../images/edit-icon.svg";
-import { ReactComponent as DeleteIcon } from "../../../images/delete-icon.svg";
+// import { ReactComponent as EditIcon } from "../../../images/edit-icon.svg";
+// import { ReactComponent as DeleteIcon } from "../../../images/delete-icon.svg";
+import EditIcon from "../icons/EditIcon"
+import DeleteIcon from "../icons/DeleteIcon"
 import { getElapsedTime } from "../../../utils/useElapsedTime";
 import VoteButtons from "../../ui/VoteButtons/VoteButtons";
 import Meta from "../Meta";
@@ -125,13 +127,13 @@ const Post = ({ post, single }) => {
           <div className="posted-user-accessable-options">
             {!isEditing && (
               <button onClick={() => setIsEditing(!isEditing)}>
-                <EditIcon className="edit-icon" />
+                <EditIcon />
                 Edit
               </button>
             )}
 
             <button onClick={() => handlePostDelete()}>
-              <DeleteIcon className="delete-icon" />
+              <DeleteIcon />
               Delete
             </button>
           </div>

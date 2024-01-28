@@ -1,7 +1,7 @@
 import axios from "../../utils/axios-config"
 import moment from "moment"
 import history from "../../utils/history"
-import { getApiUrl } from "../../redux/actions/nodeEnvActions"
+import { getApiUrl } from "../../utils/getUrl"
 import { createAvatar } from "@dicebear/avatars"
 import * as maleStyle from "@dicebear/avatars-male-sprites"
 import * as femaleStyle from "@dicebear/avatars-female-sprites"

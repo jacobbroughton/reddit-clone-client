@@ -1,29 +1,26 @@
-import React, { useState, useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { useLocation, Link } from "react-router-dom"
-import { createPost } from "../../../redux/actions/postListActions"
-import Meta from "../../ui/Meta"
-import he from "he"
-import "./NewPost.scss"
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useLocation, Link } from "react-router-dom";
+import { createPost } from "../../../redux/actions/postListActions";
+import Meta from "../../ui/Meta";
+import he from "he";
+import "./NewPost.scss";
 
 const NewPost = () => {
-  const dispatch = useDispatch()
-  const search = useLocation().search
-  const auth = useSelector((state) => state.auth)
-  const subreddits = useSelector((state) => state.subreddits)
-  const currentSubreddit = useSelector((state) => state.currentSubreddit)
-  
+  const dispatch = useDispatch();
+  const search = useLocation().search;
+  const auth = useSelector((state) => state.auth);
+  const subreddits = useSelector((state) => state.subreddits);
+  const currentSubreddit = useSelector((state) => state.currentSubreddit);
 
-  const [postType, setPostType] = useState(
-    new URLSearchParams(search).get("type")
-  )
-  const [title, setTitle] = useState("")
-  const [body, setBody] = useState("")
-  const [url, setUrl] = useState("")
-  const [subreddit, setSubreddit] = useState(null)
+  const [postType, setPostType] = useState(new URLSearchParams(search).get("type"));
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [url, setUrl] = useState("");
+  const [subreddit, setSubreddit] = useState(null);
 
   const handleSubmit = (e) => {
-    console.log(postType)
+    console.log(postType);
 
     const post = {
       postType,
@@ -32,50 +29,46 @@ const NewPost = () => {
       authorId: auth.user.id,
       subredditId: subreddit.id,
       subredditName: subreddit.name,
-    }
+    };
 
-    console.log(post)
-
-    dispatch(createPost(post))
-    e.preventDefault()
-  }
+    dispatch(createPost(post));
+    e.preventDefault();
+  };
 
   useEffect(() => {
-    setPostType(new URLSearchParams(search).get("type"))
-  }, [search])
+    setPostType(new URLSearchParams(search).get("type"));
+  }, [search]);
 
   useEffect(() => {
     if (postType === "Text") {
-      setUrl("")
+      setUrl("");
     }
-  }, [postType])
+  }, [postType]);
 
   useEffect(() => {
     if (subreddits.length > 0) {
-      setSubreddit(currentSubreddit && currentSubreddit)
+      setSubreddit(currentSubreddit && currentSubreddit);
     }
-  }, [subreddits, currentSubreddit])
+  }, [subreddits, currentSubreddit]);
 
   const handleSubredditChange = (selectValue) => {
-    console.log(selectValue)
-    console.log(subreddits)
-    setSubreddit(
-      subreddits.filter((sub) => he.decode(sub.name) === selectValue)[0]
-    )
-  }
+    console.log(selectValue);
+    console.log(subreddits);
+    setSubreddit(subreddits.filter((sub) => he.decode(sub.name) === selectValue)[0]);
+  };
 
   return (
     <div className={`new-post`}>
       <Meta title={`Create a new ${postType} post`} />
       <div className="new-post-container">
         <form onSubmit={(e) => handleSubmit(e)}>
+          <h3>Create a New Subreddit</h3>
           <div className="both-radio-inputs">
+            <p>Select the type of post you'd like to create</p>
             <div className="post-type-buttons">
               <Link
                 to={"/new-post?type=text"}
-                className={`post-type-button ${
-                  postType === "text" ? "clicked" : ""
-                }`}
+                className={`post-type-button ${postType === "text" ? "clicked" : ""}`}
                 value={"text"}
                 type="button"
               >
@@ -83,9 +76,7 @@ const NewPost = () => {
               </Link>
               <Link
                 to={"/new-post?type=link"}
-                className={`post-type-button  ${
-                  postType === "link" ? "clicked" : ""
-                }`}
+                className={`post-type-button  ${postType === "link" ? "clicked" : ""}`}
                 value={"link"}
                 type="button"
               >
@@ -138,7 +129,7 @@ const NewPost = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NewPost
+export default NewPost;

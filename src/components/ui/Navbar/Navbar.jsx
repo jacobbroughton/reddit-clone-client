@@ -5,7 +5,7 @@ import { startLogout } from "../../../redux/actions/authActions"
 import { toggleTheme } from "../../../redux/reducers/themeReducer"
 import { setCurrentSubreddit } from "../../../redux/actions/subredditActions"
 // import { ReactComponent as DarkModeIcon } from "../../../images/dark-mode-icon.svg"
-import { ReactComponent as DownArrow } from "../../../images/down-arrow.svg"
+import DownArrow from "../icons/DownArrow"
 import ProfilePicture from "../ProfilePicture/ProfilePicture"
 import Search from "../Search/Search"
 import useBrowserResize from "../../../utils/useBrowserResize"
@@ -88,7 +88,7 @@ const Navbar = () => {
                 >
                   <ProfilePicture size="small" source={user.profile_picture} />
                   <span className="nav-username-span">{user.username} </span>
-                  <DownArrow className="down-arrow" />
+                  <DownArrow/>
                 </button>
                 <div
                   className={`${

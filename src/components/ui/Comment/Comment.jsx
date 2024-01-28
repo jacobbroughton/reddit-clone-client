@@ -1,50 +1,54 @@
-import { useSelector, useDispatch } from "react-redux"
-import React, { useEffect, useState } from "react"
-import PropTypes from "prop-types"
-import { getElapsedTime } from "../../../utils/useElapsedTime"
+import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { getElapsedTime } from "../../../utils/useElapsedTime";
 import {
   startEditComment,
   deleteComment,
   commentThreadToggle,
   handleVote,
-} from "../../../redux/actions/commentsActions"
-import { ReactComponent as EditIcon } from "../../../images/edit-icon.svg"
-import { ReactComponent as DeleteIcon } from "../../../images/delete-icon.svg"
-import { ReactComponent as CommentIcon } from "../../../images/comment-icon.svg"
-import { ReactComponent as ExpandThreadIcon } from "../../../images/expand.svg"
-import he from "he"
+} from "../../../redux/actions/commentsActions";
+// import { ReactComponent as EditIcon } from "../../../images/edit-icon.svg";
+// import { ReactComponent as DeleteIcon } from "../../../images/delete-icon.svg";
+// import { ReactComponent as CommentIcon } from "../../../images/comment-icon.svg";
+// import { ReactComponent as ExpandThreadIcon } from "../../../images/expand.svg";
+import ExpandThreadIcon from "../icons/Expand";
+import DeleteIcon from "../icons/DeleteIcon";
+import CommentIcon from "../icons/CommentIcon";
+import EditIcon from "../icons/EditIcon";
+import he from "he";
 
-import CommentForm from "../CommentForm/CommentForm"
-import VoteButtons from "../VoteButtons/VoteButtons"
-import "./Comment.scss"
-import ProfilePicture from "../ProfilePicture/ProfilePicture"
+import CommentForm from "../CommentForm/CommentForm";
+import VoteButtons from "../VoteButtons/VoteButtons";
+import "./Comment.scss";
+import ProfilePicture from "../ProfilePicture/ProfilePicture";
 
 const Comment = ({ comment }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const user = useSelector((state) => state.auth.user)
-  const post = useSelector((state) => state.post)
-  
-  const comments = useSelector((state) => state.comments)
-  const [toggleCommentReply, setToggleCommentReply] = useState(false)
-  const [isEditing, setIsEditing] = useState(false)
-  const [editCommentBody, setEditCommentBody] = useState()
-  const [error, setError] = useState(null)
+  const user = useSelector((state) => state.auth.user);
+  const post = useSelector((state) => state.post);
 
-  let createdAt = getElapsedTime(comment.created_at)
+  const comments = useSelector((state) => state.comments);
+  const [toggleCommentReply, setToggleCommentReply] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editCommentBody, setEditCommentBody] = useState();
+  const [error, setError] = useState(null);
+
+  let createdAt = getElapsedTime(comment.created_at);
 
   const handleEditCommentFormSubmit = (e, id) => {
-    const body = editCommentBody
+    const body = editCommentBody;
 
-    dispatch(startEditComment({ id, body }))
-    setIsEditing(!isEditing)
+    dispatch(startEditComment({ id, body }));
+    setIsEditing(!isEditing);
 
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
   const handleThreadToggle = (comment) => {
-    dispatch(commentThreadToggle(comment.id, !comment.threadToggle))
-  }
+    dispatch(commentThreadToggle(comment.id, !comment.threadToggle));
+  };
 
   const getChildComments = (comments) => {
     return comments.map(
@@ -56,7 +60,7 @@ const Comment = ({ comment }) => {
                 onClick={() => handleThreadToggle(eachComment)}
                 className="replies-toggle"
               >
-                <ExpandThreadIcon className="expand-thread-icon" />
+                <ExpandThreadIcon />
                 Expand Thread
               </button>
             )}
@@ -74,22 +78,22 @@ const Comment = ({ comment }) => {
             )}
           </div>
         )
-    )
-  }
+    );
+  };
 
   const handleVoteClick = (vote_value) => {
     if (!user) {
-      setError("You must log in to vote")
-      setTimeout(() => setError(null), 4000)
-      return
+      setError("You must log in to vote");
+      setTimeout(() => setError(null), 4000);
+      return;
     }
 
-    dispatch(handleVote(user.id, comment.id, vote_value))
-  }
+    dispatch(handleVote(user.id, comment.id, vote_value));
+  };
 
   useEffect(() => {
-    setEditCommentBody(comment.body)
-  }, [isEditing])
+    setEditCommentBody(comment.body);
+  }, [isEditing]);
 
   return (
     <div className={`comment-thread`}>
@@ -107,7 +111,7 @@ const Comment = ({ comment }) => {
               <form
                 className="edit-comment-form"
                 onSubmit={(e) => {
-                  handleEditCommentFormSubmit(e, comment.id)
+                  handleEditCommentFormSubmit(e, comment.id);
                 }}
               >
                 <textarea
@@ -116,9 +120,7 @@ const Comment = ({ comment }) => {
                 />
                 <div className="save-and-cancel">
                   <button type="submit">Save</button>
-                  <button onClick={() => setIsEditing(!isEditing)}>
-                    Cancel
-                  </button>
+                  <button onClick={() => setIsEditing(!isEditing)}>Cancel</button>
                 </div>
               </form>
             ) : (
@@ -131,10 +133,10 @@ const Comment = ({ comment }) => {
 
             {user && (
               <button
-                className="reply-button"
+                className="comment-button"
                 onClick={() => setToggleCommentReply(!toggleCommentReply)}
               >
-                <CommentIcon className="comment-icon" /> Reply
+                <CommentIcon /> Reply
               </button>
             )}
 
@@ -142,18 +144,18 @@ const Comment = ({ comment }) => {
               <>
                 {!isEditing && (
                   <button
-                    className="edit-button"
+                    className="comment-button"
                     onClick={() => setIsEditing(!isEditing)}
                   >
-                    <EditIcon className="edit-icon" /> Edit
+                    <EditIcon /> Edit
                   </button>
                 )}
 
                 <button
-                  className="delete-button"
+                  className="comment-button"
                   onClick={() => dispatch(deleteComment(comment.id))}
                 >
-                  <DeleteIcon className="delete-icon" /> Delete
+                  <DeleteIcon /> Delete
                 </button>
               </>
             )}
@@ -171,11 +173,11 @@ const Comment = ({ comment }) => {
 
       {getChildComments(comments)}
     </div>
-  )
-}
+  );
+};
 
 Comment.propTypes = {
   comment: PropTypes.object,
-}
+};
 
-export default Comment
+export default Comment;

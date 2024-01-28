@@ -1,6 +1,7 @@
-import "./Search.scss"
-import { ReactComponent as SearchIcon } from "../../../images/search.svg"
-import { ReactComponent as BackArrow } from "../../../images/backarrow.svg"
+// import { ReactComponent as SearchIcon } from "../../../images/search.svg"
+// import { ReactComponent as BackArrow } from "../../../images/backarrow.svg"
+import SearchIcon from "../icons/Search"
+import BackArrow from "../icons/BackArrow"
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 import PropTypes from "prop-types"
@@ -9,6 +10,7 @@ import { search } from "../../../redux/actions/searchActions"
 import useBrowserResize from "../../../utils/useBrowserResize"
 import React, { useRef } from "react"
 import he from "he"
+import "./Search.scss"
 import { motion } from "framer-motion"
 
 const Search = ({ searchExpanded, setSearchExpanded }) => {
@@ -76,7 +78,7 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
         {searchExpanded ? (
           <BackArrow className="search-icon" />
         ) : (
-          <SearchIcon className="search-icon" />
+          <SearchIcon/>
         )}
       </motion.button>
       {mobile && searchExpanded ? (

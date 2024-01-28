@@ -11,6 +11,10 @@
     margin: 0 auto;
     padding-top: 100px;
     -webkit-appearance: none;
+
+    h3 {
+      color: var(--color-text);
+    }
     input {
       width: 100%;
       padding: 10px 15px;

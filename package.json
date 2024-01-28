@@ -6,6 +6,7 @@
     "@dicebear/avatars": "^4.7.4",
     "@dicebear/avatars-female-sprites": "^4.7.4",
     "@dicebear/avatars-male-sprites": "^4.7.4",
+    "@reduxjs/toolkit": "^2.1.0",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",

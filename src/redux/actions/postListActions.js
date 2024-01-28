@@ -2,7 +2,7 @@ import axios from "../../utils/axios-config"
 import history from "../../utils/history"
 import { setPost } from "./postActions"
 import { formatISO9075 } from "date-fns"
-import { getApiUrl } from "./nodeEnvActions"
+import { getApiUrl } from "../../utils/getUrl"
 
 const API_URL = getApiUrl()
 

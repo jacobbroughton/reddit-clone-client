@@ -1,14 +1,15 @@
-import "./VoteButtons.scss"
-import { useSelector } from "react-redux"
-import React from "react"
-import PropTypes from "prop-types"
-import { ReactComponent as UpArrow } from "../../../images/up-vote-arrow.svg"
-import { ReactComponent as DownArrow } from "../../../images/down-vote-arrow.svg"
-import { motion } from "framer-motion"
+import "./VoteButtons.scss";
+import { useSelector } from "react-redux";
+import React from "react";
+import PropTypes from "prop-types";
+// import { ReactComponent as UpArrow } from "../../../images/up-vote-arrow.svg"
+// import { ReactComponent as DownArrow } from "../../../images/down-vote-arrow.svg"
+import UpArrow from "../icons/UpVoteArrow";
+import DownArrow from "../icons/DownVoteArrow";
+import { motion } from "framer-motion";
 
 const VoteButtons = ({ item, handleVoteClick }) => {
-  
-  const user = useSelector((state) => state.auth.user)
+  const user = useSelector((state) => state.auth.user);
 
   return (
     <div className={`votes-section  `}>
@@ -17,11 +18,7 @@ const VoteButtons = ({ item, handleVoteClick }) => {
         className="up-vote"
         whileTap={user ? { scale: 1.4 } : { scale: 1 }}
       >
-        <UpArrow
-          className={`${
-            user && item.has_voted === 1 ? `selected` : ""
-          } up-arrow`}
-        />
+        <UpArrow customClass={`${user && item.has_voted === 1 ? `selected` : ""}`} />
       </motion.button>
       <span className="votes-count">{item.vote_count && item.vote_count}</span>
       <motion.button
@@ -29,19 +26,15 @@ const VoteButtons = ({ item, handleVoteClick }) => {
         className="down-vote"
         whileTap={user ? { scale: 1.4 } : { scale: 1 }}
       >
-        <DownArrow
-          className={`${
-            user && item.has_voted === -1 ? `selected` : ""
-          } down-arrow`}
-        />
+        <DownArrow customClass={`${user && item.has_voted === -1 ? `selected` : ""} `} />
       </motion.button>
     </div>
-  )
-}
+  );
+};
 
 VoteButtons.propTypes = {
   item: PropTypes.object,
   handleVoteClick: PropTypes.func,
-}
+};
 
-export default VoteButtons
+export default VoteButtons;

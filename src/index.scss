@@ -34,9 +34,10 @@ body {
 body[data-theme="light"] {
   --color-text: #1a202c;
   --color-text-secondary: #718096;
+  --color-text-disabled: #aaa;
   --color-bg-primary: #f0f2f6;
   --color-bg-secondary: #fff;
-  --color-bg-interactive: #f0f2f6;
+  --color-bg-interactive: #e9ecf3;
   --color-bg-interactive-hover: #e5e7eb;
   --color-link: #0079d3;
   --color-border: #050c1349 ;
@@ -48,6 +49,7 @@ body[data-theme="light"] {
 body[data-theme="dark"] {
   --color-text: #ffffffde;
   --color-text-secondary: #aab3be;
+  --color-text-disabled: #666;
   --color-bg-primary: #333333;
   --color-bg-secondary: #444444;
   --color-bg-interactive: #555;

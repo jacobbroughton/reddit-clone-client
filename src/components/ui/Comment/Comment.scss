@@ -9,7 +9,7 @@
 
   .comment {
     background-color: var(--color-bg-secondary);
-     
+
     padding: 10px 0;
     position: relative;
     display: flex;
@@ -35,7 +35,7 @@
         align-items: center;
         .user {
           white-space: nowrap;
-           
+
           font-weight: 600;
           margin-right: 10px;
         }
@@ -92,8 +92,6 @@
                 background-color: var(--color-bg-interactive-hover);
               }
 
-
-
               &:disabled {
                 @include disabled-button;
               }
@@ -105,17 +103,15 @@
           white-space: pre-wrap;
           margin: 0;
           font-size: 0.875rem;
-          color: var(--color-text)
+          color: var(--color-text);
         }
       }
 
       .comment-buttons {
         display: flex;
-        gap: 15px;
+        gap: 10px;
 
-        .reply-button,
-        .edit-button,
-        .delete-button {
+        .comment-button {
           color: var(--color-text-secondary);
           display: flex;
           align-items: center;
@@ -129,18 +125,27 @@
           display: flex;
           gap: 8px;
           flex-direction: row;
+          padding: 3px 5px;
 
-          .comment-icon {
+          svg {
             width: 100%;
             min-width: 14px;
             max-width: 14px;
           }
 
-          .edit-icon,
+          .edit-icon {
+            stroke: var(--color-text-secondary);
+          }
+
           .delete-icon {
+            fill: var(--color-text-secondary);
+          }
+
+          .comment-button {
             width: 100%;
             min-width: 14px;
             max-width: 14px;
+            padding: 3px 5px;
             stroke: var(--color-text);
             fill: var(--color-text);
           }
@@ -153,9 +158,7 @@
         @media screen and (max-width: $mobile-bp) {
           gap: 15px;
 
-          .reply-button,
-          .edit-button,
-          .delete-button {
+          .comment-button {
             // padding: 0;
             gap: 0;
             font-size: 0;
@@ -163,14 +166,11 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            
 
             .comment-icon,
             .edit-icon,
             .delete-icon {
               width: 100%;
-              min-width: 22px;
-              max-width: 22px;
               align-self: center;
             }
           }
