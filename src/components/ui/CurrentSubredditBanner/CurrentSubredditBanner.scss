@@ -58,35 +58,44 @@
 
   .delete-confirmation-span {
     appearance: none;
-    padding: 4px;
     border: none;
     border-radius: 5px;
     transition: background-color 0.1s ease;
     background-color: transparent;
     display: flex;
-    align-items: center;
-    gap: 8px;
+    align-items: flex-start;
+    gap: 15px;
     color: var(--color-text-secondary);
     font-weight: 600;
     font-size: 0.875rem;
 
-    button {
-      appearance: none;
-      border: none;
-      background: transparent;
-      background: green;
-      font-weight: 600;
-      color: #fff;
-      border-radius: 3px;
-      cursor: pointer;
-    }
+    .buttons {
+      display: flex;
+      gap: 5px;
+      button {
+        appearance: none;
+        border: none;
+        background-color: transparent;
+        color: var(--color-text);
+        cursor: pointer;
+        font-size: 0.875rem;
+        border: 1px solid var(--color-border);
+        padding: 3px 8px;
+        border-radius: 3px;
 
-    button:nth-child(1) {
-      background: crimson;
-    }
+        &:hover {
+          text-decoration: underline;
+        }
+      }
 
-    button:nth-child(2) {
-      background: green;
+      button:nth-child(1) {
+        background-color: var(--color-bg-secondary);
+        color: white;
+      }
+
+      button:nth-child(2) {
+        // background: green;
+      }
     }
   }
 }

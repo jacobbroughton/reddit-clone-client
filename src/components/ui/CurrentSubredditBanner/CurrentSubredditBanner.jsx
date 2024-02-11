@@ -1,37 +1,37 @@
-import "./CurrentSubredditBanner.scss"
-import { useDispatch, useSelector } from "react-redux"
-import React, { useEffect, useState } from "react"
-import PropTypes from "prop-types"
-import { useLocation } from "react-router-dom"
-import { useQuery } from "../../../utils/useQuery"
-import { deleteSubreddit } from "../../../redux/actions/subredditsActions"
-import he from "he"
+import "./CurrentSubredditBanner.scss";
+import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
+import { useQuery } from "../../../utils/useQuery";
+import { deleteSubreddit } from "../../../redux/actions/subredditsActions";
+import he from "he";
 
 const CurrentSubredditBanner = ({ name }) => {
-  const location = useLocation()
-  const dispatch = useDispatch()
-  const currentSubreddit = useSelector((state) => state.currentSubreddit)
-  
-  const user = useSelector((state) => state.auth.user)
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const currentSubreddit = useSelector((state) => state.currentSubreddit);
 
-  const [deleteToggle, setDeleteToggle] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("")
+  const user = useSelector((state) => state.auth.user);
+
+  const [deleteToggle, setDeleteToggle] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleSubredditDelete = () => {
-    dispatch(deleteSubreddit(user.id, currentSubreddit.id))
-    setDeleteToggle(false)
-  }
+    dispatch(deleteSubreddit(user.id, currentSubreddit.id));
+    setDeleteToggle(false);
+  };
 
   useEffect(() => {
-    setDeleteToggle(false)
-  }, [currentSubreddit])
+    setDeleteToggle(false);
+  }, [currentSubreddit]);
 
-  const query = useQuery()
+  const query = useQuery();
 
   useEffect(() => {
     // let searchQueryFromURL = query.get("q");
-    setSearchQuery(query)
-  }, [location])
+    setSearchQuery(query);
+  }, [location]);
 
   return (
     <section className={`current-subreddit-banner`}>
@@ -59,14 +59,13 @@ const CurrentSubredditBanner = ({ name }) => {
             (deleteToggle ? (
               <span className="delete-confirmation-span">
                 Are you sure?
-                <button onClick={() => handleSubredditDelete()}>Yes</button>
-                <button onClick={() => setDeleteToggle(false)}>No</button>
+                <div className="buttons">
+                  <button onClick={() => handleSubredditDelete()}>Yes, delete it</button>
+                  <button onClick={() => setDeleteToggle(false)}>No, cancel</button>
+                </div>
               </span>
             ) : (
-              <button
-                className="delete-btn"
-                onClick={() => setDeleteToggle(true)}
-              >
+              <button className="delete-btn" onClick={() => setDeleteToggle(true)}>
                 Delete Subreddit
               </button>
             ))}
@@ -83,11 +82,11 @@ const CurrentSubredditBanner = ({ name }) => {
         </div>
       )}
     </section>
-  )
-}
+  );
+};
 
 CurrentSubredditBanner.propTypes = {
   name: PropTypes.string,
-}
+};
 
-export default CurrentSubredditBanner
+export default CurrentSubredditBanner;

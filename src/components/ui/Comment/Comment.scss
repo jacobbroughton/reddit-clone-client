@@ -93,7 +93,7 @@
               }
 
               &:disabled {
-                @include disabled-button;
+                @include button_disabled;
               }
             }
           }
@@ -224,10 +224,12 @@
       align-items: center;
       gap: 10px;
       color: var(--color-text);
+      justify-content: flex-start;
 
       .expand-thread-icon {
-        height: 20px;
-        min-width: 20px;
+        height: 14px;
+        width: 14px;
+        min-width: 14px;
         stroke: transparent;
         fill: var(--color-text);
       }

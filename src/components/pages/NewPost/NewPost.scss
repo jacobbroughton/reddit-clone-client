@@ -90,22 +90,11 @@
         background-repeat: no-repeat;
       }
       .new-post-submit {
-        align-self: flex-start;
-        background-color: transparent;
-        font-weight: 600;
-        color: var(--color-text);
-        font-size: 0.9rem;
-        border: none;
-        padding: 5px;
-        border-radius: 3px;
-        cursor: pointer;
-        background-color: var(--color-bg-secondary);
-        box-shadow: var(--subtle-box-shadow);
-        padding: 8px 10px;
-
+        @include button;
+        margin-top: 0;
 
         &:disabled {
-          @include disabled-button;
+          @include button_disabled;
         }
       }
     }

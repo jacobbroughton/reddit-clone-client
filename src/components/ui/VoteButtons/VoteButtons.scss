@@ -33,7 +33,7 @@
   .up-vote {
     .up-arrow {
       max-width: 15px;
-      height: auto;
+      height: 18px;
       fill: var(--color-text-secondary);
 
       &.selected {
@@ -44,7 +44,7 @@
 
   .down-vote {
     .down-arrow {
-      max-width: 15px;
+      max-width: 18px;
       height: auto;
       fill: var(--color-text-secondary);
 

@@ -30,31 +30,42 @@
       color: var(--color-text);
       font-size: 1rem;
     }
+
     .comment-button,
     .cancel-button {
-      appearance: none;
-      border: none;
-      margin-top: 10px;
-      padding: 8px;
-      border-radius: 5px;
-      font-weight: 600;
-      font-size: 1rem;
-      background-color: transparent;
-      transition: background-color 0.1s ease;
-      cursor: pointer;
-      margin-right: 10px;
-      font-size: 0.9rem;
-      padding: 4px;
-      color: var(--color-text-secondary);
-
-      &:hover {
-        background-color: var(--color-bg-interactive-hover);
-      }
+      @include button;
+      @include button_on-background;
 
       &:disabled {
-        @include disabled-button;
+        @include button_disabled;
       }
     }
+    
+    // .comment-button,
+    // .cancel-button {
+    //   appearance: none;
+    //   border: none;
+    //   margin-top: 10px;
+    //   padding: 8px;
+    //   border-radius: 5px;
+    //   font-weight: 600;
+    //   font-size: 1rem;
+    //   background-color: transparent;
+    //   transition: background-color 0.1s ease;
+    //   cursor: pointer;
+    //   margin-right: 10px;
+    //   font-size: 0.9rem;
+    //   padding: 4px;
+    //   color: var(--color-text-secondary);
+
+    //   &:hover {
+    //     background-color: var(--color-bg-interactive-hover);
+    //   }
+
+    //   &:disabled {
+    //     @include button_disabled;
+    //   }
+    // }
   }
 
   

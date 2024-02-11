@@ -16,7 +16,7 @@ const VoteButtons = ({ item, handleVoteClick }) => {
       <motion.button
         onClick={() => handleVoteClick(1)}
         className="up-vote"
-        whileTap={user ? { scale: 1.4 } : { scale: 1 }}
+        whileTap={user ? { scale: 1.2 } : { scale: 1 }}
       >
         <UpArrow customClass={`${user && item.has_voted === 1 ? `selected` : ""}`} />
       </motion.button>
@@ -24,7 +24,7 @@ const VoteButtons = ({ item, handleVoteClick }) => {
       <motion.button
         onClick={() => handleVoteClick(-1)}
         className="down-vote"
-        whileTap={user ? { scale: 1.4 } : { scale: 1 }}
+        whileTap={user ? { scale: 1.2 } : { scale: 1 }}
       >
         <DownArrow customClass={`${user && item.has_voted === -1 ? `selected` : ""} `} />
       </motion.button>

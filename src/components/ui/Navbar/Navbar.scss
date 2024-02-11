@@ -15,12 +15,14 @@
     align-items: center;
     justify-content: space-between;
 
-    .home-search-darkicon {
+    .nav-left-side-container {
       position: relative;
       display: flex;
       align-items: center;
       gap: 10px;
       height: 38px;
+      // margin-right: 76px;
+      
       .nav-home-link {
         text-decoration: none;
         color: var(--color-text);
@@ -194,11 +196,6 @@
     .nav-container {
       padding: 10px 15px;
     }
-
-    .nav-container .home-search-darkicon .nav-home-link {
-      // display: none;
-    }
-
     .nav-container .nav-menu .logged-in-nav-view .user-dropdown .dropdown-link {
       display: block;
     }
@@ -210,10 +207,14 @@
     .nav-container .nav-username-span {
       display: none;
     }
+
+    .nav-left-side-container {
+      margin-right: 10px;
+    }
   }
 
   @media screen and (max-width: $tablet-bp) {
-    .nav-container .home-search-darkicon .nav-home-link {
+    .nav-container .nav-left-side-container .nav-home-link {
       margin: 0;
 
       .home-icon {

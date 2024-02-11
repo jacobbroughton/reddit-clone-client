@@ -69,11 +69,10 @@ const Search = ({ searchExpanded, setSearchExpanded }) => {
   }
 
   return (
-    <div className={`search-bar  `}>
+    <div className='search-bar'>
       <motion.button
         className="search-icon-button"
         onClick={mobile ? () => setSearchExpanded(!searchExpanded) : undefined}
-        whileTap={mobile ? { scale: 1.2 } : { scale: 1 }}
       >
         {searchExpanded ? (
           <BackArrow className="search-icon" />

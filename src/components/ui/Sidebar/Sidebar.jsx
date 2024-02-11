@@ -25,7 +25,7 @@ const Sidebar = () => {
           create new content
         </p>
       )}
-      <div className="sidebar-buttons">
+      {user && <div className="sidebar-buttons">
         <div className="post-and-link-buttons">
           <Link
             to={`${user ? "/new-post?type=text" : "#"}`}
@@ -46,7 +46,7 @@ const Sidebar = () => {
         >
           Create Subreddit
         </Link>
-      </div>
+      </div>}
       {subreddits.length > 0 && (
         <div className="subreddit-lists">
           <div className='subreddit-list'>

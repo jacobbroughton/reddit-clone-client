@@ -31,7 +31,7 @@
       resize: vertical;
       height: 150px;
       border: none;
-      background-color: var(--color-bg-secondary);;
+      background-color: var(--color-bg-secondary);
       box-shadow: var(--subtle-box-shadow);
       color: var(--color-text);
       font-family: inherit;
@@ -39,17 +39,11 @@
       font-size: 1rem;
     }
     button {
-      padding: 5px;
-      font-size: 1rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 3px;
-      background-color: transparent;
-      cursor: pointer;
-      color: var(--color-text-secondary);
+      @include button;
+      margin-top: 0;
 
       &:disabled {
-        @include disabled-button;
+        @include button_disabled;
       }
     }
   }
