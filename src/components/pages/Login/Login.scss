@@ -72,7 +72,11 @@
 
 
         &:disabled {
+<<<<<<< HEAD
           @include button_disabled;
+=======
+          @include disabled-button;
+>>>>>>> 7de0d2e071f1ecd5054632f9a4f7c30f489645fd
         }
       }
 
