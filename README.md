@@ -1,7 +1,7 @@
 
 
 
-# Zeddit (Reddit Clone)
+# Zeddit (Reddit Clone) (Frontend)
 ## A Full Stack React/Redux/Node/MySql App
 
 Backend for this application: [Repository](https://github.com/jacobbroughton/reddit-clone-backend)
